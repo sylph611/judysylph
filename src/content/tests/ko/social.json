@@ -1,0 +1,118 @@
+{
+  "slug": "social",
+  "title": "인싸 아싸 테스트",
+  "description": "나는 인싸일까, 아싸일까? 나의 사회성 유형을 재미있게 알아보세요!",
+  "emoji": "🎭",
+  "questions": [
+    {
+      "question": "금요일 밤, 당신의 이상적인 계획은?",
+      "choices": [
+        { "text": "친구들과 신나게 파티! 술자리!", "scores": { "insider": 3 } },
+        { "text": "친한 친구 몇 명과 조용한 모임", "scores": { "ambivert": 2, "insider": 1 } },
+        { "text": "집에서 넷플릭스와 함께", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "누구도 만나지 않고 혼자만의 시간", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "단체 카톡방에서 당신은?",
+      "choices": [
+        { "text": "활발히 대화하고 이모티콘 폭격", "scores": { "insider": 3 } },
+        { "text": "필요할 때만 대화에 참여", "scores": { "ambivert": 3 } },
+        { "text": "읽기만 하고 가끔 대답", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "알림 끄고 잊고 산다", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "처음 보는 사람들 앞에서?",
+      "choices": [
+        { "text": "먼저 말 걸고 분위기를 주도한다", "scores": { "insider": 3 } },
+        { "text": "어색하지만 대화는 할 수 있다", "scores": { "ambivert": 3 } },
+        { "text": "누가 말 걸어주길 기다린다", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "가능하면 그 자리를 피한다", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "SNS 활동은 어떤가요?",
+      "choices": [
+        { "text": "매일 업로드! 좋아요와 댓글 열심히", "scores": { "insider": 3 } },
+        { "text": "가끔 올리고, 가끔 구경한다", "scores": { "ambivert": 3 } },
+        { "text": "거의 안 올리고 구경만 한다", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "SNS 계정이 없거나 안 쓴다", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "모임에서 사진 찍을 때?",
+      "choices": [
+        { "text": "센터에서 포즈를 취한다", "scores": { "insider": 3 } },
+        { "text": "어디든 자연스럽게 있는다", "scores": { "ambivert": 3 } },
+        { "text": "가장자리에 숨는다", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "찍는 걸 피한다", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "갑자기 노래방에 가게 되면?",
+      "choices": [
+        { "text": "마이크 잡고 신나게 부른다", "scores": { "insider": 3 } },
+        { "text": "분위기 보고 한두 곡 부른다", "scores": { "ambivert": 3 } },
+        { "text": "탬버린이나 손뼉 치는 역할", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "노래방은 가급적 안 간다", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "주말에 갑자기 친구가 만나자고 하면?",
+      "choices": [
+        { "text": "좋아! 지금 나갈게!", "scores": { "insider": 3 } },
+        { "text": "뭐 하는데? 괜찮으면 나갈게", "scores": { "ambivert": 3 } },
+        { "text": "오늘은 좀 쉬고 싶은데...", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "미리 말해줬으면 좋겠어", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "학교/회사에서 점심시간에?",
+      "choices": [
+        { "text": "여러 사람과 왁자지껄 먹는다", "scores": { "insider": 3 } },
+        { "text": "친한 동료와 함께 먹는다", "scores": { "ambivert": 3 } },
+        { "text": "혼밥하는 것도 좋다", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "혼밥이 제일 편하다", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "새로운 취미나 모임에 도전한다면?",
+      "choices": [
+        { "text": "새로운 사람 만나는 게 설렌다!", "scores": { "insider": 3 } },
+        { "text": "좀 어색하겠지만 해볼 만하다", "scores": { "ambivert": 3 } },
+        { "text": "혼자 하는 취미가 좋다", "scores": { "outsider": 2, "ambivert": 1 } },
+        { "text": "굳이 새로운 걸 시작하고 싶지 않다", "scores": { "outsider": 3 } }
+      ]
+    },
+    {
+      "question": "에너지 충전 방법은?",
+      "choices": [
+        { "text": "사람들과 어울리면 에너지가 생긴다", "scores": { "insider": 3 } },
+        { "text": "때에 따라 다르다", "scores": { "ambivert": 3 } },
+        { "text": "혼자 있으면 에너지가 충전된다", "scores": { "outsider": 3 } },
+        { "text": "사람 만나면 에너지가 빠진다", "scores": { "outsider": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "insider",
+      "title": "핵인싸",
+      "description": "당신은 진정한 인싸입니다! 사람들과 어울리는 것을 좋아하고, 모임의 중심에서 분위기를 이끕니다. 에너지가 넘치고 사교성이 뛰어나며, 새로운 사람을 만나는 것도 즐깁니다. 인맥 부자형 인간!",
+      "traits": ["사교적", "활발함", "분위기 메이커", "외향적", "에너지 넘침"]
+    },
+    {
+      "type": "ambivert",
+      "title": "상황에 따라 달라지는 중간형",
+      "description": "당신은 인싸와 아싸 사이, 양비론자입니다! 상황에 따라 유연하게 대처하며, 사교적인 면과 혼자만의 시간 모두 즐길 줄 압니다. 균형 잡힌 사회생활을 하는 타입!",
+      "traits": ["유연함", "상황 적응", "균형잡힌", "선택적 사교", "양면성"]
+    },
+    {
+      "type": "outsider",
+      "title": "행복한 아싸",
+      "description": "당신은 혼자만의 시간을 사랑하는 아싸입니다! 소수의 깊은 관계를 선호하고, 조용한 환경에서 에너지를 충전합니다. 내면이 풍부하고, 혼자서도 충분히 행복할 줄 아는 사람!",
+      "traits": ["내향적", "혼자 좋아함", "깊은 관계", "독립적", "평화로움"]
+    }
+  ]
+}

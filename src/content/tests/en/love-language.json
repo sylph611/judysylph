@@ -1,0 +1,140 @@
+{
+  "slug": "love-language",
+  "title": "Love Language Test",
+  "description": "How do you express and receive love? Discover your primary love language!",
+  "emoji": "💕",
+  "questions": [
+    {
+      "question": "When do you feel happiest with your partner?",
+      "choices": [
+        { "text": "When they say 'I love you' or give compliments", "scores": { "words": 3 } },
+        { "text": "When they hold your hand or hug you", "scores": { "touch": 3 } },
+        { "text": "When they give you a surprise gift", "scores": { "gifts": 3 } },
+        { "text": "When they spend quality time with you", "scores": { "time": 3 } },
+        { "text": "When they do something helpful for you", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "What do you want most on anniversaries?",
+      "choices": [
+        { "text": "A heartfelt letter or message", "scores": { "words": 3 } },
+        { "text": "Warm hugs and physical affection", "scores": { "touch": 3 } },
+        { "text": "A thoughtful gift", "scores": { "gifts": 3 } },
+        { "text": "Time dedicated just to you", "scores": { "time": 3 } },
+        { "text": "A surprise they prepared for you", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "When you're going through a hard time, what helps most?",
+      "choices": [
+        { "text": "Words of encouragement and comfort", "scores": { "words": 3 } },
+        { "text": "A silent embrace", "scores": { "touch": 3 } },
+        { "text": "Buying you food or something you like", "scores": { "gifts": 3 } },
+        { "text": "Just being there with you", "scores": { "time": 3 } },
+        { "text": "Helping with your burdens", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "When do you feel disappointed with your partner?",
+      "choices": [
+        { "text": "When there's no praise or encouragement", "scores": { "words": 3 } },
+        { "text": "When they refuse physical affection", "scores": { "touch": 3 } },
+        { "text": "When they forget special occasions", "scores": { "gifts": 3 } },
+        { "text": "When there's not enough time together", "scores": { "time": 3 } },
+        { "text": "When they don't help with requests", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "How do you express love?",
+      "choices": [
+        { "text": "Frequently saying 'I love you' and giving compliments", "scores": { "words": 3 } },
+        { "text": "Holding hands and giving hugs", "scores": { "touch": 3 } },
+        { "text": "Buying gifts or treats", "scores": { "gifts": 3 } },
+        { "text": "Prioritizing date time", "scores": { "time": 3 } },
+        { "text": "Doing things for them", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "What's your most memorable romantic memory?",
+      "choices": [
+        { "text": "Something touching they said", "scores": { "words": 3 } },
+        { "text": "A sweet moment of physical affection", "scores": { "touch": 3 } },
+        { "text": "A meaningful gift received", "scores": { "gifts": 3 } },
+        { "text": "A trip or special time together", "scores": { "time": 3 } },
+        { "text": "Something they sacrificed for you", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "Your ideal everyday date is...",
+      "choices": [
+        { "text": "Deep conversation at a cafe", "scores": { "words": 2, "time": 1 } },
+        { "text": "Cuddling while watching a movie", "scores": { "touch": 2, "time": 1 } },
+        { "text": "Exchanging small gifts", "scores": { "gifts": 3 } },
+        { "text": "Exploring new places together", "scores": { "time": 3 } },
+        { "text": "Cooking or doing chores together", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "In a long-distance relationship, what's most important?",
+      "choices": [
+        { "text": "Daily calls and conversations", "scores": { "words": 3 } },
+        { "text": "Physical affection when meeting", "scores": { "touch": 3 } },
+        { "text": "Surprise packages", "scores": { "gifts": 3 } },
+        { "text": "Video call time together", "scores": { "time": 3 } },
+        { "text": "Doing things for each other when meeting", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "When making up after a fight...",
+      "choices": [
+        { "text": "Need sincere apology and conversation", "scores": { "words": 3 } },
+        { "text": "A hug makes things better", "scores": { "touch": 3 } },
+        { "text": "Treating me to something nice helps", "scores": { "gifts": 3 } },
+        { "text": "Spending time together resolves it", "scores": { "time": 3 } },
+        { "text": "Actions need to show they're sorry", "scores": { "service": 3 } }
+      ]
+    },
+    {
+      "question": "When giving relationship advice to friends, you say...",
+      "choices": [
+        { "text": "Express yourself more", "scores": { "words": 3 } },
+        { "text": "Physical affection is important", "scores": { "touch": 3 } },
+        { "text": "Remember anniversaries and give gifts", "scores": { "gifts": 3 } },
+        { "text": "Spend more time together", "scores": { "time": 3 } },
+        { "text": "Show love through actions", "scores": { "service": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "words",
+      "title": "Words of Affirmation",
+      "description": "Your love language is Words of Affirmation! Hearing 'I love you,' compliments, encouragement, and expressions of gratitude means the world to you. Sincere words fill your heart, while criticism or dismissive words can deeply hurt. You also love expressing love verbally to your partner.",
+      "traits": ["Values expression", "Loves compliments", "Enjoys conversation", "Verbal affection", "Sincere words"]
+    },
+    {
+      "type": "touch",
+      "title": "Physical Touch",
+      "description": "Your love language is Physical Touch! Holding hands, hugging, and physical contact make you feel loved. You find security and love through touch rather than words. Without physical affection, you may feel lonely.",
+      "traits": ["Values touch", "Loves hugs", "Security through contact", "Seeks warmth", "Physical intimacy"]
+    },
+    {
+      "type": "gifts",
+      "title": "Receiving Gifts",
+      "description": "Your love language is Receiving Gifts! It's not about expensive presents, but the thought and effort behind them. Anniversary gifts and small surprises make you feel loved. You see gifts as symbols of your partner's love.",
+      "traits": ["Values gifts", "Moved by effort", "Anniversaries matter", "Symbolic meaning", "Loves surprises"]
+    },
+    {
+      "type": "time",
+      "title": "Quality Time",
+      "description": "Your love language is Quality Time! Having someone's undivided attention and doing things together is the greatest expression of love. You feel loved through conversations and shared activities, and may feel unloved when time isn't made for you.",
+      "traits": ["Values time", "Wants attention", "Loves togetherness", "Conversation matters", "Present-focused"]
+    },
+    {
+      "type": "service",
+      "title": "Acts of Service",
+      "description": "Your love language is Acts of Service! Actions speak louder than words for you. Cooking, helping with chores, running errands - these actions express love more than words ever could. You value love shown through deeds.",
+      "traits": ["Values actions", "Moved by help", "Practical love", "Consideration matters", "Responsible"]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "slug": "travel",
+  "title": "Travel Destination Matcher",
+  "description": "Which travel destination matches your personality? Find out with 10 questions!",
+  "emoji": "✈️",
+  "questions": [
+    {
+      "question": "What's most important to you when traveling?",
+      "choices": [
+        { "text": "History and cultural experiences", "scores": { "europe": 3 } },
+        { "text": "Beautiful nature and relaxation", "scores": { "island": 3 } },
+        { "text": "Delicious food and culinary tours", "scores": { "asia": 3 } },
+        { "text": "Activities and adventure", "scores": { "adventure": 3 } },
+        { "text": "Shopping and city exploration", "scores": { "city": 3 } }
+      ]
+    },
+    {
+      "question": "What type of accommodation do you prefer?",
+      "choices": [
+        { "text": "Classic hotels, boutique hotels", "scores": { "europe": 3 } },
+        { "text": "Beach resorts, pool villas", "scores": { "island": 3 } },
+        { "text": "Local-style guesthouses", "scores": { "asia": 3 } },
+        { "text": "Tents, camping, mountain lodges", "scores": { "adventure": 3 } },
+        { "text": "Luxury hotels in the city center", "scores": { "city": 3 } }
+      ]
+    },
+    {
+      "question": "Your ideal travel day looks like...",
+      "choices": [
+        { "text": "Museums, cathedrals, historical site tours", "scores": { "europe": 3 } },
+        { "text": "Relaxing leisurely on the beach", "scores": { "island": 3 } },
+        { "text": "Local food tours and market visits", "scores": { "asia": 3 } },
+        { "text": "Hiking, diving, bungee jumping", "scores": { "adventure": 3 } },
+        { "text": "Shopping and cafe hopping", "scores": { "city": 3 } }
+      ]
+    },
+    {
+      "question": "If you were taking travel photos...",
+      "choices": [
+        { "text": "Beautiful architecture and street scenes", "scores": { "europe": 3 } },
+        { "text": "Emerald seas and sunsets", "scores": { "island": 3 } },
+        { "text": "Local food and market scenes", "scores": { "asia": 3 } },
+        { "text": "Mountain peaks, extreme sports moments", "scores": { "adventure": 3 } },
+        { "text": "City night views and landmarks", "scores": { "city": 3 } }
+      ]
+    },
+    {
+      "question": "What food would you want during your trip?",
+      "choices": [
+        { "text": "Wine and authentic European cuisine", "scores": { "europe": 3 } },
+        { "text": "Seafood BBQ and tropical fruits", "scores": { "island": 3 } },
+        { "text": "Street food and local dishes", "scores": { "asia": 3 } },
+        { "text": "Quick energy meals", "scores": { "adventure": 3 } },
+        { "text": "Michelin restaurants and trendy cafes", "scores": { "city": 3 } }
+      ]
+    },
+    {
+      "question": "Who would you travel with?",
+      "choices": [
+        { "text": "Romantic trip with my partner", "scores": { "europe": 2, "island": 1 } },
+        { "text": "Solo and leisurely", "scores": { "island": 2, "asia": 1 } },
+        { "text": "Fun times with friends", "scores": { "asia": 2, "city": 1 } },
+        { "text": "With adventure companions", "scores": { "adventure": 3 } },
+        { "text": "With family", "scores": { "city": 2, "island": 1 } }
+      ]
+    },
+    {
+      "question": "What's your travel budget style?",
+      "choices": [
+        { "text": "Don't mind spending for good experiences", "scores": { "europe": 2, "city": 1 } },
+        { "text": "Invest in relaxation", "scores": { "island": 3 } },
+        { "text": "Best value for money", "scores": { "asia": 3 } },
+        { "text": "Minimal, backpacker style", "scores": { "adventure": 3 } },
+        { "text": "Spend a lot on shopping", "scores": { "city": 3 } }
+      ]
+    },
+    {
+      "question": "When you're tired during the trip...",
+      "choices": [
+        { "text": "Rest with tea at a cafe", "scores": { "europe": 3 } },
+        { "text": "Heal by watching the ocean", "scores": { "island": 3 } },
+        { "text": "Good food makes everything better", "scores": { "asia": 3 } },
+        { "text": "Hardship is part of the adventure!", "scores": { "adventure": 3 } },
+        { "text": "Rest well at the hotel", "scores": { "city": 3 } }
+      ]
+    },
+    {
+      "question": "What souvenir would you want to bring back?",
+      "choices": [
+        { "text": "Artwork or antique items", "scores": { "europe": 3 } },
+        { "text": "Seashells, local crafts", "scores": { "island": 3 } },
+        { "text": "Local ingredients or snacks", "scores": { "asia": 3 } },
+        { "text": "Souvenir t-shirts, stickers", "scores": { "adventure": 3 } },
+        { "text": "Designer goods or limited edition items", "scores": { "city": 3 } }
+      ]
+    },
+    {
+      "question": "Where do you most want to go?",
+      "choices": [
+        { "text": "Paris, Rome, Prague", "scores": { "europe": 3 } },
+        { "text": "Maldives, Bali, Hawaii", "scores": { "island": 3 } },
+        { "text": "Bangkok, Vietnam, Osaka", "scores": { "asia": 3 } },
+        { "text": "New Zealand, Switzerland, Peru", "scores": { "adventure": 3 } },
+        { "text": "New York, Tokyo, London", "scores": { "city": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "europe",
+      "title": "European Culture Trip",
+      "description": "The perfect travel destination for you is Europe! You love history, culture, and art, finding happiness in old architecture, museums, and charming cafes. Paris, Rome, Barcelona, and Prague are recommended for you.",
+      "destinations": ["Paris (France)", "Rome (Italy)", "Barcelona (Spain)", "Prague (Czech Republic)", "Vienna (Austria)"],
+      "traits": ["Culture enthusiast", "History buff", "Romantic", "Art museum lover"]
+    },
+    {
+      "type": "island",
+      "title": "Resort Healing Trip",
+      "description": "The perfect travel destination for you is a resort! You love healing in crystal-clear waters and white sand beaches. Maldives, Bali, Hawaii, and Okinawa are recommended for you.",
+      "destinations": ["Maldives", "Bali (Indonesia)", "Hawaii (USA)", "Phuket (Thailand)", "Cebu (Philippines)"],
+      "traits": ["Healing seeker", "Ocean lover", "Relaxed", "Resort lover"]
+    },
+    {
+      "type": "asia",
+      "title": "Asian Culinary Trip",
+      "description": "The perfect travel destination for you is Asia! You want to experience delicious food and vibrant local culture. Bangkok, Vietnam, Osaka, and Singapore - food paradises - are recommended for you.",
+      "destinations": ["Bangkok (Thailand)", "Ho Chi Minh (Vietnam)", "Osaka (Japan)", "Singapore", "Taipei (Taiwan)"],
+      "traits": ["Foodie", "Local culture explorer", "Value traveler", "Food tour enthusiast"]
+    },
+    {
+      "type": "adventure",
+      "title": "Adventure & Activity Trip",
+      "description": "The perfect travel destination for you is an adventure destination! You enjoy thrills and challenges, wanting active experiences in nature. New Zealand, Switzerland, Peru, and Iceland are recommended for you.",
+      "destinations": ["New Zealand", "Switzerland", "Peru", "Iceland", "Costa Rica"],
+      "traits": ["Adventurer", "Adrenaline junkie", "Nature lover", "Activity enthusiast"]
+    },
+    {
+      "type": "city",
+      "title": "City Explorer Trip",
+      "description": "The perfect travel destination for you is a major city! You want to enjoy shopping, night views, and trendy cafes and restaurants. New York, Tokyo, London, and Dubai are recommended for you.",
+      "destinations": ["New York (USA)", "Tokyo (Japan)", "London (UK)", "Dubai (UAE)", "Hong Kong"],
+      "traits": ["City lover", "Shopping enthusiast", "Night view lover", "Trendsetter"]
+    }
+  ]
+}

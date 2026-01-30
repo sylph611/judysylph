@@ -1,0 +1,118 @@
+{
+  "slug": "social",
+  "title": "Social Personality Test",
+  "description": "Are you an extrovert or introvert? Find out your social personality type!",
+  "emoji": "🎭",
+  "questions": [
+    {
+      "question": "Your ideal Friday night plan is...",
+      "choices": [
+        { "text": "Party with friends! Let's go out!", "scores": { "extrovert": 3 } },
+        { "text": "Quiet gathering with a few close friends", "scores": { "ambivert": 2, "extrovert": 1 } },
+        { "text": "Netflix at home", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Alone time with no one around", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "In group chats, you...",
+      "choices": [
+        { "text": "Actively chat and send lots of emojis", "scores": { "extrovert": 3 } },
+        { "text": "Join conversations when needed", "scores": { "ambivert": 3 } },
+        { "text": "Mostly read, occasionally reply", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Turn off notifications and forget about it", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "When meeting new people, you...",
+      "choices": [
+        { "text": "Start conversations and lead the interaction", "scores": { "extrovert": 3 } },
+        { "text": "Awkward but can manage conversations", "scores": { "ambivert": 3 } },
+        { "text": "Wait for someone to approach you", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Try to avoid the situation if possible", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "Your social media activity is...",
+      "choices": [
+        { "text": "Post daily! Active likes and comments", "scores": { "extrovert": 3 } },
+        { "text": "Post sometimes, browse sometimes", "scores": { "ambivert": 3 } },
+        { "text": "Rarely post, mostly lurk", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Don't have or use social media", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "When taking group photos, you...",
+      "choices": [
+        { "text": "Stand in the center and pose", "scores": { "extrovert": 3 } },
+        { "text": "Naturally blend in anywhere", "scores": { "ambivert": 3 } },
+        { "text": "Hide at the edge", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Try to avoid being in photos", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "If you suddenly end up at karaoke...",
+      "choices": [
+        { "text": "Grab the mic and sing enthusiastically", "scores": { "extrovert": 3 } },
+        { "text": "Sing one or two songs depending on mood", "scores": { "ambivert": 3 } },
+        { "text": "Play tambourine or clap along", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Prefer not to go to karaoke", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "When a friend suddenly asks to hang out on the weekend...",
+      "choices": [
+        { "text": "Great! I'll be right there!", "scores": { "extrovert": 3 } },
+        { "text": "What are we doing? I might come", "scores": { "ambivert": 3 } },
+        { "text": "I kind of want to rest today...", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Wish they'd give more notice", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "During lunch at school/work...",
+      "choices": [
+        { "text": "Eat with a big group, chatting away", "scores": { "extrovert": 3 } },
+        { "text": "Eat with close colleagues", "scores": { "ambivert": 3 } },
+        { "text": "Eating alone is nice too", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Eating alone is most comfortable", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "If trying a new hobby or group...",
+      "choices": [
+        { "text": "Excited to meet new people!", "scores": { "extrovert": 3 } },
+        { "text": "A bit awkward but worth trying", "scores": { "ambivert": 3 } },
+        { "text": "Prefer solo hobbies", "scores": { "introvert": 2, "ambivert": 1 } },
+        { "text": "Not interested in starting new things", "scores": { "introvert": 3 } }
+      ]
+    },
+    {
+      "question": "How do you recharge your energy?",
+      "choices": [
+        { "text": "Being with people gives me energy", "scores": { "extrovert": 3 } },
+        { "text": "Depends on the situation", "scores": { "ambivert": 3 } },
+        { "text": "Being alone recharges me", "scores": { "introvert": 3 } },
+        { "text": "Being around people drains me", "scores": { "introvert": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "extrovert",
+      "title": "The Social Butterfly",
+      "description": "You are a true extrovert! You love being around people and naturally become the center of attention. Energetic with excellent social skills, you enjoy meeting new people. You're the life of the party!",
+      "traits": ["Social", "Energetic", "Life of the party", "Outgoing", "Energized by people"]
+    },
+    {
+      "type": "ambivert",
+      "title": "The Adaptable Ambivert",
+      "description": "You're an ambivert, balancing between extrovert and introvert! You adapt flexibly to situations, enjoying both social time and alone time. You have a well-balanced social life!",
+      "traits": ["Flexible", "Adaptable", "Balanced", "Selective socializing", "Versatile"]
+    },
+    {
+      "type": "introvert",
+      "title": "The Happy Introvert",
+      "description": "You love your alone time and you're a happy introvert! You prefer deep relationships with a few people and recharge in quiet environments. You have a rich inner world and know how to be happy by yourself!",
+      "traits": ["Introverted", "Enjoys solitude", "Deep relationships", "Independent", "Peaceful"]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "slug": "spending",
+  "title": "Spending Personality Test",
+  "description": "What's your spending style? Discover your money habits and financial personality!",
+  "emoji": "💳",
+  "questions": [
+    {
+      "question": "When you get paid, the first thing you do is...",
+      "choices": [
+        { "text": "Transfer a set amount to savings/investment", "scores": { "planner": 3 } },
+        { "text": "Buy something you've been wanting", "scores": { "impulse": 3 } },
+        { "text": "Check fixed expenses like bills and rent", "scores": { "practical": 3 } },
+        { "text": "Nothing specific, spend as needed", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "Your shopping pattern is...",
+      "choices": [
+        { "text": "Plan what to buy and stick to it", "scores": { "planner": 3 } },
+        { "text": "Buy immediately if you like something", "scores": { "impulse": 3 } },
+        { "text": "Compare prices and decide carefully", "scores": { "practical": 3 } },
+        { "text": "Depends on the mood", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "During sales season, you...",
+      "choices": [
+        { "text": "Only buy pre-planned necessities", "scores": { "planner": 3 } },
+        { "text": "Great opportunity! Buy things you've wanted", "scores": { "impulse": 3 } },
+        { "text": "Only buy essentials with good discounts", "scores": { "practical": 3 } },
+        { "text": "Decide after seeing what's available", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "Compared to friends, your spending is...",
+      "choices": [
+        { "text": "They say I'm very organized", "scores": { "planner": 3 } },
+        { "text": "They say I'm generous and cool", "scores": { "impulse": 3 } },
+        { "text": "They say I'm frugal and practical", "scores": { "practical": 3 } },
+        { "text": "They say it depends on the situation", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "When making a big purchase, you...",
+      "choices": [
+        { "text": "Save in advance and pay in cash", "scores": { "planner": 3 } },
+        { "text": "Buy now, think later", "scores": { "impulse": 3 } },
+        { "text": "Compare many options for the best price", "scores": { "practical": 3 } },
+        { "text": "Use installments to make it manageable", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "Do you track your expenses?",
+      "choices": [
+        { "text": "Keep detailed records and analyze", "scores": { "planner": 3 } },
+        { "text": "Too much hassle, don't do it", "scores": { "impulse": 3 } },
+        { "text": "Have a rough idea of spending", "scores": { "practical": 3 } },
+        { "text": "Start but don't keep up", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "What's most important when spending money?",
+      "choices": [
+        { "text": "Saving and investing for the future", "scores": { "planner": 3 } },
+        { "text": "Happiness and satisfaction now", "scores": { "impulse": 3 } },
+        { "text": "Value for money", "scores": { "practical": 3 } },
+        { "text": "Depends on the situation", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "After an impulse purchase, you feel...",
+      "choices": [
+        { "text": "I rarely make impulse purchases", "scores": { "planner": 3 } },
+        { "text": "Happy! Good purchase!", "scores": { "impulse": 3 } },
+        { "text": "Regret and reflect", "scores": { "practical": 3 } },
+        { "text": "Depends on what it was", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "At the end of the month, your bank balance is...",
+      "choices": [
+        { "text": "As expected (saved what I planned)", "scores": { "planner": 3 } },
+        { "text": "Wait, that's it? (less than expected)", "scores": { "impulse": 3 } },
+        { "text": "Okay (spent on needs, saved adequately)", "scores": { "practical": 3 } },
+        { "text": "Different every month", "scores": { "flexible": 3 } }
+      ]
+    },
+    {
+      "question": "Do you have financial goals?",
+      "choices": [
+        { "text": "Specific amounts with deadlines", "scores": { "planner": 3 } },
+        { "text": "Prefer enjoying the present over goals", "scores": { "impulse": 3 } },
+        { "text": "Vague goal of stable living", "scores": { "practical": 3 } },
+        { "text": "Haven't really thought about it", "scores": { "flexible": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "planner",
+      "title": "The Thorough Planner",
+      "description": "You are a Thorough Planner! You prioritize saving and investing, meticulously managing your expenses. You have clear financial goals and rarely make impulse purchases. Sometimes it's okay to spend on yourself too!",
+      "traits": ["Savings first", "Budget manager", "Long-term goals", "Planned spending", "Future-oriented"]
+    },
+    {
+      "type": "impulse",
+      "title": "The Spontaneous Spender",
+      "description": "You are a Spontaneous Spender! You value present happiness and buy what you want immediately. Money is meant to be spent! But consider saving for the future occasionally too.",
+      "traits": ["Present-focused", "Impulse buyer", "Experience-seeker", "Generous spending", "YOLO"]
+    },
+    {
+      "type": "practical",
+      "title": "The Practical Saver",
+      "description": "You are a Practical Saver! You value getting the best bang for your buck and only spend on necessities. You compare and analyze to make the best choices, avoiding unnecessary spending.",
+      "traits": ["Value-conscious", "Comparison shopper", "Practical", "Frugal", "Need-based"]
+    },
+    {
+      "type": "flexible",
+      "title": "The Flexible Spender",
+      "description": "You are a Flexible Spender! Your spending patterns vary depending on the situation, with no fixed rules. While adaptable, establishing more consistent financial habits could help you.",
+      "traits": ["Situational", "Flexible", "Spontaneous", "Unplanned", "Adaptable"]
+    }
+  ]
+}

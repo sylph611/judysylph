@@ -49,9 +49,26 @@ import stressKo from '../content/tests/ko/stress.json';
 import stressEn from '../content/tests/en/stress.json';
 import careerKo from '../content/tests/ko/career.json';
 import careerEn from '../content/tests/en/career.json';
+// New tests
+import mbtiKo from '../content/tests/ko/mbti.json';
+import mbtiEn from '../content/tests/en/mbti.json';
+import loveLanguageKo from '../content/tests/ko/love-language.json';
+import loveLanguageEn from '../content/tests/en/love-language.json';
+import learningStyleKo from '../content/tests/ko/learning-style.json';
+import learningStyleEn from '../content/tests/en/learning-style.json';
+import spendingKo from '../content/tests/ko/spending.json';
+import spendingEn from '../content/tests/en/spending.json';
+import burnoutKo from '../content/tests/ko/burnout.json';
+import burnoutEn from '../content/tests/en/burnout.json';
+import socialKo from '../content/tests/ko/social.json';
+import socialEn from '../content/tests/en/social.json';
+import pastLifeKo from '../content/tests/ko/past-life.json';
+import pastLifeEn from '../content/tests/en/past-life.json';
+import travelKo from '../content/tests/ko/travel.json';
+import travelEn from '../content/tests/en/travel.json';
 
-const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo];
-const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn];
+const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo];
+const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn];
 
 export function getAllTests(lang: string): Test[] {
   return lang === 'ko' ? testsKo : testsEn;
