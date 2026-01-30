@@ -1,0 +1,142 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('car-affordability', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Annual Salary (before tax)</label>
+          <input type="text" id="salary" placeholder="75,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Current Savings</label>
+          <input type="text" id="savings" placeholder="20,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Monthly Savings</label>
+          <input type="text" id="monthlySave" placeholder="1,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+        </div>
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">Find My Car</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-6 text-white text-center mb-6">
+          <div class="text-lg opacity-90 mb-2">You Can Afford</div>
+          <div id="car-grade" class="text-4xl font-bold mb-2">-</div>
+          <div id="car-price-range" class="text-xl opacity-90">-</div>
+        </div>
+
+        <div id="car-recommendation" class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3">Recommended Vehicles</h3>
+          <div id="car-models" class="space-y-2"></div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3">Financial Analysis</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Recommended Budget</span><span id="r-proper" class="font-medium">-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Maximum Budget</span><span id="r-max" class="font-medium">-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Est. Monthly Cost</span><span id="r-monthly" class="font-medium">-</span></div>
+          </div>
+        </div>
+
+        <div id="advice-box" class="rounded-xl p-5">
+          <h3 class="font-bold mb-2">💡 Advice</h3>
+          <p id="advice-text" class="text-sm"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+      <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-2">Car Buying Guidelines</h4>
+      <ul class="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+        <li>• <strong>Recommended</strong>: 30-50% of annual salary</li>
+        <li>• <strong>Maximum</strong>: Don't exceed 100% of annual salary</li>
+        <li>• <strong>Monthly costs</strong>: Insurance, gas, maintenance ~$300-600/month</li>
+      </ul>
+    </div>
+    <div class="mt-8 text-center"><a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">&larr; Back to Tools</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const inputs = ['salary', 'savings', 'monthlySave'].map(id => document.getElementById(id) as HTMLInputElement);
+
+  inputs.forEach(input => {
+    input?.addEventListener('input', e => {
+      const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+      (e.target as HTMLInputElement).value = Number(v).toLocaleString();
+    });
+  });
+
+  const carData = [
+    { grade: '🚙 Economy', min: 0, max: 20000, models: ['Honda Fit', 'Toyota Corolla', 'Hyundai Elantra', 'Kia Rio'], color: 'from-green-500 to-teal-500' },
+    { grade: '🚗 Compact', min: 20000, max: 30000, models: ['Honda Civic', 'Toyota Camry', 'Mazda3', 'VW Jetta'], color: 'from-blue-500 to-cyan-500' },
+    { grade: '🚘 Midsize', min: 30000, max: 45000, models: ['Honda Accord', 'Toyota RAV4', 'Mazda CX-5', 'Subaru Outback'], color: 'from-indigo-500 to-purple-500' },
+    { grade: '🚐 Crossover/SUV', min: 45000, max: 60000, models: ['Toyota Highlander', 'Honda Pilot', 'Jeep Grand Cherokee', 'Ford Explorer'], color: 'from-purple-500 to-pink-500' },
+    { grade: '🏎️ Premium', min: 60000, max: 85000, models: ['BMW 3 Series', 'Mercedes C-Class', 'Audi A4', 'Lexus ES'], color: 'from-pink-500 to-rose-500' },
+    { grade: '👑 Luxury', min: 85000, max: Infinity, models: ['BMW 5/7 Series', 'Mercedes E/S-Class', 'Porsche Cayenne', 'Tesla Model S'], color: 'from-amber-500 to-orange-500' }
+  ];
+
+  const advices = {
+    low: { bg: 'bg-yellow-50 dark:bg-yellow-900/20', text: 'text-yellow-800 dark:text-yellow-200', msg: 'Based on your income and savings, consider a used car or economy model. Avoid overextending on car payments.' },
+    mid: { bg: 'bg-green-50 dark:bg-green-900/20', text: 'text-green-800 dark:text-green-200', msg: 'You can comfortably afford a mid-range vehicle. A 36-48 month loan should fit your budget well.' },
+    high: { bg: 'bg-blue-50 dark:bg-blue-900/20', text: 'text-blue-800 dark:text-blue-200', msg: 'You have room in your budget! Consider paying cash or a short-term loan for better deals.' },
+    veryHigh: { bg: 'bg-purple-50 dark:bg-purple-900/20', text: 'text-purple-800 dark:text-purple-200', msg: 'Premium and luxury vehicles are well within your reach. Choose what makes you happy!' }
+  };
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const salary = parseInt(inputs[0].value.replace(/,/g,'')) || 0;
+    const savings = parseInt(inputs[1].value.replace(/,/g,'')) || 0;
+    const monthly = parseInt(inputs[2].value.replace(/,/g,'')) || 0;
+
+    const properPrice = Math.min(salary * 0.5, savings * 0.8 + monthly * 12);
+    const maxPrice = Math.min(salary, savings + monthly * 24);
+
+    const targetPrice = (properPrice + maxPrice) / 2;
+    const car = carData.find(c => targetPrice >= c.min && targetPrice < c.max) || carData[0];
+
+    const gradient = document.querySelector('#result-area > div:first-child') as HTMLElement;
+    gradient.className = `bg-gradient-to-br ${car.color} rounded-2xl p-6 text-white text-center mb-6`;
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+    document.getElementById('car-grade')!.textContent = car.grade;
+    document.getElementById('car-price-range')!.textContent = car.max === Infinity
+      ? `$${car.min.toLocaleString()}+`
+      : `$${car.min.toLocaleString()} - $${car.max.toLocaleString()}`;
+
+    const modelsDiv = document.getElementById('car-models')!;
+    modelsDiv.innerHTML = car.models.map(m => `<div class="flex items-center gap-2 text-gray-700 dark:text-gray-300"><span class="w-2 h-2 bg-primary-500 rounded-full"></span>${m}</div>`).join('');
+
+    document.getElementById('r-proper')!.textContent = '$' + properPrice.toLocaleString();
+    document.getElementById('r-max')!.textContent = '$' + maxPrice.toLocaleString();
+
+    const monthlyMaintenance = Math.round(targetPrice * 0.012);
+    document.getElementById('r-monthly')!.textContent = `~$${monthlyMaintenance.toLocaleString()}/mo`;
+
+    let advice;
+    if (salary < 50000) advice = advices.low;
+    else if (salary < 80000) advice = advices.mid;
+    else if (salary < 120000) advice = advices.high;
+    else advice = advices.veryHigh;
+
+    const adviceBox = document.getElementById('advice-box')!;
+    adviceBox.className = `rounded-xl p-5 ${advice.bg}`;
+    document.getElementById('advice-text')!.className = `text-sm ${advice.text}`;
+    document.getElementById('advice-text')!.textContent = advice.msg;
+  });
+</script>

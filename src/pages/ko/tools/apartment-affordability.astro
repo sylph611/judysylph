@@ -1,0 +1,207 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('apartment-affordability', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">2026년 서울/수도권 시세 기준</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">연봉 (세전)</label>
+            <input type="text" id="salary" placeholder="6,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            <p class="text-xs text-gray-500 mt-1">만원 단위</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">현재 자산</label>
+            <input type="text" id="assets" placeholder="20,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            <p class="text-xs text-gray-500 mt-1">만원 단위 (저축+전세금 등)</p>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">대출 의향</label>
+          <select id="loanWilling" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+            <option value="0">대출 없이 구매</option>
+            <option value="40">DSR 40% 이내 대출</option>
+            <option value="60" selected>DSR 60% 이내 대출 (일반적)</option>
+            <option value="80">최대한 대출 활용</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">내 아파트 알아보기</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 text-white text-center mb-6">
+          <div class="text-lg opacity-90 mb-2">당신이 구매 가능한 아파트</div>
+          <div id="apt-size" class="text-4xl font-bold mb-2">-</div>
+          <div id="apt-price" class="text-xl opacity-90">-</div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400">예상 대출금</div>
+            <div id="r-loan" class="text-xl font-bold text-primary-600 dark:text-primary-400">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400">월 상환금</div>
+            <div id="r-monthly" class="text-xl font-bold text-red-500">-</div>
+          </div>
+        </div>
+
+        <div id="region-analysis" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">구매 가능 지역 분석</h3>
+          <div id="regions" class="space-y-3"></div>
+        </div>
+
+        <div id="advice-box" class="rounded-xl p-5 mb-6">
+          <h3 class="font-bold mb-2">💡 맞춤 조언</h3>
+          <p id="advice-text" class="text-sm"></p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3">📊 재정 요약</h3>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 구매 가능액</span><span id="r-total" class="font-medium">-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">자기자본</span><span id="r-equity" class="font-medium">-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">대출 비율 (LTV)</span><span id="r-ltv" class="font-medium">-</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+      <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-2">2026년 서울 아파트 시세 (평당)</h4>
+      <div class="grid grid-cols-2 gap-2 text-sm text-blue-700 dark:text-blue-300">
+        <p>• 강남/서초: 8,000~15,000만원</p>
+        <p>• 용산/성동: 5,000~8,000만원</p>
+        <p>• 마포/영등포: 4,000~6,000만원</p>
+        <p>• 노원/도봉: 2,500~3,500만원</p>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const salaryInput = document.getElementById('salary') as HTMLInputElement;
+  const assetsInput = document.getElementById('assets') as HTMLInputElement;
+
+  [salaryInput, assetsInput].forEach(input => {
+    input?.addEventListener('input', e => {
+      const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+      (e.target as HTMLInputElement).value = Number(v).toLocaleString('ko-KR');
+    });
+  });
+
+  // 2026년 서울/수도권 평당 시세 (만원)
+  const regions = [
+    { name: '강남/서초/송파', pricePerPyeong: 10000, emoji: '🏙️', tier: 'S' },
+    { name: '용산/성동/광진', pricePerPyeong: 6500, emoji: '🌆', tier: 'A' },
+    { name: '마포/영등포/동작', pricePerPyeong: 5000, emoji: '🏢', tier: 'A' },
+    { name: '서대문/은평/중랑', pricePerPyeong: 3500, emoji: '🏘️', tier: 'B' },
+    { name: '노원/도봉/강북', pricePerPyeong: 3000, emoji: '🏠', tier: 'B' },
+    { name: '경기 분당/판교', pricePerPyeong: 5500, emoji: '🌳', tier: 'A' },
+    { name: '경기 수원/용인', pricePerPyeong: 2800, emoji: '🏡', tier: 'B' },
+    { name: '인천/부천', pricePerPyeong: 2200, emoji: '🌊', tier: 'C' }
+  ];
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const salary = parseInt(salaryInput.value.replace(/,/g,'')) || 0;
+    const assets = parseInt(assetsInput.value.replace(/,/g,'')) || 0;
+    const dsrRate = parseInt((document.getElementById('loanWilling') as HTMLSelectElement).value) / 100;
+
+    // 대출 가능액 계산 (DSR 기준, 연이율 5%, 30년)
+    const monthlyPaymentLimit = (salary * 10000 / 12) * dsrRate;
+    const rate = 0.05 / 12;
+    const months = 360;
+    const maxLoan = dsrRate > 0 ? Math.round(monthlyPaymentLimit * (Math.pow(1+rate,months)-1) / (rate * Math.pow(1+rate,months))) : 0;
+
+    const totalBudget = assets * 10000 + maxLoan;
+    const totalBudgetMan = Math.round(totalBudget / 10000);
+
+    // 구매 가능한 평수 계산 (서울 평균 평당 4500만원 기준)
+    const avgPricePerPyeong = 4500;
+    const affordablePyeong = Math.round(totalBudgetMan / avgPricePerPyeong);
+
+    let sizeGrade, headerColor;
+    if (affordablePyeong < 15) {
+      sizeGrade = '소형 (10~15평)';
+      headerColor = 'from-gray-500 to-slate-600';
+    } else if (affordablePyeong < 25) {
+      sizeGrade = '중소형 (15~25평)';
+      headerColor = 'from-blue-500 to-cyan-600';
+    } else if (affordablePyeong < 35) {
+      sizeGrade = '중형 (25~35평)';
+      headerColor = 'from-emerald-500 to-teal-600';
+    } else if (affordablePyeong < 45) {
+      sizeGrade = '중대형 (35~45평)';
+      headerColor = 'from-purple-500 to-pink-600';
+    } else {
+      sizeGrade = '대형 (45평 이상)';
+      headerColor = 'from-amber-500 to-orange-600';
+    }
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    const header = document.getElementById('result-header')!;
+    header.className = `bg-gradient-to-br ${headerColor} rounded-2xl p-6 text-white text-center mb-6`;
+
+    document.getElementById('apt-size')!.textContent = sizeGrade;
+    document.getElementById('apt-price')!.textContent = `예산 약 ${totalBudgetMan.toLocaleString()}만원`;
+
+    document.getElementById('r-loan')!.textContent = Math.round(maxLoan/10000).toLocaleString() + '만원';
+    const monthlyPayment = Math.round(monthlyPaymentLimit);
+    document.getElementById('r-monthly')!.textContent = monthlyPayment.toLocaleString() + '원';
+
+    // 지역별 분석
+    const regionsDiv = document.getElementById('regions')!;
+    regionsDiv.innerHTML = regions.map(r => {
+      const affordableSize = Math.round(totalBudgetMan / r.pricePerPyeong);
+      const status = affordableSize >= 25 ? 'text-green-600' : affordableSize >= 15 ? 'text-yellow-600' : 'text-red-500';
+      return `
+        <div class="flex items-center justify-between p-2 bg-gray-100 dark:bg-gray-600 rounded-lg">
+          <span class="text-gray-700 dark:text-gray-300">${r.emoji} ${r.name}</span>
+          <span class="${status} font-medium">${affordableSize}평</span>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('r-total')!.textContent = totalBudgetMan.toLocaleString() + '만원';
+    document.getElementById('r-equity')!.textContent = assets.toLocaleString() + '만원';
+    const ltv = Math.round((maxLoan / totalBudget) * 100);
+    document.getElementById('r-ltv')!.textContent = ltv + '%';
+
+    // 조언
+    let advice, adviceBg;
+    if (totalBudgetMan < 30000) {
+      advice = '현재 자산으로는 서울 내 구매가 어려울 수 있습니다. 경기도 외곽이나 전세를 고려해보세요. 청약 당첨을 노려보는 것도 좋은 전략입니다.';
+      adviceBg = 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200';
+    } else if (totalBudgetMan < 60000) {
+      advice = '서울 외곽이나 경기 주요 지역에서 중소형 아파트 구매가 가능합니다. 교통과 학군을 고려해 실거주 위주로 접근하세요.';
+      adviceBg = 'bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200';
+    } else if (totalBudgetMan < 100000) {
+      advice = '서울 주요 지역에서 중형 아파트 구매가 가능합니다. 신축과 구축의 가격 차이를 비교하고, 재건축 예정 단지도 눈여겨보세요.';
+      adviceBg = 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200';
+    } else {
+      advice = '강남권을 포함한 서울 핵심 지역에서 선택의 폭이 넓습니다. 장기적인 가치 상승을 고려해 입지를 신중히 선택하세요.';
+      adviceBg = 'bg-purple-50 dark:bg-purple-900/20 text-purple-800 dark:text-purple-200';
+    }
+
+    const adviceBox = document.getElementById('advice-box')!;
+    adviceBox.className = `rounded-xl p-5 mb-6 ${adviceBg}`;
+    document.getElementById('advice-text')!.textContent = advice;
+  });
+</script>

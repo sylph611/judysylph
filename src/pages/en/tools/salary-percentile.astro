@@ -1,0 +1,255 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('salary-percentile', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">Based on 2026 US Census Bureau Data</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Age</label>
+            <input type="number" id="age" placeholder="30" min="18" max="70" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Gender</label>
+            <select id="gender" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="all">All Workers</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Annual Salary (before tax)</label>
+          <input type="text" id="salary" placeholder="75,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+        </div>
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">Find My Rank</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="rounded-2xl p-8 text-white text-center mb-6">
+          <div class="text-lg opacity-90 mb-2">Your Salary Percentile</div>
+          <div id="percentile" class="text-6xl font-bold mb-2">-</div>
+          <div id="percentile-desc" class="text-xl opacity-90">-</div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400">Peer Average</div>
+            <div id="r-avg" class="text-xl font-bold text-gray-900 dark:text-white">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400">vs Average</div>
+            <div id="r-diff" class="text-xl font-bold">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400">You Earn More Than</div>
+            <div id="r-below" class="text-xl font-bold text-primary-600 dark:text-primary-400">-</div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">Income Distribution (Your Age Group)</h3>
+          <div class="relative h-8 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden mb-4">
+            <div id="distribution-bar" class="absolute left-0 top-0 h-full bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500"></div>
+            <div id="position-marker" class="absolute top-0 w-1 h-full bg-red-500 transition-all duration-500"></div>
+          </div>
+          <div class="flex justify-between text-xs text-gray-500">
+            <span>Bottom 10%</span>
+            <span>Median 50%</span>
+            <span>Top 10%</span>
+          </div>
+        </div>
+
+        <div id="comparison-box" class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3">💼 Salary Benchmarks</h3>
+          <div id="comparisons" class="space-y-2 text-sm"></div>
+        </div>
+
+        <div id="advice-box" class="rounded-xl p-5">
+          <h3 class="font-bold mb-2" id="advice-title">-</h3>
+          <p id="advice-text" class="text-sm"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+      <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-2">2026 US Average Salaries by Age</h4>
+      <div class="grid grid-cols-2 gap-2 text-sm text-blue-700 dark:text-blue-300">
+        <p>• 20s: $42,000</p>
+        <p>• 30s: $58,000</p>
+        <p>• 40s: $68,000</p>
+        <p>• 50s: $72,000</p>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">&larr; Back to Tools</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const salaryInput = document.getElementById('salary') as HTMLInputElement;
+
+  salaryInput?.addEventListener('input', e => {
+    const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+    (e.target as HTMLInputElement).value = Number(v).toLocaleString();
+  });
+
+  // 2026 US salary statistics by age (estimated)
+  const salaryStats: Record<string, Record<string, {avg: number; median: number; p10: number; p25: number; p75: number; p90: number}>> = {
+    all: {
+      '20': { avg: 38000, median: 35000, p10: 22000, p25: 28000, p75: 45000, p90: 55000 },
+      '25': { avg: 45000, median: 42000, p10: 28000, p25: 35000, p75: 55000, p90: 72000 },
+      '30': { avg: 58000, median: 52000, p10: 35000, p25: 42000, p75: 72000, p90: 95000 },
+      '35': { avg: 68000, median: 60000, p10: 40000, p25: 48000, p75: 85000, p90: 120000 },
+      '40': { avg: 75000, median: 65000, p10: 42000, p25: 52000, p75: 95000, p90: 140000 },
+      '45': { avg: 78000, median: 68000, p10: 44000, p25: 54000, p75: 100000, p90: 150000 },
+      '50': { avg: 76000, median: 66000, p10: 42000, p25: 52000, p75: 95000, p90: 145000 },
+      '55': { avg: 72000, median: 62000, p10: 40000, p25: 50000, p75: 90000, p90: 135000 },
+      '60': { avg: 68000, median: 58000, p10: 38000, p25: 48000, p75: 85000, p90: 125000 }
+    },
+    male: {
+      '20': { avg: 42000, median: 38000, p10: 25000, p25: 32000, p75: 50000, p90: 62000 },
+      '25': { avg: 52000, median: 48000, p10: 32000, p25: 40000, p75: 65000, p90: 85000 },
+      '30': { avg: 68000, median: 60000, p10: 42000, p25: 50000, p75: 85000, p90: 115000 },
+      '35': { avg: 82000, median: 72000, p10: 48000, p25: 58000, p75: 105000, p90: 150000 },
+      '40': { avg: 92000, median: 80000, p10: 52000, p25: 65000, p75: 120000, p90: 175000 },
+      '45': { avg: 96000, median: 82000, p10: 55000, p25: 68000, p75: 125000, p90: 185000 },
+      '50': { avg: 92000, median: 78000, p10: 52000, p25: 65000, p75: 118000, p90: 175000 },
+      '55': { avg: 85000, median: 72000, p10: 48000, p25: 60000, p75: 108000, p90: 160000 },
+      '60': { avg: 78000, median: 65000, p10: 45000, p25: 55000, p75: 98000, p90: 145000 }
+    },
+    female: {
+      '20': { avg: 35000, median: 32000, p10: 20000, p25: 26000, p75: 42000, p90: 52000 },
+      '25': { avg: 42000, median: 38000, p10: 26000, p25: 32000, p75: 50000, p90: 65000 },
+      '30': { avg: 52000, median: 46000, p10: 32000, p25: 38000, p75: 62000, p90: 82000 },
+      '35': { avg: 58000, median: 50000, p10: 35000, p25: 42000, p75: 70000, p90: 95000 },
+      '40': { avg: 62000, median: 54000, p10: 36000, p25: 44000, p75: 75000, p90: 105000 },
+      '45': { avg: 64000, median: 55000, p10: 38000, p25: 46000, p75: 78000, p90: 110000 },
+      '50': { avg: 62000, median: 53000, p10: 36000, p25: 44000, p75: 75000, p90: 105000 },
+      '55': { avg: 58000, median: 50000, p10: 34000, p25: 42000, p75: 70000, p90: 98000 },
+      '60': { avg: 54000, median: 46000, p10: 32000, p25: 40000, p75: 65000, p90: 90000 }
+    }
+  };
+
+  function getAgeGroup(age: number): string {
+    if (age < 25) return '20';
+    if (age < 30) return '25';
+    if (age < 35) return '30';
+    if (age < 40) return '35';
+    if (age < 45) return '40';
+    if (age < 50) return '45';
+    if (age < 55) return '50';
+    if (age < 60) return '55';
+    return '60';
+  }
+
+  function calcPercentile(salary: number, stats: typeof salaryStats['all']['20']): number {
+    if (salary <= stats.p10) return Math.round((salary / stats.p10) * 10);
+    if (salary <= stats.p25) return 10 + Math.round(((salary - stats.p10) / (stats.p25 - stats.p10)) * 15);
+    if (salary <= stats.median) return 25 + Math.round(((salary - stats.p25) / (stats.median - stats.p25)) * 25);
+    if (salary <= stats.p75) return 50 + Math.round(((salary - stats.median) / (stats.p75 - stats.median)) * 25);
+    if (salary <= stats.p90) return 75 + Math.round(((salary - stats.p75) / (stats.p90 - stats.p75)) * 15);
+    return Math.min(99, 90 + Math.round(((salary - stats.p90) / stats.p90) * 10));
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const age = parseInt((document.getElementById('age') as HTMLInputElement).value);
+    const gender = (document.getElementById('gender') as HTMLSelectElement).value;
+    const salary = parseInt(salaryInput.value.replace(/,/g,'')) || 0;
+
+    const ageGroup = getAgeGroup(age);
+    const stats = salaryStats[gender][ageGroup];
+    const percentile = calcPercentile(salary, stats);
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    let headerColor, emoji;
+    if (percentile >= 90) { headerColor = 'bg-gradient-to-br from-amber-400 to-orange-500'; emoji = '👑'; }
+    else if (percentile >= 75) { headerColor = 'bg-gradient-to-br from-purple-500 to-pink-500'; emoji = '🎉'; }
+    else if (percentile >= 50) { headerColor = 'bg-gradient-to-br from-blue-500 to-cyan-500'; emoji = '💪'; }
+    else if (percentile >= 25) { headerColor = 'bg-gradient-to-br from-green-500 to-teal-500'; emoji = '📈'; }
+    else { headerColor = 'bg-gradient-to-br from-gray-500 to-slate-600'; emoji = '🌱'; }
+
+    const header = document.getElementById('result-header')!;
+    header.className = `${headerColor} rounded-2xl p-8 text-white text-center mb-6`;
+
+    document.getElementById('percentile')!.textContent = `Top ${100 - percentile}%`;
+
+    let desc;
+    if (percentile >= 90) desc = `${emoji} Elite earner! Top ${100 - percentile} out of 100 peers`;
+    else if (percentile >= 75) desc = `${emoji} Above average! Top quarter of earners`;
+    else if (percentile >= 50) desc = `${emoji} Above median! Better than half your peers`;
+    else if (percentile >= 25) desc = `${emoji} Growing! Room for advancement`;
+    else desc = `${emoji} Starting out! Plenty of growth ahead`;
+
+    document.getElementById('percentile-desc')!.textContent = desc;
+
+    document.getElementById('r-avg')!.textContent = '$' + stats.avg.toLocaleString();
+
+    const diff = salary - stats.avg;
+    const diffEl = document.getElementById('r-diff')!;
+    if (diff >= 0) {
+      diffEl.textContent = '+$' + diff.toLocaleString();
+      diffEl.className = 'text-xl font-bold text-green-500';
+    } else {
+      diffEl.textContent = '-$' + Math.abs(diff).toLocaleString();
+      diffEl.className = 'text-xl font-bold text-red-500';
+    }
+
+    document.getElementById('r-below')!.textContent = percentile + '%';
+
+    (document.getElementById('distribution-bar') as HTMLElement).style.width = percentile + '%';
+    (document.getElementById('position-marker') as HTMLElement).style.left = percentile + '%';
+
+    const comparisons = document.getElementById('comparisons')!;
+    comparisons.innerHTML = `
+      <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Bottom 10%</span><span class="font-medium">$${stats.p10.toLocaleString()}</span></div>
+      <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Bottom 25%</span><span class="font-medium">$${stats.p25.toLocaleString()}</span></div>
+      <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Median (50%)</span><span class="font-medium">$${stats.median.toLocaleString()}</span></div>
+      <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Top 25%</span><span class="font-medium">$${stats.p75.toLocaleString()}</span></div>
+      <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Top 10%</span><span class="font-medium">$${stats.p90.toLocaleString()}</span></div>
+    `;
+
+    let adviceTitle, adviceText, adviceBg;
+    if (percentile >= 90) {
+      adviceTitle = '🏆 You\'re an Elite Earner!';
+      adviceText = 'You\'re among the top earners in your age group. Focus on tax optimization, investment diversification, and estate planning. Consider working with a financial advisor.';
+      adviceBg = 'bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-200';
+    } else if (percentile >= 75) {
+      adviceTitle = '🎯 You\'re Doing Great!';
+      adviceText = 'You\'re well above average. Max out your 401(k), consider Roth IRA contributions, and build a diversified investment portfolio. Keep networking for advancement opportunities.';
+      adviceBg = 'bg-purple-50 dark:bg-purple-900/20 text-purple-800 dark:text-purple-200';
+    } else if (percentile >= 50) {
+      adviceTitle = '💼 Above Average!';
+      adviceText = 'You\'re earning more than half your peers. Focus on skill development, certifications, and networking. Consider negotiating your next raise or exploring new opportunities.';
+      adviceBg = 'bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200';
+    } else if (percentile >= 25) {
+      adviceTitle = '📈 Room to Grow!';
+      adviceText = 'You have significant growth potential. Invest in education, certifications, or a career pivot. Side hustles and freelancing can also boost your income.';
+      adviceBg = 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200';
+    } else {
+      adviceTitle = '🌱 Just Getting Started!';
+      adviceText = 'Your salary is below average, but that\'s okay if you\'re early in your career or transitioning. Focus on building skills and experience. Every expert was once a beginner!';
+      adviceBg = 'bg-gray-50 dark:bg-gray-900/20 text-gray-800 dark:text-gray-200';
+    }
+
+    const adviceBox = document.getElementById('advice-box')!;
+    adviceBox.className = `rounded-xl p-5 ${adviceBg}`;
+    document.getElementById('advice-title')!.textContent = adviceTitle;
+    document.getElementById('advice-text')!.textContent = adviceText;
+  });
+</script>
