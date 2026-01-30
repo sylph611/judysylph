@@ -105,16 +105,6 @@ const t = {
 </div>
 
 <script>
-  // Kakao SDK initialization
-  declare const Kakao: any;
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Kakao SDK
-    if (typeof Kakao !== 'undefined' && !Kakao.isInitialized()) {
-      Kakao.init('YOUR_KAKAO_APP_KEY'); // Replace with actual key
-    }
-  });
-
   // GA share tracking helper
   const trackShare = (platform: string) => {
     if (typeof gtag !== 'undefined') {
@@ -127,39 +117,37 @@ const t = {
     }
   };
 
-  // Kakao share
+  // Kakao share - uses Web Share API on mobile, copy link on desktop
   document.querySelectorAll('.share-btn.kakao').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const url = btn.getAttribute('data-url') || window.location.href;
       const title = btn.getAttribute('data-title') || document.title;
       const description = btn.getAttribute('data-description') || '';
 
       trackShare('kakao');
 
-      if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
-        Kakao.Share.sendDefault({
-          objectType: 'feed',
-          content: {
+      // Check if mobile and Web Share API is available
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile && navigator.share) {
+        try {
+          await navigator.share({
             title: title,
-            description: description,
-            imageUrl: `${window.location.origin}/og/default.png`,
-            link: {
-              mobileWebUrl: url,
-              webUrl: url,
-            },
-          },
-          buttons: [
-            {
-              title: '결과 보기',
-              link: {
-                mobileWebUrl: url,
-                webUrl: url,
-              },
-            },
-          ],
-        });
+            text: description,
+            url: url
+          });
+        } catch (err) {
+          // User cancelled or error - do nothing
+        }
       } else {
-        window.open(`https://story.kakao.com/share?url=${encodeURIComponent(url)}`, '_blank');
+        // Desktop: copy link and show instructions
+        try {
+          await navigator.clipboard.writeText(url);
+          alert('링크가 복사되었습니다!\n카카오톡에서 붙여넣기하여 공유하세요.');
+        } catch (err) {
+          // Fallback: open in new window with instructions
+          prompt('아래 링크를 복사하여 카카오톡에서 공유하세요:', url);
+        }
       }
     });
   });
