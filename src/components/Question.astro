@@ -20,16 +20,42 @@ const progress = (questionNumber / totalQuestions) * 100;
   <!-- Progress Bar -->
   <div class="mb-6">
     <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
-      <span>{lang === 'ko' ? '질문' : 'Question'} {questionNumber} / {totalQuestions}</span>
-      <span>{Math.round(progress)}%</span>
+      <span class="font-medium">{lang === 'ko' ? '질문' : 'Q'} {questionNumber} / {totalQuestions}</span>
+      <span class="font-bold text-primary-600 dark:text-primary-400">{Math.round(progress)}%</span>
     </div>
-    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
       <div
-        class="bg-primary-600 h-2.5 rounded-full transition-all duration-300"
+        class="progress-bar bg-gradient-to-r from-primary-500 to-secondary-500 h-3 rounded-full transition-all duration-500 ease-out relative"
         style={`width: ${progress}%`}
-      ></div>
+      >
+        <div class="absolute inset-0 bg-white/20 animate-shimmer"></div>
+      </div>
+    </div>
+    <!-- Step indicators -->
+    <div class="flex justify-between mt-2">
+      {Array.from({ length: totalQuestions }, (_, i) => (
+        <div
+          class={`w-2 h-2 rounded-full transition-colors ${
+            i < questionNumber
+              ? 'bg-primary-500'
+              : i === questionNumber - 1
+              ? 'bg-primary-500 ring-2 ring-primary-300'
+              : 'bg-gray-300 dark:bg-gray-600'
+          }`}
+        />
+      ))}
     </div>
   </div>
+
+<style>
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+</style>
 
   <!-- Question -->
   <h2 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
