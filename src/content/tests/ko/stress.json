@@ -1,0 +1,160 @@
+{
+  "slug": "stress",
+  "title": "스트레스 유형 테스트",
+  "description": "당신은 스트레스를 어떻게 받고 해소하나요? 스트레스 대처 방식과 유형을 알아보세요!",
+  "emoji": "😤",
+  "questions": [
+    {
+      "question": "스트레스를 받으면 가장 먼저 나타나는 증상은?",
+      "choices": [
+        { "text": "두통이나 신체적 통증", "scores": { "physical": 2, "avoidant": 1 } },
+        { "text": "불안하고 초조해진다", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "쉽게 짜증이 난다", "scores": { "explosive": 2, "perfectionist": 1 } },
+        { "text": "무기력해지고 의욕이 사라진다", "scores": { "avoidant": 2, "anxious": 1 } }
+      ]
+    },
+    {
+      "question": "마감이 다가올 때 당신의 반응은?",
+      "choices": [
+        { "text": "미리 준비해서 여유롭게 마친다", "scores": { "perfectionist": 2, "anxious": 1 } },
+        { "text": "막판 스퍼트로 해낸다", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "불안해서 잠을 잘 못 잔다", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "최대한 미루다가 어떻게든 한다", "scores": { "avoidant": 2, "physical": 1 } }
+      ]
+    },
+    {
+      "question": "스트레스 해소 방법으로 선호하는 것은?",
+      "choices": [
+        { "text": "운동이나 신체 활동", "scores": { "physical": 2, "explosive": 1 } },
+        { "text": "혼자만의 시간 갖기", "scores": { "avoidant": 2, "anxious": 1 } },
+        { "text": "친구와 수다 떨기", "scores": { "explosive": 2, "anxious": 1 } },
+        { "text": "완벽하게 정리정돈하기", "scores": { "perfectionist": 2, "physical": 1 } }
+      ]
+    },
+    {
+      "question": "실수를 했을 때 당신의 반응은?",
+      "choices": [
+        { "text": "계속 그 생각에 사로잡힌다", "scores": { "perfectionist": 2, "anxious": 1 } },
+        { "text": "화가 나서 뭔가를 한다", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "그냥 잊으려고 한다", "scores": { "avoidant": 2, "physical": 1 } },
+        { "text": "불안해서 계속 확인한다", "scores": { "anxious": 2, "perfectionist": 1 } }
+      ]
+    },
+    {
+      "question": "갑자기 중요한 일이 생겼을 때?",
+      "choices": [
+        { "text": "긴장되지만 일단 시작한다", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "빠르게 우선순위를 정하고 처리한다", "scores": { "perfectionist": 2, "explosive": 1 } },
+        { "text": "힘들지만 어떻게든 해낸다", "scores": { "physical": 2, "explosive": 1 } },
+        { "text": "피할 수 있으면 피한다", "scores": { "avoidant": 2, "anxious": 1 } }
+      ]
+    },
+    {
+      "question": "수면 패턴은 어떤가요?",
+      "choices": [
+        { "text": "걱정되면 잠을 못 잔다", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "스트레스 받으면 오히려 더 잔다", "scores": { "avoidant": 2, "physical": 1 } },
+        { "text": "피곤해도 쉽게 잠들지 못한다", "scores": { "physical": 2, "anxious": 1 } },
+        { "text": "할 일 다 끝내야 잠이 온다", "scores": { "perfectionist": 2, "explosive": 1 } }
+      ]
+    },
+    {
+      "question": "다른 사람이 비효율적으로 일할 때?",
+      "choices": [
+        { "text": "답답해서 내가 직접 한다", "scores": { "perfectionist": 2, "explosive": 1 } },
+        { "text": "짜증이 나지만 참는다", "scores": { "explosive": 2, "anxious": 1 } },
+        { "text": "신경 쓰이지만 내버려 둔다", "scores": { "avoidant": 2, "physical": 1 } },
+        { "text": "조심스럽게 조언한다", "scores": { "anxious": 2, "perfectionist": 1 } }
+      ]
+    },
+    {
+      "question": "힘든 일이 있을 때 주로?",
+      "choices": [
+        { "text": "몸이 먼저 반응한다 (두통, 소화불량 등)", "scores": { "physical": 2, "avoidant": 1 } },
+        { "text": "생각이 많아지고 불안해진다", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "감정이 폭발할 것 같다", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "아무것도 하기 싫어진다", "scores": { "avoidant": 2, "anxious": 1 } }
+      ]
+    },
+    {
+      "question": "업무나 공부량이 많을 때?",
+      "choices": [
+        { "text": "완벽하게 하려고 더 노력한다", "scores": { "perfectionist": 2, "anxious": 1 } },
+        { "text": "일단 시작하고 보완한다", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "스트레스로 몸이 아프다", "scores": { "physical": 2, "avoidant": 1 } },
+        { "text": "미루다가 벼락치기한다", "scores": { "avoidant": 2, "explosive": 1 } }
+      ]
+    },
+    {
+      "question": "스트레스 상황에서 식습관은?",
+      "choices": [
+        { "text": "폭식하거나 과식한다", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "입맛이 없어 잘 못 먹는다", "scores": { "anxious": 2, "avoidant": 1 } },
+        { "text": "규칙적으로 먹으려 노력한다", "scores": { "perfectionist": 2, "physical": 1 } },
+        { "text": "먹는 것에 신경 쓸 여유가 없다", "scores": { "avoidant": 2, "anxious": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "perfectionist",
+      "title": "완벽주의형",
+      "emoji": "🎯",
+      "description": "당신은 스트레스 상황에서도 완벽을 추구하는 유형입니다! 높은 기준을 세우고 그에 맞추려 노력하지만, 그 과정에서 자신을 몰아붙이기도 합니다. 체계적이고 계획적인 것을 좋아해요.",
+      "traits": ["높은 기준", "체계적", "계획적", "책임감", "자기비판"],
+      "advice": "완벽하지 않아도 괜찮아요. '충분히 좋은' 것도 좋은 것입니다. 자신에게 너무 엄격하지 마세요. 작은 실수는 성장의 과정이에요. 휴식도 생산적인 활동이라는 것을 기억하세요.",
+      "compatibility": {
+        "good": ["불안형", "신체형"],
+        "bad": ["회피형"]
+      }
+    },
+    {
+      "type": "anxious",
+      "title": "불안형",
+      "emoji": "😰",
+      "description": "당신은 스트레스 상황에서 걱정과 불안을 많이 느끼는 유형입니다! 미래에 대한 걱정이 많고, 최악의 상황을 먼저 생각하는 경향이 있어요. 세심하고 신중한 성격이에요.",
+      "traits": ["걱정 많음", "세심함", "신중함", "예민함", "미래 지향"],
+      "advice": "지금 이 순간에 집중해보세요. 아직 일어나지 않은 일에 대한 걱정은 에너지 낭비예요. 심호흡과 명상이 도움이 될 거예요. 당신이 걱정하는 일의 대부분은 실제로 일어나지 않아요.",
+      "compatibility": {
+        "good": ["완벽주의형", "회피형"],
+        "bad": ["폭발형"]
+      }
+    },
+    {
+      "type": "explosive",
+      "title": "폭발형",
+      "emoji": "🌋",
+      "description": "당신은 스트레스가 쌓이면 감정이 폭발하는 유형입니다! 평소에는 참다가 한계에 다다르면 한꺼번에 터져나와요. 열정적이고 에너지가 넘치는 성격이에요.",
+      "traits": ["열정적", "직설적", "에너지 넘침", "감정적", "행동파"],
+      "advice": "감정을 조금씩 표현하는 연습을 해보세요. 쌓아두면 더 크게 폭발해요. 운동이나 취미로 에너지를 분산시키는 것도 좋아요. 감정 일기를 써보는 것도 도움이 됩니다.",
+      "compatibility": {
+        "good": ["신체형", "완벽주의형"],
+        "bad": ["불안형"]
+      }
+    },
+    {
+      "type": "avoidant",
+      "title": "회피형",
+      "emoji": "🐢",
+      "description": "당신은 스트레스 상황을 피하려는 경향이 있는 유형입니다! 힘든 상황을 마주하기보다 거리를 두고, 잠이나 다른 활동으로 도피하기도 해요. 평화를 추구하는 성격이에요.",
+      "traits": ["평화 추구", "회피 성향", "수동적", "편안함 추구", "내향적"],
+      "advice": "문제를 피해도 사라지지 않아요. 작은 것부터 조금씩 마주해보세요. 회피는 일시적인 안도감만 줄 뿐이에요. 신뢰할 수 있는 사람에게 도움을 요청하는 것도 좋아요.",
+      "compatibility": {
+        "good": ["불안형", "신체형"],
+        "bad": ["완벽주의형"]
+      }
+    },
+    {
+      "type": "physical",
+      "title": "신체형",
+      "emoji": "💪",
+      "description": "당신은 스트레스가 몸으로 나타나는 유형입니다! 심리적 스트레스가 두통, 소화불량, 피로 등 신체 증상으로 표현돼요. 몸과 마음이 밀접하게 연결되어 있어요.",
+      "traits": ["몸과 마음 연결", "활동적", "실용적", "감각적", "직관적"],
+      "advice": "몸의 신호에 귀 기울이세요. 규칙적인 운동과 충분한 수면이 중요해요. 스트레칭이나 요가도 도움이 됩니다. 몸이 보내는 신호를 무시하지 마세요.",
+      "compatibility": {
+        "good": ["폭발형", "회피형"],
+        "bad": ["불안형"]
+      }
+    }
+  ]
+}

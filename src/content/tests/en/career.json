@@ -1,0 +1,178 @@
+{
+  "slug": "career",
+  "title": "Career Aptitude Test",
+  "description": "What career path suits your personality and abilities best? Find out with these 10 questions!",
+  "emoji": "💼",
+  "questions": [
+    {
+      "question": "What's your role in a team project?",
+      "choices": [
+        { "text": "Generate ideas and set direction", "scores": { "creative": 2, "leader": 1 } },
+        { "text": "Lead and manage team members", "scores": { "leader": 2, "social": 1 } },
+        { "text": "Carefully check all the details", "scores": { "analyst": 2, "technical": 1 } },
+        { "text": "Communicate and coordinate with team members", "scores": { "social": 2, "helper": 1 } }
+      ]
+    },
+    {
+      "question": "When do you feel most fulfilled?",
+      "choices": [
+        { "text": "When I create something new", "scores": { "creative": 2, "technical": 1 } },
+        { "text": "When I help others", "scores": { "helper": 2, "social": 1 } },
+        { "text": "When I achieve my goals", "scores": { "leader": 2, "analyst": 1 } },
+        { "text": "When I solve a complex problem", "scores": { "analyst": 2, "technical": 1 } }
+      ]
+    },
+    {
+      "question": "What kind of environment do you want to work in?",
+      "choices": [
+        { "text": "Free and creative atmosphere", "scores": { "creative": 2, "technical": 1 } },
+        { "text": "Systematic and stable environment", "scores": { "analyst": 2, "helper": 1 } },
+        { "text": "Environment with active communication", "scores": { "social": 2, "leader": 1 } },
+        { "text": "Challenging and competitive environment", "scores": { "leader": 2, "technical": 1 } }
+      ]
+    },
+    {
+      "question": "How do you approach problem-solving?",
+      "choices": [
+        { "text": "Find creative solutions", "scores": { "creative": 2, "technical": 1 } },
+        { "text": "Analyze data and approach logically", "scores": { "analyst": 2, "technical": 1 } },
+        { "text": "Gather opinions and decide together", "scores": { "social": 2, "helper": 1 } },
+        { "text": "Make bold decisions and execute", "scores": { "leader": 2, "creative": 1 } }
+      ]
+    },
+    {
+      "question": "What are your strengths?",
+      "choices": [
+        { "text": "Imagination and creativity", "scores": { "creative": 2, "technical": 1 } },
+        { "text": "Analysis and logical thinking", "scores": { "analyst": 2, "technical": 1 } },
+        { "text": "Leadership and drive", "scores": { "leader": 2, "social": 1 } },
+        { "text": "Empathy and consideration", "scores": { "helper": 2, "social": 1 } }
+      ]
+    },
+    {
+      "question": "When you encounter new technology or knowledge?",
+      "choices": [
+        { "text": "Imagine how it can be used", "scores": { "creative": 2, "leader": 1 } },
+        { "text": "Dig deep into the principles", "scores": { "technical": 2, "analyst": 1 } },
+        { "text": "Want to share it with others", "scores": { "social": 2, "helper": 1 } },
+        { "text": "Think about how to apply it to work", "scores": { "analyst": 2, "leader": 1 } }
+      ]
+    },
+    {
+      "question": "What situations stress you?",
+      "choices": [
+        { "text": "When creativity is restricted", "scores": { "creative": 2, "technical": 1 } },
+        { "text": "When following illogical decisions", "scores": { "analyst": 2, "technical": 1 } },
+        { "text": "When working alone", "scores": { "social": 2, "helper": 1 } },
+        { "text": "When I have no control", "scores": { "leader": 2, "analyst": 1 } }
+      ]
+    },
+    {
+      "question": "What do you do outside of work?",
+      "choices": [
+        { "text": "Creative activities (art, writing, music, etc.)", "scores": { "creative": 2, "technical": 1 } },
+        { "text": "Learning new technologies", "scores": { "technical": 2, "analyst": 1 } },
+        { "text": "Hanging out with friends", "scores": { "social": 2, "helper": 1 } },
+        { "text": "Volunteering or helping others", "scores": { "helper": 2, "social": 1 } }
+      ]
+    },
+    {
+      "question": "Your ideal boss/leader is someone who...",
+      "choices": [
+        { "text": "Lets me work freely", "scores": { "creative": 2, "technical": 1 } },
+        { "text": "Gives clear instructions", "scores": { "analyst": 2, "helper": 1 } },
+        { "text": "Helps me grow together", "scores": { "social": 2, "leader": 1 } },
+        { "text": "Has vision and charisma", "scores": { "leader": 2, "creative": 1 } }
+      ]
+    },
+    {
+      "question": "Where do you see yourself in 5 years?",
+      "choices": [
+        { "text": "Expert with my own work/brand", "scores": { "creative": 2, "technical": 1 } },
+        { "text": "Leader of a team or organization", "scores": { "leader": 2, "social": 1 } },
+        { "text": "Professional analyst in the field", "scores": { "analyst": 2, "technical": 1 } },
+        { "text": "Expert helping others", "scores": { "helper": 2, "social": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "creative",
+      "title": "The Creator",
+      "emoji": "🎨",
+      "description": "You shine with creative and original ideas! You're passionate about creating new things and love to imagine and express freely. You have excellent artistic sense.",
+      "traits": ["Creativity", "Originality", "Artistic sense", "Freedom", "Imagination"],
+      "advice": "Consider practical aspects too. Express your creativity while not neglecting deadlines and teamwork.",
+      "compatibility": {
+        "good": ["Technical Expert", "Leader"],
+        "bad": ["Analyst"]
+      },
+      "careers": ["Designer", "Artist", "Writer", "Content Creator", "Ad Planner", "Brand Manager", "UX/UI Designer", "Video Producer"]
+    },
+    {
+      "type": "leader",
+      "title": "The Leader",
+      "emoji": "👔",
+      "description": "You naturally lead others with born leadership! You love setting and achieving goals, with excellent decisiveness and drive. You have strong responsibility and enjoy challenges.",
+      "traits": ["Leadership", "Decisiveness", "Drive", "Responsibility", "Goal-oriented"],
+      "advice": "Listen to team members' opinions too. Creating together rather than deciding alone can lead to better results.",
+      "compatibility": {
+        "good": ["Social", "Analyst"],
+        "bad": ["Helper"]
+      },
+      "careers": ["CEO/Executive", "Project Manager", "Entrepreneur", "Sales Manager", "Politician", "Consultant", "HR Manager", "Sports Coach"]
+    },
+    {
+      "type": "analyst",
+      "title": "The Analyst",
+      "emoji": "📊",
+      "description": "You solve problems based on data and logic! You love detailed analysis and systematic approaches, valuing accuracy. You excel at solving complex problems.",
+      "traits": ["Analytical", "Logical", "Accurate", "Systematic", "Problem-solving"],
+      "advice": "Intuition and emotions matter sometimes too. Remember that data can't explain everything.",
+      "compatibility": {
+        "good": ["Technical Expert", "Leader"],
+        "bad": ["Creator"]
+      },
+      "careers": ["Data Analyst", "Accountant", "Financial Analyst", "Researcher", "Consultant", "QA Manager", "Statistician", "Risk Manager"]
+    },
+    {
+      "type": "social",
+      "title": "The Social",
+      "emoji": "🤝",
+      "description": "You love communicating and building relationships with people! You're sociable and active, with excellent networking skills. Persuasion and communication are your strengths.",
+      "traits": ["Sociable", "Communication", "Networking", "Persuasive", "Personable"],
+      "advice": "Build deep relationships and expertise too. Wide connections are great, but deep professional knowledge is also important.",
+      "compatibility": {
+        "good": ["Leader", "Helper"],
+        "bad": ["Technical Expert"]
+      },
+      "careers": ["Marketer", "PR Specialist", "Sales", "Event Planner", "Teacher", "Counselor", "Influencer", "Community Manager"]
+    },
+    {
+      "type": "helper",
+      "title": "The Helper",
+      "emoji": "🤲",
+      "description": "You find fulfillment in helping and supporting others! You have excellent empathy and deep consideration. You notice people's needs and provide help.",
+      "traits": ["Empathy", "Consideration", "Support", "Altruism", "Listening"],
+      "advice": "Your own needs and boundaries matter too. Be careful not to burn yourself out while helping others.",
+      "compatibility": {
+        "good": ["Social", "Analyst"],
+        "bad": ["Leader"]
+      },
+      "careers": ["Nurse", "Social Worker", "Counselor", "HR Specialist", "Secretary", "Customer Service", "Physical Therapist", "Special Ed Teacher"]
+    },
+    {
+      "type": "technical",
+      "title": "The Technical Expert",
+      "emoji": "⚙️",
+      "description": "You solve problems with deep expertise and skills! You love diving deep into specific fields and have talent for creating and repairing things with your hands.",
+      "traits": ["Expertise", "Technical skills", "Focus", "Problem-solving", "Practicality"],
+      "advice": "Develop communication skills too. Even great skills may go unrecognized if you can't convey them.",
+      "compatibility": {
+        "good": ["Creator", "Analyst"],
+        "bad": ["Social"]
+      },
+      "careers": ["Developer", "Engineer", "Scientist", "Doctor", "Architect", "Mechanic", "Chef", "Craftsman"]
+    }
+  ]
+}

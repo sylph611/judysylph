@@ -1,0 +1,128 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import Result from '../../../../components/Result.astro';
+import ShareButtons from '../../../../components/ShareButtons.astro';
+import AdBanner from '../../../../components/AdBanner.astro';
+import TestCard from '../../../../components/TestCard.astro';
+import { getTest, getAllTests, getTestMeta } from '../../../../utils/tests';
+
+export function getStaticPaths() {
+  const tests = getAllTests('ko');
+  const paths = [];
+
+  tests.forEach((test) => {
+    test.results.forEach((result) => {
+      paths.push({
+        params: { slug: test.slug, type: result.type },
+      });
+    });
+  });
+
+  return paths;
+}
+
+const { slug, type } = Astro.params;
+const lang = 'ko';
+const test = getTest(slug, lang);
+
+if (!test) {
+  return Astro.redirect('/ko');
+}
+
+const result = test.results.find(r => r.type === type);
+
+if (!result) {
+  return Astro.redirect(`/ko/test/${slug}`);
+}
+
+const pageTitle = `${result.title} - ${test.title} | TestMind`;
+const pageDescription = `나의 결과: ${result.title}. ${result.description.substring(0, 100)}...`;
+const siteUrl = Astro.site?.toString() || 'https://testmind.io';
+const pageUrl = `${siteUrl}/ko/result/${slug}/${type}`;
+const ogImage = `${siteUrl}/og/${slug}-${type}.png`;
+
+const otherTests = getTestMeta(lang).filter(t => t.slug !== slug).slice(0, 3);
+
+// JSON-LD structured data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": test.title,
+  "description": test.description,
+  "about": {
+    "@type": "Thing",
+    "name": "Personality Test"
+  }
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} ogImage={ogImage}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Ad Banner Top -->
+    <AdBanner slot="result" className="mb-8" />
+
+    <!-- Result Component -->
+    <Result
+      type={result.type}
+      title={result.title}
+      emoji={result.emoji}
+      description={result.description}
+      traits={result.traits}
+      advice={result.advice}
+      compatibility={result.compatibility}
+      lang={lang}
+    />
+
+    <!-- Share Buttons -->
+    <ShareButtons
+      url={pageUrl}
+      title={`나의 ${test.title} 결과: ${result.title} ${result.emoji}`}
+      description={result.description}
+      lang={lang}
+    />
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+      <a
+        href={`/${lang}/test/${slug}`}
+        class="px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors text-center"
+      >
+        다시 테스트하기
+      </a>
+      <a
+        href={`/${lang}`}
+        class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-center"
+      >
+        다른 테스트 보기
+      </a>
+    </div>
+
+    <!-- Ad Banner Bottom -->
+    <AdBanner slot="result" className="mt-8" />
+
+    <!-- Other Tests -->
+    {otherTests.length > 0 && (
+      <section class="mt-16">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+          다른 테스트도 해보세요
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {otherTests.map((t) => (
+            <TestCard
+              slug={t.slug}
+              title={t.title}
+              description={t.description}
+              emoji={t.emoji}
+              questionCount={t.questionCount}
+              lang={lang}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

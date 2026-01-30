@@ -1,0 +1,202 @@
+{
+  "slug": "animal",
+  "title": "What Animal Are You?",
+  "description": "Discover which animal matches your personality best! Take this 12-question test to find out!",
+  "emoji": "🦊",
+  "questions": [
+    {
+      "question": "How do you start your weekend morning?",
+      "choices": [
+        { "text": "Wake up early and start the day actively", "scores": { "dog": 2, "rabbit": 1 } },
+        { "text": "Sleep in and get up slowly", "scores": { "cat": 2, "bear": 1 } },
+        { "text": "Get up according to my planned schedule", "scores": { "owl": 2, "fox": 1 } },
+        { "text": "It depends on my mood", "scores": { "dolphin": 2, "fox": 1 } }
+      ]
+    },
+    {
+      "question": "What's your role among friends?",
+      "choices": [
+        { "text": "The life of the party, center of attention", "scores": { "dog": 2, "dolphin": 1 } },
+        { "text": "Quiet observer who gives advice when needed", "scores": { "owl": 2, "cat": 1 } },
+        { "text": "Loyal supporter who helps from behind", "scores": { "rabbit": 2, "bear": 1 } },
+        { "text": "My role changes depending on the situation", "scores": { "fox": 2, "dolphin": 1 } }
+      ]
+    },
+    {
+      "question": "What do you do when stressed?",
+      "choices": [
+        { "text": "Go outside and exercise", "scores": { "dog": 2, "dolphin": 1 } },
+        { "text": "Take some alone time", "scores": { "cat": 2, "owl": 1 } },
+        { "text": "Eat something delicious", "scores": { "bear": 2, "rabbit": 1 } },
+        { "text": "Talk it out with friends", "scores": { "dolphin": 2, "dog": 1 } }
+      ]
+    },
+    {
+      "question": "When meeting new people, you...",
+      "choices": [
+        { "text": "Actively approach and start conversations", "scores": { "dog": 2, "dolphin": 1 } },
+        { "text": "Respond when others approach first", "scores": { "cat": 2, "owl": 1 } },
+        { "text": "Carefully observe and take time", "scores": { "rabbit": 2, "fox": 1 } },
+        { "text": "Act differently depending on the situation", "scores": { "fox": 2, "bear": 1 } }
+      ]
+    },
+    {
+      "question": "What do you value most?",
+      "choices": [
+        { "text": "Relationships with family and friends", "scores": { "dog": 2, "rabbit": 1 } },
+        { "text": "My own freedom and independence", "scores": { "cat": 2, "fox": 1 } },
+        { "text": "Stable life and comfort", "scores": { "bear": 2, "rabbit": 1 } },
+        { "text": "New experiences and challenges", "scores": { "dolphin": 2, "fox": 1 } }
+      ]
+    },
+    {
+      "question": "How do you make decisions?",
+      "choices": [
+        { "text": "Trust my instincts and decide quickly", "scores": { "dog": 2, "dolphin": 1 } },
+        { "text": "Think carefully and decide cautiously", "scores": { "owl": 2, "cat": 1 } },
+        { "text": "Ask for others' opinions", "scores": { "rabbit": 2, "bear": 1 } },
+        { "text": "Analyze the situation and decide strategically", "scores": { "fox": 2, "owl": 1 } }
+      ]
+    },
+    {
+      "question": "How do you feel about alone time?",
+      "choices": [
+        { "text": "I get bored if alone for too long", "scores": { "dog": 2, "dolphin": 1 } },
+        { "text": "I definitely need time alone", "scores": { "cat": 2, "owl": 1 } },
+        { "text": "A moderate amount is nice", "scores": { "rabbit": 2, "bear": 1 } },
+        { "text": "It depends on the situation", "scores": { "fox": 2, "bear": 1 } }
+      ]
+    },
+    {
+      "question": "What's your energy pattern?",
+      "choices": [
+        { "text": "Morning person, most active in the morning", "scores": { "dog": 2, "rabbit": 1 } },
+        { "text": "Night owl, most active at night", "scores": { "owl": 2, "cat": 1 } },
+        { "text": "I maintain a consistent rhythm", "scores": { "bear": 2, "rabbit": 1 } },
+        { "text": "It varies from time to time", "scores": { "dolphin": 2, "fox": 1 } }
+      ]
+    },
+    {
+      "question": "In conflict situations, you...",
+      "choices": [
+        { "text": "Step up to resolve it directly", "scores": { "dog": 2, "fox": 1 } },
+        { "text": "Keep distance and observe coolly", "scores": { "cat": 2, "owl": 1 } },
+        { "text": "Take on a mediator role", "scores": { "dolphin": 2, "rabbit": 1 } },
+        { "text": "Try to avoid if possible", "scores": { "rabbit": 2, "bear": 1 } }
+      ]
+    },
+    {
+      "question": "What's your learning style?",
+      "choices": [
+        { "text": "Learn by doing it myself", "scores": { "dog": 2, "dolphin": 1 } },
+        { "text": "Study deeply on my own", "scores": { "owl": 2, "cat": 1 } },
+        { "text": "Learn step by step gradually", "scores": { "rabbit": 2, "bear": 1 } },
+        { "text": "Quickly pick up only what I need", "scores": { "fox": 2, "dolphin": 1 } }
+      ]
+    },
+    {
+      "question": "Your ideal vacation is...",
+      "choices": [
+        { "text": "An active trip with lots of activities", "scores": { "dog": 2, "dolphin": 1 } },
+        { "text": "Relaxing time in a quiet place", "scores": { "cat": 2, "bear": 1 } },
+        { "text": "Exploring new cultures", "scores": { "owl": 2, "fox": 1 } },
+        { "text": "Spending time with loved ones", "scores": { "rabbit": 2, "dog": 1 } }
+      ]
+    },
+    {
+      "question": "Which words describe you best?",
+      "choices": [
+        { "text": "Passionate, Loyal", "scores": { "dog": 2, "rabbit": 1 } },
+        { "text": "Independent, Mysterious", "scores": { "cat": 2, "owl": 1 } },
+        { "text": "Wise, Observant", "scores": { "owl": 2, "fox": 1 } },
+        { "text": "Cheerful, Social", "scores": { "dolphin": 2, "dog": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "dog",
+      "title": "Dog",
+      "emoji": "🐕",
+      "description": "You have a loyal and passionate personality like a dog! You love being with people and warmly approach everyone. You're full of positive energy and bring vitality to those around you.",
+      "traits": ["Loyal", "Passionate", "Social", "Positive", "Active"],
+      "advice": "Sometimes you need alone time too. Take moments to rest for yourself. Don't try to please everyone - focus on relationships that truly matter.",
+      "compatibility": {
+        "good": ["Dolphin", "Rabbit"],
+        "bad": ["Cat"]
+      }
+    },
+    {
+      "type": "cat",
+      "title": "Cat",
+      "emoji": "🐱",
+      "description": "You have an independent and mysterious charm like a cat! You value your own space and time, and observe your surroundings with keen perception. It takes time to get close, but once you open up, you form deep bonds.",
+      "traits": ["Independent", "Mysterious", "Observant", "Self-assured", "Elegant"],
+      "advice": "Sometimes it's good to approach first. Share your charm with more people. It's okay not to be perfectionist all the time.",
+      "compatibility": {
+        "good": ["Owl", "Fox"],
+        "bad": ["Dog"]
+      }
+    },
+    {
+      "type": "owl",
+      "title": "Owl",
+      "emoji": "🦉",
+      "description": "You are wise and insightful like an owl! You love to think deeply and analyze, quietly observing to understand situations. Your careful decisions earn the trust of those around you.",
+      "traits": ["Wise", "Analytical", "Careful", "Insightful", "Calm"],
+      "advice": "Sometimes trust your instincts and take action. Overthinking might make you miss opportunities. Listen to your heart as well as your head.",
+      "compatibility": {
+        "good": ["Cat", "Fox"],
+        "bad": ["Dolphin"]
+      }
+    },
+    {
+      "type": "dolphin",
+      "title": "Dolphin",
+      "emoji": "🐬",
+      "description": "You are cheerful and social like a dolphin! You brighten the mood wherever you go and enjoy communicating with people. With high empathy, you understand others' emotions well and adapt flexibly to situations.",
+      "traits": ["Cheerful", "Social", "Empathetic", "Flexible", "Creative"],
+      "advice": "Building deep relationships is also important. Wide connections are great, but cultivate deep relationships where you can truly share your heart.",
+      "compatibility": {
+        "good": ["Dog", "Fox"],
+        "bad": ["Owl"]
+      }
+    },
+    {
+      "type": "fox",
+      "title": "Fox",
+      "emoji": "🦊",
+      "description": "You are clever and adaptable like a fox! You quickly assess situations and move strategically. You handle various situations flexibly and excel at getting what you need.",
+      "traits": ["Clever", "Adaptable", "Strategic", "Versatile", "Charming"],
+      "advice": "Don't be afraid to show your true feelings. Don't always think strategically - sometimes approach with a pure heart.",
+      "compatibility": {
+        "good": ["Cat", "Owl"],
+        "bad": ["Rabbit"]
+      }
+    },
+    {
+      "type": "rabbit",
+      "title": "Rabbit",
+      "emoji": "🐰",
+      "description": "You are gentle and considerate like a rabbit! You notice others' needs and help with a warm heart. Though careful and cautious, you pour endless affection on those close to you.",
+      "traits": ["Gentle", "Considerate", "Careful", "Faithful", "Humble"],
+      "advice": "Express your own opinions too. While being considerate of others is great, cherish your own needs and feelings as well.",
+      "compatibility": {
+        "good": ["Dog", "Bear"],
+        "bad": ["Fox"]
+      }
+    },
+    {
+      "type": "bear",
+      "title": "Bear",
+      "emoji": "🐻",
+      "description": "You are comfortable and stable like a bear! Your relaxed personality gives those around you a sense of security. Rather than rushing, you maintain your own pace and value simple everyday happiness.",
+      "traits": ["Relaxed", "Stable", "Patient", "Comfortable", "Practical"],
+      "advice": "Try new challenges sometimes. Don't just stay in your comfort zone - even small changes can lead you to discover new joys.",
+      "compatibility": {
+        "good": ["Rabbit", "Cat"],
+        "bad": ["Dolphin"]
+      }
+    }
+  ]
+}

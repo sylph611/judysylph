@@ -1,0 +1,172 @@
+{
+  "slug": "color",
+  "title": "Color Psychology Test",
+  "description": "What colors are you drawn to? Analyze your hidden personality and psychology through your color choices!",
+  "emoji": "🎨",
+  "questions": [
+    {
+      "question": "What color attracts you most right now?",
+      "choices": [
+        { "text": "Red / Orange tones", "scores": { "red": 2, "yellow": 1 } },
+        { "text": "Blue / Purple tones", "scores": { "blue": 2, "purple": 1 } },
+        { "text": "Green / Mint tones", "scores": { "green": 2, "blue": 1 } },
+        { "text": "Yellow / Pink tones", "scores": { "yellow": 2, "pink": 1 } }
+      ]
+    },
+    {
+      "question": "How would you decorate your room?",
+      "choices": [
+        { "text": "Warm atmosphere with white and wood tones", "scores": { "yellow": 2, "green": 1 } },
+        { "text": "Modern and sophisticated monotone", "scores": { "blue": 2, "purple": 1 } },
+        { "text": "Vibrant atmosphere with accent colors", "scores": { "red": 2, "yellow": 1 } },
+        { "text": "Green interior with natural feeling", "scores": { "green": 2, "blue": 1 } }
+      ]
+    },
+    {
+      "question": "What color do you want to wear when you're happy?",
+      "choices": [
+        { "text": "Bright and vibrant colors", "scores": { "red": 2, "yellow": 1 } },
+        { "text": "Calm and clean colors", "scores": { "blue": 2, "green": 1 } },
+        { "text": "Lovely and romantic colors", "scores": { "pink": 2, "purple": 1 } },
+        { "text": "Natural and comfortable colors", "scores": { "green": 2, "yellow": 1 } }
+      ]
+    },
+    {
+      "question": "Your favorite moment when watching a sunset?",
+      "choices": [
+        { "text": "When the sky turns red", "scores": { "red": 2, "yellow": 1 } },
+        { "text": "The moment it changes to purple", "scores": { "purple": 2, "blue": 1 } },
+        { "text": "The sunset light reflecting on the sea", "scores": { "blue": 2, "green": 1 } },
+        { "text": "When everything turns golden", "scores": { "yellow": 2, "pink": 1 } }
+      ]
+    },
+    {
+      "question": "What color is your favorite drink?",
+      "choices": [
+        { "text": "Clear or light colored (water, lemonade)", "scores": { "yellow": 2, "green": 1 } },
+        { "text": "Dark brown (coffee, cola)", "scores": { "red": 2, "purple": 1 } },
+        { "text": "Green (green tea, matcha)", "scores": { "green": 2, "blue": 1 } },
+        { "text": "Pink/Red (strawberry drinks, wine)", "scores": { "pink": 2, "red": 1 } }
+      ]
+    },
+    {
+      "question": "Where would you go to relax?",
+      "choices": [
+        { "text": "A beach with blue ocean views", "scores": { "blue": 2, "green": 1 } },
+        { "text": "A forest full of green trees", "scores": { "green": 2, "yellow": 1 } },
+        { "text": "A lively city cafe", "scores": { "red": 2, "yellow": 1 } },
+        { "text": "A romantic garden", "scores": { "pink": 2, "purple": 1 } }
+      ]
+    },
+    {
+      "question": "If you were painting, what colors would you mainly use?",
+      "choices": [
+        { "text": "Bold and intense colors", "scores": { "red": 2, "purple": 1 } },
+        { "text": "Soft pastel tones", "scores": { "pink": 2, "yellow": 1 } },
+        { "text": "Cool and refreshing colors", "scores": { "blue": 2, "green": 1 } },
+        { "text": "Colors inspired by nature", "scores": { "green": 2, "yellow": 1 } }
+      ]
+    },
+    {
+      "question": "What color makes you feel most peaceful?",
+      "choices": [
+        { "text": "Sky blue / Light blue", "scores": { "blue": 2, "green": 1 } },
+        { "text": "Light green / Mint", "scores": { "green": 2, "yellow": 1 } },
+        { "text": "Beige / Cream", "scores": { "yellow": 2, "pink": 1 } },
+        { "text": "Lavender / Light purple", "scores": { "purple": 2, "pink": 1 } }
+      ]
+    },
+    {
+      "question": "If choosing gift wrapping paper color?",
+      "choices": [
+        { "text": "Gorgeous red or gold", "scores": { "red": 2, "yellow": 1 } },
+        { "text": "Lovely pastel tones", "scores": { "pink": 2, "purple": 1 } },
+        { "text": "Sophisticated blue tones", "scores": { "blue": 2, "purple": 1 } },
+        { "text": "Natural kraft paper", "scores": { "green": 2, "yellow": 1 } }
+      ]
+    },
+    {
+      "question": "When seeing a rainbow, which color catches your eye first?",
+      "choices": [
+        { "text": "Red and orange", "scores": { "red": 2, "yellow": 1 } },
+        { "text": "Yellow and green", "scores": { "yellow": 2, "green": 1 } },
+        { "text": "Blue and indigo", "scores": { "blue": 2, "purple": 1 } },
+        { "text": "Purple and pink", "scores": { "purple": 2, "pink": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "red",
+      "title": "Red Energy",
+      "emoji": "🔴",
+      "description": "You are full of passion and energy! Red symbolizes vitality and strong will. You're not afraid of challenges and express yourself actively. You have strong leadership and are goal-oriented.",
+      "traits": ["Passionate", "Active", "Leadership", "Challenging", "Strong-willed"],
+      "advice": "Sometimes step back and look around. Having lots of energy is good, but consider others' pace too. Rest is also necessary.",
+      "compatibility": {
+        "good": ["Yellow Energy", "Blue Energy"],
+        "bad": ["Green Energy"]
+      }
+    },
+    {
+      "type": "blue",
+      "title": "Blue Energy",
+      "emoji": "🔵",
+      "description": "You are calm and intellectual! Blue symbolizes trust and tranquility. You love to think deeply and analyze, valuing stable relationships. You have great intuition and creativity.",
+      "traits": ["Calm", "Intellectual", "Trustworthy", "Analytical", "Creative"],
+      "advice": "Pay attention to expressing emotions too. Thinking a lot is good, but sometimes trust your intuition and act. Be open to new experiences.",
+      "compatibility": {
+        "good": ["Purple Energy", "Green Energy"],
+        "bad": ["Yellow Energy"]
+      }
+    },
+    {
+      "type": "green",
+      "title": "Green Energy",
+      "emoji": "🟢",
+      "description": "You are peaceful and seek harmony! Green symbolizes nature and balance. You value stability and try to live harmoniously with those around you. You have healing energy.",
+      "traits": ["Peaceful", "Balanced", "Healing", "Nature-loving", "Stable"],
+      "advice": "Express your opinions more actively. Focusing too much on harmony might make you lose yourself. Sometimes change is needed.",
+      "compatibility": {
+        "good": ["Blue Energy", "Yellow Energy"],
+        "bad": ["Red Energy"]
+      }
+    },
+    {
+      "type": "yellow",
+      "title": "Yellow Energy",
+      "emoji": "🟡",
+      "description": "You are bright and optimistic! Yellow symbolizes joy and hope. You brighten your surroundings with positive energy, are social and have great sense of humor. You're very curious.",
+      "traits": ["Optimistic", "Bright", "Social", "Curious", "Humorous"],
+      "advice": "Deep relationships are important too. Showing only your bright side might hide your true feelings. Sometimes have serious conversations.",
+      "compatibility": {
+        "good": ["Red Energy", "Green Energy"],
+        "bad": ["Blue Energy"]
+      }
+    },
+    {
+      "type": "purple",
+      "title": "Purple Energy",
+      "emoji": "🟣",
+      "description": "You have a mysterious and unique charm! Purple symbolizes creativity and spirituality. You have great artistic sense and strong intuition. You're independent yet have deep sensitivity.",
+      "traits": ["Mysterious", "Creative", "Intuitive", "Independent", "Sensitive"],
+      "advice": "Take care of practical matters too. Getting lost in ideals might make you miss reality. Don't forget to communicate with those around you.",
+      "compatibility": {
+        "good": ["Blue Energy", "Pink Energy"],
+        "bad": ["Yellow Energy"]
+      }
+    },
+    {
+      "type": "pink",
+      "title": "Pink Energy",
+      "emoji": "🩷",
+      "description": "You are lovely and warm! Pink symbolizes love and care. You're romantic and emotional, loving to take care of others. You have a gentle charisma.",
+      "traits": ["Lovely", "Caring", "Romantic", "Emotional", "Gentle"],
+      "advice": "Take care of yourself too. Caring for others is great, but your emotions matter too. Sometimes you need to be firm.",
+      "compatibility": {
+        "good": ["Purple Energy", "Yellow Energy"],
+        "bad": ["Red Energy"]
+      }
+    }
+  ]
+}

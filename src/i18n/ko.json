@@ -1,0 +1,53 @@
+{
+  "site": {
+    "name": "TestMind",
+    "title": "TestMind - 나를 알아가는 심리 테스트",
+    "description": "재미있는 성격 테스트와 심리 분석으로 나를 더 잘 알아보세요. 동물 테스트, 연애 스타일, 색깔 심리, 스트레스 유형, 직업 적성 테스트를 무료로 즐기세요."
+  },
+  "nav": {
+    "home": "홈",
+    "tests": "테스트",
+    "about": "소개",
+    "language": "English"
+  },
+  "home": {
+    "hero": "나를 알아가는 여정",
+    "heroSub": "재미있는 심리 테스트로 진짜 나를 발견하세요",
+    "popularTests": "인기 테스트",
+    "allTests": "모든 테스트",
+    "startTest": "테스트 시작"
+  },
+  "test": {
+    "question": "질문",
+    "of": "/",
+    "next": "다음",
+    "prev": "이전",
+    "seeResult": "결과 보기",
+    "progress": "진행률"
+  },
+  "result": {
+    "yourResult": "당신의 결과",
+    "share": "결과 공유하기",
+    "retry": "다시 테스트하기",
+    "otherTests": "다른 테스트 해보기",
+    "shareText": "나의 결과를 확인해보세요!"
+  },
+  "share": {
+    "kakao": "카카오톡",
+    "twitter": "트위터",
+    "facebook": "페이스북",
+    "copy": "링크 복사",
+    "copied": "복사됨!"
+  },
+  "footer": {
+    "privacy": "개인정보처리방침",
+    "terms": "이용약관",
+    "contact": "문의하기",
+    "copyright": "© 2024 TestMind. All rights reserved."
+  },
+  "darkMode": {
+    "light": "라이트 모드",
+    "dark": "다크 모드",
+    "system": "시스템 설정"
+  }
+}

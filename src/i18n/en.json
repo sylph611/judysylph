@@ -1,0 +1,53 @@
+{
+  "site": {
+    "name": "TestMind",
+    "title": "TestMind - Discover Your True Self",
+    "description": "Explore fun personality tests and psychological analysis to learn more about yourself. Enjoy free tests including animal personality, love style, color psychology, stress type, and career aptitude."
+  },
+  "nav": {
+    "home": "Home",
+    "tests": "Tests",
+    "about": "About",
+    "language": "한국어"
+  },
+  "home": {
+    "hero": "Journey to Self-Discovery",
+    "heroSub": "Discover your true self with fun psychological tests",
+    "popularTests": "Popular Tests",
+    "allTests": "All Tests",
+    "startTest": "Start Test"
+  },
+  "test": {
+    "question": "Question",
+    "of": "of",
+    "next": "Next",
+    "prev": "Previous",
+    "seeResult": "See Result",
+    "progress": "Progress"
+  },
+  "result": {
+    "yourResult": "Your Result",
+    "share": "Share Your Result",
+    "retry": "Take Test Again",
+    "otherTests": "Try Other Tests",
+    "shareText": "Check out my result!"
+  },
+  "share": {
+    "kakao": "KakaoTalk",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "copy": "Copy Link",
+    "copied": "Copied!"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "copyright": "© 2024 TestMind. All rights reserved."
+  },
+  "darkMode": {
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "system": "System"
+  }
+}

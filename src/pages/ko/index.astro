@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TestCard from '../../components/TestCard.astro';
+import { getTestMeta } from '../../utils/tests';
+import { useTranslations } from '../../i18n';
+
+const lang = 'ko';
+const t = useTranslations(lang);
+const tests = getTestMeta(lang);
+---
+
+<Layout title={t('site.title')} description={t('site.description')}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-500 to-secondary-500 text-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        {t('home.hero')}
+      </h1>
+      <p class="text-xl md:text-2xl opacity-90 mb-8">
+        {t('home.heroSub')}
+      </p>
+      <a
+        href="#tests"
+        class="inline-block px-8 py-4 bg-white text-primary-600 font-bold rounded-full hover:bg-gray-100 transition-colors shadow-lg"
+      >
+        {t('home.startTest')}
+      </a>
+    </div>
+  </section>
+
+  <!-- Tests Section -->
+  <section id="tests" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        {t('home.allTests')}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tests.map((test) => (
+          <TestCard
+            slug={test.slug}
+            title={test.title}
+            description={test.description}
+            emoji={test.emoji}
+            questionCount={test.questionCount}
+            lang={lang}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+        TestMind 소개
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+        TestMind는 재미있고 통찰력 있는 심리 테스트를 제공합니다.
+        자신의 성격, 연애 스타일, 스트레스 대처 방식 등을 알아보고,
+        자신을 더 깊이 이해하는 여정을 시작해보세요.
+        모든 테스트는 무료이며, 결과를 친구들과 공유할 수 있습니다.
+      </p>
+    </div>
+  </section>
+</Layout>

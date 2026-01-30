@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://testmind.io/sitemap-index.xml
