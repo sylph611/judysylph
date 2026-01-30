@@ -1,0 +1,374 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('timer', lang);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "JudySylph",
+    "url": "https://judysylph.com"
+  }
+};
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Mode Tabs -->
+    <div class="flex justify-center gap-2 mb-6">
+      <button
+        id="timer-tab"
+        class="px-6 py-2 rounded-xl font-medium transition-colors bg-primary-600 text-white"
+      >
+        타이머
+      </button>
+      <button
+        id="stopwatch-tab"
+        class="px-6 py-2 rounded-xl font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+      >
+        스톱워치
+      </button>
+    </div>
+
+    <!-- Timer Section -->
+    <div id="timer-section" class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <!-- Timer Display -->
+      <div class="text-center mb-8">
+        <div id="timer-display" class="text-6xl md:text-8xl font-mono font-bold text-gray-900 dark:text-white">
+          00:00:00
+        </div>
+      </div>
+
+      <!-- Timer Input -->
+      <div id="timer-input-area" class="grid grid-cols-3 gap-4 mb-6">
+        <div>
+          <label class="block text-sm text-gray-600 dark:text-gray-400 text-center mb-1">시간</label>
+          <input
+            type="number"
+            id="timer-hours"
+            min="0"
+            max="23"
+            value="0"
+            class="w-full px-4 py-3 text-center text-2xl font-mono border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          />
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 dark:text-gray-400 text-center mb-1">분</label>
+          <input
+            type="number"
+            id="timer-minutes"
+            min="0"
+            max="59"
+            value="5"
+            class="w-full px-4 py-3 text-center text-2xl font-mono border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          />
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 dark:text-gray-400 text-center mb-1">초</label>
+          <input
+            type="number"
+            id="timer-seconds"
+            min="0"
+            max="59"
+            value="0"
+            class="w-full px-4 py-3 text-center text-2xl font-mono border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          />
+        </div>
+      </div>
+
+      <!-- Quick Timer Buttons -->
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <button class="quick-timer px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600" data-minutes="1">1분</button>
+        <button class="quick-timer px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600" data-minutes="3">3분</button>
+        <button class="quick-timer px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600" data-minutes="5">5분</button>
+        <button class="quick-timer px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600" data-minutes="10">10분</button>
+        <button class="quick-timer px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600" data-minutes="15">15분</button>
+        <button class="quick-timer px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600" data-minutes="30">30분</button>
+      </div>
+
+      <!-- Timer Controls -->
+      <div class="flex justify-center gap-4">
+        <button
+          id="timer-start"
+          class="px-8 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
+        >
+          ▶ 시작
+        </button>
+        <button
+          id="timer-pause"
+          class="hidden px-8 py-3 bg-yellow-600 text-white font-medium rounded-xl hover:bg-yellow-700 transition-colors"
+        >
+          ⏸ 일시정지
+        </button>
+        <button
+          id="timer-reset"
+          class="px-8 py-3 bg-gray-500 text-white font-medium rounded-xl hover:bg-gray-600 transition-colors"
+        >
+          ↺ 초기화
+        </button>
+      </div>
+    </div>
+
+    <!-- Stopwatch Section -->
+    <div id="stopwatch-section" class="hidden bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <!-- Stopwatch Display -->
+      <div class="text-center mb-8">
+        <div id="stopwatch-display" class="text-6xl md:text-8xl font-mono font-bold text-gray-900 dark:text-white">
+          00:00:00<span class="text-3xl">.00</span>
+        </div>
+      </div>
+
+      <!-- Stopwatch Controls -->
+      <div class="flex justify-center gap-4 mb-6">
+        <button
+          id="stopwatch-start"
+          class="px-8 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
+        >
+          ▶ 시작
+        </button>
+        <button
+          id="stopwatch-pause"
+          class="hidden px-8 py-3 bg-yellow-600 text-white font-medium rounded-xl hover:bg-yellow-700 transition-colors"
+        >
+          ⏸ 일시정지
+        </button>
+        <button
+          id="stopwatch-lap"
+          class="px-8 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors"
+        >
+          🏁 랩
+        </button>
+        <button
+          id="stopwatch-reset"
+          class="px-8 py-3 bg-gray-500 text-white font-medium rounded-xl hover:bg-gray-600 transition-colors"
+        >
+          ↺ 초기화
+        </button>
+      </div>
+
+      <!-- Lap Times -->
+      <div id="lap-times" class="hidden">
+        <h3 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">랩 기록</h3>
+        <div id="lap-list" class="space-y-2 max-h-48 overflow-y-auto"></div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← 도구 목록으로 돌아가기
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Tab switching
+  const timerTab = document.getElementById('timer-tab');
+  const stopwatchTab = document.getElementById('stopwatch-tab');
+  const timerSection = document.getElementById('timer-section');
+  const stopwatchSection = document.getElementById('stopwatch-section');
+
+  timerTab?.addEventListener('click', () => {
+    timerTab.classList.add('bg-primary-600', 'text-white');
+    timerTab.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+    stopwatchTab?.classList.remove('bg-primary-600', 'text-white');
+    stopwatchTab?.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+    timerSection?.classList.remove('hidden');
+    stopwatchSection?.classList.add('hidden');
+  });
+
+  stopwatchTab?.addEventListener('click', () => {
+    stopwatchTab.classList.add('bg-primary-600', 'text-white');
+    stopwatchTab.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+    timerTab?.classList.remove('bg-primary-600', 'text-white');
+    timerTab?.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+    stopwatchSection?.classList.remove('hidden');
+    timerSection?.classList.add('hidden');
+  });
+
+  // Timer
+  const timerDisplay = document.getElementById('timer-display');
+  const timerHours = document.getElementById('timer-hours') as HTMLInputElement;
+  const timerMinutes = document.getElementById('timer-minutes') as HTMLInputElement;
+  const timerSeconds = document.getElementById('timer-seconds') as HTMLInputElement;
+  const timerStart = document.getElementById('timer-start');
+  const timerPause = document.getElementById('timer-pause');
+  const timerReset = document.getElementById('timer-reset');
+  const timerInputArea = document.getElementById('timer-input-area');
+
+  let timerInterval: number | null = null;
+  let timerRemaining = 0;
+
+  function formatTime(seconds: number): string {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }
+
+  function updateTimerDisplay() {
+    if (timerDisplay) timerDisplay.textContent = formatTime(timerRemaining);
+  }
+
+  function startTimer() {
+    if (timerRemaining <= 0) {
+      const h = parseInt(timerHours?.value || '0');
+      const m = parseInt(timerMinutes?.value || '0');
+      const s = parseInt(timerSeconds?.value || '0');
+      timerRemaining = h * 3600 + m * 60 + s;
+    }
+
+    if (timerRemaining <= 0) return;
+
+    timerInputArea?.classList.add('hidden');
+    timerStart?.classList.add('hidden');
+    timerPause?.classList.remove('hidden');
+
+    timerInterval = setInterval(() => {
+      timerRemaining--;
+      updateTimerDisplay();
+
+      if (timerRemaining <= 0) {
+        clearInterval(timerInterval!);
+        timerInterval = null;
+        timerPause?.classList.add('hidden');
+        timerStart?.classList.remove('hidden');
+
+        // Play sound and alert
+        const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleScIF3qa3PKVMwQDKI/O+dF+IwIAGH22/vyWNQQADGao9P7WVQoBAQxlpPT+5GIOAQQIZJ30/fBqEwAEBmKZ8v3zchgABgRglfD8+HgcAAcDXpHt+/x+IAAIAlyN6vr+gyQACgBaisf4/oggAAwAV4bD9v+MJQANAFWDvvT/jygADwBTgLrx/5MrAA==');
+        audio.play().catch(() => {});
+        alert('타이머가 완료되었습니다!');
+      }
+    }, 1000) as unknown as number;
+  }
+
+  function pauseTimer() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerPause?.classList.add('hidden');
+      timerStart?.classList.remove('hidden');
+    }
+  }
+
+  function resetTimer() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+    timerRemaining = 0;
+    updateTimerDisplay();
+    timerInputArea?.classList.remove('hidden');
+    timerStart?.classList.remove('hidden');
+    timerPause?.classList.add('hidden');
+  }
+
+  timerStart?.addEventListener('click', startTimer);
+  timerPause?.addEventListener('click', pauseTimer);
+  timerReset?.addEventListener('click', resetTimer);
+
+  document.querySelectorAll('.quick-timer').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const minutes = parseInt((btn as HTMLElement).dataset.minutes || '0');
+      if (timerHours) timerHours.value = '0';
+      if (timerMinutes) timerMinutes.value = String(minutes);
+      if (timerSeconds) timerSeconds.value = '0';
+      timerRemaining = minutes * 60;
+      updateTimerDisplay();
+    });
+  });
+
+  // Stopwatch
+  const stopwatchDisplay = document.getElementById('stopwatch-display');
+  const stopwatchStart = document.getElementById('stopwatch-start');
+  const stopwatchPause = document.getElementById('stopwatch-pause');
+  const stopwatchLap = document.getElementById('stopwatch-lap');
+  const stopwatchReset = document.getElementById('stopwatch-reset');
+  const lapTimes = document.getElementById('lap-times');
+  const lapList = document.getElementById('lap-list');
+
+  let stopwatchInterval: number | null = null;
+  let stopwatchMs = 0;
+  let lapCount = 0;
+
+  function formatStopwatch(ms: number): string {
+    const hours = Math.floor(ms / 3600000);
+    const minutes = Math.floor((ms % 3600000) / 60000);
+    const seconds = Math.floor((ms % 60000) / 1000);
+    const centiseconds = Math.floor((ms % 1000) / 10);
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}<span class="text-3xl">.${String(centiseconds).padStart(2, '0')}</span>`;
+  }
+
+  function updateStopwatchDisplay() {
+    if (stopwatchDisplay) stopwatchDisplay.innerHTML = formatStopwatch(stopwatchMs);
+  }
+
+  function startStopwatch() {
+    stopwatchStart?.classList.add('hidden');
+    stopwatchPause?.classList.remove('hidden');
+
+    const startTime = Date.now() - stopwatchMs;
+    stopwatchInterval = setInterval(() => {
+      stopwatchMs = Date.now() - startTime;
+      updateStopwatchDisplay();
+    }, 10) as unknown as number;
+  }
+
+  function pauseStopwatch() {
+    if (stopwatchInterval) {
+      clearInterval(stopwatchInterval);
+      stopwatchInterval = null;
+      stopwatchPause?.classList.add('hidden');
+      stopwatchStart?.classList.remove('hidden');
+    }
+  }
+
+  function resetStopwatch() {
+    if (stopwatchInterval) {
+      clearInterval(stopwatchInterval);
+      stopwatchInterval = null;
+    }
+    stopwatchMs = 0;
+    lapCount = 0;
+    updateStopwatchDisplay();
+    stopwatchStart?.classList.remove('hidden');
+    stopwatchPause?.classList.add('hidden');
+    lapTimes?.classList.add('hidden');
+    if (lapList) lapList.innerHTML = '';
+  }
+
+  function addLap() {
+    lapCount++;
+    lapTimes?.classList.remove('hidden');
+    const lapItem = document.createElement('div');
+    lapItem.className = 'flex justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded-lg';
+    lapItem.innerHTML = `<span>랩 ${lapCount}</span><span class="font-mono">${formatStopwatch(stopwatchMs).replace(/<[^>]*>/g, '')}</span>`;
+    lapList?.insertBefore(lapItem, lapList.firstChild);
+  }
+
+  stopwatchStart?.addEventListener('click', startStopwatch);
+  stopwatchPause?.addEventListener('click', pauseStopwatch);
+  stopwatchReset?.addEventListener('click', resetStopwatch);
+  stopwatchLap?.addEventListener('click', addLap);
+</script>

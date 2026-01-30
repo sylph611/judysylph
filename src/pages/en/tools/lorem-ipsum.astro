@@ -1,0 +1,260 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('lorem-ipsum', lang);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "JudySylph",
+    "url": "https://judysylph.com"
+  }
+};
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <!-- Options -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div>
+          <label for="lorem-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Type
+          </label>
+          <select
+            id="lorem-type"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          >
+            <option value="paragraphs">Paragraphs</option>
+            <option value="sentences">Sentences</option>
+            <option value="words">Words</option>
+          </select>
+        </div>
+        <div>
+          <label for="lorem-count" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Count
+          </label>
+          <input
+            type="number"
+            id="lorem-count"
+            min="1"
+            max="100"
+            value="3"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          />
+        </div>
+        <div>
+          <label for="lorem-lang" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Language
+          </label>
+          <select
+            id="lorem-lang"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          >
+            <option value="latin">Latin (Classic)</option>
+            <option value="hipster">Hipster</option>
+          </select>
+        </div>
+        <div class="flex items-end">
+          <label class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-xl cursor-pointer w-full">
+            <input type="checkbox" id="start-lorem" checked class="w-5 h-5 rounded text-primary-600" />
+            <span class="text-sm text-gray-700 dark:text-gray-300">Start with Lorem</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Generate Button -->
+      <button
+        id="generate-btn"
+        type="button"
+        class="w-full px-6 py-3 bg-primary-600 text-white font-medium rounded-xl hover:bg-primary-700 transition-colors mb-6"
+      >
+        Generate
+      </button>
+
+      <!-- Output -->
+      <div class="mb-4">
+        <div class="flex justify-between items-center mb-2">
+          <label class="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Generated Text
+          </label>
+          <span id="char-count" class="text-sm text-gray-500 dark:text-gray-400">0 chars</span>
+        </div>
+        <textarea
+          id="lorem-output"
+          rows="10"
+          readonly
+          class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white resize-y"
+          placeholder="Generated text will appear here..."
+        ></textarea>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex gap-3">
+        <button
+          id="copy-btn"
+          type="button"
+          class="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+        >
+          📋 Copy
+        </button>
+        <button
+          id="clear-btn"
+          type="button"
+          class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Back to Tools
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const loremType = document.getElementById('lorem-type') as HTMLSelectElement;
+  const loremCount = document.getElementById('lorem-count') as HTMLInputElement;
+  const loremLang = document.getElementById('lorem-lang') as HTMLSelectElement;
+  const startLorem = document.getElementById('start-lorem') as HTMLInputElement;
+  const generateBtn = document.getElementById('generate-btn');
+  const loremOutput = document.getElementById('lorem-output') as HTMLTextAreaElement;
+  const charCount = document.getElementById('char-count');
+  const copyBtn = document.getElementById('copy-btn');
+  const clearBtn = document.getElementById('clear-btn');
+
+  const latinWords = [
+    'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit',
+    'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore',
+    'magna', 'aliqua', 'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud',
+    'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip', 'ex', 'ea', 'commodo',
+    'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate',
+    'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint',
+    'occaecat', 'cupidatat', 'non', 'proident', 'sunt', 'culpa', 'qui', 'officia',
+    'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum', 'perspiciatis', 'unde',
+    'omnis', 'iste', 'natus', 'error', 'voluptatem', 'accusantium', 'doloremque',
+    'laudantium', 'totam', 'rem', 'aperiam', 'eaque', 'ipsa', 'quae', 'ab', 'illo',
+    'inventore', 'veritatis', 'quasi', 'architecto', 'beatae', 'vitae', 'dicta'
+  ];
+
+  const hipsterWords = [
+    'artisan', 'authentic', 'sustainable', 'organic', 'craft', 'vinyl', 'vegan',
+    'ethical', 'vintage', 'aesthetic', 'minimalist', 'curated', 'handcrafted',
+    'bespoke', 'locally-sourced', 'farm-to-table', 'cold-pressed', 'microbrew',
+    'freegan', 'fixie', 'gastropub', 'normcore', 'kinfolk', 'brooklyn', 'portland',
+    'kombucha', 'sriracha', 'quinoa', 'kale', 'avocado', 'toast', 'beard', 'flannel',
+    'typewriter', 'letterpress', 'mixtape', 'polaroid', 'instagram', 'tumblr',
+    'dreamcatcher', 'selfies', 'hashtag', 'literally', 'actually', 'basically',
+    'artisanal', 'small-batch', 'single-origin', 'pour-over', 'nitro', 'cold-brew'
+  ];
+
+  function getRandomWord(words: string[]): string {
+    return words[Math.floor(Math.random() * words.length)];
+  }
+
+  function generateSentence(words: string[], minWords: number = 8, maxWords: number = 15): string {
+    const wordCount = Math.floor(Math.random() * (maxWords - minWords + 1)) + minWords;
+    const sentence = [];
+    for (let i = 0; i < wordCount; i++) {
+      sentence.push(getRandomWord(words));
+    }
+    sentence[0] = sentence[0].charAt(0).toUpperCase() + sentence[0].slice(1);
+    return sentence.join(' ') + '.';
+  }
+
+  function generateParagraph(words: string[], minSentences: number = 4, maxSentences: number = 8): string {
+    const sentenceCount = Math.floor(Math.random() * (maxSentences - minSentences + 1)) + minSentences;
+    const sentences = [];
+    for (let i = 0; i < sentenceCount; i++) {
+      sentences.push(generateSentence(words));
+    }
+    return sentences.join(' ');
+  }
+
+  function generateLorem() {
+    const type = loremType?.value || 'paragraphs';
+    const count = parseInt(loremCount?.value || '3');
+    const lang = loremLang?.value || 'latin';
+    const startWithLorem = startLorem?.checked;
+    const words = lang === 'hipster' ? hipsterWords : latinWords;
+
+    let result = '';
+
+    if (type === 'paragraphs') {
+      const paragraphs = [];
+      for (let i = 0; i < count; i++) {
+        paragraphs.push(generateParagraph(words));
+      }
+      result = paragraphs.join('\n\n');
+    } else if (type === 'sentences') {
+      const sentences = [];
+      for (let i = 0; i < count; i++) {
+        sentences.push(generateSentence(words));
+      }
+      result = sentences.join(' ');
+    } else {
+      const wordList = [];
+      for (let i = 0; i < count; i++) {
+        wordList.push(getRandomWord(words));
+      }
+      result = wordList.join(' ');
+    }
+
+    if (startWithLorem && lang === 'latin' && result.length > 0) {
+      result = 'Lorem ipsum dolor sit amet, ' + result.slice(result.indexOf(' ') + 1);
+    }
+
+    if (loremOutput) loremOutput.value = result;
+    if (charCount) charCount.textContent = `${result.length.toLocaleString()} chars`;
+  }
+
+  generateBtn?.addEventListener('click', generateLorem);
+
+  copyBtn?.addEventListener('click', async () => {
+    const text = loremOutput?.value;
+    if (!text) {
+      alert('Please generate text first');
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Copied!');
+    } catch {
+      alert('Failed to copy');
+    }
+  });
+
+  clearBtn?.addEventListener('click', () => {
+    if (loremOutput) loremOutput.value = '';
+    if (charCount) charCount.textContent = '0 chars';
+  });
+
+  // Generate initial text
+  generateLorem();
+</script>

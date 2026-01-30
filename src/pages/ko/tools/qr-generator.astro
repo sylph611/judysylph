@@ -1,0 +1,157 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('qr-generator', lang);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "JudySylph",
+    "url": "https://judysylph.com"
+  }
+};
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <!-- Input -->
+      <div class="mb-6">
+        <label for="qr-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          텍스트 또는 URL 입력
+        </label>
+        <textarea
+          id="qr-input"
+          rows="3"
+          placeholder="QR코드로 변환할 텍스트나 URL을 입력하세요..."
+          class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-y"
+        ></textarea>
+      </div>
+
+      <!-- Options -->
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div>
+          <label for="qr-size" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            크기
+          </label>
+          <select
+            id="qr-size"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500"
+          >
+            <option value="128">128 x 128</option>
+            <option value="256" selected>256 x 256</option>
+            <option value="512">512 x 512</option>
+          </select>
+        </div>
+        <div>
+          <label for="qr-color" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            색상
+          </label>
+          <input
+            type="color"
+            id="qr-color"
+            value="#000000"
+            class="w-full h-12 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 cursor-pointer"
+          />
+        </div>
+      </div>
+
+      <!-- Generate Button -->
+      <button
+        id="generate-btn"
+        type="button"
+        class="w-full px-6 py-3 bg-primary-600 text-white font-medium rounded-xl hover:bg-primary-700 transition-colors mb-6"
+      >
+        QR코드 생성
+      </button>
+
+      <!-- QR Code Result -->
+      <div id="qr-result" class="hidden">
+        <div class="flex flex-col items-center gap-4 p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
+          <canvas id="qr-canvas" class="bg-white p-4 rounded-lg"></canvas>
+          <button
+            id="download-btn"
+            type="button"
+            class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+          >
+            이미지 다운로드
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← 도구 목록으로 돌아가기
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script>
+  const qrInput = document.getElementById('qr-input') as HTMLTextAreaElement;
+  const qrSize = document.getElementById('qr-size') as HTMLSelectElement;
+  const qrColor = document.getElementById('qr-color') as HTMLInputElement;
+  const generateBtn = document.getElementById('generate-btn');
+  const qrResult = document.getElementById('qr-result');
+  const qrCanvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
+  const downloadBtn = document.getElementById('download-btn');
+
+  generateBtn?.addEventListener('click', () => {
+    const text = qrInput?.value.trim();
+    if (!text) {
+      alert('텍스트를 입력해주세요');
+      return;
+    }
+
+    const size = parseInt(qrSize?.value || '256');
+    const color = qrColor?.value || '#000000';
+
+    // @ts-ignore
+    QRCode.toCanvas(qrCanvas, text, {
+      width: size,
+      margin: 2,
+      color: {
+        dark: color,
+        light: '#ffffff'
+      }
+    }, (error: any) => {
+      if (error) {
+        console.error(error);
+        alert('QR코드 생성에 실패했습니다');
+        return;
+      }
+      qrResult?.classList.remove('hidden');
+    });
+  });
+
+  downloadBtn?.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'qrcode.png';
+    link.href = qrCanvas?.toDataURL('image/png') || '';
+    link.click();
+  });
+</script>
