@@ -1,0 +1,144 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const lang = 'en';
+---
+
+<Layout title="My Test History | JudySylph" description="View your past test results.">
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">📚</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">My Test History</h1>
+      <p class="text-gray-600 dark:text-gray-400">View your past test results</p>
+    </div>
+
+    <!-- History List -->
+    <div id="history-container">
+      <!-- Empty State (shown by default, hidden when history exists) -->
+      <div id="empty-state" class="text-center py-12">
+        <div class="text-6xl mb-4">🔮</div>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">No test history yet</p>
+        <a
+          href="/en"
+          class="inline-block px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+        >
+          Take a Test
+        </a>
+      </div>
+
+      <!-- History Items (populated by JS) -->
+      <div id="history-list" class="hidden space-y-4"></div>
+    </div>
+
+    <!-- Clear History Button -->
+    <div id="clear-container" class="hidden mt-8 text-center">
+      <button
+        id="clear-history"
+        type="button"
+        class="px-4 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+      >
+        🗑️ Clear All History
+      </button>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/en" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Back to Home
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const emptyState = document.getElementById('empty-state');
+  const historyList = document.getElementById('history-list');
+  const clearContainer = document.getElementById('clear-container');
+  const clearButton = document.getElementById('clear-history');
+
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diff = now.getTime() - date.getTime();
+
+    // Within 24 hours
+    if (diff < 86400000) {
+      const hours = Math.floor(diff / 3600000);
+      if (hours === 0) {
+        const minutes = Math.floor(diff / 60000);
+        return minutes <= 1 ? 'Just now' : `${minutes} minutes ago`;
+      }
+      return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
+    }
+
+    // Within 7 days
+    if (diff < 604800000) {
+      const days = Math.floor(diff / 86400000);
+      return days === 1 ? '1 day ago' : `${days} days ago`;
+    }
+
+    // Older
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+
+  function renderHistory() {
+    const history = JSON.parse(localStorage.getItem('testHistory') || '[]');
+
+    // Filter for English results
+    const enHistory = history.filter((h: any) => h.lang === 'en');
+
+    if (enHistory.length === 0) {
+      emptyState?.classList.remove('hidden');
+      historyList?.classList.add('hidden');
+      clearContainer?.classList.add('hidden');
+      return;
+    }
+
+    emptyState?.classList.add('hidden');
+    historyList?.classList.remove('hidden');
+    clearContainer?.classList.remove('hidden');
+
+    if (historyList) {
+      historyList.innerHTML = enHistory.map((item: any) => `
+        <a
+          href="/en/result/${item.testSlug}/${item.resultType}"
+          class="block bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
+        >
+          <div class="flex items-center gap-4">
+            <div class="text-4xl">${item.resultEmoji || item.testEmoji}</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-bold text-gray-900 dark:text-white truncate">
+                ${item.resultTitle}
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                ${item.testEmoji} ${item.testTitle}
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-xs text-gray-500 dark:text-gray-400">
+                ${formatDate(item.date)}
+              </div>
+              <div class="text-primary-600 dark:text-primary-400 text-sm mt-1">
+                View again →
+              </div>
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+  }
+
+  clearButton?.addEventListener('click', () => {
+    if (confirm('Are you sure you want to delete all history?')) {
+      localStorage.removeItem('testHistory');
+      renderHistory();
+    }
+  });
+
+  renderHistory();
+</script>

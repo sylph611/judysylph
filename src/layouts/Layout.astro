@@ -113,6 +113,9 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
           JudySylph
         </a>
         <div class="flex items-center gap-4">
+          <a href={`/${lang}/history`} class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400" title={lang === 'ko' ? '내 기록' : 'My History'}>
+            📚
+          </a>
           <a href={alternateUrl} class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
             {t('nav.language')}
           </a>
