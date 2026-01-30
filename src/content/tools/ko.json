@@ -138,5 +138,26 @@
     "description": "2026년 미국 각 주별 소득세와 실수령액을 계산합니다.",
     "emoji": "🇺🇸",
     "category": "세금"
+  },
+  {
+    "slug": "car-affordability",
+    "title": "내 연봉으로 살 수 있는 차",
+    "description": "연봉과 저축액을 입력하면 구매 가능한 차량 등급과 추천 모델을 알려드립니다.",
+    "emoji": "🚗",
+    "category": "재미"
+  },
+  {
+    "slug": "apartment-affordability",
+    "title": "내 연봉으로 가능한 아파트",
+    "description": "연봉과 자산을 입력하면 구매 가능한 아파트 면적과 지역을 분석합니다.",
+    "emoji": "🏢",
+    "category": "재미"
+  },
+  {
+    "slug": "salary-percentile",
+    "title": "내 연봉 순위",
+    "description": "나이와 연봉을 입력하면 동년배 대비 상위 몇 %인지 알려드립니다.",
+    "emoji": "📊",
+    "category": "재미"
   }
 ]

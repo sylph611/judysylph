@@ -138,5 +138,26 @@
     "description": "Calculate 2026 income tax and take-home pay by US state.",
     "emoji": "🇺🇸",
     "category": "Tax"
+  },
+  {
+    "slug": "car-affordability",
+    "title": "What Car Can I Afford?",
+    "description": "Enter your salary and savings to find out what car you can realistically afford.",
+    "emoji": "🚗",
+    "category": "Fun"
+  },
+  {
+    "slug": "apartment-affordability",
+    "title": "What Home Can I Afford?",
+    "description": "Calculate how much house you can afford based on your income and savings.",
+    "emoji": "🏢",
+    "category": "Fun"
+  },
+  {
+    "slug": "salary-percentile",
+    "title": "Salary Percentile Calculator",
+    "description": "Find out where your salary ranks compared to others your age.",
+    "emoji": "📊",
+    "category": "Fun"
   }
 ]
