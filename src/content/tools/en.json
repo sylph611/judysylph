@@ -47,5 +47,40 @@
     "description": "Track your package delivery status with tracking number.",
     "emoji": "📦",
     "category": "Life"
+  },
+  {
+    "slug": "qr-generator",
+    "title": "QR Code Generator",
+    "description": "Convert text, URLs, contacts into QR codes. Download as image.",
+    "emoji": "📱",
+    "category": "Convert"
+  },
+  {
+    "slug": "password-generator",
+    "title": "Password Generator",
+    "description": "Generate secure random passwords. Customize length and character types.",
+    "emoji": "🔐",
+    "category": "Security"
+  },
+  {
+    "slug": "color-converter",
+    "title": "Color Converter",
+    "description": "Convert between HEX, RGB, and HSL color codes. Live color preview.",
+    "emoji": "🎨",
+    "category": "Design"
+  },
+  {
+    "slug": "timer",
+    "title": "Timer & Stopwatch",
+    "description": "Online timer and stopwatch. Track time with sound alerts.",
+    "emoji": "⏱️",
+    "category": "Date/Time"
+  },
+  {
+    "slug": "lorem-ipsum",
+    "title": "Lorem Ipsum Generator",
+    "description": "Generate dummy text for design and development projects.",
+    "emoji": "📄",
+    "category": "Text"
   }
 ]

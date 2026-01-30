@@ -47,5 +47,40 @@
     "description": "운송장 번호로 택배 배송 현황을 조회합니다.",
     "emoji": "📦",
     "category": "생활"
+  },
+  {
+    "slug": "qr-generator",
+    "title": "QR코드 생성기",
+    "description": "텍스트, URL, 연락처 등을 QR코드로 변환합니다. 다운로드 가능.",
+    "emoji": "📱",
+    "category": "변환"
+  },
+  {
+    "slug": "password-generator",
+    "title": "비밀번호 생성기",
+    "description": "안전한 랜덤 비밀번호를 생성합니다. 길이와 문자 종류 선택 가능.",
+    "emoji": "🔐",
+    "category": "보안"
+  },
+  {
+    "slug": "color-converter",
+    "title": "색상 변환기",
+    "description": "HEX, RGB, HSL 색상 코드를 상호 변환합니다. 색상 미리보기 제공.",
+    "emoji": "🎨",
+    "category": "디자인"
+  },
+  {
+    "slug": "timer",
+    "title": "타이머 & 스톱워치",
+    "description": "온라인 타이머와 스톱워치. 알림음과 함께 시간을 측정합니다.",
+    "emoji": "⏱️",
+    "category": "날짜/시간"
+  },
+  {
+    "slug": "lorem-ipsum",
+    "title": "Lorem Ipsum 생성기",
+    "description": "디자인과 개발에 필요한 더미 텍스트를 생성합니다.",
+    "emoji": "📄",
+    "category": "텍스트"
   }
 ]
