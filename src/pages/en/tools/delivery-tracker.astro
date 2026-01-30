@@ -1,0 +1,137 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('delivery-tracker', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <div class="space-y-6">
+        <div>
+          <label for="carrier" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Select Carrier
+          </label>
+          <select
+            id="carrier"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          >
+            <option value="">Select a carrier</option>
+            <option value="cj">CJ Logistics</option>
+            <option value="hanjin">Hanjin Express</option>
+            <option value="lotte">Lotte Global Logistics</option>
+            <option value="post">Korea Post</option>
+            <option value="logen">Logen</option>
+            <option value="cu">CU Post</option>
+            <option value="gs">GS Postbox</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="tracking-number" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Tracking Number
+          </label>
+          <input
+            type="text"
+            id="tracking-number"
+            placeholder="Enter tracking number (numbers only)"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+        </div>
+
+        <button
+          id="track-btn"
+          type="button"
+          class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+        >
+          Track
+        </button>
+      </div>
+
+      <!-- Info Message -->
+      <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+        <p class="text-sm text-blue-700 dark:text-blue-300">
+          <strong>Note:</strong> Clicking the track button will open the carrier's official tracking page.
+          The tracking number will be automatically entered.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="mt-6">
+        <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Quick Links</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <a href="https://www.cjlogistics.com/ko/tool/parcel/tracking" target="_blank" rel="noopener" class="block p-3 bg-gray-50 dark:bg-gray-700 rounded-lg text-center text-sm hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+            CJ Logistics
+          </a>
+          <a href="https://www.hanjin.com/kor/CMS/DeliveryMgr/WaybillResult.do" target="_blank" rel="noopener" class="block p-3 bg-gray-50 dark:bg-gray-700 rounded-lg text-center text-sm hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+            Hanjin Express
+          </a>
+          <a href="https://www.lotteglogis.com/home/reservation/tracking/index" target="_blank" rel="noopener" class="block p-3 bg-gray-50 dark:bg-gray-700 rounded-lg text-center text-sm hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+            Lotte Global
+          </a>
+          <a href="https://service.epost.go.kr/iservice/usr/trace/usrtrc001k01.jsp" target="_blank" rel="noopener" class="block p-3 bg-gray-50 dark:bg-gray-700 rounded-lg text-center text-sm hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+            Korea Post
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Back to Tools
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const carrierSelect = document.getElementById('carrier') as HTMLSelectElement;
+  const trackingNumberInput = document.getElementById('tracking-number') as HTMLInputElement;
+  const trackBtn = document.getElementById('track-btn');
+
+  const carrierUrls: Record<string, (num: string) => string> = {
+    cj: (num) => `https://www.cjlogistics.com/ko/tool/parcel/tracking?gnbInvcNo=${num}`,
+    hanjin: (num) => `https://www.hanjin.com/kor/CMS/DeliveryMgr/WaybillResult.do?mession=SEARCH&wblNo=${num}`,
+    lotte: (num) => `https://www.lotteglogis.com/home/reservation/tracking/linkView?InvNo=${num}`,
+    post: (num) => `https://service.epost.go.kr/trace.RetrieveDomRi498.postal?sid1=${num}`,
+    logen: (num) => `https://www.ilogen.com/web/personal/trace/${num}`,
+    cu: (num) => `https://www.cupost.co.kr/postbox/delivery/localResult.cupost?invoice_no=${num}`,
+    gs: (num) => `https://www.cvsnet.co.kr/invoice/tracking.do?invoice_no=${num}`,
+  };
+
+  trackBtn?.addEventListener('click', () => {
+    const carrier = carrierSelect.value;
+    const trackingNumber = trackingNumberInput.value.replace(/[^0-9]/g, '');
+
+    if (!carrier) {
+      alert('Please select a carrier');
+      return;
+    }
+
+    if (!trackingNumber) {
+      alert('Please enter a tracking number');
+      return;
+    }
+
+    const url = carrierUrls[carrier]?.(trackingNumber);
+    if (url) {
+      window.open(url, '_blank', 'noopener');
+    }
+  });
+
+  // Clean tracking number input (numbers only)
+  trackingNumberInput?.addEventListener('input', () => {
+    trackingNumberInput.value = trackingNumberInput.value.replace(/[^0-9]/g, '');
+  });
+</script>

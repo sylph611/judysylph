@@ -1,0 +1,151 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('dday-calculator', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <div class="space-y-6">
+        <div>
+          <label for="target-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Select Target Date
+          </label>
+          <input
+            type="date"
+            id="target-date"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+        </div>
+
+        <div>
+          <label for="event-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Event Name (Optional)
+          </label>
+          <input
+            type="text"
+            id="event-name"
+            placeholder="e.g., Vacation, Exam, Anniversary"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+        </div>
+
+        <button
+          id="calculate-btn"
+          type="button"
+          class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+        >
+          Calculate
+        </button>
+      </div>
+
+      <!-- Result -->
+      <div id="result-area" class="mt-8 hidden">
+        <div class="text-center p-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl text-white">
+          <div id="event-display" class="text-lg mb-2 opacity-90"></div>
+          <div id="dday-result" class="text-6xl font-bold mb-4"></div>
+          <div id="date-display" class="opacity-90"></div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+            <div id="weeks" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Weeks</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+            <div id="hours" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Hours</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+            <div id="minutes" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Minutes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Back to Tools
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const targetDateInput = document.getElementById('target-date') as HTMLInputElement;
+  const eventNameInput = document.getElementById('event-name') as HTMLInputElement;
+  const calculateBtn = document.getElementById('calculate-btn');
+  const resultArea = document.getElementById('result-area');
+  const eventDisplay = document.getElementById('event-display');
+  const ddayResult = document.getElementById('dday-result');
+  const dateDisplay = document.getElementById('date-display');
+  const weeksEl = document.getElementById('weeks');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+
+  // Set default date to today
+  const today = new Date();
+  targetDateInput.value = today.toISOString().split('T')[0];
+
+  function formatDate(date: Date): string {
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long'
+    });
+  }
+
+  function calculate() {
+    const targetDate = new Date(targetDateInput.value);
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    targetDate.setHours(0, 0, 0, 0);
+
+    const diffTime = targetDate.getTime() - now.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    const eventName = eventNameInput.value || 'Target Date';
+
+    resultArea?.classList.remove('hidden');
+
+    if (eventDisplay) eventDisplay.textContent = eventName;
+    if (dateDisplay) dateDisplay.textContent = formatDate(targetDate);
+
+    if (diffDays > 0) {
+      if (ddayResult) ddayResult.textContent = `D-${diffDays}`;
+    } else if (diffDays < 0) {
+      if (ddayResult) ddayResult.textContent = `D+${Math.abs(diffDays)}`;
+    } else {
+      if (ddayResult) ddayResult.textContent = 'D-Day!';
+    }
+
+    const absDays = Math.abs(diffDays);
+    const weeks = Math.floor(absDays / 7);
+    const hours = absDays * 24;
+    const minutes = hours * 60;
+
+    if (weeksEl) weeksEl.textContent = weeks.toLocaleString();
+    if (hoursEl) hoursEl.textContent = hours.toLocaleString();
+    if (minutesEl) minutesEl.textContent = minutes.toLocaleString();
+  }
+
+  calculateBtn?.addEventListener('click', calculate);
+  targetDateInput?.addEventListener('change', calculate);
+
+  // Initial calculation
+  calculate();
+</script>

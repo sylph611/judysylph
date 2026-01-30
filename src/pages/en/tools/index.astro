@@ -1,0 +1,42 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ToolCard from '../../../components/ToolCard.astro';
+import { getAllTools } from '../../../utils/tools';
+import { useTranslations } from '../../../i18n';
+
+const lang = 'en';
+const t = useTranslations(lang);
+const tools = getAllTools(lang);
+---
+
+<Layout title={`${t('tools.title')} | JudySylph`} description={t('tools.description')}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-green-500 to-teal-500 text-white py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">
+        {t('tools.title')}
+      </h1>
+      <p class="text-lg md:text-xl opacity-90">
+        {t('tools.description')}
+      </p>
+    </div>
+  </section>
+
+  <!-- Tools Grid -->
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tools.map((tool) => (
+          <ToolCard
+            slug={tool.slug}
+            title={tool.title}
+            description={tool.description}
+            emoji={tool.emoji}
+            category={tool.category}
+            lang={lang}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

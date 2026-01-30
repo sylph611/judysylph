@@ -1,0 +1,179 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('char-counter', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <!-- Input -->
+      <div class="mb-6">
+        <label for="text-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Enter Text
+        </label>
+        <textarea
+          id="text-input"
+          rows="8"
+          placeholder="Type or paste your text here..."
+          class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-y"
+        ></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-3 mb-6">
+        <button
+          id="clear-btn"
+          type="button"
+          class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        >
+          Clear
+        </button>
+        <button
+          id="copy-btn"
+          type="button"
+          class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+        >
+          Copy
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+          <div id="char-with-space" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">With Spaces</div>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+          <div id="char-without-space" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">Without Spaces</div>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+          <div id="word-count" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">Words</div>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+          <div id="line-count" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">Lines</div>
+        </div>
+      </div>
+
+      <!-- Detailed Stats -->
+      <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <span class="text-gray-600 dark:text-gray-400">Korean</span>
+          <span id="korean-count" class="font-medium text-gray-900 dark:text-white">0</span>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <span class="text-gray-600 dark:text-gray-400">English</span>
+          <span id="english-count" class="font-medium text-gray-900 dark:text-white">0</span>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <span class="text-gray-600 dark:text-gray-400">Numbers</span>
+          <span id="number-count" class="font-medium text-gray-900 dark:text-white">0</span>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <span class="text-gray-600 dark:text-gray-400">Spaces</span>
+          <span id="space-count" class="font-medium text-gray-900 dark:text-white">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Back to Tools
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const textInput = document.getElementById('text-input') as HTMLTextAreaElement;
+  const clearBtn = document.getElementById('clear-btn');
+  const copyBtn = document.getElementById('copy-btn');
+
+  const charWithSpace = document.getElementById('char-with-space');
+  const charWithoutSpace = document.getElementById('char-without-space');
+  const wordCount = document.getElementById('word-count');
+  const koreanCount = document.getElementById('korean-count');
+  const englishCount = document.getElementById('english-count');
+  const numberCount = document.getElementById('number-count');
+  const spaceCount = document.getElementById('space-count');
+  const lineCount = document.getElementById('line-count');
+
+  function analyzeText(text: string) {
+    const totalChars = text.length;
+    const charsNoSpace = text.replace(/\s/g, '').length;
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+    const totalWords = text.trim() === '' ? 0 : words.length;
+    const koreanChars = text.match(/[가-힣]/g);
+    const totalKorean = koreanChars ? koreanChars.length : 0;
+    const englishChars = text.match(/[a-zA-Z]/g);
+    const totalEnglish = englishChars ? englishChars.length : 0;
+    const numbers = text.match(/[0-9]/g);
+    const totalNumbers = numbers ? numbers.length : 0;
+    const spaces = text.match(/\s/g);
+    const totalSpaces = spaces ? spaces.length : 0;
+    const lines = text.split('\n');
+    const totalLines = text === '' ? 0 : lines.length;
+
+    return { totalChars, charsNoSpace, totalWords, totalKorean, totalEnglish, totalNumbers, totalSpaces, totalLines };
+  }
+
+  function formatNumber(num: number) {
+    return num.toLocaleString('en-US');
+  }
+
+  function updateResults(stats: ReturnType<typeof analyzeText>) {
+    if (charWithSpace) charWithSpace.textContent = formatNumber(stats.totalChars);
+    if (charWithoutSpace) charWithoutSpace.textContent = formatNumber(stats.charsNoSpace);
+    if (wordCount) wordCount.textContent = formatNumber(stats.totalWords);
+    if (koreanCount) koreanCount.textContent = formatNumber(stats.totalKorean);
+    if (englishCount) englishCount.textContent = formatNumber(stats.totalEnglish);
+    if (numberCount) numberCount.textContent = formatNumber(stats.totalNumbers);
+    if (spaceCount) spaceCount.textContent = formatNumber(stats.totalSpaces);
+    if (lineCount) lineCount.textContent = formatNumber(stats.totalLines);
+  }
+
+  function handleTextInput() {
+    const text = textInput?.value || '';
+    const stats = analyzeText(text);
+    updateResults(stats);
+  }
+
+  textInput?.addEventListener('input', handleTextInput);
+  clearBtn?.addEventListener('click', () => {
+    if (textInput) {
+      textInput.value = '';
+      handleTextInput();
+      textInput.focus();
+    }
+  });
+
+  copyBtn?.addEventListener('click', async () => {
+    const text = textInput?.value || '';
+    if (!text) {
+      alert('No text to copy');
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Text copied to clipboard');
+    } catch (err) {
+      alert('Failed to copy');
+    }
+  });
+
+  handleTextInput();
+</script>

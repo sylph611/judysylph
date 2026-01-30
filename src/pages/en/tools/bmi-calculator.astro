@@ -1,0 +1,198 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('bmi-calculator', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="bmi-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="height" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Height (cm)
+            </label>
+            <input
+              type="number"
+              id="height"
+              placeholder="170"
+              min="50"
+              max="250"
+              step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+          </div>
+          <div>
+            <label for="weight" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Weight (kg)
+            </label>
+            <input
+              type="number"
+              id="weight"
+              placeholder="65"
+              min="20"
+              max="300"
+              step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            type="submit"
+            class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+          >
+            Calculate
+          </button>
+          <button
+            type="reset"
+            class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+          >
+            Reset
+          </button>
+        </div>
+      </form>
+
+      <!-- Results -->
+      <div id="result-area" class="mt-8 hidden">
+        <div class="text-center mb-6">
+          <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">Your BMI</div>
+          <div id="bmi-value" class="text-5xl font-bold text-primary-600 dark:text-primary-400">0</div>
+        </div>
+
+        <!-- Gauge -->
+        <div class="relative h-8 rounded-full overflow-hidden mb-6 flex">
+          <div class="flex-1 bg-blue-400" title="Underweight"></div>
+          <div class="flex-1 bg-green-400" title="Normal"></div>
+          <div class="flex-1 bg-yellow-400" title="Overweight"></div>
+          <div class="flex-1 bg-red-400" title="Obese"></div>
+          <div id="gauge-indicator" class="absolute top-0 w-1 h-full bg-gray-900 dark:bg-white transition-all duration-500" style="left: 0%"></div>
+        </div>
+
+        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-6">
+          <span>Underweight<br/>&lt;18.5</span>
+          <span>Normal<br/>18.5-24.9</span>
+          <span>Overweight<br/>25-29.9</span>
+          <span>Obese<br/>≥30</span>
+        </div>
+
+        <!-- Category Info -->
+        <div id="category-info" class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+          <h3 id="category-name" class="text-xl font-bold text-gray-900 dark:text-white mb-2"></h3>
+          <p id="category-range" class="text-sm text-gray-600 dark:text-gray-400 mb-4"></p>
+          <p id="category-description" class="text-gray-700 dark:text-gray-300"></p>
+          <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+            <span class="text-sm text-gray-600 dark:text-gray-400">Healthy weight range: </span>
+            <span id="ideal-weight-range" class="font-medium text-gray-900 dark:text-white"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Back to Tools
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const bmiForm = document.getElementById('bmi-form') as HTMLFormElement;
+  const heightInput = document.getElementById('height') as HTMLInputElement;
+  const weightInput = document.getElementById('weight') as HTMLInputElement;
+  const resultArea = document.getElementById('result-area');
+  const bmiValue = document.getElementById('bmi-value');
+  const gaugeIndicator = document.getElementById('gauge-indicator');
+  const categoryName = document.getElementById('category-name');
+  const categoryRange = document.getElementById('category-range');
+  const categoryDescription = document.getElementById('category-description');
+  const idealWeightRange = document.getElementById('ideal-weight-range');
+
+  function calculateBMI(height: number, weight: number): number {
+    const heightInMeters = height / 100;
+    return weight / (heightInMeters * heightInMeters);
+  }
+
+  function getBMICategory(bmi: number) {
+    if (bmi < 18.5) {
+      return {
+        name: 'Underweight',
+        range: 'BMI below 18.5',
+        description: 'Your weight is below the healthy range. Consider a balanced diet and appropriate exercise to reach a healthy weight.',
+        gaugePosition: (bmi / 18.5) * 25
+      };
+    } else if (bmi < 25) {
+      return {
+        name: 'Normal Weight',
+        range: 'BMI 18.5 - 24.9',
+        description: 'You are within the ideal weight range. Maintain your current weight with regular exercise and a balanced diet.',
+        gaugePosition: 25 + ((bmi - 18.5) / (25 - 18.5)) * 25
+      };
+    } else if (bmi < 30) {
+      return {
+        name: 'Overweight',
+        range: 'BMI 25.0 - 29.9',
+        description: 'Your weight is above the healthy range. Consider dietary adjustments and regular exercise to manage your weight.',
+        gaugePosition: 50 + ((bmi - 25) / (30 - 25)) * 25
+      };
+    } else {
+      return {
+        name: 'Obese',
+        range: 'BMI 30.0 or higher',
+        description: 'Health management is recommended. Please consult with a doctor or nutritionist to develop a comprehensive management plan.',
+        gaugePosition: Math.min(75 + ((bmi - 30) / 10) * 25, 98)
+      };
+    }
+  }
+
+  function calculateIdealWeightRange(height: number) {
+    const heightInMeters = height / 100;
+    return {
+      min: 18.5 * (heightInMeters * heightInMeters),
+      max: 24.9 * (heightInMeters * heightInMeters)
+    };
+  }
+
+  bmiForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const height = parseFloat(heightInput.value);
+    const weight = parseFloat(weightInput.value);
+
+    if (!height || !weight) {
+      alert('Please enter both height and weight');
+      return;
+    }
+
+    const bmi = calculateBMI(height, weight);
+    const category = getBMICategory(bmi);
+    const idealWeight = calculateIdealWeightRange(height);
+
+    resultArea?.classList.remove('hidden');
+    if (bmiValue) bmiValue.textContent = bmi.toFixed(1);
+    if (gaugeIndicator) gaugeIndicator.style.left = category.gaugePosition + '%';
+    if (categoryName) categoryName.textContent = category.name;
+    if (categoryRange) categoryRange.textContent = category.range;
+    if (categoryDescription) categoryDescription.textContent = category.description;
+    if (idealWeightRange) idealWeightRange.textContent = `${idealWeight.min.toFixed(1)}kg - ${idealWeight.max.toFixed(1)}kg`;
+
+    resultArea?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  bmiForm?.addEventListener('reset', () => {
+    resultArea?.classList.add('hidden');
+  });
+</script>
