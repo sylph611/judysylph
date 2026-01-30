@@ -7,9 +7,10 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonicalUrl?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, ogImage, canonicalUrl } = Astro.props;
+const { title, description, ogImage, canonicalUrl, jsonLd } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const alternateLang: Lang = lang === 'ko' ? 'en' : 'ko';
@@ -68,6 +69,32 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
 
     <!-- Kakao SDK -->
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js" integrity="sha384-6MFdIr0zOira1CHQkedUqJVql0YtcZA1P0nbPrQYJXVJZUkTk/oX4U9GhLcJg2pc" crossorigin="anonymous" defer></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "JudySylph",
+      "url": siteUrl,
+      "description": t('site.description'),
+      "inLanguage": [lang === 'ko' ? 'ko-KR' : 'en-US'],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${siteUrl}/${lang}?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JudySylph",
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon.svg`,
+      "sameAs": []
+    })} />
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Header -->

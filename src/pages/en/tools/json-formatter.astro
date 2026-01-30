@@ -4,9 +4,28 @@ import { getTool } from '../../../utils/tools';
 
 const lang = 'en';
 const tool = getTool('json-formatter', lang);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "JudySylph",
+    "url": "https://judysylph.com"
+  }
+};
 ---
 
-<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
   <div class="max-w-6xl mx-auto px-4 py-8">
     <!-- Header -->
     <div class="text-center mb-8">

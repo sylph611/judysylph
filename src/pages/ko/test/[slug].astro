@@ -21,9 +21,28 @@ if (!test) {
 
 const pageTitle = `${test.title} | JudySylph`;
 const pageDescription = test.description;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": test.title,
+  "description": test.description,
+  "educationalLevel": "beginner",
+  "learningResourceType": "Quiz",
+  "numberOfQuestions": test.questions.length,
+  "author": {
+    "@type": "Organization",
+    "name": "JudySylph"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "JudySylph",
+    "url": "https://judysylph.com"
+  }
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
   <div class="max-w-2xl mx-auto px-4 py-8">
     <!-- Test Header -->
     <div class="text-center mb-8">
