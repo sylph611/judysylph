@@ -1,0 +1,152 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Question from '../../../components/Question.astro';
+import AdBanner from '../../../components/AdBanner.astro';
+import { getTest, getAllTests } from '../../../utils/tests';
+
+export function getStaticPaths() {
+  const tests = getAllTests('ko');
+  return tests.map((test) => ({
+    params: { slug: test.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const lang = 'ko';
+const test = getTest(slug, lang);
+
+if (!test) {
+  return Astro.redirect('/ko');
+}
+
+const pageTitle = `${test.title} | TestMind`;
+const pageDescription = test.description;
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="max-w-2xl mx-auto px-4 py-8">
+    <!-- Test Header -->
+    <div class="text-center mb-8">
+      <div class="text-6xl mb-4">{test.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        {test.title}
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400">
+        {test.description}
+      </p>
+    </div>
+
+    <!-- Questions Container -->
+    <div id="test-container" data-test-slug={test.slug} data-lang={lang}>
+      {test.questions.map((q, index) => (
+        <div class={`question-slide ${index === 0 ? '' : 'hidden'}`} data-index={index}>
+          <Question
+            questionNumber={index + 1}
+            totalQuestions={test.questions.length}
+            question={q.question}
+            choices={q.choices}
+            lang={lang}
+          />
+
+          {/* Ad between questions (every 5 questions) */}
+          {(index + 1) % 5 === 0 && index !== test.questions.length - 1 && (
+            <AdBanner slot="inline" className="my-6" />
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading-state" class="hidden text-center py-12">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary-500 border-t-transparent"></div>
+      <p class="mt-4 text-gray-600 dark:text-gray-400">결과 분석 중...</p>
+    </div>
+  </div>
+</Layout>
+
+<script define:vars={{ testData: test }}>
+  const container = document.getElementById('test-container');
+  const loadingState = document.getElementById('loading-state');
+  const slug = container.dataset.testSlug;
+  const lang = container.dataset.lang;
+
+  let currentQuestion = 0;
+  const totalQuestions = testData.questions.length;
+  const scores = {};
+
+  // Initialize scores
+  testData.results.forEach(r => {
+    scores[r.type] = 0;
+  });
+
+  // Handle choice selection
+  document.querySelectorAll('.choice-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const button = e.currentTarget;
+      const choiceScores = JSON.parse(button.dataset.scores);
+
+      // Add scores
+      for (const [type, score] of Object.entries(choiceScores)) {
+        if (scores[type] !== undefined) {
+          scores[type] += score;
+        }
+      }
+
+      // Highlight selected
+      const parent = button.closest('.question-container');
+      parent.querySelectorAll('.choice-btn').forEach(b => {
+        b.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/30');
+      });
+      button.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/30');
+
+      // Move to next question after delay
+      setTimeout(() => {
+        if (currentQuestion < totalQuestions - 1) {
+          // Hide current
+          document.querySelectorAll('.question-slide')[currentQuestion].classList.add('hidden');
+          currentQuestion++;
+          // Show next
+          document.querySelectorAll('.question-slide')[currentQuestion].classList.remove('hidden');
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          // Show loading
+          container.classList.add('hidden');
+          loadingState.classList.remove('hidden');
+
+          // Calculate result
+          let maxType = '';
+          let maxScore = -Infinity;
+          for (const [type, score] of Object.entries(scores)) {
+            if (score > maxScore) {
+              maxScore = score;
+              maxType = type;
+            }
+          }
+
+          // Redirect to result page
+          setTimeout(() => {
+            window.location.href = `/${lang}/result/${slug}/${maxType}`;
+          }, 1500);
+        }
+      }, 300);
+    });
+  });
+</script>
+
+<style>
+  .question-slide {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

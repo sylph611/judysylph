@@ -1,0 +1,160 @@
+{
+  "slug": "stress",
+  "title": "Stress Type Test",
+  "description": "How do you experience and cope with stress? Find out your stress management style and type!",
+  "emoji": "😤",
+  "questions": [
+    {
+      "question": "What's the first symptom when you're stressed?",
+      "choices": [
+        { "text": "Headaches or physical pain", "scores": { "physical": 2, "avoidant": 1 } },
+        { "text": "Feeling anxious and restless", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "Getting easily irritated", "scores": { "explosive": 2, "perfectionist": 1 } },
+        { "text": "Feeling lethargic and unmotivated", "scores": { "avoidant": 2, "anxious": 1 } }
+      ]
+    },
+    {
+      "question": "How do you react when a deadline approaches?",
+      "choices": [
+        { "text": "Prepare ahead and finish comfortably", "scores": { "perfectionist": 2, "anxious": 1 } },
+        { "text": "Get it done with a last-minute sprint", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "Can't sleep well due to anxiety", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "Procrastinate as much as possible then somehow do it", "scores": { "avoidant": 2, "physical": 1 } }
+      ]
+    },
+    {
+      "question": "Your preferred stress relief method?",
+      "choices": [
+        { "text": "Exercise or physical activity", "scores": { "physical": 2, "explosive": 1 } },
+        { "text": "Having alone time", "scores": { "avoidant": 2, "anxious": 1 } },
+        { "text": "Chatting with friends", "scores": { "explosive": 2, "anxious": 1 } },
+        { "text": "Organizing and tidying perfectly", "scores": { "perfectionist": 2, "physical": 1 } }
+      ]
+    },
+    {
+      "question": "Your reaction when you make a mistake?",
+      "choices": [
+        { "text": "Keep dwelling on it", "scores": { "perfectionist": 2, "anxious": 1 } },
+        { "text": "Get angry and do something about it", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "Try to just forget about it", "scores": { "avoidant": 2, "physical": 1 } },
+        { "text": "Keep checking anxiously", "scores": { "anxious": 2, "perfectionist": 1 } }
+      ]
+    },
+    {
+      "question": "When something important suddenly comes up?",
+      "choices": [
+        { "text": "Nervous but start anyway", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "Quickly prioritize and handle it", "scores": { "perfectionist": 2, "explosive": 1 } },
+        { "text": "Tough but get it done somehow", "scores": { "physical": 2, "explosive": 1 } },
+        { "text": "Avoid if possible", "scores": { "avoidant": 2, "anxious": 1 } }
+      ]
+    },
+    {
+      "question": "How's your sleep pattern?",
+      "choices": [
+        { "text": "Can't sleep when worried", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "Sleep more when stressed", "scores": { "avoidant": 2, "physical": 1 } },
+        { "text": "Hard to fall asleep even when tired", "scores": { "physical": 2, "anxious": 1 } },
+        { "text": "Can't sleep until everything is done", "scores": { "perfectionist": 2, "explosive": 1 } }
+      ]
+    },
+    {
+      "question": "When others work inefficiently?",
+      "choices": [
+        { "text": "Get frustrated and do it myself", "scores": { "perfectionist": 2, "explosive": 1 } },
+        { "text": "Get annoyed but hold it in", "scores": { "explosive": 2, "anxious": 1 } },
+        { "text": "Bothered but leave it alone", "scores": { "avoidant": 2, "physical": 1 } },
+        { "text": "Carefully offer advice", "scores": { "anxious": 2, "perfectionist": 1 } }
+      ]
+    },
+    {
+      "question": "When going through hard times, you usually...",
+      "choices": [
+        { "text": "Body reacts first (headache, indigestion, etc.)", "scores": { "physical": 2, "avoidant": 1 } },
+        { "text": "Overthink and get anxious", "scores": { "anxious": 2, "perfectionist": 1 } },
+        { "text": "Feel like emotions will explode", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "Don't want to do anything", "scores": { "avoidant": 2, "anxious": 1 } }
+      ]
+    },
+    {
+      "question": "When workload is heavy?",
+      "choices": [
+        { "text": "Try harder to do it perfectly", "scores": { "perfectionist": 2, "anxious": 1 } },
+        { "text": "Start first and improve later", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "Get physically sick from stress", "scores": { "physical": 2, "avoidant": 1 } },
+        { "text": "Procrastinate then cram", "scores": { "avoidant": 2, "explosive": 1 } }
+      ]
+    },
+    {
+      "question": "Your eating habits when stressed?",
+      "choices": [
+        { "text": "Binge or overeat", "scores": { "explosive": 2, "physical": 1 } },
+        { "text": "Lose appetite and can't eat well", "scores": { "anxious": 2, "avoidant": 1 } },
+        { "text": "Try to eat regularly", "scores": { "perfectionist": 2, "physical": 1 } },
+        { "text": "No time to think about eating", "scores": { "avoidant": 2, "anxious": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "perfectionist",
+      "title": "The Perfectionist",
+      "emoji": "🎯",
+      "description": "You pursue perfection even in stressful situations! You set high standards and strive to meet them, but can be hard on yourself in the process. You like being systematic and planned.",
+      "traits": ["High standards", "Systematic", "Planned", "Responsible", "Self-critical"],
+      "advice": "It's okay not to be perfect. 'Good enough' is good enough. Don't be too hard on yourself. Small mistakes are part of growth. Remember that rest is also productive.",
+      "compatibility": {
+        "good": ["Anxious", "Physical"],
+        "bad": ["Avoidant"]
+      }
+    },
+    {
+      "type": "anxious",
+      "title": "The Anxious",
+      "emoji": "😰",
+      "description": "You feel a lot of worry and anxiety in stressful situations! You worry about the future and tend to think of worst-case scenarios first. You have a careful and cautious personality.",
+      "traits": ["Worried", "Careful", "Cautious", "Sensitive", "Future-oriented"],
+      "advice": "Focus on the present moment. Worrying about things that haven't happened is a waste of energy. Deep breathing and meditation can help. Most things you worry about never actually happen.",
+      "compatibility": {
+        "good": ["Perfectionist", "Avoidant"],
+        "bad": ["Explosive"]
+      }
+    },
+    {
+      "type": "explosive",
+      "title": "The Explosive",
+      "emoji": "🌋",
+      "description": "You're the type whose emotions explode when stress builds up! You usually hold it in, then it all bursts out at once when you reach your limit. You have a passionate and energetic personality.",
+      "traits": ["Passionate", "Direct", "Energetic", "Emotional", "Action-oriented"],
+      "advice": "Practice expressing emotions little by little. Bottling them up only leads to bigger explosions. Channeling energy through exercise or hobbies helps. Keeping an emotion journal can also help.",
+      "compatibility": {
+        "good": ["Physical", "Perfectionist"],
+        "bad": ["Anxious"]
+      }
+    },
+    {
+      "type": "avoidant",
+      "title": "The Avoider",
+      "emoji": "🐢",
+      "description": "You tend to avoid stressful situations! Rather than facing difficulties, you keep your distance and escape through sleep or other activities. You have a peace-seeking personality.",
+      "traits": ["Peace-seeking", "Avoidant", "Passive", "Comfort-seeking", "Introverted"],
+      "advice": "Problems don't disappear by avoiding them. Start facing small things gradually. Avoidance only gives temporary relief. It's okay to ask for help from someone you trust.",
+      "compatibility": {
+        "good": ["Anxious", "Physical"],
+        "bad": ["Perfectionist"]
+      }
+    },
+    {
+      "type": "physical",
+      "title": "The Physical",
+      "emoji": "💪",
+      "description": "You're the type whose stress shows physically! Psychological stress manifests as physical symptoms like headaches, indigestion, and fatigue. Your body and mind are closely connected.",
+      "traits": ["Mind-body connected", "Active", "Practical", "Sensory", "Intuitive"],
+      "advice": "Listen to your body's signals. Regular exercise and enough sleep are important. Stretching and yoga can help too. Don't ignore the signals your body sends.",
+      "compatibility": {
+        "good": ["Explosive", "Avoidant"],
+        "bad": ["Anxious"]
+      }
+    }
+  ]
+}

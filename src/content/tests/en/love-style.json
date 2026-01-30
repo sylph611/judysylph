@@ -1,0 +1,184 @@
+{
+  "slug": "love-style",
+  "title": "Love Style Test",
+  "description": "What's your love style? Discover how you love and your tendencies in relationships!",
+  "emoji": "💕",
+  "questions": [
+    {
+      "question": "What's your ideal date with your partner?",
+      "choices": [
+        { "text": "Dinner at a romantic restaurant", "scores": { "romantic": 2, "devoted": 1 } },
+        { "text": "An adventure date with activities together", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Watching movies comfortably at home", "scores": { "stable": 2, "devoted": 1 } },
+        { "text": "Respecting each other's hobbies with personal time", "scores": { "independent": 2, "rational": 1 } }
+      ]
+    },
+    {
+      "question": "How do you express love to your partner?",
+      "choices": [
+        { "text": "Through words and writing frequently", "scores": { "romantic": 2, "devoted": 1 } },
+        { "text": "With surprises and unexpected events", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Through actions and dedication", "scores": { "devoted": 2, "stable": 1 } },
+        { "text": "Being there when needed", "scores": { "stable": 2, "rational": 1 } }
+      ]
+    },
+    {
+      "question": "When you have a conflict with your partner, you...",
+      "choices": [
+        { "text": "Try to resolve it through conversation right away", "scores": { "devoted": 2, "romantic": 1 } },
+        { "text": "Take time to cool down before talking", "scores": { "rational": 2, "independent": 1 } },
+        { "text": "Try to lighten the mood with humor", "scores": { "playful": 2, "adventurous": 1 } },
+        { "text": "Check on my partner's feelings first", "scores": { "stable": 2, "devoted": 1 } }
+      ]
+    },
+    {
+      "question": "The most important quality in a partner is...",
+      "choices": [
+        { "text": "Someone who treats me romantically", "scores": { "romantic": 2, "devoted": 1 } },
+        { "text": "Someone to try new things with", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Someone reliable and stable", "scores": { "stable": 2, "devoted": 1 } },
+        { "text": "Someone who respects each other's space", "scores": { "independent": 2, "rational": 1 } }
+      ]
+    },
+    {
+      "question": "How often do you want to communicate with your partner?",
+      "choices": [
+        { "text": "Constantly throughout the day, always connected", "scores": { "devoted": 2, "romantic": 1 } },
+        { "text": "Once or twice a day is enough", "scores": { "stable": 2, "rational": 1 } },
+        { "text": "Only when something important happens", "scores": { "independent": 2, "rational": 1 } },
+        { "text": "It depends on my mood", "scores": { "playful": 2, "adventurous": 1 } }
+      ]
+    },
+    {
+      "question": "Your relationship with your partner's friends?",
+      "choices": [
+        { "text": "I want to actively become close", "scores": { "devoted": 2, "stable": 1 } },
+        { "text": "I'd like to get along comfortably", "scores": { "playful": 2, "adventurous": 1 } },
+        { "text": "I want to maintain an appropriate distance", "scores": { "independent": 2, "rational": 1 } },
+        { "text": "I don't mind as long as I'm with my partner", "scores": { "romantic": 2, "devoted": 1 } }
+      ]
+    },
+    {
+      "question": "What do you think about jealousy?",
+      "choices": [
+        { "text": "I think it's an expression of love", "scores": { "devoted": 2, "romantic": 1 } },
+        { "text": "It's natural to some extent", "scores": { "stable": 2, "playful": 1 } },
+        { "text": "It's unnecessary if there's trust", "scores": { "rational": 2, "independent": 1 } },
+        { "text": "It depends on the situation", "scores": { "adventurous": 2, "playful": 1 } }
+      ]
+    },
+    {
+      "question": "When giving a gift to your partner, you...",
+      "choices": [
+        { "text": "Prepare a meaningful special gift", "scores": { "romantic": 2, "devoted": 1 } },
+        { "text": "Gift an experience (travel, shows, etc.)", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Buy something practical and needed", "scores": { "stable": 2, "rational": 1 } },
+        { "text": "Prepare a surprise", "scores": { "playful": 2, "adventurous": 1 } }
+      ]
+    },
+    {
+      "question": "Your ideal relationship looks like...",
+      "choices": [
+        { "text": "A romantic relationship with daily excitement", "scores": { "romantic": 2, "playful": 1 } },
+        { "text": "A partnership that grows together", "scores": { "adventurous": 2, "rational": 1 } },
+        { "text": "A comfortable and stable relationship", "scores": { "stable": 2, "devoted": 1 } },
+        { "text": "An independent relationship with mutual respect", "scores": { "independent": 2, "rational": 1 } }
+      ]
+    },
+    {
+      "question": "When your partner is having a hard time, you...",
+      "choices": [
+        { "text": "Hold them and comfort them", "scores": { "devoted": 2, "romantic": 1 } },
+        { "text": "Suggest activities to change their mood", "scores": { "playful": 2, "adventurous": 1 } },
+        { "text": "Find practical solutions", "scores": { "rational": 2, "stable": 1 } },
+        { "text": "Give them time to sort things out alone", "scores": { "independent": 2, "rational": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "romantic",
+      "title": "The Romantic",
+      "emoji": "🌹",
+      "description": "You dream of romantic love! When you fall in love, you devote your whole heart and are expressive about your feelings. You value special anniversaries and events, cherishing time with your partner.",
+      "traits": ["Emotional", "Expressive", "Values anniversaries", "Loves events", "Seeks excitement"],
+      "advice": "Consider practical aspects too. Sometimes love can be felt in simple everyday moments. Understand that your partner may express love differently.",
+      "compatibility": {
+        "good": ["Devoted", "Playful"],
+        "bad": ["Independent"]
+      }
+    },
+    {
+      "type": "devoted",
+      "title": "The Devoted",
+      "emoji": "💝",
+      "description": "You're the type to devote yourself entirely to your partner! You'd do anything for the one you love and value deep bonds in relationships. You willingly sacrifice for your partner and give unchanging love.",
+      "traits": ["Devoted", "Faithful", "Protective", "Deep bonds", "Self-sacrificing"],
+      "advice": "Don't forget to take care of yourself. It's great to care for your partner, but your happiness matters too. Allow yourself to receive sometimes.",
+      "compatibility": {
+        "good": ["Romantic", "Stable"],
+        "bad": ["Independent"]
+      }
+    },
+    {
+      "type": "adventurous",
+      "title": "The Adventurer",
+      "emoji": "🎢",
+      "description": "You seek new challenges and excitement even in love! You love sharing new experiences together and enjoy bringing change to daily life. You want passionate and energetic romance.",
+      "traits": ["Challenging", "Passionate", "Seeks change", "Energetic", "Creative"],
+      "advice": "Sometimes stability is needed. Seeking new things is great, but take time to build deep bonds too. Understand that your partner might not enjoy adventures.",
+      "compatibility": {
+        "good": ["Playful", "Romantic"],
+        "bad": ["Stable"]
+      }
+    },
+    {
+      "type": "stable",
+      "title": "The Stability Seeker",
+      "emoji": "🏠",
+      "description": "You want a comfortable and stable relationship! You value relationships based on trust and faith, enjoying sharing simple everyday happiness together. You seek to give and receive unchanging love.",
+      "traits": ["Stable", "Values trust", "Shares daily life", "Consistent", "Considerate"],
+      "advice": "Try new things occasionally. Stability is good, but small changes can bring vitality to the relationship. Understand your partner's adventurous side too.",
+      "compatibility": {
+        "good": ["Devoted", "Rational"],
+        "bad": ["Adventurous"]
+      }
+    },
+    {
+      "type": "independent",
+      "title": "The Independent",
+      "emoji": "🦅",
+      "description": "You value your own space and time even while in a relationship! You want a relationship where you respect each other and value individual lives. You can maintain a healthy distance while still sharing deep love.",
+      "traits": ["Independent", "Values personal space", "Respectful", "Mature", "Self-managing"],
+      "advice": "Sometimes try getting closer. Keeping distance is fine, but your partner might feel lonely. Practice expressing your emotions too.",
+      "compatibility": {
+        "good": ["Rational", "Stable"],
+        "bad": ["Devoted", "Romantic"]
+      }
+    },
+    {
+      "type": "playful",
+      "title": "The Fun-Seeker",
+      "emoji": "🎉",
+      "description": "You value fun and enjoyment in love! You bring vitality to relationships with humor and playfulness, cherishing times when you can laugh together. You enjoy love with a light heart.",
+      "traits": ["Humorous", "Optimistic", "Lively", "Playful", "Positive"],
+      "advice": "Serious conversations are needed too. You can't always be laughing. Listen to your partner's serious emotions as well.",
+      "compatibility": {
+        "good": ["Adventurous", "Romantic"],
+        "bad": ["Rational"]
+      }
+    },
+    {
+      "type": "rational",
+      "title": "The Rational",
+      "emoji": "🧠",
+      "description": "You value rational judgment even in love! Rather than being swept by emotions, you analyze situations calmly and pursue reasonable relationships. When problems arise, you try to solve them logically.",
+      "traits": ["Rational", "Analytical", "Cool-headed", "Solution-oriented", "Realistic"],
+      "advice": "Pay attention to emotional expression too. Logic alone can't fill your partner's heart. It's okay to react emotionally sometimes.",
+      "compatibility": {
+        "good": ["Independent", "Stable"],
+        "bad": ["Playful"]
+      }
+    }
+  ]
+}

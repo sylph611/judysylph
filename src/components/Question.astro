@@ -1,0 +1,57 @@
+---
+interface Choice {
+  text: string;
+  scores: Record<string, number>;
+}
+
+interface Props {
+  questionNumber: number;
+  totalQuestions: number;
+  question: string;
+  choices: Choice[];
+  lang: string;
+}
+
+const { questionNumber, totalQuestions, question, choices, lang } = Astro.props;
+const progress = (questionNumber / totalQuestions) * 100;
+---
+
+<div class="question-container" data-question={questionNumber}>
+  <!-- Progress Bar -->
+  <div class="mb-6">
+    <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
+      <span>{lang === 'ko' ? '질문' : 'Question'} {questionNumber} / {totalQuestions}</span>
+      <span>{Math.round(progress)}%</span>
+    </div>
+    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+      <div
+        class="bg-primary-600 h-2.5 rounded-full transition-all duration-300"
+        style={`width: ${progress}%`}
+      ></div>
+    </div>
+  </div>
+
+  <!-- Question -->
+  <h2 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+    {question}
+  </h2>
+
+  <!-- Choices -->
+  <div class="space-y-3">
+    {choices.map((choice, index) => (
+      <button
+        type="button"
+        class="choice-btn w-full p-4 text-left bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary-400 dark:hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200 text-gray-800 dark:text-gray-200"
+        data-scores={JSON.stringify(choice.scores)}
+        data-index={index}
+      >
+        <span class="flex items-center gap-3">
+          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-sm font-medium">
+            {String.fromCharCode(65 + index)}
+          </span>
+          <span>{choice.text}</span>
+        </span>
+      </button>
+    ))}
+  </div>
+</div>
