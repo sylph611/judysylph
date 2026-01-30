@@ -1,0 +1,216 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('mortgage-comparison', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Loan Amount ($)</label>
+            <input type="text" id="loanAmount" placeholder="300,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Interest Rate (%)</label>
+            <input type="number" id="interestRate" placeholder="6.5" step="0.1" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Loan Term</label>
+            <select id="loanPeriod" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="180">15 years</option>
+              <option value="240">20 years</option>
+              <option value="300">25 years</option>
+              <option value="360" selected>30 years</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Compare With</label>
+            <select id="compareType" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="15yr">15-year vs 30-year</option>
+              <option value="biweekly">Monthly vs Bi-weekly</option>
+              <option value="extra">With Extra Payment</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">Compare Options</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border-2 border-transparent" id="card-a">
+            <h4 id="title-a" class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-center">Option A</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Monthly Payment</span><span id="a-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Interest</span><span id="a-interest" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Paid</span><span id="a-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Payoff Time</span><span id="a-time" class="font-medium">-</span></div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 border-2 border-transparent" id="card-b">
+            <h4 id="title-b" class="font-bold text-green-800 dark:text-green-200 mb-3 text-center">Option B</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Monthly Payment</span><span id="b-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Interest</span><span id="b-interest" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Paid</span><span id="b-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Payoff Time</span><span id="b-time" class="font-medium">-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">📊 Savings Analysis</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+              <span class="text-primary-700 dark:text-primary-300 font-medium">Interest Savings</span>
+              <span id="interest-saved" class="font-bold text-xl text-green-600"></span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">Time Saved</span>
+              <span id="time-saved" class="font-bold"></span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">Extra Monthly Cost</span>
+              <span id="extra-cost" class="font-bold"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+          <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 Related Calculators</h3>
+          <div class="flex flex-wrap gap-2">
+            <a href="/en/tools/loan-refinance" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🔄 Refinance Calculator</a>
+            <a href="/en/tools/apartment-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏢 Home Affordability</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← Back to Tools</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const loanInput = document.getElementById('loanAmount') as HTMLInputElement;
+
+  loanInput?.addEventListener('input', e => {
+    const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+    (e.target as HTMLInputElement).value = Number(v).toLocaleString();
+  });
+
+  function calcMonthly(p: number, r: number, n: number): number {
+    const mr = r / 100 / 12;
+    return p * mr * Math.pow(1+mr, n) / (Math.pow(1+mr, n) - 1);
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const amount = parseInt(loanInput.value.replace(/,/g,''));
+    const rate = parseFloat((document.getElementById('interestRate') as HTMLInputElement).value);
+    const months = parseInt((document.getElementById('loanPeriod') as HTMLSelectElement).value);
+    const compareType = (document.getElementById('compareType') as HTMLSelectElement).value;
+
+    let aMonthly, aInterest, aTotal, aTime;
+    let bMonthly, bInterest, bTotal, bTime;
+
+    const monthly30 = calcMonthly(amount, rate, 360);
+    const total30 = monthly30 * 360;
+    const interest30 = total30 - amount;
+
+    if (compareType === '15yr') {
+      document.getElementById('title-a')!.textContent = '30-Year Mortgage';
+      document.getElementById('title-b')!.textContent = '15-Year Mortgage';
+
+      aMonthly = monthly30; aInterest = interest30; aTotal = total30; aTime = '30 years';
+
+      const monthly15 = calcMonthly(amount, rate - 0.5, 180);
+      bMonthly = monthly15;
+      bTotal = monthly15 * 180;
+      bInterest = bTotal - amount;
+      bTime = '15 years';
+    } else if (compareType === 'biweekly') {
+      document.getElementById('title-a')!.textContent = 'Monthly Payments';
+      document.getElementById('title-b')!.textContent = 'Bi-weekly Payments';
+
+      aMonthly = monthly30; aInterest = interest30; aTotal = total30; aTime = '30 years';
+
+      const biweekly = monthly30 / 2;
+      let balance = amount;
+      const mr = rate / 100 / 12;
+      let payments = 0;
+      while (balance > 0) {
+        const interest = balance * (mr / 2);
+        balance -= (biweekly - interest);
+        payments++;
+      }
+      bMonthly = biweekly * 2;
+      bTime = Math.round(payments / 26) + ' years';
+      bTotal = biweekly * payments;
+      bInterest = bTotal - amount;
+    } else {
+      document.getElementById('title-a')!.textContent = 'Standard Payment';
+      document.getElementById('title-b')!.textContent = 'With $200 Extra/mo';
+
+      aMonthly = monthly30; aInterest = interest30; aTotal = total30; aTime = '30 years';
+
+      const extra = 200;
+      let balance = amount;
+      const mr = rate / 100 / 12;
+      let monthsToPayoff = 0;
+      let totalPaid = 0;
+      while (balance > 0 && monthsToPayoff < 360) {
+        const interest = balance * mr;
+        const principal = Math.min(balance, monthly30 - interest + extra);
+        balance -= principal;
+        totalPaid += monthly30 + extra;
+        monthsToPayoff++;
+      }
+      bMonthly = monthly30 + extra;
+      bTime = Math.round(monthsToPayoff / 12) + ' years';
+      bTotal = totalPaid;
+      bInterest = bTotal - amount;
+    }
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    document.getElementById('a-monthly')!.textContent = '$' + Math.round(aMonthly).toLocaleString();
+    document.getElementById('a-interest')!.textContent = '$' + Math.round(aInterest).toLocaleString();
+    document.getElementById('a-total')!.textContent = '$' + Math.round(aTotal).toLocaleString();
+    document.getElementById('a-time')!.textContent = aTime;
+
+    document.getElementById('b-monthly')!.textContent = '$' + Math.round(bMonthly).toLocaleString();
+    document.getElementById('b-interest')!.textContent = '$' + Math.round(bInterest).toLocaleString();
+    document.getElementById('b-total')!.textContent = '$' + Math.round(bTotal).toLocaleString();
+    document.getElementById('b-time')!.textContent = bTime;
+
+    const interestSaved = aInterest - bInterest;
+    document.getElementById('interest-saved')!.textContent = '$' + Math.round(interestSaved).toLocaleString();
+
+    const aYears = parseInt(aTime);
+    const bYears = parseInt(bTime);
+    document.getElementById('time-saved')!.textContent = (aYears - bYears) + ' years';
+
+    const extraCost = bMonthly - aMonthly;
+    document.getElementById('extra-cost')!.textContent = '+$' + Math.round(extraCost).toLocaleString() + '/mo';
+
+    if (interestSaved > 0) {
+      document.getElementById('card-b')!.classList.add('border-green-500');
+      document.getElementById('card-a')!.classList.remove('border-blue-500');
+    }
+  });
+</script>

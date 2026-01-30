@@ -1,0 +1,401 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('car-buy-vs-lease', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">차량 가격</label>
+            <input type="text" id="carPrice" placeholder="5,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            <p class="text-xs text-gray-500 mt-1">만원</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">이용 기간</label>
+            <select id="usePeriod" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="36">3년</option>
+              <option value="48" selected>4년</option>
+              <option value="60">5년</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-sm">🚗 구매 (할부)</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">선수금</label>
+                <input type="text" id="buyDown" placeholder="1,000" value="1000" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500">만원</p>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">할부 금리</label>
+                <input type="number" id="buyRate" placeholder="5.9" step="0.1" value="5.9" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500">연 %</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-green-800 dark:text-green-200 mb-3 text-sm">📋 리스</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">보증금</label>
+                <input type="text" id="leaseDeposit" placeholder="500" value="500" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500">만원</p>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">월 리스료</label>
+                <input type="text" id="leaseMonthly" placeholder="80" required class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500">만원</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-purple-800 dark:text-purple-200 mb-3 text-sm">🚕 장기렌트</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">보증금</label>
+                <input type="text" id="rentDeposit" placeholder="300" value="300" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500">만원</p>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">월 렌트비</label>
+                <input type="text" id="rentMonthly" placeholder="90" required class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500">만원</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">예상 잔존가치 (구매 시 기간 후 중고차 가치)</label>
+          <input type="text" id="residualValue" placeholder="2,500" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          <p class="text-xs text-gray-500 mt-1">만원 (보통 차량가의 40~60%)</p>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">비교 분석하기</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="rounded-2xl p-6 text-white text-center mb-6">
+          <div id="verdict-emoji" class="text-5xl mb-2"></div>
+          <div id="verdict" class="text-2xl font-bold mb-2"></div>
+          <div id="verdict-desc" class="text-lg opacity-90"></div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border-2 border-transparent" id="card-buy">
+            <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-center text-sm">🚗 구매</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">초기비용</span><span id="buy-initial" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 비용</span><span id="buy-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 지출</span><span id="buy-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">잔존가치</span><span id="buy-residual" class="font-medium text-green-600">-</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2"><span class="font-medium">실질비용</span><span id="buy-real" class="font-bold">-</span></div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 border-2 border-transparent" id="card-lease">
+            <h4 class="font-bold text-green-800 dark:text-green-200 mb-3 text-center text-sm">📋 리스</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">초기비용</span><span id="lease-initial" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 비용</span><span id="lease-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 지출</span><span id="lease-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">보증금반환</span><span id="lease-return" class="font-medium text-green-600">-</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2"><span class="font-medium">실질비용</span><span id="lease-real" class="font-bold">-</span></div>
+            </div>
+          </div>
+
+          <div class="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4 border-2 border-transparent" id="card-rent">
+            <h4 class="font-bold text-purple-800 dark:text-purple-200 mb-3 text-center text-sm">🚕 장기렌트</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">초기비용</span><span id="rent-initial" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 비용</span><span id="rent-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 지출</span><span id="rent-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">보증금반환</span><span id="rent-return" class="font-medium text-green-600">-</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2"><span class="font-medium">실질비용</span><span id="rent-real" class="font-bold">-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">📊 장단점 비교</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b dark:border-gray-600">
+                  <th class="text-left py-2">항목</th>
+                  <th class="text-center py-2">구매</th>
+                  <th class="text-center py-2">리스</th>
+                  <th class="text-center py-2">장기렌트</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600 dark:text-gray-400">
+                <tr class="border-b dark:border-gray-600">
+                  <td class="py-2">소유권</td>
+                  <td class="text-center">✅ 내 것</td>
+                  <td class="text-center">❌ 리스사</td>
+                  <td class="text-center">❌ 렌트사</td>
+                </tr>
+                <tr class="border-b dark:border-gray-600">
+                  <td class="py-2">보험/세금</td>
+                  <td class="text-center">❌ 본인부담</td>
+                  <td class="text-center">❌ 본인부담</td>
+                  <td class="text-center">✅ 포함</td>
+                </tr>
+                <tr class="border-b dark:border-gray-600">
+                  <td class="py-2">정비/관리</td>
+                  <td class="text-center">❌ 본인</td>
+                  <td class="text-center">⚠️ 일부포함</td>
+                  <td class="text-center">✅ 전체포함</td>
+                </tr>
+                <tr class="border-b dark:border-gray-600">
+                  <td class="py-2">중도해지</td>
+                  <td class="text-center">✅ 자유</td>
+                  <td class="text-center">❌ 위약금</td>
+                  <td class="text-center">❌ 위약금</td>
+                </tr>
+                <tr>
+                  <td class="py-2">비용처리</td>
+                  <td class="text-center">⚠️ 감가상각</td>
+                  <td class="text-center">✅ 전액경비</td>
+                  <td class="text-center">✅ 전액경비</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SEO Content -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 이 결과가 의미하는 것</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <!-- AD_SLOT: middle-content -->
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 이런 분에게 적합합니다</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ 주의해야 할 점</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <!-- AD_SLOT: before-faq -->
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ 자주 묻는 질문</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 관련 계산기</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/ko/tools/car-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🚗 내 연봉으로 살 수 있는 차</a>
+              <a href="/ko/tools/loan-comparison" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">💳 신용대출 vs 카드론</a>
+              <a href="/ko/tools/salary-percentile" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">📊 내 연봉 순위</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const numInputs = ['carPrice', 'buyDown', 'leaseDeposit', 'leaseMonthly', 'rentDeposit', 'rentMonthly', 'residualValue'];
+
+  numInputs.forEach(id => {
+    const el = document.getElementById(id) as HTMLInputElement;
+    el?.addEventListener('input', e => {
+      const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+      (e.target as HTMLInputElement).value = Number(v).toLocaleString('ko-KR');
+    });
+  });
+
+  function calcMonthlyPayment(principal: number, annualRate: number, months: number): number {
+    const r = annualRate / 100 / 12;
+    if (r === 0) return principal / months;
+    return principal * r * Math.pow(1+r, months) / (Math.pow(1+r, months) - 1);
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const carPrice = parseInt((document.getElementById('carPrice') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const months = parseInt((document.getElementById('usePeriod') as HTMLSelectElement).value);
+    const buyDown = parseInt((document.getElementById('buyDown') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const buyRate = parseFloat((document.getElementById('buyRate') as HTMLInputElement).value) || 0;
+    const leaseDeposit = parseInt((document.getElementById('leaseDeposit') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const leaseMonthly = parseInt((document.getElementById('leaseMonthly') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const rentDeposit = parseInt((document.getElementById('rentDeposit') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const rentMonthly = parseInt((document.getElementById('rentMonthly') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const residualValue = parseInt((document.getElementById('residualValue') as HTMLInputElement).value.replace(/,/g,'')) || Math.round(carPrice * 0.5);
+
+    // 구매 (할부) - 취득세 7% 포함
+    const taxRate = 0.07;
+    const buyTax = Math.round(carPrice * taxRate);
+    const buyInitial = buyDown + buyTax;
+    const buyLoan = carPrice - buyDown;
+    const buyMonthlyPayment = calcMonthlyPayment(buyLoan * 10000, buyRate, months) / 10000;
+    const buyTotalPayment = buyInitial + buyMonthlyPayment * months;
+    const buyRealCost = buyTotalPayment - residualValue;
+
+    // 리스
+    const leaseInitial = leaseDeposit;
+    const leaseTotalPayment = leaseDeposit + leaseMonthly * months;
+    const leaseRealCost = leaseTotalPayment - leaseDeposit; // 보증금 반환
+
+    // 장기렌트
+    const rentInitial = rentDeposit;
+    const rentTotalPayment = rentDeposit + rentMonthly * months;
+    const rentRealCost = rentTotalPayment - rentDeposit; // 보증금 반환
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    // Find best option
+    const costs = [
+      { name: '구매', cost: buyRealCost, color: 'blue', id: 'buy' },
+      { name: '리스', cost: leaseRealCost, color: 'green', id: 'lease' },
+      { name: '장기렌트', cost: rentRealCost, color: 'purple', id: 'rent' }
+    ].sort((a, b) => a.cost - b.cost);
+
+    const best = costs[0];
+    const saving = costs[1].cost - costs[0].cost;
+
+    // Verdict
+    const header = document.getElementById('result-header')!;
+    let emoji, headerColor;
+    if (best.id === 'buy') { emoji = '🚗'; headerColor = 'from-blue-500 to-cyan-600'; }
+    else if (best.id === 'lease') { emoji = '📋'; headerColor = 'from-green-500 to-emerald-600'; }
+    else { emoji = '🚕'; headerColor = 'from-purple-500 to-pink-600'; }
+
+    header.className = `bg-gradient-to-br ${headerColor} rounded-2xl p-6 text-white text-center mb-6`;
+    document.getElementById('verdict-emoji')!.textContent = emoji;
+    document.getElementById('verdict')!.textContent = `${best.name}가 가장 유리!`;
+    document.getElementById('verdict-desc')!.textContent = `실질 비용 ${best.cost.toLocaleString()}만원 (${saving.toLocaleString()}만원 절감)`;
+
+    // Highlight best card
+    ['card-buy', 'card-lease', 'card-rent'].forEach(id => {
+      document.getElementById(id)!.classList.remove('border-primary-500');
+    });
+    document.getElementById(`card-${best.id}`)!.classList.add('border-primary-500');
+
+    // Display values
+    document.getElementById('buy-initial')!.textContent = buyInitial.toLocaleString() + '만원';
+    document.getElementById('buy-monthly')!.textContent = Math.round(buyMonthlyPayment).toLocaleString() + '만원';
+    document.getElementById('buy-total')!.textContent = Math.round(buyTotalPayment).toLocaleString() + '만원';
+    document.getElementById('buy-residual')!.textContent = '+' + residualValue.toLocaleString() + '만원';
+    document.getElementById('buy-real')!.textContent = Math.round(buyRealCost).toLocaleString() + '만원';
+
+    document.getElementById('lease-initial')!.textContent = leaseInitial.toLocaleString() + '만원';
+    document.getElementById('lease-monthly')!.textContent = leaseMonthly.toLocaleString() + '만원';
+    document.getElementById('lease-total')!.textContent = leaseTotalPayment.toLocaleString() + '만원';
+    document.getElementById('lease-return')!.textContent = '+' + leaseDeposit.toLocaleString() + '만원';
+    document.getElementById('lease-real')!.textContent = leaseRealCost.toLocaleString() + '만원';
+
+    document.getElementById('rent-initial')!.textContent = rentInitial.toLocaleString() + '만원';
+    document.getElementById('rent-monthly')!.textContent = rentMonthly.toLocaleString() + '만원';
+    document.getElementById('rent-total')!.textContent = rentTotalPayment.toLocaleString() + '만원';
+    document.getElementById('rent-return')!.textContent = '+' + rentDeposit.toLocaleString() + '만원';
+    document.getElementById('rent-real')!.textContent = rentRealCost.toLocaleString() + '만원';
+
+    // SEO
+    generateSeoContent(carPrice, months, best, buyRealCost, leaseRealCost, rentRealCost, saving);
+  });
+
+  function generateSeoContent(carPrice: number, months: number, best: any, buyCost: number, leaseCost: number, rentCost: number, saving: number) {
+    const years = months / 12;
+
+    // Summary
+    const summaryText = `차량가 ${carPrice.toLocaleString()}만원 기준 ${years}년 이용 시 ${best.name}가 가장 유리 (실질 비용 ${best.cost.toLocaleString()}만원)`;
+    document.getElementById('seo-summary')!.textContent = `📋 결과 요약: ${summaryText}`;
+
+    // Meaning
+    const meaningText = `${carPrice.toLocaleString()}만원 차량을 ${years}년간 이용할 때, ` +
+      `구매(할부)는 취득세 포함 초기비용과 할부금을 합산 후 중고차 가치를 제외한 실질 비용이 ${Math.round(buyCost).toLocaleString()}만원입니다. ` +
+      `리스는 보증금 반환을 고려한 실질 비용이 ${leaseCost.toLocaleString()}만원, ` +
+      `장기렌트는 ${rentCost.toLocaleString()}만원입니다. ` +
+      `${best.name}를 선택하면 차선책 대비 ${saving.toLocaleString()}만원을 절약할 수 있습니다. ` +
+      `단, 이 계산에는 보험료, 자동차세, 정비비 등 유지비가 미포함되어 있으니 참고하세요.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // Suitable
+    const suitableText = `<strong>구매</strong>: 5년 이상 장기 보유 예정, 내 차에 대한 애착이 있는 분, 중고차 매매에 자신 있는 분, 사업자가 아닌 개인. ` +
+      `<strong>리스</strong>: 사업자로 비용처리가 필요한 분, 3~4년 주기로 차를 바꾸고 싶은 분, 중고차 처분이 귀찮은 분. ` +
+      `<strong>장기렌트</strong>: 보험/세금/정비 신경쓰기 싫은 분, 차량 관리에 시간 쓰기 싫은 분, 법인/사업자로 전액 경비 처리하고 싶은 분.`;
+    document.getElementById('seo-suitable')!.innerHTML = suitableText;
+
+    // Caution
+    const cautionText = `각 방식의 숨겨진 비용을 주의하세요. 구매 시 취득세(7%), 자동차세(연 50~100만원), 보험료(연 80~150만원), 정비비가 별도입니다. ` +
+      `리스/렌트는 약정 주행거리(보통 연 2만km) 초과 시 km당 100~300원 추가 비용, 중도해지 시 잔여 리스료의 30~50% 위약금이 발생합니다. ` +
+      `또한 사고 시 차량 감가 비용을 본인이 부담할 수 있으니 계약 조건을 꼼꼼히 확인하세요.`;
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ
+    const faqs = [
+      {
+        q: '리스와 장기렌트의 차이점은?',
+        a: '리스는 보험, 세금을 본인이 납부하고 번호판이 일반 번호입니다. 장기렌트는 모든 유지비가 월 납입금에 포함되어 있고 "하/허/호" 렌트카 번호판을 사용합니다. 리스가 월 비용은 저렴하지만, 관리의 편의성은 장기렌트가 높습니다.'
+      },
+      {
+        q: '사업자에게는 어떤 방식이 유리한가요?',
+        a: '사업자는 리스/장기렌트가 유리합니다. 월 납입금 전액을 경비(손금)로 처리할 수 있어 세금을 줄일 수 있습니다. 구매 시에는 감가상각만 비용 처리되어 초기에 경비 인정이 제한됩니다. 단, 9인승 이상이나 화물차는 구매해도 유리할 수 있습니다.'
+      },
+      {
+        q: '리스 만기 후 차량을 인수할 수 있나요?',
+        a: '네, 대부분의 리스 계약은 만기 시 잔존가치(잔가)로 차량을 인수할 수 있는 옵션이 있습니다. 잔가가 시세보다 낮으면 인수 후 매각해 차익을 얻을 수도 있습니다. 계약 시 잔가 조건과 인수 옵션을 확인하세요.'
+      },
+      {
+        q: '중도해지하면 어떻게 되나요?',
+        a: '리스/렌트 모두 중도해지 시 위약금이 발생합니다. 보통 남은 기간 납입금의 30~50% 수준입니다. 1년 이내 해지는 더 높은 위약금이 부과될 수 있습니다. 이용 기간이 불확실하다면 구매나 단기렌트를 고려하세요.'
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+      }))
+    };
+    let schemaScript = document.getElementById('faq-schema') as HTMLScriptElement;
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
+</script>

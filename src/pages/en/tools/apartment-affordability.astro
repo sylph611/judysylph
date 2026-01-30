@@ -74,6 +74,44 @@ const tool = getTool('apartment-affordability', lang);
             <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Loan-to-Value (LTV)</span><span id="r-ltv" class="font-medium">-</span></div>
           </div>
         </div>
+
+        <!-- SEO Interpretation Content -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 What This Result Means</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- AD_SLOT: middle-content -->
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 Who This Is For</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ Important Considerations</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- AD_SLOT: before-faq -->
+
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ Frequently Asked Questions</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 Related Calculators</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/en/tools/car-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🚗 Car Affordability Calculator</a>
+              <a href="/en/tools/salary-percentile" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">📊 Salary Percentile Calculator</a>
+              <a href="/en/tools/mortgage-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏦 Mortgage Calculator</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -197,5 +235,124 @@ const tool = getTool('apartment-affordability', lang);
     const adviceBox = document.getElementById('advice-box')!;
     adviceBox.className = `rounded-xl p-5 mb-6 ${adviceBg}`;
     document.getElementById('advice-text')!.textContent = advice;
+
+    // Generate SEO content
+    generateSeoContent(salary, downPayment, totalBudget, maxLoan, ltv, sizeDesc);
   });
+
+  function generateSeoContent(salary: number, downPayment: number, totalBudget: number, maxLoan: number, ltv: number, sizeDesc: string) {
+    // Result summary
+    let summaryText, statusEmoji;
+    if (totalBudget >= 1000000) {
+      summaryText = `With a $${salary.toLocaleString()} salary and $${downPayment.toLocaleString()} down payment, you can afford luxury properties in most US markets`;
+      statusEmoji = '🏆';
+    } else if (totalBudget >= 600000) {
+      summaryText = `A $${totalBudget.toLocaleString()} budget opens doors to upscale homes in major metro areas`;
+      statusEmoji = '✅';
+    } else if (totalBudget >= 400000) {
+      summaryText = `Your $${totalBudget.toLocaleString()} budget provides solid options in most US markets`;
+      statusEmoji = '📊';
+    } else {
+      summaryText = `A $${totalBudget.toLocaleString()} budget requires strategic market selection`;
+      statusEmoji = '💡';
+    }
+    document.getElementById('seo-summary')!.textContent = `${statusEmoji} Summary: ${summaryText}`;
+
+    // Meaning explanation
+    const meaningText = `Based on your $${salary.toLocaleString()} annual salary and $${downPayment.toLocaleString()} down payment, ` +
+      `your maximum home budget is approximately $${totalBudget.toLocaleString()}. ` +
+      `This includes a mortgage of up to $${maxLoan.toLocaleString()} (${ltv}% LTV). ` +
+      `At current 6.5% mortgage rates over 30 years, you can afford ${sizeDesc}. ` +
+      `In high-cost markets like San Francisco ($1,200/sqft), this buys ${Math.round(totalBudget/1200).toLocaleString()} sq ft. ` +
+      `In affordable markets like the Midwest ($180/sqft), the same budget gets ${Math.round(totalBudget/180).toLocaleString()} sq ft. ` +
+      `Your DTI ratio determines monthly payment capacity, which directly impacts how much home you can finance.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // Suitable for
+    let suitableText;
+    if (totalBudget >= 800000) {
+      suitableText = `This budget tier suits high-income professionals seeking premium locations, ` +
+        `families prioritizing top school districts, buyers who value long-term appreciation in prime markets, ` +
+        `those relocating to high-cost areas for career opportunities, ` +
+        `and investors looking at properties with rental income potential in desirable neighborhoods.`;
+    } else if (totalBudget >= 400000) {
+      suitableText = `This range is ideal for first-time homebuyers in suburban areas, ` +
+        `young families transitioning from renting to owning, dual-income households building equity, ` +
+        `remote workers who can live in lower-cost markets, ` +
+        `and buyers seeking the balance between location, space, and monthly payment affordability.`;
+    } else {
+      suitableText = `This budget is well-suited for first-time buyers entering the market, ` +
+        `singles or couples prioritizing homeownership over location, those willing to consider up-and-coming neighborhoods, ` +
+        `buyers in affordable Midwest or Southern markets, ` +
+        `and anyone focused on building equity while keeping monthly costs manageable.`;
+    }
+    document.getElementById('seo-suitable')!.textContent = suitableText;
+
+    // Cautions
+    let cautionText = `When purchasing a home, several factors require careful consideration. First, closing costs typically add 2-5% ` +
+      `($${Math.round(totalBudget * 0.03).toLocaleString()}-$${Math.round(totalBudget * 0.05).toLocaleString()}) including title insurance, ` +
+      `appraisal, inspection, and lender fees. Second, `;
+    if (ltv > 80) {
+      cautionText += `with an LTV of ${ltv}%, you'll likely need Private Mortgage Insurance (PMI) adding $100-300/month until you reach 20% equity. ` +
+        `Consider a larger down payment if possible to avoid PMI and secure better rates. `;
+    }
+    cautionText += `Third, factor in ongoing costs: property taxes (1-2% of value annually), homeowners insurance ($1,000-3,000/year), ` +
+      `HOA fees if applicable ($200-500/month), and maintenance (budget 1% of home value yearly). ` +
+      `Finally, interest rates significantly impact affordability—a 1% rate increase reduces buying power by approximately 10%.`;
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ
+    const faqs = [
+      {
+        q: 'Is this the same as a mortgage pre-approval?',
+        a: 'No, this calculator provides an estimate based on general DTI guidelines. A mortgage pre-approval from a lender involves credit checks, income verification, and is based on your specific financial situation. Always get pre-approved before house hunting.'
+      },
+      {
+        q: 'What\'s the difference between DTI 28% and 43%?',
+        a: `Conservative DTI (28%) means lower monthly payments with more budget flexibility for other expenses. Standard (36%) is the traditional "front-end" ratio most lenders prefer. Aggressive (43%) maximizes buying power but leaves less room for other financial goals. Your choice of $${Math.round(maxLoan).toLocaleString()} mortgage is based on your selected DTI.`
+      },
+      {
+        q: 'Why do home prices vary so much by location?',
+        a: 'Housing costs reflect local demand, job markets, amenities, and land availability. Coastal metros like SF and NYC have limited supply and high demand from tech/finance jobs. Midwest and rural areas offer more affordable options due to lower demand and more available land.'
+      },
+      {
+        q: 'Should I buy now or wait for lower rates?',
+        a: `With rates around 6.5% and a budget of $${totalBudget.toLocaleString()}, consider that timing the market is difficult. If you plan to stay 5+ years, buying now builds equity. You can refinance if rates drop. However, if rates rise, your buying power decreases. Focus on what you can comfortably afford monthly rather than timing.`
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD FAQ Schema
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    };
+
+    let schemaScript = document.getElementById('faq-schema');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
 </script>

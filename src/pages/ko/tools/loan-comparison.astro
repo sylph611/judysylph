@@ -1,0 +1,318 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('loan-comparison', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">필요 금액</label>
+          <input type="text" id="loanAmount" placeholder="500" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          <p class="text-xs text-gray-500 mt-1">만원</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-3">🏦 신용대출</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">금리</label>
+                <input type="number" id="creditRate" placeholder="6.5" step="0.1" value="6.5" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">연 %</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">상환 기간</label>
+                <select id="creditPeriod" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                  <option value="12">1년</option>
+                  <option value="24">2년</option>
+                  <option value="36" selected>3년</option>
+                  <option value="48">4년</option>
+                  <option value="60">5년</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-red-800 dark:text-red-200 mb-3">💳 카드론/현금서비스</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">금리</label>
+                <input type="number" id="cardRate" placeholder="15" step="0.1" value="15" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">연 %</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">상환 기간</label>
+                <select id="cardPeriod" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                  <option value="6">6개월</option>
+                  <option value="12" selected>1년</option>
+                  <option value="18">18개월</option>
+                  <option value="24">2년</option>
+                  <option value="36">3년</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">비교 분석하기</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="rounded-2xl p-6 text-white text-center mb-6">
+          <div id="verdict-emoji" class="text-5xl mb-2"></div>
+          <div id="verdict" class="text-2xl font-bold mb-2"></div>
+          <div id="verdict-desc" class="text-lg opacity-90"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border-2 border-transparent" id="card-credit">
+            <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-center">🏦 신용대출</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 상환금</span><span id="cr-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 이자</span><span id="cr-interest" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 상환액</span><span id="cr-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">실질 연이율</span><span id="cr-effective" class="font-medium">-</span></div>
+            </div>
+          </div>
+
+          <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-4 border-2 border-transparent" id="card-card">
+            <h4 class="font-bold text-red-800 dark:text-red-200 mb-3 text-center">💳 카드론</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 상환금</span><span id="ca-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 이자</span><span id="ca-interest" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 상환액</span><span id="ca-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">실질 연이율</span><span id="ca-effective" class="font-medium">-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">📊 비용 차이</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">이자 차이</span>
+              <span id="interest-diff" class="font-bold"></span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">월 상환금 차이</span>
+              <span id="monthly-diff" class="font-bold"></span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+              <span class="text-primary-700 dark:text-primary-300 font-medium">신용등급 영향</span>
+              <span id="credit-impact" class="font-bold"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-yellow-800 dark:text-yellow-200 mb-3">⚠️ 카드론 위험 알림</h3>
+          <div id="warning-text" class="text-sm text-yellow-700 dark:text-yellow-300"></div>
+        </div>
+
+        <!-- SEO Content -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 이 결과가 의미하는 것</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <!-- AD_SLOT: middle-content -->
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 이런 분에게 적합합니다</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ 주의해야 할 점</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <!-- AD_SLOT: before-faq -->
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ 자주 묻는 질문</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 관련 계산기</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/ko/tools/loan-refinance" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🔄 대출 갈아타기</a>
+              <a href="/ko/tools/salary-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">💰 연봉 실수령액</a>
+              <a href="/ko/tools/mortgage-comparison" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">📊 대출 상환 비교</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const loanInput = document.getElementById('loanAmount') as HTMLInputElement;
+
+  loanInput?.addEventListener('input', e => {
+    const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+    (e.target as HTMLInputElement).value = Number(v).toLocaleString('ko-KR');
+  });
+
+  function calcMonthlyPayment(principal: number, annualRate: number, months: number): number {
+    const r = annualRate / 100 / 12;
+    if (r === 0) return principal / months;
+    return principal * r * Math.pow(1+r, months) / (Math.pow(1+r, months) - 1);
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const amount = parseInt(loanInput.value.replace(/,/g,'')) * 10000;
+    const creditRate = parseFloat((document.getElementById('creditRate') as HTMLInputElement).value);
+    const creditMonths = parseInt((document.getElementById('creditPeriod') as HTMLSelectElement).value);
+    const cardRate = parseFloat((document.getElementById('cardRate') as HTMLInputElement).value);
+    const cardMonths = parseInt((document.getElementById('cardPeriod') as HTMLSelectElement).value);
+
+    // 신용대출
+    const crMonthly = calcMonthlyPayment(amount, creditRate, creditMonths);
+    const crTotal = crMonthly * creditMonths;
+    const crInterest = crTotal - amount;
+
+    // 카드론
+    const caMonthly = calcMonthlyPayment(amount, cardRate, cardMonths);
+    const caTotal = caMonthly * cardMonths;
+    const caInterest = caTotal - amount;
+
+    const interestDiff = caInterest - crInterest;
+    const monthlyDiff = Math.abs(crMonthly - caMonthly);
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    // Verdict
+    const header = document.getElementById('result-header')!;
+    header.className = 'bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-6 text-white text-center mb-6';
+    document.getElementById('verdict-emoji')!.textContent = '🏦';
+    document.getElementById('verdict')!.textContent = '신용대출이 훨씬 유리!';
+    document.getElementById('verdict-desc')!.textContent = `카드론 대비 ${Math.round(interestDiff/10000).toLocaleString()}만원 이자 절감`;
+
+    document.getElementById('card-credit')!.classList.add('border-blue-500');
+
+    // Display
+    document.getElementById('cr-monthly')!.textContent = Math.round(crMonthly).toLocaleString() + '원';
+    document.getElementById('cr-interest')!.textContent = Math.round(crInterest/10000).toLocaleString() + '만원';
+    document.getElementById('cr-total')!.textContent = Math.round(crTotal/10000).toLocaleString() + '만원';
+    document.getElementById('cr-effective')!.textContent = creditRate + '%';
+
+    document.getElementById('ca-monthly')!.textContent = Math.round(caMonthly).toLocaleString() + '원';
+    document.getElementById('ca-interest')!.textContent = Math.round(caInterest/10000).toLocaleString() + '만원';
+    document.getElementById('ca-total')!.textContent = Math.round(caTotal/10000).toLocaleString() + '만원';
+    document.getElementById('ca-effective')!.textContent = cardRate + '%';
+
+    const interestDiffEl = document.getElementById('interest-diff')!;
+    interestDiffEl.textContent = `신용대출이 ${Math.round(interestDiff/10000).toLocaleString()}만원 절감`;
+    interestDiffEl.className = 'font-bold text-blue-600';
+
+    document.getElementById('monthly-diff')!.textContent = Math.round(monthlyDiff).toLocaleString() + '원';
+
+    const creditImpact = document.getElementById('credit-impact')!;
+    creditImpact.textContent = '카드론이 신용점수에 더 불리';
+    creditImpact.className = 'font-bold text-red-500';
+
+    // Warning
+    const warningText = `카드론 ${Math.round(amount/10000).toLocaleString()}만원 이용 시 연 ${cardRate}% 금리로 ` +
+      `${cardMonths}개월간 ${Math.round(caInterest/10000).toLocaleString()}만원의 이자가 발생합니다. ` +
+      `이는 신용대출 대비 ${Math.round(interestDiff/10000).toLocaleString()}만원 더 많습니다. ` +
+      `또한 카드론은 신용평가 시 '고금리 대출'로 분류되어 신용점수 하락 요인이 됩니다.`;
+    document.getElementById('warning-text')!.textContent = warningText;
+
+    // SEO
+    generateSeoContent(amount, creditRate, creditMonths, cardRate, cardMonths, crInterest, caInterest, interestDiff);
+  });
+
+  function generateSeoContent(amount: number, creditRate: number, creditMonths: number, cardRate: number, cardMonths: number, crInterest: number, caInterest: number, interestDiff: number) {
+    const amountMan = amount / 10000;
+
+    // Summary
+    const summaryText = `${amountMan.toLocaleString()}만원 대출 시 신용대출(${creditRate}%)이 카드론(${cardRate}%)보다 ${Math.round(interestDiff/10000).toLocaleString()}만원 절감`;
+    document.getElementById('seo-summary')!.textContent = `📋 결과 요약: ${summaryText}`;
+
+    // Meaning
+    const meaningText = `${amountMan.toLocaleString()}만원을 빌릴 때, 신용대출(연 ${creditRate}%, ${creditMonths}개월)은 총 이자 ${Math.round(crInterest/10000).toLocaleString()}만원, ` +
+      `카드론(연 ${cardRate}%, ${cardMonths}개월)은 총 이자 ${Math.round(caInterest/10000).toLocaleString()}만원이 발생합니다. ` +
+      `신용대출을 선택하면 ${Math.round(interestDiff/10000).toLocaleString()}만원의 이자를 아낄 수 있습니다. ` +
+      `금리 차이가 ${(cardRate - creditRate).toFixed(1)}%p로, 카드론은 신용대출 대비 ${Math.round(cardRate/creditRate*100-100)}% 높은 금리를 적용받습니다. ` +
+      `이자 부담 외에도 카드론은 신용평가에서 불리하게 작용합니다.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // Suitable
+    const suitableText = `<strong>신용대출</strong>: 직장인, 공무원 등 소득 증빙이 가능한 분, 1주일 정도 대출 심사 기간 여유가 있는 분, ` +
+      `신용등급 관리가 중요한 분, 중장기(1~5년) 상환 계획이 있는 분에게 적합합니다. ` +
+      `<strong>카드론</strong>: 당장 급전이 필요하고 며칠 내 상환 가능한 경우, 소액(100만원 이하)을 단기(1~2개월) 이용하는 경우에만 제한적으로 고려하세요.`;
+    document.getElementById('seo-suitable')!.innerHTML = suitableText;
+
+    // Caution
+    const cautionText = `카드론/현금서비스는 다음의 위험이 있습니다. 첫째, 연 15~20%의 고금리로 이자 부담이 큽니다. ` +
+      `둘째, 신용평가사(NICE, KCB)에서 '고금리 대출'로 분류되어 신용점수가 하락합니다. ` +
+      `셋째, 연체 시 연 24%까지 금리가 오르고, 신용불량자가 될 수 있습니다. ` +
+      `넷째, 카드론을 반복 사용하면 '대출 의존'으로 평가되어 향후 주담대 등 다른 대출 심사에서 불이익을 받습니다.`;
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ
+    const faqs = [
+      {
+        q: '카드론과 현금서비스의 차이는?',
+        a: '현금서비스는 카드 한도 내에서 ATM 인출하는 방식으로 금리가 가장 높습니다(연 20% 내외). 카드론은 별도 신청하여 계좌로 입금받는 방식으로 현금서비스보다는 낮지만(연 12~18%) 여전히 고금리입니다. 둘 다 신용점수에 부정적입니다.'
+      },
+      {
+        q: '급하게 돈이 필요할 때 대안은?',
+        a: '1) 비상금 예금 해지, 2) 마이너스 통장 활용, 3) 시중은행 모바일 신용대출(당일~1일 심사), 4) 정부 긴급복지 지원 확인. 카드론은 모든 방법이 불가할 때 최후의 수단으로만 사용하세요.'
+      },
+      {
+        q: '카드론을 이미 썼다면 어떻게 해야 하나요?',
+        a: '1) 가능한 빨리 상환(일부라도), 2) 신용대출로 대환(갈아타기) 검토, 3) 추가 카드론 사용 자제. 카드론 상환 후 3~6개월이면 신용점수가 점차 회복됩니다.'
+      },
+      {
+        q: '신용대출 금리는 어떻게 결정되나요?',
+        a: `신용점수, 소득, 직장(직장인/공무원/전문직), 기존 대출 현황에 따라 결정됩니다. 1금융권(시중은행) 기준 연 4~10%, 2금융권(저축은행)은 연 10~20% 수준입니다. 금리 비교 사이트(금융감독원 금융상품 한눈에, 뱅크샐러드 등)를 활용하세요.`
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+      }))
+    };
+    let schemaScript = document.getElementById('faq-schema') as HTMLScriptElement;
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
+</script>
