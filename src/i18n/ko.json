@@ -1,21 +1,25 @@
 {
   "site": {
-    "name": "TestMind",
-    "title": "TestMind - 나를 알아가는 심리 테스트",
-    "description": "재미있는 성격 테스트와 심리 분석으로 나를 더 잘 알아보세요. 동물 테스트, 연애 스타일, 색깔 심리, 스트레스 유형, 직업 적성 테스트를 무료로 즐기세요."
+    "name": "JudySylph",
+    "title": "JudySylph - 심리 테스트 & 무료 온라인 도구",
+    "description": "재미있는 심리 테스트와 유용한 온라인 도구를 무료로 이용하세요. 성격 테스트, 계산기, 변환기 등 다양한 서비스를 제공합니다."
   },
   "nav": {
     "home": "홈",
     "tests": "테스트",
+    "tools": "도구",
     "about": "소개",
     "language": "English"
   },
   "home": {
-    "hero": "나를 알아가는 여정",
-    "heroSub": "재미있는 심리 테스트로 진짜 나를 발견하세요",
+    "hero": "테스트 & 도구",
+    "heroSub": "재미있는 심리 테스트와 유용한 온라인 도구를 무료로 이용하세요",
     "popularTests": "인기 테스트",
-    "allTests": "모든 테스트",
-    "startTest": "테스트 시작"
+    "allTests": "심리 테스트",
+    "allTools": "온라인 도구",
+    "startTest": "테스트 시작",
+    "useTool": "도구 사용",
+    "viewAll": "전체 보기"
   },
   "test": {
     "question": "질문",
@@ -32,6 +36,19 @@
     "otherTests": "다른 테스트 해보기",
     "shareText": "나의 결과를 확인해보세요!"
   },
+  "tools": {
+    "title": "온라인 도구",
+    "description": "일상에서 유용하게 사용할 수 있는 무료 온라인 도구 모음",
+    "useTool": "사용하기",
+    "categories": {
+      "text": "텍스트",
+      "date": "날짜/시간",
+      "health": "건강",
+      "convert": "변환",
+      "dev": "개발",
+      "life": "생활"
+    }
+  },
   "share": {
     "kakao": "카카오톡",
     "twitter": "트위터",
@@ -43,7 +60,7 @@
     "privacy": "개인정보처리방침",
     "terms": "이용약관",
     "contact": "문의하기",
-    "copyright": "© 2024 TestMind. All rights reserved."
+    "copyright": "© 2024 JudySylph. All rights reserved."
   },
   "darkMode": {
     "light": "라이트 모드",

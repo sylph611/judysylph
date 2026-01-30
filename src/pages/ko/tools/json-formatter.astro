@@ -1,0 +1,173 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('json-formatter', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Input -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">입력</label>
+            <button id="paste-btn" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">붙여넣기</button>
+          </div>
+          <textarea
+            id="json-input"
+            rows="20"
+            placeholder='{"key": "value"}'
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Output -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">출력</label>
+            <button id="copy-btn" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">복사</button>
+          </div>
+          <textarea
+            id="json-output"
+            rows="20"
+            readonly
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-mono text-sm resize-none"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button
+          id="format-btn"
+          class="px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+        >
+          포맷하기
+        </button>
+        <button
+          id="minify-btn"
+          class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        >
+          압축하기
+        </button>
+        <button
+          id="clear-btn"
+          class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        >
+          지우기
+        </button>
+      </div>
+
+      <!-- Status -->
+      <div id="status" class="mt-4 hidden">
+        <div id="status-message" class="px-4 py-2 rounded-lg text-sm"></div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← 도구 목록으로 돌아가기
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const jsonInput = document.getElementById('json-input') as HTMLTextAreaElement;
+  const jsonOutput = document.getElementById('json-output') as HTMLTextAreaElement;
+  const formatBtn = document.getElementById('format-btn');
+  const minifyBtn = document.getElementById('minify-btn');
+  const clearBtn = document.getElementById('clear-btn');
+  const copyBtn = document.getElementById('copy-btn');
+  const pasteBtn = document.getElementById('paste-btn');
+  const status = document.getElementById('status');
+  const statusMessage = document.getElementById('status-message');
+
+  function showStatus(message: string, isError: boolean) {
+    if (status && statusMessage) {
+      status.classList.remove('hidden');
+      statusMessage.textContent = message;
+      statusMessage.className = `px-4 py-2 rounded-lg text-sm ${isError ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'}`;
+    }
+  }
+
+  function format() {
+    try {
+      const input = jsonInput.value.trim();
+      if (!input) {
+        showStatus('JSON을 입력해주세요', true);
+        return;
+      }
+      const parsed = JSON.parse(input);
+      jsonOutput.value = JSON.stringify(parsed, null, 2);
+      showStatus('포맷 완료!', false);
+    } catch (e) {
+      showStatus('유효하지 않은 JSON입니다: ' + (e as Error).message, true);
+    }
+  }
+
+  function minify() {
+    try {
+      const input = jsonInput.value.trim();
+      if (!input) {
+        showStatus('JSON을 입력해주세요', true);
+        return;
+      }
+      const parsed = JSON.parse(input);
+      jsonOutput.value = JSON.stringify(parsed);
+      showStatus('압축 완료!', false);
+    } catch (e) {
+      showStatus('유효하지 않은 JSON입니다: ' + (e as Error).message, true);
+    }
+  }
+
+  formatBtn?.addEventListener('click', format);
+  minifyBtn?.addEventListener('click', minify);
+
+  clearBtn?.addEventListener('click', () => {
+    jsonInput.value = '';
+    jsonOutput.value = '';
+    status?.classList.add('hidden');
+  });
+
+  copyBtn?.addEventListener('click', async () => {
+    const text = jsonOutput.value;
+    if (!text) {
+      showStatus('복사할 내용이 없습니다', true);
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      showStatus('복사되었습니다!', false);
+    } catch {
+      showStatus('복사에 실패했습니다', true);
+    }
+  });
+
+  pasteBtn?.addEventListener('click', async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      jsonInput.value = text;
+      format();
+    } catch {
+      showStatus('붙여넣기에 실패했습니다', true);
+    }
+  });
+
+  // Auto-format on input
+  jsonInput?.addEventListener('input', () => {
+    status?.classList.add('hidden');
+  });
+</script>

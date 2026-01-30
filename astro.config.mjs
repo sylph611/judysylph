@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://testmind.io',
+  site: 'https://judysylph.com',
   i18n: {
     defaultLocale: 'ko',
     locales: ['ko', 'en'],

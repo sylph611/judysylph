@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "char-counter",
+    "title": "Character Counter",
+    "description": "Count characters, words, and bytes in your text in real-time. Options for including/excluding spaces.",
+    "emoji": "📝",
+    "category": "Text"
+  },
+  {
+    "slug": "dday-calculator",
+    "title": "D-Day Calculator",
+    "description": "Calculate the days remaining until or passed since a specific date.",
+    "emoji": "📅",
+    "category": "Date/Time"
+  },
+  {
+    "slug": "age-calculator",
+    "title": "Age Calculator",
+    "description": "Enter your birth date to calculate your exact age in years, months, and days.",
+    "emoji": "🎂",
+    "category": "Date/Time"
+  },
+  {
+    "slug": "bmi-calculator",
+    "title": "BMI Calculator",
+    "description": "Enter your height and weight to calculate your Body Mass Index and health status.",
+    "emoji": "⚖️",
+    "category": "Health"
+  },
+  {
+    "slug": "unit-converter",
+    "title": "Unit Converter",
+    "description": "Easily convert between different units of length, weight, temperature, and more.",
+    "emoji": "🔄",
+    "category": "Convert"
+  },
+  {
+    "slug": "json-formatter",
+    "title": "JSON Formatter",
+    "description": "Format and validate your JSON data with proper indentation.",
+    "emoji": "{ }",
+    "category": "Developer"
+  },
+  {
+    "slug": "delivery-tracker",
+    "title": "Delivery Tracker",
+    "description": "Track your package delivery status with tracking number.",
+    "emoji": "📦",
+    "category": "Life"
+  }
+]

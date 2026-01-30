@@ -1,21 +1,25 @@
 {
   "site": {
-    "name": "TestMind",
-    "title": "TestMind - Discover Your True Self",
-    "description": "Explore fun personality tests and psychological analysis to learn more about yourself. Enjoy free tests including animal personality, love style, color psychology, stress type, and career aptitude."
+    "name": "JudySylph",
+    "title": "JudySylph - Personality Tests & Free Online Tools",
+    "description": "Enjoy free personality tests and useful online tools. We offer various services including personality tests, calculators, and converters."
   },
   "nav": {
     "home": "Home",
     "tests": "Tests",
+    "tools": "Tools",
     "about": "About",
     "language": "한국어"
   },
   "home": {
-    "hero": "Journey to Self-Discovery",
-    "heroSub": "Discover your true self with fun psychological tests",
+    "hero": "Tests & Tools",
+    "heroSub": "Enjoy free personality tests and useful online tools",
     "popularTests": "Popular Tests",
-    "allTests": "All Tests",
-    "startTest": "Start Test"
+    "allTests": "Personality Tests",
+    "allTools": "Online Tools",
+    "startTest": "Start Test",
+    "useTool": "Use Tool",
+    "viewAll": "View All"
   },
   "test": {
     "question": "Question",
@@ -32,6 +36,19 @@
     "otherTests": "Try Other Tests",
     "shareText": "Check out my result!"
   },
+  "tools": {
+    "title": "Online Tools",
+    "description": "A collection of free online tools useful in everyday life",
+    "useTool": "Use",
+    "categories": {
+      "text": "Text",
+      "date": "Date/Time",
+      "health": "Health",
+      "convert": "Convert",
+      "dev": "Developer",
+      "life": "Life"
+    }
+  },
   "share": {
     "kakao": "KakaoTalk",
     "twitter": "Twitter",
@@ -43,7 +60,7 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "contact": "Contact",
-    "copyright": "© 2024 TestMind. All rights reserved."
+    "copyright": "© 2024 JudySylph. All rights reserved."
   },
   "darkMode": {
     "light": "Light Mode",

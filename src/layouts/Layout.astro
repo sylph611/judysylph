@@ -15,7 +15,7 @@ const t = useTranslations(lang);
 const alternateLang: Lang = lang === 'ko' ? 'en' : 'ko';
 const alternateUrl = getAlternateLocaleUrl(Astro.url, alternateLang);
 
-const siteUrl = Astro.site?.toString() || 'https://testmind.io';
+const siteUrl = Astro.site?.toString() || 'https://judysylph.com';
 const fullOgImage = ogImage || `${siteUrl}/og/default.png`;
 const fullCanonicalUrl = canonicalUrl || Astro.url.href;
 ---
@@ -71,7 +71,7 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
     <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
       <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href={`/${lang}`} class="text-2xl font-bold text-primary-600 dark:text-primary-400">
-          TestMind
+          JudySylph
         </a>
         <div class="flex items-center gap-4">
           <a href={alternateUrl} class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
@@ -114,7 +114,7 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
       <div class="max-w-6xl mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">
-            TestMind
+            JudySylph
           </div>
           <div class="flex gap-6 text-sm text-gray-600 dark:text-gray-400">
             <a href={`/${lang}/privacy`} class="hover:text-primary-600 dark:hover:text-primary-400">{t('footer.privacy')}</a>

@@ -1,0 +1,35 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  emoji: string;
+  category: string;
+  lang: string;
+}
+
+const { slug, title, description, emoji, category, lang } = Astro.props;
+---
+
+<a
+  href={`/${lang}/tools/${slug}`}
+  class="group block bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 hover:-translate-y-1"
+>
+  <div class="flex items-start gap-4">
+    <div class="text-4xl">{emoji}</div>
+    <div class="flex-1">
+      <div class="text-xs text-primary-600 dark:text-primary-400 font-medium mb-1 uppercase tracking-wide">
+        {category}
+      </div>
+      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+        {title}
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+        {description}
+      </p>
+    </div>
+    <span class="text-primary-600 dark:text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity">
+      →
+    </span>
+  </div>
+</a>

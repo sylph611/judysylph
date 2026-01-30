@@ -35,9 +35,9 @@ if (!result) {
   return Astro.redirect(`/en/test/${slug}`);
 }
 
-const pageTitle = `${result.title} - ${test.title} | TestMind`;
+const pageTitle = `${result.title} - ${test.title} | JudySylph`;
 const pageDescription = `My result: ${result.title}. ${result.description.substring(0, 100)}...`;
-const siteUrl = Astro.site?.toString() || 'https://testmind.io';
+const siteUrl = Astro.site?.toString() || 'https://judysylph.com';
 const pageUrl = `${siteUrl}/en/result/${slug}/${type}`;
 const ogImage = `${siteUrl}/og/${slug}-${type}.png`;
 
