@@ -87,12 +87,26 @@ const t = {
     }
   });
 
+  // GA share tracking helper
+  const trackShare = (platform: string) => {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'share', {
+        event_category: 'engagement',
+        event_label: platform,
+        content_type: 'result',
+        item_id: window.location.pathname
+      });
+    }
+  };
+
   // Kakao share
   document.querySelectorAll('.share-btn.kakao').forEach(btn => {
     btn.addEventListener('click', () => {
       const url = btn.getAttribute('data-url') || window.location.href;
       const title = btn.getAttribute('data-title') || document.title;
       const description = btn.getAttribute('data-description') || '';
+
+      trackShare('kakao');
 
       if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
         Kakao.Share.sendDefault({
@@ -127,6 +141,7 @@ const t = {
     btn.addEventListener('click', () => {
       const url = btn.getAttribute('data-url') || window.location.href;
       const title = btn.getAttribute('data-title') || document.title;
+      trackShare('twitter');
       window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
     });
   });
@@ -135,6 +150,7 @@ const t = {
   document.querySelectorAll('.share-btn.facebook').forEach(btn => {
     btn.addEventListener('click', () => {
       const url = btn.getAttribute('data-url') || window.location.href;
+      trackShare('facebook');
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
     });
   });
@@ -149,6 +165,7 @@ const t = {
 
       try {
         await navigator.clipboard.writeText(url);
+        trackShare('copy_link');
         if (textSpan) {
           textSpan.textContent = copiedText;
           setTimeout(() => {
