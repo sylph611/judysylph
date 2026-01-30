@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('unemployment-benefits', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">Based on 2026 Standards</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Age</label>
+            <select id="age" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="under50">Under 50</option>
+              <option value="50plus">50 and over</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Insurance Period</label>
+            <select id="period" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="1">Under 1 year</option>
+              <option value="3">1-3 years</option>
+              <option value="5">3-5 years</option>
+              <option value="10">5-10 years</option>
+              <option value="11">10+ years</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Average Daily Wage (KRW)</label>
+          <input type="text" id="dailyWage" placeholder="100,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+        </div>
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">Calculate</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl p-6">
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between bg-white dark:bg-gray-800 rounded-lg p-3"><span class="text-gray-600 dark:text-gray-400">Daily Benefit</span><span id="r-daily" class="font-medium">-</span></div>
+            <div class="flex justify-between bg-white dark:bg-gray-800 rounded-lg p-3"><span class="text-gray-600 dark:text-gray-400">Benefit Duration</span><span id="r-duration" class="font-medium">-</span></div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center">
+              <div class="text-sm text-gray-600 dark:text-gray-400">Monthly (est.)</div>
+              <div id="r-monthly" class="text-xl font-bold text-primary-600 dark:text-primary-400">-</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center">
+              <div class="text-sm text-gray-600 dark:text-gray-400">Total Maximum</div>
+              <div id="r-total" class="text-xl font-bold text-gray-900 dark:text-white">-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+      <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-2">2026 Unemployment Benefits (Korea)</h4>
+      <p class="text-sm text-blue-700 dark:text-blue-300">Daily: 60% of avg wage (Max 77,000 / Min 64,192 KRW). Duration: 120-270 days based on age and insurance period.</p>
+    </div>
+    <div class="mt-8 text-center"><a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">&larr; Back to Tools</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const wageInput = document.getElementById('dailyWage') as HTMLInputElement;
+
+  wageInput?.addEventListener('input', e => {
+    const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+    (e.target as HTMLInputElement).value = Number(v).toLocaleString('ko-KR');
+  });
+
+  // 2026 standards
+  const MAX_DAILY = 77000;
+  const MIN_DAILY = 64192;
+
+  const durationTable: Record<string, Record<string, number>> = {
+    under50: { '1': 120, '3': 150, '5': 180, '10': 210, '11': 240 },
+    '50plus': { '1': 120, '3': 180, '5': 210, '10': 240, '11': 270 }
+  };
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const age = (document.getElementById('age') as HTMLSelectElement).value;
+    const period = (document.getElementById('period') as HTMLSelectElement).value;
+    const wage = parseInt(wageInput.value.replace(/,/g,''));
+
+    let daily = Math.round(wage * 0.6);
+    daily = Math.min(MAX_DAILY, Math.max(MIN_DAILY, daily));
+    const duration = durationTable[age][period];
+    const monthly = daily * 30;
+    const total = daily * duration;
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+    document.getElementById('r-daily')!.textContent = daily.toLocaleString('ko-KR') + ' KRW';
+    document.getElementById('r-duration')!.textContent = duration + ' days';
+    document.getElementById('r-monthly')!.textContent = monthly.toLocaleString('ko-KR') + ' KRW';
+    document.getElementById('r-total')!.textContent = total.toLocaleString('ko-KR') + ' KRW';
+  });
+</script>

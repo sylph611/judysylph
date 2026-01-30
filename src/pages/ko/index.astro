@@ -3,6 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import TestCard from '../../components/TestCard.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import SearchBar from '../../components/SearchBar.astro';
+import TestCardSkeleton from '../../components/TestCardSkeleton.astro';
+import ToolCardSkeleton from '../../components/ToolCardSkeleton.astro';
+import RecentTests from '../../components/RecentTests.astro';
 import { getTestMeta, categoryLabels } from '../../utils/tests';
 import { getAllTools } from '../../utils/tools';
 import { useTranslations } from '../../i18n';
@@ -47,6 +50,9 @@ const categories = categoryLabels.ko;
       <SearchBar lang={lang} />
     </div>
   </section>
+
+  <!-- Recent Tests Section -->
+  <RecentTests lang={lang} />
 
   <!-- Tests Section -->
   <section id="tests" class="py-16">
@@ -95,9 +101,20 @@ const categories = categoryLabels.ko;
         </button>
       </div>
 
+      <!-- Skeleton Grid (shown during transitions) -->
+      <div id="test-skeleton-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+        {[1, 2, 3, 4, 5, 6].map(() => (
+          <TestCardSkeleton />
+        ))}
+      </div>
+
       <div id="test-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tests.map((test) => (
-          <div class="test-card" data-category={test.category}>
+        {tests.map((test, index) => (
+          <div
+            class="test-card animate-fade-in"
+            data-category={test.category}
+            style={`animation-delay: ${index * 50}ms`}
+          >
             <TestCard
               slug={test.slug}
               title={test.title}
@@ -122,16 +139,25 @@ const categories = categoryLabels.ko;
         {t('tools.description')}
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tools.map((tool) => (
-          <ToolCard
-            slug={tool.slug}
-            title={tool.title}
-            description={tool.description}
-            emoji={tool.emoji}
-            category={tool.category}
-            lang={lang}
-          />
+      <!-- Skeleton Grid (shown during transitions) -->
+      <div id="tool-skeleton-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+        {[1, 2, 3].map(() => (
+          <ToolCardSkeleton />
+        ))}
+      </div>
+
+      <div id="tool-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tools.map((tool, index) => (
+          <div class="animate-fade-in" style={`animation-delay: ${index * 50}ms`}>
+            <ToolCard
+              slug={tool.slug}
+              title={tool.title}
+              description={tool.description}
+              emoji={tool.emoji}
+              category={tool.category}
+              lang={lang}
+            />
+          </div>
         ))}
       </div>
 
@@ -159,10 +185,30 @@ const categories = categoryLabels.ko;
   </section>
 </Layout>
 
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+    opacity: 0;
+  }
+</style>
+
 <script>
   // Category filter
   const categoryBtns = document.querySelectorAll('.category-btn');
   const testCards = document.querySelectorAll('.test-card');
+  const testSkeletonGrid = document.getElementById('test-skeleton-grid');
+  const testGrid = document.getElementById('test-grid');
 
   categoryBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -176,14 +222,34 @@ const categories = categoryLabels.ko;
       btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
       btn.classList.add('bg-primary-600', 'text-white');
 
-      // Filter cards
-      testCards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-          (card as HTMLElement).style.display = 'block';
-        } else {
-          (card as HTMLElement).style.display = 'none';
-        }
-      });
+      // Show skeleton during filter transition
+      if (testSkeletonGrid && testGrid) {
+        testSkeletonGrid.classList.remove('hidden');
+        testGrid.classList.add('opacity-0');
+
+        setTimeout(() => {
+          // Filter cards
+          testCards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+              (card as HTMLElement).style.display = 'block';
+            } else {
+              (card as HTMLElement).style.display = 'none';
+            }
+          });
+
+          testSkeletonGrid.classList.add('hidden');
+          testGrid.classList.remove('opacity-0');
+        }, 200);
+      } else {
+        // Fallback without skeleton
+        testCards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            (card as HTMLElement).style.display = 'block';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      }
 
       // GA event
       if (typeof gtag !== 'undefined') {

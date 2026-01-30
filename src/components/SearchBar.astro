@@ -35,6 +35,19 @@ const defaultPlaceholder = lang === 'ko' ? '테스트나 도구 검색...' : 'Se
     id="search-results"
     class="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 hidden z-50 max-h-96 overflow-y-auto"
   >
+    <!-- Loading Skeleton -->
+    <div id="search-loading" class="hidden">
+      {[1, 2, 3].map(() => (
+        <div class="flex items-center gap-3 p-3">
+          <div class="skeleton w-8 h-8 rounded-lg"></div>
+          <div class="flex-1">
+            <div class="skeleton h-4 w-32 rounded mb-2"></div>
+            <div class="skeleton h-3 w-48 rounded"></div>
+          </div>
+          <div class="skeleton h-5 w-12 rounded-full"></div>
+        </div>
+      ))}
+    </div>
     <div id="search-results-content"></div>
     <div id="search-no-results" class="hidden p-4 text-center text-gray-500">
       {lang === 'ko' ? '검색 결과가 없습니다' : 'No results found'}
@@ -42,12 +55,46 @@ const defaultPlaceholder = lang === 'ko' ? '테스트나 도구 검색...' : 'Se
   </div>
 </div>
 
+<style>
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(229 231 235) 25%,
+      rgb(243 244 246) 50%,
+      rgb(229 231 235) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  :global(.dark) .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(55 65 81) 25%,
+      rgb(75 85 99) 50%,
+      rgb(55 65 81) 75%
+    );
+    background-size: 200% 100%;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+</style>
+
 <script>
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
   const searchClear = document.getElementById('search-clear');
   const searchResults = document.getElementById('search-results');
   const searchResultsContent = document.getElementById('search-results-content');
   const searchNoResults = document.getElementById('search-no-results');
+  const searchLoading = document.getElementById('search-loading');
+  let searchTimeout: ReturnType<typeof setTimeout> | null = null;
 
   // Get all searchable items
   const testCards = document.querySelectorAll('.test-card');
@@ -157,7 +204,21 @@ const defaultPlaceholder = lang === 'ko' ? '테스트나 도구 검색...' : 'Se
   searchInput?.addEventListener('input', (e) => {
     const query = (e.target as HTMLInputElement).value;
     searchClear?.classList.toggle('hidden', !query);
-    performSearch(query);
+
+    // Show loading skeleton briefly for better UX
+    if (query.trim()) {
+      searchLoading?.classList.remove('hidden');
+      searchResultsContent?.classList.add('hidden');
+      searchNoResults?.classList.add('hidden');
+      searchResults?.classList.remove('hidden');
+    }
+
+    // Debounce search
+    if (searchTimeout) clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      searchLoading?.classList.add('hidden');
+      performSearch(query);
+    }, 150);
   });
 
   searchClear?.addEventListener('click', () => {

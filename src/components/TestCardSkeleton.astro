@@ -1,0 +1,55 @@
+---
+// Skeleton placeholder for TestCard during loading
+---
+
+<div
+  class="block bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700"
+>
+  <!-- Emoji placeholder -->
+  <div class="skeleton w-12 h-12 rounded-lg mb-4"></div>
+
+  <!-- Title placeholder -->
+  <div class="skeleton h-6 w-3/4 rounded mb-3"></div>
+
+  <!-- Description placeholder - 2 lines -->
+  <div class="skeleton h-4 w-full rounded mb-2"></div>
+  <div class="skeleton h-4 w-2/3 rounded mb-4"></div>
+
+  <!-- Bottom row -->
+  <div class="flex items-center justify-between">
+    <div class="skeleton h-3 w-16 rounded"></div>
+    <div class="skeleton h-4 w-20 rounded"></div>
+  </div>
+</div>
+
+<style>
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(229 231 235) 25%,
+      rgb(243 244 246) 50%,
+      rgb(229 231 235) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  :global(.dark) .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(55 65 81) 25%,
+      rgb(75 85 99) 50%,
+      rgb(55 65 81) 75%
+    );
+    background-size: 200% 100%;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+</style>

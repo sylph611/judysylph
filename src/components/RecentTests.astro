@@ -1,0 +1,98 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = {
+  title: lang === 'ko' ? '최근 본 테스트' : 'Recently Viewed',
+  continue: lang === 'ko' ? '이어하기' : 'Continue',
+  empty: lang === 'ko' ? '아직 본 테스트가 없습니다' : 'No tests viewed yet'
+};
+---
+
+<section id="recent-tests-section" class="py-8 hidden">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      {t.title}
+    </h2>
+
+    <div id="recent-tests-container" class="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
+      <!-- Populated by JavaScript -->
+    </div>
+
+    <p id="recent-tests-empty" class="hidden text-gray-500 dark:text-gray-400 text-sm">
+      {t.empty}
+    </p>
+  </div>
+</section>
+
+<script define:vars={{ lang }}>
+  function loadRecentTests() {
+    const section = document.getElementById('recent-tests-section');
+    const container = document.getElementById('recent-tests-container');
+    const emptyMsg = document.getElementById('recent-tests-empty');
+
+    if (!section || !container) return;
+
+    try {
+      const recent = JSON.parse(localStorage.getItem('recent_tests') || '[]');
+
+      if (recent.length === 0) {
+        return; // Keep section hidden
+      }
+
+      // Show section
+      section.classList.remove('hidden');
+
+      // Render recent tests
+      container.innerHTML = recent.slice(0, 5).map(test => `
+        <a
+          href="/${lang}/test/${test.slug}"
+          class="flex-shrink-0 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md hover:shadow-lg transition-all border border-gray-100 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 min-w-[180px]"
+        >
+          <div class="text-3xl mb-2">${test.emoji}</div>
+          <div class="font-medium text-gray-900 dark:text-white text-sm truncate">${test.title}</div>
+          <div class="text-xs text-primary-600 dark:text-primary-400 mt-1">
+            ${lang === 'ko' ? '다시 하기 →' : 'Try again →'}
+          </div>
+        </a>
+      `).join('');
+
+    } catch (e) {
+      console.error('Failed to load recent tests:', e);
+    }
+  }
+
+  // Load on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadRecentTests);
+  } else {
+    loadRecentTests();
+  }
+
+  // Also load after View Transitions
+  document.addEventListener('astro:page-load', loadRecentTests);
+</script>
+
+<style>
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(209 213 219);
+    border-radius: 3px;
+  }
+
+  :global(.dark) .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(75 85 99);
+  }
+</style>

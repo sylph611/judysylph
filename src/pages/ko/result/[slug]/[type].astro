@@ -2,6 +2,7 @@
 import Layout from '../../../../layouts/Layout.astro';
 import Result from '../../../../components/Result.astro';
 import ShareButtons from '../../../../components/ShareButtons.astro';
+import ResultActions from '../../../../components/ResultActions.astro';
 import AdBanner from '../../../../components/AdBanner.astro';
 import TestCard from '../../../../components/TestCard.astro';
 import Confetti from '../../../../components/Confetti.astro';
@@ -86,6 +87,15 @@ const jsonLd = {
       url={pageUrl}
       title={`나의 ${test.title} 결과: ${result.title} ${result.emoji}`}
       description={result.description}
+      lang={lang}
+    />
+
+    <!-- Image Save & QR Code -->
+    <ResultActions
+      url={pageUrl}
+      resultTitle={result.title}
+      resultEmoji={result.emoji}
+      testTitle={test.title}
       lang={lang}
     />
 

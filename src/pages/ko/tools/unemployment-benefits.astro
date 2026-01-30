@@ -1,0 +1,155 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('unemployment-benefits', lang);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication"
+};
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">2026년 고용보험법 기준</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div>
+          <label for="age" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">나이</label>
+          <select id="age" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+            <option value="under50">50세 미만</option>
+            <option value="50plus">50세 이상</option>
+            <option value="disabled">장애인</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="insurancePeriod" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">고용보험 가입기간</label>
+          <select id="insurancePeriod" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+            <option value="1">1년 미만</option>
+            <option value="3">1년 이상 ~ 3년 미만</option>
+            <option value="5">3년 이상 ~ 5년 미만</option>
+            <option value="10">5년 이상 ~ 10년 미만</option>
+            <option value="over10">10년 이상</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="avgWage" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">퇴직 전 3개월 평균 월급여 (원)</label>
+          <input type="text" id="avgWage" placeholder="3,500,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">계산하기</button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">초기화</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">예상 실업급여</h3>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+              <div class="text-sm text-gray-600 dark:text-gray-400">1일 수급액</div>
+              <div id="dailyBenefit" class="text-xl font-bold text-gray-900 dark:text-white">-</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+              <div class="text-sm text-gray-600 dark:text-gray-400">수급기간</div>
+              <div id="benefitPeriod" class="text-xl font-bold text-gray-900 dark:text-white">-</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center">
+              <div class="text-sm text-gray-600 dark:text-gray-400">월 예상 수령액</div>
+              <div id="monthlyBenefit" class="text-2xl font-bold text-primary-600 dark:text-primary-400">-</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center">
+              <div class="text-sm text-gray-600 dark:text-gray-400">총 예상 수령액</div>
+              <div id="totalBenefit" class="text-2xl font-bold text-primary-600 dark:text-primary-400">-</div>
+            </div>
+          </div>
+
+          <div class="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+            <p class="text-sm text-yellow-800 dark:text-yellow-200">
+              <strong>2026년 기준:</strong> 1일 상한액 77,000원 / 하한액 최저임금의 80% (약 64,192원)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+      <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-2">실업급여 수급 조건</h4>
+      <ul class="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+        <li>• 비자발적 퇴직 (권고사직, 계약만료 등)</li>
+        <li>• 퇴직 전 18개월 중 180일 이상 고용보험 가입</li>
+        <li>• 적극적 구직활동 필수</li>
+      </ul>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로 돌아가기</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const avgWageInput = document.getElementById('avgWage') as HTMLInputElement;
+
+  avgWageInput?.addEventListener('input', (e) => {
+    let value = (e.target as HTMLInputElement).value.replace(/[^\d]/g, '');
+    (e.target as HTMLInputElement).value = Number(value).toLocaleString('ko-KR');
+  });
+
+  // 2026년 기준 수급기간 (일)
+  const benefitDays: Record<string, Record<string, number>> = {
+    under50: { '1': 120, '3': 150, '5': 180, '10': 210, 'over10': 240 },
+    '50plus': { '1': 120, '3': 180, '5': 210, '10': 240, 'over10': 270 },
+    disabled: { '1': 120, '3': 180, '5': 210, '10': 240, 'over10': 270 }
+  };
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const age = (document.getElementById('age') as HTMLSelectElement).value;
+    const period = (document.getElementById('insurancePeriod') as HTMLSelectElement).value;
+    const avgWage = parseInt(avgWageInput.value.replace(/,/g, ''));
+
+    // Calculate daily wage
+    const dailyWage = Math.round((avgWage * 3) / 91);
+
+    // Calculate benefit (60% of daily wage, with cap/floor)
+    const minDaily = 64192; // 2026년 하한액
+    const maxDaily = 77000; // 2026년 상한액
+    let dailyBenefit = Math.round(dailyWage * 0.6);
+    dailyBenefit = Math.max(minDaily, Math.min(maxDaily, dailyBenefit));
+
+    const days = benefitDays[age][period];
+    const monthlyBenefit = dailyBenefit * 30;
+    const totalBenefit = dailyBenefit * days;
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+    document.getElementById('dailyBenefit')!.textContent = dailyBenefit.toLocaleString('ko-KR') + '원';
+    document.getElementById('benefitPeriod')!.textContent = `${days}일 (약 ${Math.round(days/30)}개월)`;
+    document.getElementById('monthlyBenefit')!.textContent = monthlyBenefit.toLocaleString('ko-KR') + '원';
+    document.getElementById('totalBenefit')!.textContent = totalBenefit.toLocaleString('ko-KR') + '원';
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

@@ -82,5 +82,61 @@
     "description": "Generate dummy text for design and development projects.",
     "emoji": "📄",
     "category": "Text"
+  },
+  {
+    "slug": "severance-calculator",
+    "title": "Severance Pay Calculator (Korea)",
+    "description": "Calculate Korean severance pay based on 2026 standards. Enter tenure and salary.",
+    "emoji": "💰",
+    "category": "Finance"
+  },
+  {
+    "slug": "annual-leave-calculator",
+    "title": "Annual Leave Calculator (Korea)",
+    "description": "Calculate unused annual leave allowance based on 2026 Korean labor law.",
+    "emoji": "🏖️",
+    "category": "Finance"
+  },
+  {
+    "slug": "unemployment-benefits",
+    "title": "Unemployment Benefits (Korea)",
+    "description": "Estimate Korean unemployment insurance benefits based on 2026 standards.",
+    "emoji": "📋",
+    "category": "Finance"
+  },
+  {
+    "slug": "gift-inheritance-tax",
+    "title": "Gift & Inheritance Tax (Korea)",
+    "description": "Calculate Korean gift and inheritance tax based on 2026 tax law.",
+    "emoji": "🏛️",
+    "category": "Tax"
+  },
+  {
+    "slug": "jeonse-loan",
+    "title": "Jeonse Loan Calculator (Korea)",
+    "description": "Calculate interest and monthly payments for Korean Jeonse deposit loans.",
+    "emoji": "🏠",
+    "category": "Real Estate"
+  },
+  {
+    "slug": "salary-calculator",
+    "title": "Salary Calculator (US/UK/CA)",
+    "description": "Calculate take-home pay with 2026 tax rates for US, UK, and Canada.",
+    "emoji": "🌍",
+    "category": "Finance"
+  },
+  {
+    "slug": "mortgage-calculator",
+    "title": "Mortgage Calculator",
+    "description": "Calculate monthly mortgage payments and total interest. Fixed & adjustable rates.",
+    "emoji": "🏦",
+    "category": "Real Estate"
+  },
+  {
+    "slug": "state-tax-calculator",
+    "title": "US State Tax Calculator",
+    "description": "Calculate 2026 income tax and take-home pay by US state.",
+    "emoji": "🇺🇸",
+    "category": "Tax"
   }
 ]

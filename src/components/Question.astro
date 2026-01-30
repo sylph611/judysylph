@@ -16,14 +16,21 @@ const { questionNumber, totalQuestions, question, choices, lang } = Astro.props;
 const progress = (questionNumber / totalQuestions) * 100;
 ---
 
-<div class="question-container" data-question={questionNumber}>
+<div class="question-container" data-question={questionNumber} role="region" aria-label={`${lang === 'ko' ? '질문' : 'Question'} ${questionNumber}`}>
   <!-- Progress Bar -->
   <div class="mb-6">
     <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
       <span class="font-medium">{lang === 'ko' ? '질문' : 'Q'} {questionNumber} / {totalQuestions}</span>
       <span class="font-bold text-primary-600 dark:text-primary-400">{Math.round(progress)}%</span>
     </div>
-    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+    <div
+      class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden"
+      role="progressbar"
+      aria-valuenow={Math.round(progress)}
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-label={lang === 'ko' ? '테스트 진행률' : 'Test progress'}
+    >
       <div
         class="progress-bar bg-gradient-to-r from-primary-500 to-secondary-500 h-3 rounded-full transition-all duration-500 ease-out relative"
         style={`width: ${progress}%`}
@@ -63,16 +70,17 @@ const progress = (questionNumber / totalQuestions) * 100;
   </h2>
 
   <!-- Choices -->
-  <div class="space-y-3">
+  <div class="space-y-3" role="group" aria-label={lang === 'ko' ? '답변 선택' : 'Answer choices'}>
     {choices.map((choice, index) => (
       <button
         type="button"
-        class="choice-btn w-full p-4 text-left bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary-400 dark:hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200 text-gray-800 dark:text-gray-200"
+        class="choice-btn w-full p-4 text-left bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary-400 dark:hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
         data-scores={JSON.stringify(choice.scores)}
         data-index={index}
+        aria-label={`${lang === 'ko' ? '선택지' : 'Option'} ${String.fromCharCode(65 + index)}: ${choice.text}`}
       >
         <span class="flex items-center gap-3">
-          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-sm font-medium">
+          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-sm font-medium" aria-hidden="true">
             {String.fromCharCode(65 + index)}
           </span>
           <span>{choice.text}</span>

@@ -1,0 +1,130 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('state-tax-calculator', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">2026년 세율 기준</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">주 (State)</label>
+          <select id="state" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+            <option value="CA">California (CA) - 최대 13.3%</option>
+            <option value="NY">New York (NY) - 최대 10.9%</option>
+            <option value="TX">Texas (TX) - 소득세 없음</option>
+            <option value="FL">Florida (FL) - 소득세 없음</option>
+            <option value="WA">Washington (WA) - 소득세 없음</option>
+            <option value="NV">Nevada (NV) - 소득세 없음</option>
+            <option value="IL">Illinois (IL) - 4.95%</option>
+            <option value="PA">Pennsylvania (PA) - 3.07%</option>
+            <option value="NJ">New Jersey (NJ) - 최대 10.75%</option>
+            <option value="MA">Massachusetts (MA) - 5.0%</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">연봉 (USD)</label>
+          <input type="text" id="salary" placeholder="100,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+        </div>
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">계산하기</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4" id="r-state">-</h3>
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between bg-white dark:bg-gray-800 rounded-lg p-3"><span class="text-gray-600 dark:text-gray-400">연봉</span><span id="r-gross" class="font-medium">-</span></div>
+            <div class="flex justify-between bg-white dark:bg-gray-800 rounded-lg p-3"><span class="text-gray-600 dark:text-gray-400">연방세 (Federal)</span><span id="r-federal" class="font-medium text-red-500">-</span></div>
+            <div class="flex justify-between bg-white dark:bg-gray-800 rounded-lg p-3"><span class="text-gray-600 dark:text-gray-400">주세 (State)</span><span id="r-state-tax" class="font-medium text-red-500">-</span></div>
+            <div class="flex justify-between bg-white dark:bg-gray-800 rounded-lg p-3"><span class="text-gray-600 dark:text-gray-400">FICA (사회보장)</span><span id="r-fica" class="font-medium text-red-500">-</span></div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center">
+              <div class="text-sm text-gray-600 dark:text-gray-400">연 실수령액</div>
+              <div id="r-net-year" class="text-xl font-bold text-primary-600 dark:text-primary-400">-</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center">
+              <div class="text-sm text-gray-600 dark:text-gray-400">실효세율</div>
+              <div id="r-effective" class="text-xl font-bold text-gray-900 dark:text-white">-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+      <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-2">소득세 없는 주</h4>
+      <p class="text-sm text-blue-700 dark:text-blue-300">Texas, Florida, Nevada, Washington, Wyoming, South Dakota, Alaska, Tennessee, New Hampshire (배당/이자만)</p>
+    </div>
+    <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const salaryInput = document.getElementById('salary') as HTMLInputElement;
+
+  salaryInput?.addEventListener('input', e => {
+    const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+    (e.target as HTMLInputElement).value = Number(v).toLocaleString();
+  });
+
+  // 2026 State tax rates (simplified)
+  const stateTaxes: Record<string, {name:string; rate:number; progressive?:{l:number;r:number}[]}> = {
+    CA: { name: 'California', progressive: [{l:10412,r:0.01},{l:24684,r:0.02},{l:38959,r:0.04},{l:54081,r:0.06},{l:68350,r:0.08},{l:349137,r:0.093},{l:418961,r:0.103},{l:698271,r:0.113},{l:Infinity,r:0.133}], rate: 0 },
+    NY: { name: 'New York', progressive: [{l:8500,r:0.04},{l:11700,r:0.045},{l:13900,r:0.0525},{l:80650,r:0.0585},{l:215400,r:0.0625},{l:1077550,r:0.0685},{l:Infinity,r:0.109}], rate: 0 },
+    TX: { name: 'Texas', rate: 0 },
+    FL: { name: 'Florida', rate: 0 },
+    WA: { name: 'Washington', rate: 0 },
+    NV: { name: 'Nevada', rate: 0 },
+    IL: { name: 'Illinois', rate: 0.0495 },
+    PA: { name: 'Pennsylvania', rate: 0.0307 },
+    NJ: { name: 'New Jersey', progressive: [{l:20000,r:0.014},{l:35000,r:0.0175},{l:40000,r:0.035},{l:75000,r:0.05525},{l:500000,r:0.0637},{l:1000000,r:0.0897},{l:Infinity,r:0.1075}], rate: 0 },
+    MA: { name: 'Massachusetts', rate: 0.05 }
+  };
+
+  // Federal 2026
+  const fedBrackets = [{l:11600,r:0.10},{l:47150,r:0.12},{l:100525,r:0.22},{l:191950,r:0.24},{l:243725,r:0.32},{l:609350,r:0.35},{l:Infinity,r:0.37}];
+
+  function calcProgressive(income: number, brackets: {l:number;r:number}[]): number {
+    let tax = 0, prev = 0;
+    for (const b of brackets) {
+      if (income <= b.l) { tax += (income - prev) * b.r; break; }
+      tax += (b.l - prev) * b.r; prev = b.l;
+    }
+    return Math.round(tax);
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const state = (document.getElementById('state') as HTMLSelectElement).value;
+    const salary = parseInt(salaryInput.value.replace(/,/g,''));
+    const stateData = stateTaxes[state];
+
+    const federal = calcProgressive(salary, fedBrackets);
+    let stateTax = stateData.progressive ? calcProgressive(salary, stateData.progressive) : Math.round(salary * stateData.rate);
+    const fica = Math.round(salary * 0.0765);
+    const totalTax = federal + stateTax + fica;
+    const netYear = salary - totalTax;
+    const effective = ((totalTax / salary) * 100).toFixed(1);
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+    document.getElementById('r-state')!.textContent = stateData.name;
+    document.getElementById('r-gross')!.textContent = '$' + salary.toLocaleString();
+    document.getElementById('r-federal')!.textContent = '-$' + federal.toLocaleString();
+    document.getElementById('r-state-tax')!.textContent = '-$' + stateTax.toLocaleString();
+    document.getElementById('r-fica')!.textContent = '-$' + fica.toLocaleString();
+    document.getElementById('r-net-year')!.textContent = '$' + netYear.toLocaleString();
+    document.getElementById('r-effective')!.textContent = effective + '%';
+  });
+</script>
