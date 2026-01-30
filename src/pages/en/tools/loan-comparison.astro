@@ -1,0 +1,172 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('loan-comparison', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Amount Needed ($)</label>
+          <input type="text" id="loanAmount" placeholder="10,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-3">🏦 Personal Loan</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">APR (%)</label>
+                <input type="number" id="personalRate" placeholder="10" step="0.1" value="10" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Term</label>
+                <select id="personalTerm" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                  <option value="24">2 years</option>
+                  <option value="36" selected>3 years</option>
+                  <option value="48">4 years</option>
+                  <option value="60">5 years</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-red-800 dark:text-red-200 mb-3">💳 Credit Card</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">APR (%)</label>
+                <input type="number" id="cardRate" placeholder="22" step="0.1" value="22" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Min Payment (%)</label>
+                <input type="number" id="minPayment" placeholder="2" value="2" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">of balance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">Compare Options</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-6 text-white text-center mb-6">
+          <div class="text-5xl mb-2">🏦</div>
+          <div class="text-2xl font-bold mb-2">Personal Loan Wins!</div>
+          <div id="verdict-desc" class="text-lg opacity-90"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border-2 border-blue-500">
+            <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-center">🏦 Personal Loan</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Monthly Payment</span><span id="pl-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Interest</span><span id="pl-interest" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Paid</span><span id="pl-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Payoff Time</span><span id="pl-time" class="font-medium">-</span></div>
+            </div>
+          </div>
+
+          <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-4">
+            <h4 class="font-bold text-red-800 dark:text-red-200 mb-3 text-center">💳 Credit Card</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Initial Payment</span><span id="cc-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Interest</span><span id="cc-interest" class="font-medium text-red-500">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Paid</span><span id="cc-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Payoff Time</span><span id="cc-time" class="font-medium text-red-500">-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-yellow-800 dark:text-yellow-200 mb-3">⚠️ Credit Card Debt Warning</h3>
+          <p id="warning-text" class="text-sm text-yellow-700 dark:text-yellow-300"></p>
+        </div>
+
+        <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+          <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 Related Calculators</h3>
+          <div class="flex flex-wrap gap-2">
+            <a href="/en/tools/loan-refinance" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🔄 Loan Refinance</a>
+            <a href="/en/tools/salary-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">💰 Salary Calculator</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← Back to Tools</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const loanInput = document.getElementById('loanAmount') as HTMLInputElement;
+
+  loanInput?.addEventListener('input', e => {
+    const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+    (e.target as HTMLInputElement).value = Number(v).toLocaleString();
+  });
+
+  function calcMonthly(p: number, r: number, n: number): number {
+    const mr = r / 100 / 12;
+    return p * mr * Math.pow(1+mr, n) / (Math.pow(1+mr, n) - 1);
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const amount = parseInt(loanInput.value.replace(/,/g,''));
+    const personalRate = parseFloat((document.getElementById('personalRate') as HTMLInputElement).value);
+    const personalMonths = parseInt((document.getElementById('personalTerm') as HTMLSelectElement).value);
+    const cardRate = parseFloat((document.getElementById('cardRate') as HTMLInputElement).value);
+    const minPaymentPct = parseFloat((document.getElementById('minPayment') as HTMLInputElement).value) / 100;
+
+    // Personal loan calculation
+    const plMonthly = calcMonthly(amount, personalRate, personalMonths);
+    const plTotal = plMonthly * personalMonths;
+    const plInterest = plTotal - amount;
+
+    // Credit card minimum payment calculation
+    let ccBalance = amount;
+    const ccMr = cardRate / 100 / 12;
+    let ccMonths = 0;
+    let ccTotalPaid = 0;
+    const initialPayment = Math.max(amount * minPaymentPct, 25);
+
+    while (ccBalance > 0 && ccMonths < 600) {
+      const interest = ccBalance * ccMr;
+      const payment = Math.max(ccBalance * minPaymentPct, 25, ccBalance + interest);
+      ccTotalPaid += Math.min(payment, ccBalance + interest);
+      ccBalance = ccBalance + interest - payment;
+      ccMonths++;
+    }
+    const ccInterest = ccTotalPaid - amount;
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    const interestDiff = ccInterest - plInterest;
+    document.getElementById('verdict-desc')!.textContent = `Save $${Math.round(interestDiff).toLocaleString()} in interest`;
+
+    document.getElementById('pl-monthly')!.textContent = '$' + Math.round(plMonthly).toLocaleString();
+    document.getElementById('pl-interest')!.textContent = '$' + Math.round(plInterest).toLocaleString();
+    document.getElementById('pl-total')!.textContent = '$' + Math.round(plTotal).toLocaleString();
+    document.getElementById('pl-time')!.textContent = Math.round(personalMonths / 12) + ' years';
+
+    document.getElementById('cc-monthly')!.textContent = '$' + Math.round(initialPayment).toLocaleString();
+    document.getElementById('cc-interest')!.textContent = '$' + Math.round(ccInterest).toLocaleString();
+    document.getElementById('cc-total')!.textContent = '$' + Math.round(ccTotalPaid).toLocaleString();
+    document.getElementById('cc-time')!.textContent = Math.round(ccMonths / 12) + ' years';
+
+    document.getElementById('warning-text')!.textContent =
+      `Paying only minimum payments on $${amount.toLocaleString()} credit card debt at ${cardRate}% APR would take ${Math.round(ccMonths / 12)} years ` +
+      `and cost $${Math.round(ccInterest).toLocaleString()} in interest—more than ${Math.round(ccInterest / plInterest)}x the personal loan option!`;
+  });
+</script>

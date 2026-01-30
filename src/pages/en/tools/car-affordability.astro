@@ -56,6 +56,44 @@ const tool = getTool('car-affordability', lang);
           <h3 class="font-bold mb-2">💡 Advice</h3>
           <p id="advice-text" class="text-sm"></p>
         </div>
+
+        <!-- SEO Interpretation Content -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 What This Result Means</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- AD_SLOT: middle-content -->
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 Who This Is For</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ Important Considerations</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- AD_SLOT: before-faq -->
+
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ Frequently Asked Questions</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 Related Calculators</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/en/tools/apartment-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏢 Home Affordability Calculator</a>
+              <a href="/en/tools/salary-percentile" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">📊 Salary Percentile Calculator</a>
+              <a href="/en/tools/salary-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">💰 Salary Calculator</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -138,5 +176,126 @@ const tool = getTool('car-affordability', lang);
     adviceBox.className = `rounded-xl p-5 ${advice.bg}`;
     document.getElementById('advice-text')!.className = `text-sm ${advice.text}`;
     document.getElementById('advice-text')!.textContent = advice.msg;
+
+    // Generate SEO content
+    generateSeoContent(salary, properPrice, maxPrice, car, targetPrice);
   });
+
+  function generateSeoContent(salary: number, properPrice: number, maxPrice: number, car: any, targetPrice: number) {
+    const ratio = Math.round((targetPrice / salary) * 100);
+    const isHighRatio = ratio > 70;
+    const isLowRatio = ratio < 30;
+
+    // Result summary
+    let summaryText;
+    if (salary >= 120000) {
+      summaryText = `With a $${salary.toLocaleString()} salary, ${car.grade} vehicles are well within your budget`;
+    } else if (salary >= 80000) {
+      summaryText = `A $${salary.toLocaleString()} salary comfortably supports ${car.grade} vehicle purchases`;
+    } else if (salary >= 50000) {
+      summaryText = `Based on your $${salary.toLocaleString()} salary, ${car.grade} vehicles are appropriate`;
+    } else {
+      summaryText = `With a $${salary.toLocaleString()} salary, we recommend focusing on ${car.grade} vehicles`;
+    }
+    document.getElementById('seo-summary')!.textContent = `📋 Summary: ${summaryText}`;
+
+    // Meaning explanation
+    const meaningText = `This analysis is based on your annual salary of $${salary.toLocaleString()} and current savings. ` +
+      `Your recommended budget of $${properPrice.toLocaleString()} represents ${Math.round(properPrice/salary*100)}% of your annual income, ` +
+      `which is ${isHighRatio ? 'on the higher end but manageable' : isLowRatio ? 'very conservative and safe' : 'within the typically recommended range'}. ` +
+      `For this budget, you can consider vehicles like ${car.models.slice(0, 2).join(' or ')} in the $${car.min.toLocaleString()}-${car.max === Infinity ? 'above' : '$' + car.max.toLocaleString()} range. ` +
+      `Monthly ownership costs (insurance, gas, maintenance) are estimated at ~$${Math.round(targetPrice * 0.012).toLocaleString()}, ` +
+      `representing about ${Math.round(targetPrice * 0.012 / (salary / 12) * 100)}% of your monthly income.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // Suitable for
+    let suitableText;
+    if (salary >= 100000) {
+      suitableText = `This budget tier is ideal for high-income professionals, executives, or business owners who value premium quality. ` +
+        `It suits those who prioritize advanced safety features, luxury amenities, and brand prestige. ` +
+        `Also recommended for families needing spacious vehicles for long commutes or frequent road trips, ` +
+        `and individuals who see their vehicle as both transportation and a reflection of professional success.`;
+    } else if (salary >= 60000) {
+      suitableText = `This range is perfect for established professionals in their 30s-40s with stable careers. ` +
+        `Ideal for dual-income households seeking reliable family transportation, those who value practicality without sacrificing quality, ` +
+        `weekend adventurers who need versatile vehicles, and buyers who prefer new car warranties over used car uncertainties.`;
+    } else {
+      suitableText = `This budget is well-suited for young professionals starting their careers, recent graduates buying their first car, ` +
+        `individuals prioritizing savings and viewing cars purely as transportation, urban dwellers with short commutes, ` +
+        `and practical buyers who want to minimize ongoing costs while maintaining reliable transportation.`;
+    }
+    document.getElementById('seo-suitable')!.textContent = suitableText;
+
+    // Cautions
+    let cautionText = `When purchasing a vehicle, several factors deserve careful consideration. First, beyond the sticker price, ` +
+      `expect 10-15% in additional costs including sales tax (varies by state), registration, documentation fees, and dealer charges. ` +
+      `Second, if financing, compare APR rates carefully as they significantly impact total cost—even 1% difference on a $30,000 loan ` +
+      `means $1,500+ over 5 years. Third, `;
+    if (isHighRatio) {
+      cautionText += `your target price is on the higher end relative to income. ` +
+        `Consider avoiding loan terms beyond 48 months, opt for base trims over loaded options, ` +
+        `and maintain an emergency fund of 3-6 months expenses before committing. ` +
+        `A certified pre-owned vehicle could provide significant savings with similar reliability.`;
+    } else {
+      cautionText += `factor in long-term ownership costs including insurance (varies by vehicle class), fuel economy, ` +
+        `and typical maintenance expenses. For your budget, a 2-3 year old certified pre-owned vehicle ` +
+        `could offer excellent value with significant depreciation already absorbed, ` +
+        `allowing you to get more features for the same money.`;
+    }
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ
+    const faqs = [
+      {
+        q: 'Is this calculator result legally binding?',
+        a: 'No, this is a financial planning tool based on general guidelines. Actual loan approval amounts depend on your credit score, debt-to-income ratio, employment history, and lender policies. Always consult with banks or credit unions for accurate pre-approval amounts.'
+      },
+      {
+        q: 'What\'s the difference between recommended and maximum budget?',
+        a: `The recommended budget ($${properPrice.toLocaleString()}) is 30-50% of annual salary—a comfortable range that maintains financial flexibility. The maximum ($${maxPrice.toLocaleString()}) is the upper limit where a purchase is still feasible but may strain other financial goals.`
+      },
+      {
+        q: 'Why might actual car prices differ from these ranges?',
+        a: 'This calculator uses 2026 US average new car prices. Actual costs vary by trim level, options, dealer markups, regional pricing, and negotiations. Used cars can be 30-60% less depending on age and mileage, offering significant savings.'
+      },
+      {
+        q: 'How is monthly ownership cost calculated?',
+        a: 'Monthly costs are estimated at ~1.2% of vehicle value annually, divided by 12. This includes auto insurance ($100-200/mo), fuel ($150-300/mo), and maintenance ($50-100/mo). Actual costs vary based on driving habits, location, and vehicle type.'
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD FAQ Schema
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    };
+
+    let schemaScript = document.getElementById('faq-schema');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
 </script>

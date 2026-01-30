@@ -1,0 +1,372 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('jeonse-vs-wolse', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-3">🏠 전세 조건</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">전세 보증금</label>
+                <input type="text" id="jeonseDeposit" placeholder="30,000" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">만원</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">전세대출 금액</label>
+                <input type="text" id="jeonseLoan" placeholder="20,000" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">만원 (없으면 0)</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">전세대출 금리</label>
+                <input type="number" id="jeonseLoanRate" placeholder="3.5" step="0.1" value="3.5" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">연 %</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-green-800 dark:text-green-200 mb-3">🏢 월세 조건</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">월세 보증금</label>
+                <input type="text" id="wolseDeposit" placeholder="3,000" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">만원</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">월세</label>
+                <input type="text" id="monthlyRent" placeholder="100" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">만원/월</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">관리비 차이</label>
+                <input type="text" id="maintenanceDiff" placeholder="0" value="0" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <p class="text-xs text-gray-500 mt-1">만원 (월세가 더 비싸면 +)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 mb-3">📊 공통 조건</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">거주 예정 기간</label>
+              <select id="stayYears" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                <option value="1">1년</option>
+                <option value="2" selected>2년</option>
+                <option value="3">3년</option>
+                <option value="4">4년</option>
+                <option value="5">5년 이상</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">여유 자금 투자 수익률</label>
+              <input type="number" id="investReturn" placeholder="4" step="0.5" value="4" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              <p class="text-xs text-gray-500 mt-1">연 % (예금/투자)</p>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">비교 분석하기</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="rounded-2xl p-6 text-white text-center mb-6">
+          <div id="verdict-emoji" class="text-5xl mb-2"></div>
+          <div id="verdict" class="text-2xl font-bold mb-2"></div>
+          <div id="verdict-desc" class="text-lg opacity-90"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+            <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-center">🏠 전세 선택 시</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">필요 자금</span><span id="j-capital" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 대출이자</span><span id="j-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 비용 (기간)</span><span id="j-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">기회비용</span><span id="j-opportunity" class="font-medium text-red-500">-</span></div>
+            </div>
+          </div>
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
+            <h4 class="font-bold text-green-800 dark:text-green-200 mb-3 text-center">🏢 월세 선택 시</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">필요 자금</span><span id="w-capital" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 지출</span><span id="w-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 비용 (기간)</span><span id="w-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">투자 수익</span><span id="w-investment" class="font-medium text-green-600">-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">📊 최종 비교</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">전세 실질 비용</span>
+              <span id="j-real-cost" class="font-bold text-blue-600"></span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">월세 실질 비용</span>
+              <span id="w-real-cost" class="font-bold text-green-600"></span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+              <span class="text-primary-700 dark:text-primary-300 font-medium">차이</span>
+              <span id="cost-diff" class="font-bold text-xl"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEO Content -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 이 결과가 의미하는 것</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <!-- AD_SLOT: middle-content -->
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 이런 분에게 적합합니다</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ 주의해야 할 점</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <!-- AD_SLOT: before-faq -->
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ 자주 묻는 질문</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 관련 계산기</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/ko/tools/jeonse-loan" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏠 전세대출 계산기</a>
+              <a href="/ko/tools/apartment-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏢 내 연봉으로 가능한 아파트</a>
+              <a href="/ko/tools/loan-refinance" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🔄 대출 갈아타기 계산기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const numInputs = ['jeonseDeposit', 'jeonseLoan', 'wolseDeposit', 'monthlyRent', 'maintenanceDiff'];
+
+  numInputs.forEach(id => {
+    const el = document.getElementById(id) as HTMLInputElement;
+    el?.addEventListener('input', e => {
+      const v = (e.target as HTMLInputElement).value.replace(/[^\d-]/g,'');
+      if (v === '' || v === '-') {
+        (e.target as HTMLInputElement).value = v;
+      } else {
+        (e.target as HTMLInputElement).value = Number(v).toLocaleString('ko-KR');
+      }
+    });
+  });
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const jeonseDeposit = parseInt((document.getElementById('jeonseDeposit') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const jeonseLoan = parseInt((document.getElementById('jeonseLoan') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const jeonseLoanRate = parseFloat((document.getElementById('jeonseLoanRate') as HTMLInputElement).value) || 0;
+    const wolseDeposit = parseInt((document.getElementById('wolseDeposit') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const monthlyRent = parseInt((document.getElementById('monthlyRent') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const maintenanceDiff = parseInt((document.getElementById('maintenanceDiff') as HTMLInputElement).value.replace(/,/g,'')) || 0;
+    const stayYears = parseInt((document.getElementById('stayYears') as HTMLSelectElement).value);
+    const investReturn = parseFloat((document.getElementById('investReturn') as HTMLInputElement).value) || 0;
+
+    const stayMonths = stayYears * 12;
+
+    // 전세 계산
+    const jeonseOwnCapital = jeonseDeposit - jeonseLoan; // 자기자본
+    const jeonseMonthlyInterest = jeonseLoan * 10000 * (jeonseLoanRate / 100 / 12);
+    const jeonseTotalInterest = jeonseMonthlyInterest * stayMonths;
+    const jeonseOpportunityCost = jeonseOwnCapital * 10000 * (investReturn / 100) * stayYears;
+
+    // 월세 계산
+    const wolseOwnCapital = wolseDeposit;
+    const wolseMonthlyTotal = monthlyRent + maintenanceDiff;
+    const wolseTotalRent = wolseMonthlyTotal * stayMonths * 10000;
+    const excessCapital = (jeonseOwnCapital - wolseOwnCapital) * 10000; // 여유자금
+    const wolseInvestmentReturn = excessCapital > 0 ? excessCapital * (investReturn / 100) * stayYears : 0;
+
+    // 실질 비용 계산
+    const jeonseRealCost = jeonseTotalInterest + jeonseOpportunityCost;
+    const wolseRealCost = wolseTotalRent - wolseInvestmentReturn;
+    const costDiff = jeonseRealCost - wolseRealCost;
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    // Verdict
+    const header = document.getElementById('result-header')!;
+    let verdictEmoji, verdict, verdictDesc, headerColor;
+    const isJeonseBetter = costDiff > 0;
+    const diffMan = Math.abs(Math.round(costDiff / 10000));
+
+    if (Math.abs(costDiff) < 1000000) {
+      verdictEmoji = '⚖️';
+      verdict = '비슷한 수준';
+      verdictDesc = '개인 상황과 선호에 따라 선택하세요';
+      headerColor = 'bg-gradient-to-br from-gray-500 to-slate-600';
+    } else if (isJeonseBetter) {
+      verdictEmoji = '🏢';
+      verdict = '월세가 유리!';
+      verdictDesc = `${stayYears}년간 ${diffMan.toLocaleString()}만원 절감`;
+      headerColor = 'bg-gradient-to-br from-green-500 to-emerald-600';
+    } else {
+      verdictEmoji = '🏠';
+      verdict = '전세가 유리!';
+      verdictDesc = `${stayYears}년간 ${diffMan.toLocaleString()}만원 절감`;
+      headerColor = 'bg-gradient-to-br from-blue-500 to-cyan-600';
+    }
+
+    header.className = `${headerColor} rounded-2xl p-6 text-white text-center mb-6`;
+    document.getElementById('verdict-emoji')!.textContent = verdictEmoji;
+    document.getElementById('verdict')!.textContent = verdict;
+    document.getElementById('verdict-desc')!.textContent = verdictDesc;
+
+    // 전세 상세
+    document.getElementById('j-capital')!.textContent = jeonseOwnCapital.toLocaleString() + '만원';
+    document.getElementById('j-monthly')!.textContent = Math.round(jeonseMonthlyInterest).toLocaleString() + '원';
+    document.getElementById('j-total')!.textContent = Math.round(jeonseTotalInterest / 10000).toLocaleString() + '만원';
+    document.getElementById('j-opportunity')!.textContent = '-' + Math.round(jeonseOpportunityCost / 10000).toLocaleString() + '만원';
+
+    // 월세 상세
+    document.getElementById('w-capital')!.textContent = wolseOwnCapital.toLocaleString() + '만원';
+    document.getElementById('w-monthly')!.textContent = wolseMonthlyTotal.toLocaleString() + '만원';
+    document.getElementById('w-total')!.textContent = Math.round(wolseTotalRent / 10000).toLocaleString() + '만원';
+    document.getElementById('w-investment')!.textContent = '+' + Math.round(wolseInvestmentReturn / 10000).toLocaleString() + '만원';
+
+    // 최종 비교
+    document.getElementById('j-real-cost')!.textContent = Math.round(jeonseRealCost / 10000).toLocaleString() + '만원';
+    document.getElementById('w-real-cost')!.textContent = Math.round(wolseRealCost / 10000).toLocaleString() + '만원';
+
+    const costDiffEl = document.getElementById('cost-diff')!;
+    if (isJeonseBetter) {
+      costDiffEl.textContent = `월세가 ${diffMan.toLocaleString()}만원 유리`;
+      costDiffEl.className = 'font-bold text-xl text-green-600';
+    } else if (costDiff < 0) {
+      costDiffEl.textContent = `전세가 ${diffMan.toLocaleString()}만원 유리`;
+      costDiffEl.className = 'font-bold text-xl text-blue-600';
+    } else {
+      costDiffEl.textContent = '비슷함';
+      costDiffEl.className = 'font-bold text-xl text-gray-600';
+    }
+
+    // SEO
+    generateSeoContent(jeonseDeposit, jeonseLoan, wolseDeposit, monthlyRent, stayYears, investReturn, jeonseRealCost, wolseRealCost, excessCapital);
+  });
+
+  function generateSeoContent(jeonseDeposit: number, jeonseLoan: number, wolseDeposit: number, monthlyRent: number, stayYears: number, investReturn: number, jeonseRealCost: number, wolseRealCost: number, excessCapital: number) {
+    const isJeonseBetter = wolseRealCost > jeonseRealCost;
+    const diffMan = Math.abs(Math.round((jeonseRealCost - wolseRealCost) / 10000));
+
+    // Summary
+    let summaryText;
+    if (diffMan < 100) {
+      summaryText = `전세 ${jeonseDeposit.toLocaleString()}만원 vs 월세 ${wolseDeposit.toLocaleString()}만원/${monthlyRent}만원 비교 결과, ${stayYears}년 기준 실질 비용이 비슷합니다`;
+    } else if (isJeonseBetter) {
+      summaryText = `${stayYears}년 거주 시 전세가 ${diffMan.toLocaleString()}만원 더 유리합니다 (기회비용 포함)`;
+    } else {
+      summaryText = `${stayYears}년 거주 시 월세가 ${diffMan.toLocaleString()}만원 더 유리합니다 (투자수익 포함)`;
+    }
+    document.getElementById('seo-summary')!.textContent = `📋 결과 요약: ${summaryText}`;
+
+    // Meaning
+    const meaningText = `전세 보증금 ${jeonseDeposit.toLocaleString()}만원(대출 ${jeonseLoan.toLocaleString()}만원 포함)과 ` +
+      `월세 보증금 ${wolseDeposit.toLocaleString()}만원/월 ${monthlyRent}만원을 ${stayYears}년간 비교했습니다. ` +
+      `전세의 경우 대출 이자와 자기자본에 대한 기회비용(연 ${investReturn}% 수익 가정)을 고려했고, ` +
+      `월세의 경우 총 임대료에서 여유 자금(${Math.round(excessCapital/10000).toLocaleString()}만원)의 투자 수익을 차감했습니다. ` +
+      `이 분석은 단순 월 지출 비교가 아닌, 자본의 시간 가치와 기회비용을 포함한 실질 비용 비교입니다.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // Suitable
+    let suitableText;
+    if (isJeonseBetter) {
+      suitableText = `전세가 유리한 상황입니다. 자기자본이 충분하고 낮은 금리로 전세대출이 가능한 분, ` +
+        `2년 이상 장기 거주가 확실한 분, 보증금 회수 리스크가 낮은 안전한 매물을 찾은 분, ` +
+        `투자보다 주거 안정성을 우선시하는 분에게 전세를 권장합니다.`;
+    } else {
+      suitableText = `월세가 유리한 상황입니다. 자기자본을 투자나 저축에 활용하고 싶은 분, ` +
+        `1~2년 내 이사 가능성이 있는 분, 전세 사기 리스크를 피하고 싶은 분, ` +
+        `월 현금 흐름 관리가 가능한 안정적인 소득이 있는 분에게 월세를 권장합니다.`;
+    }
+    document.getElementById('seo-suitable')!.textContent = suitableText;
+
+    // Caution
+    const cautionText = `이 계산에서 고려하지 못한 요소들이 있습니다. 첫째, 전세가 하락 시 보증금 반환 리스크가 있으며, ` +
+      `최근 역전세 상황에서는 이 리스크가 커졌습니다. 둘째, 월세는 소득공제(연 750만원 한도, 15~17% 세액공제) 혜택이 있습니다. ` +
+      `셋째, 전세대출 금리 변동, 투자 수익률 변동에 따라 결과가 달라질 수 있습니다. ` +
+      `넷째, 계약 갱신 시 인상률(전세 5% 상한, 월세는 협의)도 장기 거주 시 중요한 요소입니다.`;
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ
+    const faqs = [
+      {
+        q: '전세 vs 월세, 어떤 기준으로 선택해야 하나요?',
+        a: `핵심은 '자기자본의 기회비용'입니다. 전세 보증금으로 묶이는 돈을 다른 곳에 투자했을 때 얻을 수익과, 월세로 나가는 돈을 비교해야 합니다. 현재 ${investReturn}% 수익률 가정 시, ${isJeonseBetter ? '전세' : '월세'}가 ${diffMan.toLocaleString()}만원 유리합니다.`
+      },
+      {
+        q: '전세대출을 받으면 전세가 무조건 유리한가요?',
+        a: `아닙니다. 전세대출 이자가 월세와 비슷하거나 높으면 월세가 유리할 수 있습니다. 현재 전세대출 금리와 전월세 전환율(연 4~6%)을 비교하세요. 또한 전세대출에도 자기자본(보통 보증금의 20~30%)이 필요합니다.`
+      },
+      {
+        q: '전세 사기가 걱정되는데 어떻게 해야 하나요?',
+        a: '1) 등기부등본에서 근저당 설정 확인, 2) 전세가율 80% 이하 매물 선택, 3) 전세보증보험(HUG/SGI) 가입, 4) 임대인 체납세금 확인, 5) 공인중개사 통한 계약을 권장합니다. 위험 매물이라면 월세가 더 안전합니다.'
+      },
+      {
+        q: '몇 년 이상 살아야 전세가 유리한가요?',
+        a: `일반적으로 2년 이상이면 전세가 유리하고, 1년 미만은 월세가 유리한 경우가 많습니다. 현재 조건에서는 ${stayYears}년 기준으로 ${isJeonseBetter ? '전세' : '월세'}가 유리합니다. 단, 이사비용과 중개수수료도 고려해야 합니다.`
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+      }))
+    };
+    let schemaScript = document.getElementById('faq-schema') as HTMLScriptElement;
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
+</script>

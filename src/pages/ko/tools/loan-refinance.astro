@@ -1,0 +1,366 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('loan-refinance', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 mb-4">
+          <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-3">현재 대출 정보</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">대출 잔액</label>
+              <input type="text" id="currentBalance" placeholder="10,000" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              <p class="text-xs text-gray-500 mt-1">만원</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">현재 금리</label>
+              <input type="number" id="currentRate" placeholder="5.5" step="0.1" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              <p class="text-xs text-gray-500 mt-1">연 %</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">남은 기간</label>
+              <input type="number" id="remainingMonths" placeholder="240" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              <p class="text-xs text-gray-500 mt-1">개월</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">중도상환 수수료</label>
+              <input type="number" id="prepaymentFee" placeholder="1.0" step="0.1" value="1.0" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              <p class="text-xs text-gray-500 mt-1">%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
+          <h3 class="font-bold text-green-800 dark:text-green-200 mb-3">새 대출 조건</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">새 대출 금리</label>
+              <input type="number" id="newRate" placeholder="4.0" step="0.1" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              <p class="text-xs text-gray-500 mt-1">연 %</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">새 대출 기간</label>
+              <input type="number" id="newMonths" placeholder="240" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              <p class="text-xs text-gray-500 mt-1">개월</p>
+            </div>
+            <div class="col-span-2">
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">갈아타기 비용 (등기비, 인지세 등)</label>
+              <input type="text" id="refinanceCost" placeholder="100" value="100" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              <p class="text-xs text-gray-500 mt-1">만원</p>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">갈아타기 분석하기</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="rounded-2xl p-6 text-white text-center mb-6">
+          <div id="verdict-emoji" class="text-5xl mb-2"></div>
+          <div id="verdict" class="text-2xl font-bold mb-2"></div>
+          <div id="verdict-desc" class="text-lg opacity-90"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+            <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-center">현재 대출 유지</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 상환금</span><span id="c-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 이자</span><span id="c-interest" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 상환액</span><span id="c-total" class="font-medium">-</span></div>
+            </div>
+          </div>
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
+            <h4 class="font-bold text-green-800 dark:text-green-200 mb-3 text-center">대출 갈아타기</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">월 상환금</span><span id="n-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 이자</span><span id="n-interest" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">총 상환액</span><span id="n-total" class="font-medium">-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">📊 상세 비교</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">월 상환금 차이</span>
+              <span id="diff-monthly" class="font-bold"></span>
+            </div>
+            <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">총 이자 절감</span>
+              <span id="diff-interest" class="font-bold"></span>
+            </div>
+            <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">갈아타기 비용</span>
+              <span id="total-cost" class="font-bold text-red-500"></span>
+            </div>
+            <div class="flex justify-between items-center p-2 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+              <span class="text-primary-700 dark:text-primary-300 font-medium">순 절감액</span>
+              <span id="net-saving" class="font-bold text-xl"></span>
+            </div>
+            <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">손익분기점</span>
+              <span id="breakeven" class="font-medium"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEO Content -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 이 결과가 의미하는 것</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <!-- AD_SLOT: middle-content -->
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 이런 분에게 적합합니다</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ 주의해야 할 점</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+          <!-- AD_SLOT: before-faq -->
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ 자주 묻는 질문</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 관련 계산기</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/ko/tools/mortgage-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏦 주택담보대출 계산기</a>
+              <a href="/ko/tools/mortgage-comparison" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">📊 대출 상환 비교</a>
+              <a href="/ko/tools/jeonse-loan" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏠 전세대출 계산기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const numInputs = ['currentBalance', 'refinanceCost'];
+
+  numInputs.forEach(id => {
+    const el = document.getElementById(id) as HTMLInputElement;
+    el?.addEventListener('input', e => {
+      const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+      (e.target as HTMLInputElement).value = Number(v).toLocaleString('ko-KR');
+    });
+  });
+
+  function calcMonthlyPayment(principal: number, annualRate: number, months: number): number {
+    if (annualRate === 0) return principal / months;
+    const r = annualRate / 100 / 12;
+    return principal * r * Math.pow(1+r, months) / (Math.pow(1+r, months) - 1);
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const balance = parseInt((document.getElementById('currentBalance') as HTMLInputElement).value.replace(/,/g,'')) * 10000;
+    const currentRate = parseFloat((document.getElementById('currentRate') as HTMLInputElement).value);
+    const remainingMonths = parseInt((document.getElementById('remainingMonths') as HTMLInputElement).value);
+    const prepaymentFeeRate = parseFloat((document.getElementById('prepaymentFee') as HTMLInputElement).value) / 100;
+    const newRate = parseFloat((document.getElementById('newRate') as HTMLInputElement).value);
+    const newMonths = parseInt((document.getElementById('newMonths') as HTMLInputElement).value);
+    const refinanceCost = parseInt((document.getElementById('refinanceCost') as HTMLInputElement).value.replace(/,/g,'')) * 10000;
+
+    // Current loan
+    const currentMonthly = calcMonthlyPayment(balance, currentRate, remainingMonths);
+    const currentTotalPayment = currentMonthly * remainingMonths;
+    const currentTotalInterest = currentTotalPayment - balance;
+
+    // New loan
+    const prepaymentFee = balance * prepaymentFeeRate;
+    const newMonthly = calcMonthlyPayment(balance, newRate, newMonths);
+    const newTotalPayment = newMonthly * newMonths;
+    const newTotalInterest = newTotalPayment - balance;
+    const totalRefinanceCost = prepaymentFee + refinanceCost;
+
+    // Comparison
+    const monthlyDiff = currentMonthly - newMonthly;
+    const interestSaving = currentTotalInterest - newTotalInterest;
+    const netSaving = interestSaving - totalRefinanceCost;
+    const breakevenMonths = totalRefinanceCost > 0 && monthlyDiff > 0 ? Math.ceil(totalRefinanceCost / monthlyDiff) : 0;
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    // Verdict
+    const header = document.getElementById('result-header')!;
+    let verdictEmoji, verdict, verdictDesc, headerColor;
+
+    if (netSaving > 5000000) {
+      verdictEmoji = '🎉';
+      verdict = '갈아타기 강력 추천!';
+      verdictDesc = `${Math.round(netSaving/10000).toLocaleString()}만원 절감 가능`;
+      headerColor = 'bg-gradient-to-br from-green-500 to-emerald-600';
+    } else if (netSaving > 1000000) {
+      verdictEmoji = '✅';
+      verdict = '갈아타기 유리';
+      verdictDesc = `${Math.round(netSaving/10000).toLocaleString()}만원 절감 예상`;
+      headerColor = 'bg-gradient-to-br from-blue-500 to-cyan-600';
+    } else if (netSaving > 0) {
+      verdictEmoji = '🤔';
+      verdict = '소폭 유리하나 검토 필요';
+      verdictDesc = `절감액 ${Math.round(netSaving/10000).toLocaleString()}만원 (비용 고려 시)`;
+      headerColor = 'bg-gradient-to-br from-yellow-500 to-amber-600';
+    } else {
+      verdictEmoji = '❌';
+      verdict = '현재 대출 유지 권장';
+      verdictDesc = `갈아타면 ${Math.round(Math.abs(netSaving)/10000).toLocaleString()}만원 손해`;
+      headerColor = 'bg-gradient-to-br from-red-500 to-rose-600';
+    }
+
+    header.className = `${headerColor} rounded-2xl p-6 text-white text-center mb-6`;
+    document.getElementById('verdict-emoji')!.textContent = verdictEmoji;
+    document.getElementById('verdict')!.textContent = verdict;
+    document.getElementById('verdict-desc')!.textContent = verdictDesc;
+
+    // Current loan details
+    document.getElementById('c-monthly')!.textContent = Math.round(currentMonthly).toLocaleString() + '원';
+    document.getElementById('c-interest')!.textContent = Math.round(currentTotalInterest/10000).toLocaleString() + '만원';
+    document.getElementById('c-total')!.textContent = Math.round(currentTotalPayment/10000).toLocaleString() + '만원';
+
+    // New loan details
+    document.getElementById('n-monthly')!.textContent = Math.round(newMonthly).toLocaleString() + '원';
+    document.getElementById('n-interest')!.textContent = Math.round(newTotalInterest/10000).toLocaleString() + '만원';
+    document.getElementById('n-total')!.textContent = Math.round(newTotalPayment/10000).toLocaleString() + '만원';
+
+    // Comparison
+    const monthlyDiffEl = document.getElementById('diff-monthly')!;
+    monthlyDiffEl.textContent = (monthlyDiff >= 0 ? '-' : '+') + Math.abs(Math.round(monthlyDiff)).toLocaleString() + '원/월';
+    monthlyDiffEl.className = monthlyDiff >= 0 ? 'font-bold text-green-600' : 'font-bold text-red-500';
+
+    const interestDiffEl = document.getElementById('diff-interest')!;
+    interestDiffEl.textContent = (interestSaving >= 0 ? '' : '-') + Math.round(Math.abs(interestSaving)/10000).toLocaleString() + '만원';
+    interestDiffEl.className = interestSaving >= 0 ? 'font-bold text-green-600' : 'font-bold text-red-500';
+
+    document.getElementById('total-cost')!.textContent = '-' + Math.round(totalRefinanceCost/10000).toLocaleString() + '만원';
+
+    const netSavingEl = document.getElementById('net-saving')!;
+    netSavingEl.textContent = (netSaving >= 0 ? '+' : '') + Math.round(netSaving/10000).toLocaleString() + '만원';
+    netSavingEl.className = netSaving >= 0 ? 'font-bold text-xl text-green-600' : 'font-bold text-xl text-red-500';
+
+    document.getElementById('breakeven')!.textContent = breakevenMonths > 0 ? `약 ${breakevenMonths}개월` : '해당 없음';
+
+    // SEO Content
+    generateSeoContent(balance, currentRate, newRate, remainingMonths, newMonths, netSaving, monthlyDiff, breakevenMonths, totalRefinanceCost);
+  });
+
+  function generateSeoContent(balance: number, currentRate: number, newRate: number, remainingMonths: number, newMonths: number, netSaving: number, monthlyDiff: number, breakevenMonths: number, totalCost: number) {
+    const balanceMan = Math.round(balance / 10000);
+    const rateDiff = currentRate - newRate;
+    const isWorthIt = netSaving > 0;
+
+    // Summary
+    let summaryText;
+    if (netSaving > 5000000) {
+      summaryText = `대출 ${balanceMan.toLocaleString()}만원 기준, 금리 ${rateDiff.toFixed(1)}%p 인하로 ${Math.round(netSaving/10000).toLocaleString()}만원 절감이 가능합니다`;
+    } else if (netSaving > 0) {
+      summaryText = `금리 ${rateDiff.toFixed(1)}%p 차이로 갈아타기 시 ${Math.round(netSaving/10000).toLocaleString()}만원의 소폭 절감이 예상됩니다`;
+    } else {
+      summaryText = `현재 조건에서는 갈아타기보다 기존 대출 유지가 ${Math.round(Math.abs(netSaving)/10000).toLocaleString()}만원 유리합니다`;
+    }
+    document.getElementById('seo-summary')!.textContent = `📋 결과 요약: ${summaryText}`;
+
+    // Meaning
+    const meaningText = `대출 잔액 ${balanceMan.toLocaleString()}만원을 기준으로 현재 금리 ${currentRate}%에서 ${newRate}%로 ` +
+      `${rateDiff.toFixed(1)}%p ${rateDiff > 0 ? '낮은' : '높은'} 금리로 갈아탈 경우를 분석했습니다. ` +
+      `월 상환금은 ${Math.abs(Math.round(monthlyDiff)).toLocaleString()}원 ${monthlyDiff > 0 ? '감소' : '증가'}하며, ` +
+      `대출 기간 ${newMonths}개월 동안의 총 이자 절감액에서 중도상환수수료와 갈아타기 비용 ` +
+      `${Math.round(totalCost/10000).toLocaleString()}만원을 제외한 순 절감액은 ${Math.round(netSaving/10000).toLocaleString()}만원입니다. ` +
+      (breakevenMonths > 0 ? `손익분기점은 약 ${breakevenMonths}개월로, 이 기간 이후부터 실제 이득이 발생합니다.` : '');
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // Suitable for
+    let suitableText;
+    if (isWorthIt && rateDiff >= 1) {
+      suitableText = `금리 인하폭이 1%p 이상으로 큰 분, 대출 잔여 기간이 10년 이상 남은 분, ` +
+        `중도상환수수료 면제 기간이 지난 분, 월 상환 부담을 줄이고 싶은 분, ` +
+        `신용등급이 개선되어 더 좋은 조건을 받을 수 있는 분에게 갈아타기를 권장합니다.`;
+    } else if (isWorthIt) {
+      suitableText = `소폭이지만 절감이 가능한 상황입니다. 대출 잔액이 크고 잔여 기간이 긴 경우, ` +
+        `타행 대환 시 추가 우대금리를 받을 수 있는 경우, 고정금리에서 변동금리로 전환하려는 경우에 고려해볼 만합니다.`;
+    } else {
+      suitableText = `현재 조건에서는 갈아타기가 불리합니다. 대출 잔여 기간이 3년 미만인 분, ` +
+        `중도상환수수료가 아직 높은 분, 금리 차이가 0.5%p 미만인 분은 기존 대출을 유지하는 것이 좋습니다.`;
+    }
+    document.getElementById('seo-suitable')!.textContent = suitableText;
+
+    // Caution
+    let cautionText = `대출 갈아타기 시 몇 가지 주의사항이 있습니다. 첫째, 중도상환수수료는 대출 실행 후 3년간 부과되며, ` +
+      `기간에 따라 1.5%~0.5%까지 차등 적용됩니다. 둘째, 근저당 설정비, 인지세, 대출 취급수수료 등 부대비용이 ` +
+      `100~200만원 발생할 수 있습니다. 셋째, 갈아타기 후 금리 상승 가능성도 고려해야 합니다. ` +
+      (isWorthIt ? `현재 분석 결과 손익분기점이 ${breakevenMonths}개월이므로, 최소 이 기간 이상 유지할 계획이어야 합니다.` :
+        `현재 조건에서는 갈아타기 대신 여유자금으로 원금을 일부 상환하는 것이 더 효과적일 수 있습니다.`);
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ
+    const faqs = [
+      {
+        q: '대출 갈아타기는 언제 하는 것이 좋은가요?',
+        a: `일반적으로 금리 차이가 1%p 이상이고, 대출 잔여 기간이 10년 이상 남았을 때 효과적입니다. 중도상환수수료 면제 시점(보통 3년) 이후가 최적입니다. 현재 금리 ${currentRate}%에서 ${newRate}%로 갈아타면 ${rateDiff.toFixed(1)}%p 차이가 납니다.`
+      },
+      {
+        q: '갈아타기 비용에는 무엇이 포함되나요?',
+        a: `주요 비용으로는 중도상환수수료(잔액의 0.5~1.5%), 근저당말소 및 설정비(약 50~100만원), 인지세(1~5만원), 대출 취급수수료(0~0.5%) 등이 있습니다. 본 계산에서는 총 ${Math.round(totalCost/10000).toLocaleString()}만원으로 산정했습니다.`
+      },
+      {
+        q: '고정금리와 변동금리 중 어떤 것으로 갈아타야 하나요?',
+        a: '금리 상승기에는 고정금리, 하락기에는 변동금리가 유리합니다. 2026년 현재 금리 인하 기조라면 변동금리를, 추가 인상이 예상되면 고정금리를 선택하세요. 혼합형(5년 고정 후 변동)도 좋은 대안입니다.'
+      },
+      {
+        q: '대출 갈아타기 절차는 어떻게 되나요?',
+        a: '1) 새 대출 은행에서 대출 승인 → 2) 기존 은행에 상환 예정 통보 → 3) 상환금 및 수수료 확인 → 4) 새 대출 실행 및 기존 대출 상환 → 5) 근저당 말소 및 새 근저당 설정. 보통 2~4주 소요됩니다.'
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+      }))
+    };
+    let schemaScript = document.getElementById('faq-schema') as HTMLScriptElement;
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
+</script>

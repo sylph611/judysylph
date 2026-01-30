@@ -57,6 +57,46 @@ const tool = getTool('car-affordability', lang);
           <h3 class="font-bold mb-2">💡 조언</h3>
           <p id="advice-text" class="text-sm"></p>
         </div>
+
+        <!-- SEO 해석 콘텐츠 -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 이 결과가 의미하는 것</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- 광고 삽입 영역 -->
+          <!-- AD_SLOT: middle-content -->
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 이런 분에게 적합합니다</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ 주의해야 할 점</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- 광고 삽입 영역 -->
+          <!-- AD_SLOT: before-faq -->
+
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ 자주 묻는 질문</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 관련 계산기</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/ko/tools/apartment-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏢 내 연봉으로 가능한 아파트</a>
+              <a href="/ko/tools/salary-percentile" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">📊 내 연봉 순위</a>
+              <a href="/ko/tools/salary-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">💰 연봉 실수령액 계산기</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -141,5 +181,126 @@ const tool = getTool('car-affordability', lang);
     adviceBox.className = `rounded-xl p-5 ${advice.bg}`;
     document.getElementById('advice-text')!.className = `text-sm ${advice.text}`;
     document.getElementById('advice-text')!.textContent = advice.msg;
+
+    // SEO 콘텐츠 동적 생성
+    generateSeoContent(salary, properPrice, maxPrice, car, targetPrice);
   });
+
+  function generateSeoContent(salary: number, properPrice: number, maxPrice: number, car: any, targetPrice: number) {
+    const ratio = Math.round((targetPrice / salary) * 100);
+    const isHighRatio = ratio > 70;
+    const isLowRatio = ratio < 30;
+
+    // 결과 요약
+    let summaryText, statusText;
+    if (salary >= 10000) {
+      summaryText = `연봉 ${salary.toLocaleString()}만원 기준, ${car.grade} 등급 차량 구매가 적정합니다`;
+      statusText = '재정적으로 매우 안정적인 상태';
+    } else if (salary >= 6000) {
+      summaryText = `연봉 ${salary.toLocaleString()}만원으로 ${car.grade} 등급 차량을 무리 없이 구매할 수 있습니다`;
+      statusText = '안정적인 구매 가능 범위';
+    } else if (salary >= 4000) {
+      summaryText = `연봉 ${salary.toLocaleString()}만원 기준, ${car.grade} 등급이 적정 차량입니다`;
+      statusText = '합리적인 선택 범위';
+    } else {
+      summaryText = `연봉 ${salary.toLocaleString()}만원 기준으로 ${car.grade} 등급을 권장드립니다`;
+      statusText = '신중한 접근이 필요한 상태';
+    }
+    document.getElementById('seo-summary')!.textContent = `📋 결과 요약: ${summaryText}`;
+
+    // 의미 설명
+    const meaningText = `이 결과는 귀하의 연봉 ${salary.toLocaleString()}만원과 저축 상황을 종합적으로 분석한 것입니다. ` +
+      `적정 차량가 ${properPrice.toLocaleString()}만원은 연봉의 약 ${Math.round(properPrice/salary*100)}%에 해당하며, ` +
+      `이는 ${isHighRatio ? '다소 높은 편이지만 관리 가능한' : isLowRatio ? '매우 보수적이고 안전한' : '일반적으로 권장되는'} 수준입니다. ` +
+      `차량 구매 시 ${car.min.toLocaleString()}~${car.max === Infinity ? '그 이상' : car.max.toLocaleString() + '만원'} 가격대의 ` +
+      `${car.models.slice(0, 2).join(', ')} 등의 모델을 고려해볼 수 있습니다. ` +
+      `월 유지비(보험, 유류비, 정비비)는 약 ${Math.round(targetPrice * 0.015).toLocaleString()}만원으로 예상되며, ` +
+      `이는 월 소득의 약 ${Math.round(targetPrice * 0.015 / (salary / 12) * 100)}%에 해당합니다.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // 적합한 대상
+    let suitableText;
+    if (salary >= 8000) {
+      suitableText = `고소득 직장인이나 전문직 종사자, 안정적인 부업 수입이 있는 분, ` +
+        `프리미엄 브랜드의 가치를 중시하는 분, 장거리 출퇴근으로 편안한 주행이 필요한 분, ` +
+        `가족 구성원이 많아 넓은 실내 공간이 필요한 분에게 이 등급의 차량이 적합합니다.`;
+    } else if (salary >= 5000) {
+      suitableText = `안정적인 직장에 다니는 30~40대 직장인, 맞벌이 부부로 가계 여유가 있는 분, ` +
+        `실용성과 품질을 모두 중시하는 분, 주말마다 가족 나들이를 즐기는 분, ` +
+        `중고차보다 신차의 안정성을 선호하는 분에게 적합한 선택입니다.`;
+    } else {
+      suitableText = `사회초년생이나 대학 졸업 후 첫 차를 구매하는 분, 저축을 우선시하고 차량은 이동 수단으로만 생각하는 분, ` +
+        `유지비 부담을 최소화하고 싶은 분, 도심 내 짧은 거리 주행이 대부분인 분, ` +
+        `실용적인 소비를 추구하는 합리적인 분에게 이 등급이 가장 적합합니다.`;
+    }
+    document.getElementById('seo-suitable')!.textContent = suitableText;
+
+    // 주의사항
+    let cautionText = `차량 구매 시 몇 가지 주의할 점이 있습니다. 첫째, 차량 가격 외에도 취득세(약 7%), 보험료, 등록비 등 ` +
+      `부대비용이 차량가의 10~15% 추가로 발생합니다. 둘째, 할부 구매 시 이자율에 따라 총 지불액이 크게 달라지므로 ` +
+      `금리 비교가 필수입니다. 셋째, 연비, 보험료, 정비비 등 월 유지비가 차량 등급에 따라 크게 차이나므로 `;
+    if (isHighRatio) {
+      cautionText += `특히 귀하의 경우 차량가가 연봉 대비 다소 높은 편이므로 ` +
+        `48개월 이상 장기 할부는 피하고, 무리한 옵션 추가보다는 기본 사양을 선택하는 것이 좋습니다. ` +
+        `비상금을 충분히 확보한 후 구매를 진행하시기 바랍니다.`;
+    } else {
+      cautionText += `장기적인 유지비용까지 고려하여 결정하시기 바랍니다. ` +
+        `또한 중고차의 경우 감가상각이 이미 진행되어 같은 예산으로 더 높은 등급의 차량을 선택할 수 있으니 참고하세요.`;
+    }
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ 생성
+    const faqs = [
+      {
+        q: '이 계산 결과는 법적 효력이 있나요?',
+        a: '아니요, 이 계산기는 일반적인 재정 가이드라인을 바탕으로 한 참고용 도구입니다. 실제 대출 한도나 구매 가능 금액은 개인의 신용등급, 기존 부채, 금융기관 정책 등에 따라 달라질 수 있습니다.'
+      },
+      {
+        q: '적정 차량가와 최대 차량가의 차이는 무엇인가요?',
+        a: `적정 차량가(${properPrice.toLocaleString()}만원)는 연봉의 30~50% 수준으로 재정 건전성을 유지하며 구매할 수 있는 금액입니다. 최대 차량가(${maxPrice.toLocaleString()}만원)는 무리하면 구매 가능한 상한선으로, 이 금액으로 구매 시 다른 지출에 제약이 생길 수 있습니다.`
+      },
+      {
+        q: '실제 차량 가격과 다른 이유는 무엇인가요?',
+        a: '본 계산기는 2026년 국내 신차 기준 평균 가격을 사용합니다. 실제 구매가는 옵션, 프로모션, 딜러 협상, 지역에 따라 달라질 수 있으며, 중고차는 연식과 주행거리에 따라 30~60% 저렴하게 구매할 수 있습니다.'
+      },
+      {
+        q: '월 유지비 계산은 어떻게 되나요?',
+        a: '월 유지비는 차량가의 약 1.5%를 연간 유지비로 가정하고 12개월로 나눈 값입니다. 여기에는 자동차보험, 유류비, 정기 정비비, 주차비 등이 포함됩니다. 실제 유지비는 주행거리, 운전 습관, 거주 지역에 따라 달라집니다.'
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD FAQ Schema
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    };
+
+    let schemaScript = document.getElementById('faq-schema');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
 </script>

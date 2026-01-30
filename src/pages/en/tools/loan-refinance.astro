@@ -1,0 +1,200 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('loan-refinance', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 mb-4">
+          <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-3">Current Loan</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Remaining Balance</label>
+              <input type="text" id="currentBalance" placeholder="250,000" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Current Rate (%)</label>
+              <input type="number" id="currentRate" placeholder="6.5" step="0.1" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Remaining Term (months)</label>
+              <input type="number" id="remainingMonths" placeholder="300" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Closing Costs ($)</label>
+              <input type="text" id="closingCosts" placeholder="5,000" value="5000" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
+          <h3 class="font-bold text-green-800 dark:text-green-200 mb-3">New Loan Terms</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">New Rate (%)</label>
+              <input type="number" id="newRate" placeholder="5.5" step="0.1" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">New Term (months)</label>
+              <input type="number" id="newMonths" placeholder="360" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">Analyze Refinance</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="rounded-2xl p-6 text-white text-center mb-6">
+          <div id="verdict-emoji" class="text-5xl mb-2"></div>
+          <div id="verdict" class="text-2xl font-bold mb-2"></div>
+          <div id="verdict-desc" class="text-lg opacity-90"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+            <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-center">Keep Current Loan</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Monthly Payment</span><span id="c-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Interest</span><span id="c-interest" class="font-medium">-</span></div>
+            </div>
+          </div>
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
+            <h4 class="font-bold text-green-800 dark:text-green-200 mb-3 text-center">Refinance</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Monthly Payment</span><span id="n-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Interest</span><span id="n-interest" class="font-medium">-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">📊 Summary</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">Monthly Savings</span>
+              <span id="diff-monthly" class="font-bold"></span>
+            </div>
+            <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">Interest Savings</span>
+              <span id="diff-interest" class="font-bold"></span>
+            </div>
+            <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">Closing Costs</span>
+              <span id="total-cost" class="font-bold text-red-500"></span>
+            </div>
+            <div class="flex justify-between items-center p-2 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+              <span class="text-primary-700 dark:text-primary-300 font-medium">Net Savings</span>
+              <span id="net-saving" class="font-bold text-xl"></span>
+            </div>
+            <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">Break-even Point</span>
+              <span id="breakeven" class="font-medium"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+          <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 Related Calculators</h3>
+          <div class="flex flex-wrap gap-2">
+            <a href="/en/tools/mortgage-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏦 Mortgage Calculator</a>
+            <a href="/en/tools/apartment-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏢 Home Affordability</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← Back to Tools</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  ['currentBalance', 'closingCosts'].forEach(id => {
+    const el = document.getElementById(id) as HTMLInputElement;
+    el?.addEventListener('input', e => {
+      const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+      (e.target as HTMLInputElement).value = Number(v).toLocaleString();
+    });
+  });
+
+  function calcMonthly(p: number, r: number, n: number): number {
+    if (r === 0) return p / n;
+    const mr = r / 100 / 12;
+    return p * mr * Math.pow(1+mr, n) / (Math.pow(1+mr, n) - 1);
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const balance = parseInt((document.getElementById('currentBalance') as HTMLInputElement).value.replace(/,/g,''));
+    const currentRate = parseFloat((document.getElementById('currentRate') as HTMLInputElement).value);
+    const remainingMonths = parseInt((document.getElementById('remainingMonths') as HTMLInputElement).value);
+    const closingCosts = parseInt((document.getElementById('closingCosts') as HTMLInputElement).value.replace(/,/g,''));
+    const newRate = parseFloat((document.getElementById('newRate') as HTMLInputElement).value);
+    const newMonths = parseInt((document.getElementById('newMonths') as HTMLInputElement).value);
+
+    const cMonthly = calcMonthly(balance, currentRate, remainingMonths);
+    const cTotal = cMonthly * remainingMonths;
+    const cInterest = cTotal - balance;
+
+    const nMonthly = calcMonthly(balance, newRate, newMonths);
+    const nTotal = nMonthly * newMonths;
+    const nInterest = nTotal - balance;
+
+    const monthlyDiff = cMonthly - nMonthly;
+    const interestSaving = cInterest - nInterest;
+    const netSaving = interestSaving - closingCosts;
+    const breakeven = monthlyDiff > 0 ? Math.ceil(closingCosts / monthlyDiff) : 0;
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    const header = document.getElementById('result-header')!;
+    if (netSaving > 10000) {
+      header.className = 'bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white text-center mb-6';
+      document.getElementById('verdict-emoji')!.textContent = '🎉';
+      document.getElementById('verdict')!.textContent = 'Refinancing Recommended!';
+      document.getElementById('verdict-desc')!.textContent = `Save $${Math.round(netSaving).toLocaleString()} over the life of the loan`;
+    } else if (netSaving > 0) {
+      header.className = 'bg-gradient-to-br from-yellow-500 to-amber-600 rounded-2xl p-6 text-white text-center mb-6';
+      document.getElementById('verdict-emoji')!.textContent = '🤔';
+      document.getElementById('verdict')!.textContent = 'Marginal Benefit';
+      document.getElementById('verdict-desc')!.textContent = `Net savings of $${Math.round(netSaving).toLocaleString()}`;
+    } else {
+      header.className = 'bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl p-6 text-white text-center mb-6';
+      document.getElementById('verdict-emoji')!.textContent = '❌';
+      document.getElementById('verdict')!.textContent = 'Keep Current Loan';
+      document.getElementById('verdict-desc')!.textContent = `Refinancing would cost $${Math.round(Math.abs(netSaving)).toLocaleString()} more`;
+    }
+
+    document.getElementById('c-monthly')!.textContent = '$' + Math.round(cMonthly).toLocaleString();
+    document.getElementById('c-interest')!.textContent = '$' + Math.round(cInterest).toLocaleString();
+    document.getElementById('n-monthly')!.textContent = '$' + Math.round(nMonthly).toLocaleString();
+    document.getElementById('n-interest')!.textContent = '$' + Math.round(nInterest).toLocaleString();
+
+    const monthlyEl = document.getElementById('diff-monthly')!;
+    monthlyEl.textContent = (monthlyDiff >= 0 ? '-$' : '+$') + Math.abs(Math.round(monthlyDiff)).toLocaleString() + '/mo';
+    monthlyEl.className = monthlyDiff >= 0 ? 'font-bold text-green-600' : 'font-bold text-red-500';
+
+    const interestEl = document.getElementById('diff-interest')!;
+    interestEl.textContent = '$' + Math.round(interestSaving).toLocaleString();
+    interestEl.className = interestSaving >= 0 ? 'font-bold text-green-600' : 'font-bold text-red-500';
+
+    document.getElementById('total-cost')!.textContent = '-$' + closingCosts.toLocaleString();
+
+    const netEl = document.getElementById('net-saving')!;
+    netEl.textContent = (netSaving >= 0 ? '+$' : '-$') + Math.abs(Math.round(netSaving)).toLocaleString();
+    netEl.className = netSaving >= 0 ? 'font-bold text-xl text-green-600' : 'font-bold text-xl text-red-500';
+
+    document.getElementById('breakeven')!.textContent = breakeven > 0 ? `${breakeven} months` : 'N/A';
+  });
+</script>

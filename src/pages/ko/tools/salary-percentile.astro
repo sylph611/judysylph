@@ -83,6 +83,46 @@ const tool = getTool('salary-percentile', lang);
           <h3 class="font-bold mb-2" id="advice-title">-</h3>
           <p id="advice-text" class="text-sm"></p>
         </div>
+
+        <!-- SEO 해석 콘텐츠 -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 이 결과가 의미하는 것</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- 광고 삽입 영역 -->
+          <!-- AD_SLOT: middle-content -->
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 이런 분에게 적합합니다</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ 주의해야 할 점</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- 광고 삽입 영역 -->
+          <!-- AD_SLOT: before-faq -->
+
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ 자주 묻는 질문</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 관련 계산기</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/ko/tools/car-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🚗 내 연봉으로 살 수 있는 차</a>
+              <a href="/ko/tools/apartment-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏢 내 연봉으로 가능한 아파트</a>
+              <a href="/ko/tools/salary-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">💰 연봉 실수령액 계산기</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -256,5 +296,133 @@ const tool = getTool('salary-percentile', lang);
     adviceBox.className = `rounded-xl p-5 ${adviceBg}`;
     document.getElementById('advice-title')!.textContent = adviceTitle;
     document.getElementById('advice-text')!.textContent = adviceText;
+
+    // SEO 콘텐츠 동적 생성
+    generateSeoContent(age, gender, salary, percentile, stats);
   });
+
+  function generateSeoContent(age: number, gender: string, salary: number, percentile: number, stats: any) {
+    const genderText = gender === 'male' ? '남성' : gender === 'female' ? '여성' : '전체';
+    const ageGroup = age < 30 ? '20대' : age < 40 ? '30대' : age < 50 ? '40대' : '50대 이상';
+    const topPercent = 100 - percentile;
+
+    // 결과 요약
+    let summaryText, statusEmoji;
+    if (percentile >= 90) {
+      summaryText = `${age}세 ${genderText} 기준, 연봉 ${salary.toLocaleString()}만원은 상위 ${topPercent}%로 최상위권입니다`;
+      statusEmoji = '👑';
+    } else if (percentile >= 75) {
+      summaryText = `${age}세 ${genderText} 기준, 연봉 ${salary.toLocaleString()}만원은 상위 ${topPercent}%로 상위권에 속합니다`;
+      statusEmoji = '🎉';
+    } else if (percentile >= 50) {
+      summaryText = `${age}세 ${genderText} 기준, 연봉 ${salary.toLocaleString()}만원은 평균 이상입니다`;
+      statusEmoji = '💪';
+    } else if (percentile >= 25) {
+      summaryText = `${age}세 ${genderText} 기준, 연봉 ${salary.toLocaleString()}만원은 평균 이하지만 성장 가능성이 있습니다`;
+      statusEmoji = '📈';
+    } else {
+      summaryText = `${age}세 ${genderText} 기준, 연봉 ${salary.toLocaleString()}만원은 하위권이지만 시작점입니다`;
+      statusEmoji = '🌱';
+    }
+    document.getElementById('seo-summary')!.textContent = `${statusEmoji} 결과 요약: ${summaryText}`;
+
+    // 의미 설명
+    const diff = salary - stats.avg;
+    const diffText = diff >= 0 ? `${diff.toLocaleString()}만원 많습니다` : `${Math.abs(diff).toLocaleString()}만원 적습니다`;
+    const meaningText = `귀하의 연봉 ${salary.toLocaleString()}만원은 ${age}세 ${genderText} 기준 상위 ${topPercent}%에 해당합니다. ` +
+      `이는 같은 나이대 100명 중 ${topPercent}번째로 높은 수준입니다. ` +
+      `동년배 평균 연봉 ${stats.avg.toLocaleString()}만원과 비교하면 ${diffText}. ` +
+      `중위값(상위 50% 기준) ${stats.median.toLocaleString()}만원과 비교하면 ` +
+      `${salary >= stats.median ? '중위값을 상회하는' : '중위값에 미치지 못하는'} 수준입니다. ` +
+      `${ageGroup} ${genderText}의 상위 10% 기준점은 ${stats.p90.toLocaleString()}만원, ` +
+      `상위 25% 기준점은 ${stats.p75.toLocaleString()}만원입니다. ` +
+      `참고로 이 통계는 2026년 통계청 및 국세청 자료를 기반으로 추정한 것입니다.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // 적합한 대상 (순위에 따른 조언)
+    let suitableText;
+    if (percentile >= 80) {
+      suitableText = `현재 연봉 수준을 유지하면서 자산 증식에 집중할 분, 투자나 부동산 등 재테크에 관심 있는 분, ` +
+        `은퇴 계획을 구체적으로 수립하려는 분, 자녀 교육비나 노후 자금을 미리 준비하려는 분, ` +
+        `세금 절약을 위한 연금/펀드 전략이 필요한 분에게 이 분석이 도움이 됩니다.`;
+    } else if (percentile >= 50) {
+      suitableText = `연봉 협상이나 이직을 고려하고 있는 분, 자신의 시장 가치를 객관적으로 파악하고 싶은 분, ` +
+        `커리어 개발 방향을 고민하는 분, 동종 업계 대비 내 위치를 확인하려는 분, ` +
+        `자기계발이나 자격증 취득을 통해 연봉 상승을 목표로 하는 분에게 유용한 기준점이 됩니다.`;
+    } else {
+      suitableText = `경력 전환이나 이직을 심각하게 고려하는 분, 현재 업계/직무의 연봉 수준을 객관적으로 확인하려는 분, ` +
+        `부업이나 투잡을 통해 추가 수입을 계획하는 분, 취업 준비생으로 목표 연봉을 설정하려는 분, ` +
+        `연봉 상승을 위한 구체적인 액션 플랜이 필요한 분에게 현실적인 가이드가 됩니다.`;
+    }
+    document.getElementById('seo-suitable')!.textContent = suitableText;
+
+    // 주의사항
+    let cautionText = `연봉 순위를 해석할 때 몇 가지 주의할 점이 있습니다. 첫째, 이 통계는 세전 연봉 기준이며, ` +
+      `실수령액은 세금과 4대 보험료 공제 후 약 70~85% 수준입니다. 둘째, 업종/직군에 따라 연봉 분포가 크게 다릅니다. ` +
+      `IT, 금융업은 평균보다 20~50% 높고, 서비스/유통업은 상대적으로 낮은 편입니다. `;
+    if (percentile >= 75) {
+      cautionText += `셋째, 상위권 연봉자의 경우 성과급, 스톡옵션 등 변동 급여 비중이 높아 ` +
+        `경기 변동에 따른 소득 변화가 클 수 있습니다. 안정적인 재정 계획을 위해 기본급 기준으로 지출을 계획하세요. ` +
+        `또한 높은 연봉은 그만큼 높은 업무 강도와 책임을 수반하므로 워라밸도 함께 고려해야 합니다.`;
+    } else {
+      cautionText += `셋째, 연봉이 낮다고 낙담할 필요는 없습니다. 경력 초기이거나 새로운 분야로 전환한 경우 ` +
+        `일시적으로 낮을 수 있으며, 자격증 취득, 이직, 직무 전환 등을 통해 단기간에 크게 상승할 수 있습니다. ` +
+        `장기적인 커리어 관점에서 성장 가능성과 워라밸도 중요한 요소입니다.`;
+    }
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ 생성
+    const faqs = [
+      {
+        q: '이 연봉 순위 통계는 어디서 가져온 건가요?',
+        a: '본 계산기는 2026년 통계청 가계동향조사, 국세청 근로소득 천분위 자료, 고용노동부 임금구조 기본통계를 기반으로 연령대별, 성별 연봉 분포를 추정한 것입니다. 다만 자영업자, 프리랜서 소득은 포함되지 않았으며, 대기업과 중소기업 간 격차도 평균화되어 있습니다.'
+      },
+      {
+        q: '세전 연봉과 실수령액의 차이는 얼마나 되나요?',
+        a: `연봉 ${salary.toLocaleString()}만원 기준, 실수령액은 약 ${Math.round(salary * 0.78).toLocaleString()}~${Math.round(salary * 0.85).toLocaleString()}만원(월 ${Math.round(salary * 0.8 / 12).toLocaleString()}만원) 수준입니다. 소득세, 주민세, 국민연금, 건강보험, 고용보험 등이 공제되며, 부양가족 수와 비과세 항목에 따라 달라집니다.`
+      },
+      {
+        q: '연봉 상위 10%가 되려면 얼마가 필요한가요?',
+        a: `${age}세 ${genderText} 기준, 상위 10%에 진입하려면 연봉 ${stats.p90.toLocaleString()}만원 이상이 필요합니다. 현재 연봉 ${salary.toLocaleString()}만원과의 차이는 ${(stats.p90 - salary).toLocaleString()}만원입니다. 이 격차를 좁히려면 이직, 승진, 부서 이동, 또는 부업 등을 고려해볼 수 있습니다.`
+      },
+      {
+        q: '같은 나이대 평균 연봉이 왜 다르게 나오나요?',
+        a: '연봉 통계는 조사 기관, 표본, 측정 시점에 따라 다르게 나타납니다. 본 계산기는 전체 근로자 평균을 사용하지만, 취업포털의 연봉 정보는 응답자 기반으로 대기업/고소득자 비중이 높아 평균이 높게 나올 수 있습니다. 여러 자료를 참고하여 판단하시기 바랍니다.'
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD FAQ Schema
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    };
+
+    let schemaScript = document.getElementById('faq-schema');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
 </script>

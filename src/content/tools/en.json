@@ -159,5 +159,40 @@
     "description": "Find out where your salary ranks compared to others your age.",
     "emoji": "📊",
     "category": "Fun"
+  },
+  {
+    "slug": "loan-refinance",
+    "title": "Loan Refinance Calculator",
+    "description": "Analyze if refinancing your loan saves money, including fees and break-even point.",
+    "emoji": "🔄",
+    "category": "Finance"
+  },
+  {
+    "slug": "rent-vs-buy",
+    "title": "Rent vs Buy Calculator",
+    "description": "Compare renting vs buying a home with opportunity cost analysis.",
+    "emoji": "🏠",
+    "category": "Real Estate"
+  },
+  {
+    "slug": "mortgage-comparison",
+    "title": "Mortgage Repayment Comparison",
+    "description": "Compare fixed-rate, adjustable, and interest-only mortgage options.",
+    "emoji": "📊",
+    "category": "Finance"
+  },
+  {
+    "slug": "loan-comparison",
+    "title": "Personal Loan vs Credit Card",
+    "description": "Compare personal loans and credit card debt in terms of cost and credit impact.",
+    "emoji": "💳",
+    "category": "Finance"
+  },
+  {
+    "slug": "car-buy-vs-lease",
+    "title": "Buy vs Lease a Car",
+    "description": "Analyze whether buying or leasing a car is more cost-effective for you.",
+    "emoji": "🚙",
+    "category": "Finance"
   }
 ]

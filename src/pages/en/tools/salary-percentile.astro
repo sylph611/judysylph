@@ -82,6 +82,44 @@ const tool = getTool('salary-percentile', lang);
           <h3 class="font-bold mb-2" id="advice-title">-</h3>
           <p id="advice-text" class="text-sm"></p>
         </div>
+
+        <!-- SEO Interpretation Content -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 What This Result Means</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- AD_SLOT: middle-content -->
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 Who This Is For</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ Important Considerations</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- AD_SLOT: before-faq -->
+
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ Frequently Asked Questions</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 Related Calculators</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/en/tools/car-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🚗 Car Affordability Calculator</a>
+              <a href="/en/tools/apartment-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏢 Home Affordability Calculator</a>
+              <a href="/en/tools/salary-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">💰 Take-Home Pay Calculator</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -251,5 +289,138 @@ const tool = getTool('salary-percentile', lang);
     adviceBox.className = `rounded-xl p-5 ${adviceBg}`;
     document.getElementById('advice-title')!.textContent = adviceTitle;
     document.getElementById('advice-text')!.textContent = adviceText;
+
+    // Generate SEO content
+    generateSeoContent(age, gender, salary, percentile, stats);
   });
+
+  function generateSeoContent(age: number, gender: string, salary: number, percentile: number, stats: any) {
+    const genderText = gender === 'male' ? 'male' : gender === 'female' ? 'female' : 'all';
+    const ageGroup = age < 30 ? '20s' : age < 40 ? '30s' : age < 50 ? '40s' : '50s+';
+    const topPercent = 100 - percentile;
+
+    // Result summary
+    let summaryText, statusEmoji;
+    if (percentile >= 90) {
+      summaryText = `At age ${age}, your $${salary.toLocaleString()} salary puts you in the top ${topPercent}%—elite earner status`;
+      statusEmoji = '👑';
+    } else if (percentile >= 75) {
+      summaryText = `At age ${age}, earning $${salary.toLocaleString()} places you in the top ${topPercent}%—well above average`;
+      statusEmoji = '🎉';
+    } else if (percentile >= 50) {
+      summaryText = `Your $${salary.toLocaleString()} salary at age ${age} is above median—better than half your peers`;
+      statusEmoji = '💪';
+    } else if (percentile >= 25) {
+      summaryText = `At $${salary.toLocaleString()}, you're below average for age ${age} but have growth potential`;
+      statusEmoji = '📈';
+    } else {
+      summaryText = `Your $${salary.toLocaleString()} salary at age ${age} is in the lower range—a starting point for growth`;
+      statusEmoji = '🌱';
+    }
+    document.getElementById('seo-summary')!.textContent = `${statusEmoji} Summary: ${summaryText}`;
+
+    // Meaning explanation
+    const diff = salary - stats.avg;
+    const diffText = diff >= 0 ? `$${diff.toLocaleString()} above` : `$${Math.abs(diff).toLocaleString()} below`;
+    const meaningText = `Your salary of $${salary.toLocaleString()} places you in the top ${topPercent}% of ${genderText} workers aged ${age}. ` +
+      `This means you earn more than ${percentile}% of your peers. ` +
+      `Compared to the average salary of $${stats.avg.toLocaleString()} for your demographic, you're ${diffText} the average. ` +
+      `The median salary (50th percentile) is $${stats.median.toLocaleString()}—${salary >= stats.median ? 'you exceed this benchmark' : 'reaching this is your next milestone'}. ` +
+      `To reach the top 10% ($${stats.p90.toLocaleString()}), you'd need ${salary >= stats.p90 ? 'to maintain your current trajectory' : `an additional $${(stats.p90 - salary).toLocaleString()}`}. ` +
+      `These statistics are based on 2026 US Census Bureau and Bureau of Labor Statistics data.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // Suitable for
+    let suitableText;
+    if (percentile >= 80) {
+      suitableText = `This analysis is particularly valuable for high earners focused on wealth preservation and tax optimization, ` +
+        `professionals considering job offers and evaluating total compensation packages, ` +
+        `those planning for early retirement (FIRE movement) who need to understand their financial position, ` +
+        `executives benchmarking their compensation against market rates, ` +
+        `and anyone curious about how they compare to top earners in their demographic.`;
+    } else if (percentile >= 50) {
+      suitableText = `This insight is ideal for mid-career professionals evaluating their market value, ` +
+        `employees preparing for salary negotiations or annual reviews, ` +
+        `those considering career changes and needing realistic salary expectations, ` +
+        `workers benchmarking offers from potential employers, ` +
+        `and anyone setting financial goals based on realistic income projections.`;
+    } else {
+      suitableText = `This information is most useful for early-career professionals setting realistic salary expectations, ` +
+        `job seekers understanding what to expect in their target market, ` +
+        `those considering education or certification investments to boost earnings, ` +
+        `workers in lower-paying industries exploring lateral moves, ` +
+        `and anyone creating a roadmap to reach average or above-average income levels.`;
+    }
+    document.getElementById('seo-suitable')!.textContent = suitableText;
+
+    // Cautions
+    let cautionText = `When interpreting salary percentiles, keep several factors in mind. First, this shows gross (pre-tax) income—actual ` +
+      `take-home pay is 65-80% after federal, state, and FICA taxes. Second, salary varies dramatically by industry and location: ` +
+      `tech and finance typically pay 30-50% above average, while education and non-profit sectors trend lower. ` +
+      `Geographic cost-of-living also matters—$80K in Austin has more purchasing power than $100K in San Francisco. `;
+    if (percentile >= 75) {
+      cautionText += `Third, at your income level, a significant portion may come from bonuses, stock options, or commissions, ` +
+        `which can fluctuate year-to-year. Base your financial planning on consistent income, not peak years. ` +
+        `Also consider that higher salaries often correlate with longer hours and higher stress—work-life balance has value too.`;
+    } else {
+      cautionText += `Third, don't let percentile rankings discourage you. Career stage, industry choice, and life priorities all affect earnings. ` +
+        `Someone who took time for education, caregiving, or entrepreneurship may temporarily show lower on these scales. ` +
+        `Focus on your trajectory and whether your income supports your personal goals, not just the ranking itself.`;
+    }
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ
+    const faqs = [
+      {
+        q: 'Where does this salary data come from?',
+        a: 'This calculator uses 2026 estimated data derived from US Census Bureau American Community Survey, Bureau of Labor Statistics Occupational Employment Statistics, and IRS income statistics. Note that self-employment income and certain benefits aren\'t fully captured in these figures.'
+      },
+      {
+        q: 'What\'s the difference between mean and median salary?',
+        a: `The average (mean) for your age group is $${stats.avg.toLocaleString()}, while the median is $${stats.median.toLocaleString()}. The median is often lower because high earners pull the average up. The median better represents what a "typical" person earns, while the average is skewed by outliers.`
+      },
+      {
+        q: 'How much should I be earning at my age?',
+        a: `At age ${age}, the median salary is $${stats.median.toLocaleString()}, with top 25% earners making $${stats.p75.toLocaleString()}+. However, "should" depends on your industry, location, education, and career choices. More important than hitting a number is whether your income supports your lifestyle and goals.`
+      },
+      {
+        q: 'How can I increase my salary percentile?',
+        a: `To move from the ${topPercent}th percentile to higher ranks, consider: negotiating your current salary (most people leave money on the table), upskilling with certifications or degrees, switching companies (often yields 10-20% raises), moving to higher-paying industries, or relocating to areas with better salary/cost-of-living ratios. To reach top 10% ($${stats.p90.toLocaleString()}), you'd need to earn $${Math.max(0, stats.p90 - salary).toLocaleString()} more.`
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD FAQ Schema
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    };
+
+    let schemaScript = document.getElementById('faq-schema');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
 </script>

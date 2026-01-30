@@ -1,0 +1,203 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('car-buy-vs-lease', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Car Price ($)</label>
+            <input type="text" id="carPrice" placeholder="35,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Time Period</label>
+            <select id="usePeriod" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="36" selected>3 years</option>
+              <option value="48">4 years</option>
+              <option value="60">5 years</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-3">🚗 Buy (Finance)</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Down Payment ($)</label>
+                <input type="text" id="buyDown" placeholder="5,000" value="5000" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Loan APR (%)</label>
+                <input type="number" id="buyRate" placeholder="6.5" step="0.1" value="6.5" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4">
+            <h3 class="font-bold text-green-800 dark:text-green-200 mb-3">📋 Lease</h3>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Due at Signing ($)</label>
+                <input type="text" id="leaseDue" placeholder="3,000" value="3000" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Monthly Payment ($)</label>
+                <input type="text" id="leaseMonthly" placeholder="400" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Estimated Resale Value (% of original)</label>
+          <input type="number" id="resalePercent" placeholder="55" value="55" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          <p class="text-xs text-gray-500 mt-1">Typical: 50-60% after 3 years</p>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">Compare Options</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div id="result-header" class="rounded-2xl p-6 text-white text-center mb-6">
+          <div id="verdict-emoji" class="text-5xl mb-2"></div>
+          <div id="verdict" class="text-2xl font-bold mb-2"></div>
+          <div id="verdict-desc" class="text-lg opacity-90"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border-2 border-transparent" id="card-buy">
+            <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-3 text-center">🚗 Buy</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Upfront Cost</span><span id="buy-upfront" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Monthly Payment</span><span id="buy-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Paid</span><span id="buy-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Resale Value</span><span id="buy-resale" class="font-medium text-green-600">-</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2"><span class="font-medium">Net Cost</span><span id="buy-net" class="font-bold">-</span></div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 border-2 border-transparent" id="card-lease">
+            <h4 class="font-bold text-green-800 dark:text-green-200 mb-3 text-center">📋 Lease</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Due at Signing</span><span id="lease-upfront" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Monthly Payment</span><span id="lease-monthly" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Total Paid</span><span id="lease-total" class="font-medium">-</span></div>
+              <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">End Value</span><span id="lease-resale" class="font-medium text-gray-400">-</span></div>
+              <div class="flex justify-between border-t pt-2 mt-2"><span class="font-medium">Net Cost</span><span id="lease-net" class="font-bold">-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">📊 Key Differences</h3>
+          <table class="w-full text-sm">
+            <thead><tr class="border-b dark:border-gray-600"><th class="text-left py-2">Factor</th><th class="text-center py-2">Buy</th><th class="text-center py-2">Lease</th></tr></thead>
+            <tbody class="text-gray-600 dark:text-gray-400">
+              <tr class="border-b dark:border-gray-600"><td class="py-2">Ownership</td><td class="text-center">✅ Yours</td><td class="text-center">❌ Return it</td></tr>
+              <tr class="border-b dark:border-gray-600"><td class="py-2">Mileage Limits</td><td class="text-center">✅ None</td><td class="text-center">❌ 10-15K/yr</td></tr>
+              <tr class="border-b dark:border-gray-600"><td class="py-2">Customization</td><td class="text-center">✅ Allowed</td><td class="text-center">❌ Limited</td></tr>
+              <tr class="border-b dark:border-gray-600"><td class="py-2">Maintenance</td><td class="text-center">⚠️ Your cost</td><td class="text-center">✅ Often covered</td></tr>
+              <tr><td class="py-2">New Car Frequency</td><td class="text-center">⚠️ Longer</td><td class="text-center">✅ Every 2-3 yrs</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+          <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 Related Calculators</h3>
+          <div class="flex flex-wrap gap-2">
+            <a href="/en/tools/car-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🚗 Car Affordability</a>
+            <a href="/en/tools/loan-comparison" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">💳 Personal Loan vs Credit Card</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← Back to Tools</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  ['carPrice', 'buyDown', 'leaseDue', 'leaseMonthly'].forEach(id => {
+    const el = document.getElementById(id) as HTMLInputElement;
+    el?.addEventListener('input', e => {
+      const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+      (e.target as HTMLInputElement).value = Number(v).toLocaleString();
+    });
+  });
+
+  function calcMonthly(p: number, r: number, n: number): number {
+    const mr = r / 100 / 12;
+    return p * mr * Math.pow(1+mr, n) / (Math.pow(1+mr, n) - 1);
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const carPrice = parseInt((document.getElementById('carPrice') as HTMLInputElement).value.replace(/,/g,''));
+    const months = parseInt((document.getElementById('usePeriod') as HTMLSelectElement).value);
+    const buyDown = parseInt((document.getElementById('buyDown') as HTMLInputElement).value.replace(/,/g,''));
+    const buyRate = parseFloat((document.getElementById('buyRate') as HTMLInputElement).value);
+    const leaseDue = parseInt((document.getElementById('leaseDue') as HTMLInputElement).value.replace(/,/g,''));
+    const leaseMonthly = parseInt((document.getElementById('leaseMonthly') as HTMLInputElement).value.replace(/,/g,''));
+    const resalePercent = parseFloat((document.getElementById('resalePercent') as HTMLInputElement).value) / 100;
+
+    // Buy calculation
+    const buyLoan = carPrice - buyDown;
+    const buyMonthlyPayment = calcMonthly(buyLoan, buyRate, 60);
+    const buyTotalPayments = buyDown + buyMonthlyPayment * months;
+    const resaleValue = carPrice * resalePercent;
+    const buyNetCost = buyTotalPayments - resaleValue;
+
+    // Lease calculation
+    const leaseTotalPayments = leaseDue + leaseMonthly * months;
+    const leaseNetCost = leaseTotalPayments;
+
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    const header = document.getElementById('result-header')!;
+    const diff = buyNetCost - leaseNetCost;
+
+    if (diff < -1000) {
+      header.className = 'bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-6 text-white text-center mb-6';
+      document.getElementById('verdict-emoji')!.textContent = '🚗';
+      document.getElementById('verdict')!.textContent = 'Buying is Better!';
+      document.getElementById('verdict-desc')!.textContent = `Save $${Math.round(Math.abs(diff)).toLocaleString()} over ${months / 12} years`;
+      document.getElementById('card-buy')!.classList.add('border-blue-500');
+    } else if (diff > 1000) {
+      header.className = 'bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white text-center mb-6';
+      document.getElementById('verdict-emoji')!.textContent = '📋';
+      document.getElementById('verdict')!.textContent = 'Leasing is Better!';
+      document.getElementById('verdict-desc')!.textContent = `Save $${Math.round(diff).toLocaleString()} over ${months / 12} years`;
+      document.getElementById('card-lease')!.classList.add('border-green-500');
+    } else {
+      header.className = 'bg-gradient-to-br from-gray-500 to-slate-600 rounded-2xl p-6 text-white text-center mb-6';
+      document.getElementById('verdict-emoji')!.textContent = '⚖️';
+      document.getElementById('verdict')!.textContent = 'About Equal';
+      document.getElementById('verdict-desc')!.textContent = 'Choose based on your preferences';
+    }
+
+    document.getElementById('buy-upfront')!.textContent = '$' + buyDown.toLocaleString();
+    document.getElementById('buy-monthly')!.textContent = '$' + Math.round(buyMonthlyPayment).toLocaleString();
+    document.getElementById('buy-total')!.textContent = '$' + Math.round(buyTotalPayments).toLocaleString();
+    document.getElementById('buy-resale')!.textContent = '+$' + Math.round(resaleValue).toLocaleString();
+    document.getElementById('buy-net')!.textContent = '$' + Math.round(buyNetCost).toLocaleString();
+
+    document.getElementById('lease-upfront')!.textContent = '$' + leaseDue.toLocaleString();
+    document.getElementById('lease-monthly')!.textContent = '$' + leaseMonthly.toLocaleString();
+    document.getElementById('lease-total')!.textContent = '$' + leaseTotalPayments.toLocaleString();
+    document.getElementById('lease-resale')!.textContent = '$0';
+    document.getElementById('lease-net')!.textContent = '$' + leaseNetCost.toLocaleString();
+  });
+</script>

@@ -77,6 +77,46 @@ const tool = getTool('apartment-affordability', lang);
             <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">대출 비율 (LTV)</span><span id="r-ltv" class="font-medium">-</span></div>
           </div>
         </div>
+
+        <!-- SEO 해석 콘텐츠 -->
+        <div id="seo-content" class="mt-8 space-y-6">
+          <h2 id="seo-summary" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">📌 이 결과가 의미하는 것</h3>
+            <p id="seo-meaning" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- 광고 삽입 영역 -->
+          <!-- AD_SLOT: middle-content -->
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">👤 이런 분에게 적합합니다</h3>
+            <p id="seo-suitable" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">⚠️ 주의해야 할 점</h3>
+            <p id="seo-caution" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+          </div>
+
+          <!-- 광고 삽입 영역 -->
+          <!-- AD_SLOT: before-faq -->
+
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">❓ 자주 묻는 질문</h3>
+            <div id="faq-content" class="space-y-4"></div>
+          </div>
+
+          <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 관련 계산기</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/ko/tools/car-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🚗 내 연봉으로 살 수 있는 차</a>
+              <a href="/ko/tools/salary-percentile" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">📊 내 연봉 순위</a>
+              <a href="/ko/tools/mortgage-calculator" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏦 주택담보대출 계산기</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -203,5 +243,123 @@ const tool = getTool('apartment-affordability', lang);
     const adviceBox = document.getElementById('advice-box')!;
     adviceBox.className = `rounded-xl p-5 mb-6 ${adviceBg}`;
     document.getElementById('advice-text')!.textContent = advice;
+
+    // SEO 콘텐츠 동적 생성
+    generateSeoContent(salary, assets, totalBudgetMan, maxLoan, ltv, affordablePyeong, sizeGrade);
   });
+
+  function generateSeoContent(salary: number, assets: number, totalBudget: number, maxLoan: number, ltv: number, pyeong: number, sizeGrade: string) {
+    const loanMan = Math.round(maxLoan / 10000);
+
+    // 결과 요약
+    let summaryText, statusEmoji;
+    if (totalBudget >= 100000) {
+      summaryText = `연봉 ${salary.toLocaleString()}만원, 자산 ${assets.toLocaleString()}만원으로 서울 핵심 지역 ${sizeGrade} 구매가 가능합니다`;
+      statusEmoji = '🏆';
+    } else if (totalBudget >= 60000) {
+      summaryText = `연봉 ${salary.toLocaleString()}만원 기준, 서울 주요 지역에서 ${sizeGrade} 아파트 구매가 가능합니다`;
+      statusEmoji = '✅';
+    } else if (totalBudget >= 30000) {
+      summaryText = `연봉 ${salary.toLocaleString()}만원으로 서울 외곽 또는 수도권에서 ${sizeGrade} 아파트를 고려할 수 있습니다`;
+      statusEmoji = '📊';
+    } else {
+      summaryText = `현재 조건으로는 수도권 외곽 지역이나 전세를 우선 고려하는 것이 좋습니다`;
+      statusEmoji = '💡';
+    }
+    document.getElementById('seo-summary')!.textContent = `${statusEmoji} 결과 요약: ${summaryText}`;
+
+    // 의미 설명
+    const meaningText = `귀하의 연봉 ${salary.toLocaleString()}만원과 현재 자산 ${assets.toLocaleString()}만원을 바탕으로 분석한 결과, ` +
+      `총 구매 가능 금액은 약 ${totalBudget.toLocaleString()}만원입니다. 이 중 대출 가능 금액은 ${loanMan.toLocaleString()}만원이며, ` +
+      `LTV(담보인정비율)는 ${ltv}%입니다. 2026년 서울 평균 평당 시세 4,500만원을 기준으로 약 ${pyeong}평(${Math.round(pyeong * 3.3)}㎡) 규모의 ` +
+      `아파트를 구매할 수 있습니다. 강남/서초/송파 등 핵심 지역은 평당 1억원 이상이므로 같은 예산으로 ${Math.round(totalBudget / 10000)}평 수준만 가능하며, ` +
+      `노원/도봉/인천 등 외곽 지역은 평당 2,500~3,000만원 수준으로 ${Math.round(totalBudget / 2700)}평까지도 고려할 수 있습니다.`;
+    document.getElementById('seo-meaning')!.textContent = meaningText;
+
+    // 적합한 대상
+    let suitableText;
+    if (totalBudget >= 80000) {
+      suitableText = `실거주와 투자 가치를 모두 고려하는 자산가, 서울 주요 지역 학군이 중요한 학부모, ` +
+        `안정적인 고소득 직장인으로 장기 거주를 계획하는 분, 재건축/리모델링 투자에 관심 있는 분, ` +
+        `부모님 지원이나 상속 자금이 있어 자기자본 비율이 높은 분에게 적합한 구매 조건입니다.`;
+    } else if (totalBudget >= 50000) {
+      suitableText = `신혼부부로 내 집 마련을 계획하는 분, 1~2인 가구로 서울 출퇴근이 필요한 직장인, ` +
+        `안정적인 직장과 꾸준한 저축 습관을 가진 30~40대, 전세에서 매매로 전환을 고려하는 분, ` +
+        `경기권 신도시의 신축 아파트를 선호하는 분에게 현실적인 선택지가 됩니다.`;
+    } else {
+      suitableText = `사회초년생으로 첫 내 집 마련의 기반을 다지는 분, 청약 당첨을 목표로 자금을 모으는 분, ` +
+        `수도권 외곽이나 지방에서 실거주용 주택을 찾는 분, 전세 자금을 활용해 거주 안정성을 먼저 확보하려는 분, ` +
+        `부모님과 합가하거나 가족 지원을 받을 수 있는 분에게 적합합니다.`;
+    }
+    document.getElementById('seo-suitable')!.textContent = suitableText;
+
+    // 주의사항
+    let cautionText = `부동산 구매 시 반드시 고려해야 할 사항들이 있습니다. 첫째, 취득세(1~3%), 중개수수료(0.4~0.9%), ` +
+      `등기비용 등 부대비용이 매매가의 약 5~7% 추가됩니다. 둘째, DSR(총부채원리금상환비율) 규제로 소득 대비 ` +
+      `연간 원리금 상환액이 제한되어 실제 대출 가능 금액이 다를 수 있습니다. `;
+    if (ltv > 60) {
+      cautionText += `셋째, 귀하의 LTV ${ltv}%는 다소 높은 편으로, 금리 인상 시 이자 부담이 크게 증가할 수 있습니다. ` +
+        `변동금리보다 고정금리 상품을 우선 검토하고, 비상 자금을 충분히 확보한 후 구매를 진행하세요. ` +
+        `또한 입주 후 관리비, 재산세 등 추가 비용도 월 50~100만원 수준으로 예상해야 합니다.`;
+    } else {
+      cautionText += `셋째, 부동산 시장 변동성을 고려하여 무리한 투기 목적보다는 실거주 위주로 접근하시기 바랍니다. ` +
+        `또한 향후 금리 변동, 정부 정책 변화, 지역 개발 계획 등을 종합적으로 검토하여 ` +
+        `장기적 관점에서 의사결정하는 것이 중요합니다.`;
+    }
+    document.getElementById('seo-caution')!.textContent = cautionText;
+
+    // FAQ 생성
+    const faqs = [
+      {
+        q: '이 계산 결과는 실제 대출 심사와 동일한가요?',
+        a: '아니요, 이 계산기는 일반적인 DSR 기준을 적용한 참고용입니다. 실제 대출 한도는 개인 신용등급, 기존 부채, 직업 안정성, 담보 가치 등에 따라 금융기관별로 다르게 산정됩니다. 정확한 대출 가능 금액은 은행 상담을 통해 확인하세요.'
+      },
+      {
+        q: 'DSR 40%와 60%의 차이는 무엇인가요?',
+        a: 'DSR(총부채원리금상환비율)은 연소득 대비 연간 대출 원리금 상환액의 비율입니다. DSR 40%는 보수적인 기준으로 월 상환 부담이 적고, 60%는 일반적인 최대 한도로 더 많은 대출이 가능하지만 생활비 여유가 줄어듭니다.'
+      },
+      {
+        q: '실제 아파트 가격과 계산 결과가 다른 이유는?',
+        a: `본 계산기는 2026년 서울/수도권 평균 시세를 기준으로 합니다. 같은 지역이라도 역세권 여부, 브랜드, 연식, 층수, 향 등에 따라 가격이 20~50% 차이날 수 있습니다. 정확한 시세는 국토교통부 실거래가 공개시스템이나 부동산 앱에서 확인하세요.`
+      },
+      {
+        q: '전세 vs 매매, 어떤 것이 유리한가요?',
+        a: `현재 자산 ${assets.toLocaleString()}만원으로 매매 시 ${pyeong}평이 가능하지만, 전세는 같은 지역에서 더 넓은 평수를 선택할 수 있습니다. 단, 전세는 자산 형성이 되지 않고 전세가율 하락 시 보증금 회수 리스크가 있습니다. 장기 거주 계획이라면 매매가, 유동성이 필요하면 전세가 유리합니다.`
+      }
+    ];
+
+    const faqContainer = document.getElementById('faq-content')!;
+    faqContainer.innerHTML = faqs.map(faq => `
+      <details class="group">
+        <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+          <span class="font-medium text-gray-900 dark:text-white">${faq.q}</span>
+          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-2 px-3 text-gray-600 dark:text-gray-400 text-sm">${faq.a}</p>
+      </details>
+    `).join('');
+
+    // JSON-LD FAQ Schema
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    };
+
+    let schemaScript = document.getElementById('faq-schema');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'faq-schema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    schemaScript.textContent = JSON.stringify(faqSchema);
+  }
 </script>
