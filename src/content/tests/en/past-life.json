@@ -1,0 +1,152 @@
+{
+  "slug": "past-life",
+  "title": "Past Life Test",
+  "description": "What were you in your past life? Find out through these fun questions!",
+  "emoji": "🔮",
+  "questions": [
+    {
+      "question": "Which era are you mysteriously drawn to?",
+      "choices": [
+        { "text": "Ancient Egypt, the mystery of pyramids", "scores": { "pharaoh": 3 } },
+        { "text": "Medieval Europe, castles and knights", "scores": { "knight": 3 } },
+        { "text": "Ancient Asia, scholars and palaces", "scores": { "scholar": 3 } },
+        { "text": "1920s, jazz and art deco", "scores": { "artist": 3 } },
+        { "text": "Renaissance, age of art and science", "scores": { "inventor": 3 } }
+      ]
+    },
+    {
+      "question": "What were you naturally good at since childhood?",
+      "choices": [
+        { "text": "Leadership, guiding people", "scores": { "pharaoh": 2, "knight": 1 } },
+        { "text": "Sports, physical activities", "scores": { "knight": 2, "explorer": 1 } },
+        { "text": "Writing, reading", "scores": { "scholar": 2, "artist": 1 } },
+        { "text": "Art, music, creativity", "scores": { "artist": 2, "inventor": 1 } },
+        { "text": "Building, assembling, taking things apart", "scores": { "inventor": 2, "explorer": 1 } }
+      ]
+    },
+    {
+      "question": "Do you have recurring dreams or visions?",
+      "choices": [
+        { "text": "Deserts and ancient structures", "scores": { "pharaoh": 3 } },
+        { "text": "Battles or adventures", "scores": { "knight": 2, "explorer": 1 } },
+        { "text": "Books and libraries, studying", "scores": { "scholar": 3 } },
+        { "text": "Stages or galleries", "scores": { "artist": 3 } },
+        { "text": "Machines or inventions", "scores": { "inventor": 3 } },
+        { "text": "Vast oceans or unknown lands", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "Do you have any unexplained fears?",
+      "choices": [
+        { "text": "Heights, falling", "scores": { "explorer": 2, "knight": 1 } },
+        { "text": "Water, drowning", "scores": { "explorer": 2, "pharaoh": 1 } },
+        { "text": "Fire, burning", "scores": { "inventor": 2, "scholar": 1 } },
+        { "text": "Enclosed spaces", "scores": { "pharaoh": 2, "scholar": 1 } },
+        { "text": "Nothing in particular", "scores": { "artist": 2, "knight": 1 } }
+      ]
+    },
+    {
+      "question": "Have you felt familiar in a place you've never been?",
+      "choices": [
+        { "text": "At ruins or historical sites", "scores": { "pharaoh": 2, "knight": 1 } },
+        { "text": "In nature, forests or by the sea", "scores": { "explorer": 3 } },
+        { "text": "In old libraries or bookstores", "scores": { "scholar": 3 } },
+        { "text": "In art museums or theaters", "scores": { "artist": 3 } },
+        { "text": "Never had such experience", "scores": { "inventor": 2, "knight": 1 } }
+      ]
+    },
+    {
+      "question": "Which career path attracts you most?",
+      "choices": [
+        { "text": "CEO, politician, leader", "scores": { "pharaoh": 3 } },
+        { "text": "Soldier, police, firefighter", "scores": { "knight": 3 } },
+        { "text": "Professor, writer, researcher", "scores": { "scholar": 3 } },
+        { "text": "Actor, singer, painter", "scores": { "artist": 3 } },
+        { "text": "Scientist, engineer, developer", "scores": { "inventor": 3 } },
+        { "text": "Traveler, explorer, photographer", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "What ability would you want to have?",
+      "choices": [
+        { "text": "Charisma to lead people", "scores": { "pharaoh": 3 } },
+        { "text": "Superior strength and combat skills", "scores": { "knight": 3 } },
+        { "text": "Wisdom to know everything", "scores": { "scholar": 3 } },
+        { "text": "Artistic inspiration and creativity", "scores": { "artist": 3 } },
+        { "text": "Ability to create anything", "scores": { "inventor": 3 } },
+        { "text": "Freedom to go anywhere", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "What value is most important to you?",
+      "choices": [
+        { "text": "Power and influence", "scores": { "pharaoh": 3 } },
+        { "text": "Honor and loyalty", "scores": { "knight": 3 } },
+        { "text": "Knowledge and wisdom", "scores": { "scholar": 3 } },
+        { "text": "Beauty and expression", "scores": { "artist": 3 } },
+        { "text": "Innovation and progress", "scores": { "inventor": 3 } },
+        { "text": "Freedom and adventure", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "What's your preferred clothing style?",
+      "choices": [
+        { "text": "Luxurious and glamorous", "scores": { "pharaoh": 3 } },
+        { "text": "Classic and refined", "scores": { "knight": 2, "scholar": 1 } },
+        { "text": "Comfortable and neat", "scores": { "scholar": 2, "inventor": 1 } },
+        { "text": "Unique and distinctive", "scores": { "artist": 3 } },
+        { "text": "Practical and functional", "scores": { "inventor": 2, "explorer": 1 } },
+        { "text": "Free and active", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "If you heard an inner voice, what would it say?",
+      "choices": [
+        { "text": "\"You are destined to be a ruler\"", "scores": { "pharaoh": 3 } },
+        { "text": "\"Fight for justice\"", "scores": { "knight": 3 } },
+        { "text": "\"Seek the truth\"", "scores": { "scholar": 3 } },
+        { "text": "\"Bring beauty to the world\"", "scores": { "artist": 3 } },
+        { "text": "\"Create something new\"", "scores": { "inventor": 3 } },
+        { "text": "\"Explore the world\"", "scores": { "explorer": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "pharaoh",
+      "title": "Ancient Egyptian Pharaoh",
+      "description": "In your past life, you were an Ancient Egyptian Pharaoh! Blessed by the sun god and ruling over your people, you still carry natural charisma and leadership. People naturally follow you, and you hold grand visions for the future.",
+      "traits": ["Leadership", "Charisma", "Authority", "Visionary", "Decisive"]
+    },
+    {
+      "type": "knight",
+      "title": "Medieval Knight",
+      "description": "In your past life, you were a honorable Medieval Knight! Fighting for justice and protecting the weak, you still possess strong courage and loyalty. You're someone who acts on what you believe is right.",
+      "traits": ["Courage", "Honor", "Loyalty", "Justice", "Protective"]
+    },
+    {
+      "type": "scholar",
+      "title": "Ancient Scholar",
+      "description": "In your past life, you were a scholar who loved learning! Living among books, you still have a strong thirst for knowledge and enjoy learning. You possess deep thinking and insight.",
+      "traits": ["Wisdom", "Love of learning", "Contemplative", "Insightful", "Humble"]
+    },
+    {
+      "type": "artist",
+      "title": "Renaissance Artist",
+      "description": "In your past life, you were a Renaissance artist who pursued beauty! Talented in painting, music, and sculpture, you still have a strong desire for creation and expression. You have a unique sensibility!",
+      "traits": ["Creativity", "Sensitivity", "Expressive", "Aesthetic sense", "Free-spirited"]
+    },
+    {
+      "type": "inventor",
+      "title": "Industrial Revolution Inventor",
+      "description": "In your past life, you were an inventor who created new things! Interested in machines and technology, you still have talent for problem-solving and creation. You're someone with ideas that can change the world!",
+      "traits": ["Innovation", "Creativity", "Logical", "Curious", "Problem-solver"]
+    },
+    {
+      "type": "explorer",
+      "title": "Age of Exploration Navigator",
+      "description": "In your past life, you were an adventurer who explored unknown worlds! Discovering new lands and sailing the seas, you still yearn for freedom and adventure. A free spirit ready to go anywhere!",
+      "traits": ["Adventurous", "Freedom-loving", "Courageous", "Curious", "Adaptable"]
+    }
+  ]
+}

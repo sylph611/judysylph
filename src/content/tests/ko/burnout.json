@@ -1,0 +1,128 @@
+{
+  "slug": "burnout",
+  "title": "번아웃 자가진단 테스트",
+  "description": "요즘 지치셨나요? 번아웃 위험도를 체크하고 나를 돌보세요!",
+  "emoji": "🔥",
+  "questions": [
+    {
+      "question": "아침에 일어날 때 기분이 어떤가요?",
+      "choices": [
+        { "text": "상쾌하고 활력이 넘친다", "scores": { "healthy": 3 } },
+        { "text": "괜찮은 편이다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "피곤하고 일어나기 싫다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "극심한 피로감과 무기력함을 느낀다", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "일(또는 공부)에 대한 열정은?",
+      "choices": [
+        { "text": "여전히 재미있고 보람을 느낀다", "scores": { "healthy": 3 } },
+        { "text": "예전보다는 덜하지만 괜찮다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "흥미가 많이 떨어졌다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "아무 의미도 느껴지지 않는다", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "업무/학업 효율성은 어떤가요?",
+      "choices": [
+        { "text": "집중이 잘 되고 효율적이다", "scores": { "healthy": 3 } },
+        { "text": "보통이다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "집중하기 어렵고 실수가 잦아졌다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "아무것도 제대로 할 수 없다", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "주변 사람들과의 관계는?",
+      "choices": [
+        { "text": "원만하고 즐겁다", "scores": { "healthy": 3 } },
+        { "text": "평소와 비슷하다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "짜증이 늘고 대화가 귀찮다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "모든 관계가 힘들고 고립되고 싶다", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "최근 수면 상태는?",
+      "choices": [
+        { "text": "잘 자고 개운하게 일어난다", "scores": { "healthy": 3 } },
+        { "text": "가끔 뒤척이지만 괜찮다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "잠들기 어렵거나 자주 깬다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "심각한 불면 또는 과수면", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "신체적 증상이 있나요?",
+      "choices": [
+        { "text": "건강하고 컨디션이 좋다", "scores": { "healthy": 3 } },
+        { "text": "가끔 피곤함을 느낀다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "두통, 소화불량 등이 자주 있다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "만성적인 통증이나 질병이 있다", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "여가 시간에 취미 활동을 하나요?",
+      "choices": [
+        { "text": "규칙적으로 취미를 즐긴다", "scores": { "healthy": 3 } },
+        { "text": "가끔 한다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "할 시간도 의욕도 없다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "아무것도 하고 싶지 않다", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "일과 삶의 균형은?",
+      "choices": [
+        { "text": "잘 균형을 맞추고 있다", "scores": { "healthy": 3 } },
+        { "text": "조금 바쁘지만 감당할 만하다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "일에 치여서 삶이 없는 것 같다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "완전히 무너졌다", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "미래에 대한 생각은?",
+      "choices": [
+        { "text": "희망적이고 기대된다", "scores": { "healthy": 3 } },
+        { "text": "보통이다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "불안하고 막막하다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "아무 희망도 없다고 느낀다", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "'나 자신을 돌보고 있다'고 느끼나요?",
+      "choices": [
+        { "text": "충분히 돌보고 있다", "scores": { "healthy": 3 } },
+        { "text": "어느 정도는 돌보고 있다", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "돌볼 여유가 없다", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "완전히 방치하고 있다", "scores": { "burnout": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "healthy",
+      "title": "건강 상태 양호",
+      "description": "현재 정신적, 신체적으로 건강한 상태입니다! 일과 삶의 균형을 잘 유지하고 있으며, 스트레스 관리도 잘 되고 있습니다. 지금처럼 자신을 잘 돌보면서 건강한 생활을 유지하세요.",
+      "traits": ["에너지 충만", "균형 잡힌 생활", "긍정적 마인드", "좋은 컨디션"],
+      "advice": "현재 상태를 유지하면서, 정기적인 휴식과 취미 활동을 계속하세요."
+    },
+    {
+      "type": "caution",
+      "title": "주의 필요 단계",
+      "description": "약간의 피로감이 쌓이고 있는 상태입니다. 아직 심각하지는 않지만, 지금부터 관리하는 것이 중요합니다. 휴식을 취하고, 스트레스 요인을 줄여보세요.",
+      "traits": ["가벼운 피로", "가끔 스트레스", "관리 필요", "예방 중요"],
+      "advice": "충분한 수면, 규칙적인 운동, 취미 활동으로 재충전하세요. 일에서 한 발 물러나는 시간을 가지세요."
+    },
+    {
+      "type": "warning",
+      "title": "경고 단계",
+      "description": "상당한 피로와 스트레스가 쌓여 있습니다. 번아웃 위험이 높은 상태이므로, 적극적인 조치가 필요합니다. 휴식을 우선시하고, 필요하다면 도움을 요청하세요.",
+      "traits": ["만성 피로", "의욕 저하", "집중력 감소", "조치 필요"],
+      "advice": "가능하다면 휴가를 쓰거나 업무량을 줄이세요. 전문가 상담을 고려해보시고, 자신을 돌보는 것을 최우선으로 하세요."
+    },
+    {
+      "type": "burnout",
+      "title": "번아웃 상태",
+      "description": "심각한 번아웃 상태입니다. 정신적, 신체적으로 많이 지쳐있으며, 전문적인 도움이 필요할 수 있습니다. 혼자 해결하려 하지 말고, 주변에 도움을 요청하세요.",
+      "traits": ["극심한 피로", "무기력", "희망 상실", "즉각 조치 필요"],
+      "advice": "전문가(심리상담사, 정신건강의학과)의 도움을 받는 것을 권장합니다. 지금 가장 중요한 것은 당신의 건강입니다."
+    }
+  ]
+}

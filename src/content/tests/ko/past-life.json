@@ -1,0 +1,152 @@
+{
+  "slug": "past-life",
+  "title": "전생 테스트",
+  "description": "당신의 전생은 무엇이었을까요? 재미있는 질문으로 전생을 알아보세요!",
+  "emoji": "🔮",
+  "questions": [
+    {
+      "question": "왠지 모르게 끌리는 시대가 있다면?",
+      "choices": [
+        { "text": "고대 이집트, 피라미드의 신비", "scores": { "pharaoh": 3 } },
+        { "text": "중세 유럽, 성과 기사의 시대", "scores": { "knight": 3 } },
+        { "text": "조선시대, 한복과 궁궐", "scores": { "scholar": 3 } },
+        { "text": "1920년대, 재즈와 아르데코", "scores": { "artist": 3 } },
+        { "text": "르네상스, 예술과 과학의 시대", "scores": { "inventor": 3 } }
+      ]
+    },
+    {
+      "question": "어릴 때부터 유독 잘했던 것은?",
+      "choices": [
+        { "text": "리더십, 사람들을 이끄는 것", "scores": { "pharaoh": 2, "knight": 1 } },
+        { "text": "운동, 신체 활동", "scores": { "knight": 2, "explorer": 1 } },
+        { "text": "글쓰기, 독서", "scores": { "scholar": 2, "artist": 1 } },
+        { "text": "그림, 음악 등 예술", "scores": { "artist": 2, "inventor": 1 } },
+        { "text": "만들기, 조립, 분해", "scores": { "inventor": 2, "explorer": 1 } }
+      ]
+    },
+    {
+      "question": "반복적으로 꾸는 꿈이나 장면이 있나요?",
+      "choices": [
+        { "text": "사막과 고대 건축물", "scores": { "pharaoh": 3 } },
+        { "text": "전투나 모험", "scores": { "knight": 2, "explorer": 1 } },
+        { "text": "책과 서재, 공부하는 모습", "scores": { "scholar": 3 } },
+        { "text": "무대나 갤러리", "scores": { "artist": 3 } },
+        { "text": "기계나 발명품", "scores": { "inventor": 3 } },
+        { "text": "넓은 바다나 미지의 땅", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "이유 없이 무서운 것이 있다면?",
+      "choices": [
+        { "text": "높은 곳, 추락", "scores": { "explorer": 2, "knight": 1 } },
+        { "text": "물, 익사", "scores": { "explorer": 2, "pharaoh": 1 } },
+        { "text": "불, 화재", "scores": { "inventor": 2, "scholar": 1 } },
+        { "text": "폐쇄된 공간", "scores": { "pharaoh": 2, "scholar": 1 } },
+        { "text": "특별히 없다", "scores": { "artist": 2, "knight": 1 } }
+      ]
+    },
+    {
+      "question": "처음 가본 곳인데 익숙한 느낌을 받은 적이 있나요?",
+      "choices": [
+        { "text": "유적지나 역사적인 장소에서", "scores": { "pharaoh": 2, "knight": 1 } },
+        { "text": "자연 속, 숲이나 바다에서", "scores": { "explorer": 3 } },
+        { "text": "오래된 도서관이나 서점에서", "scores": { "scholar": 3 } },
+        { "text": "예술관이나 공연장에서", "scores": { "artist": 3 } },
+        { "text": "그런 경험이 없다", "scores": { "inventor": 2, "knight": 1 } }
+      ]
+    },
+    {
+      "question": "가장 끌리는 직업군은?",
+      "choices": [
+        { "text": "CEO, 정치인, 리더", "scores": { "pharaoh": 3 } },
+        { "text": "군인, 경찰, 소방관", "scores": { "knight": 3 } },
+        { "text": "교수, 작가, 연구원", "scores": { "scholar": 3 } },
+        { "text": "배우, 가수, 화가", "scores": { "artist": 3 } },
+        { "text": "과학자, 엔지니어, 개발자", "scores": { "inventor": 3 } },
+        { "text": "여행가, 탐험가, 사진작가", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "어떤 능력이 있었으면 좋겠나요?",
+      "choices": [
+        { "text": "사람들을 이끄는 카리스마", "scores": { "pharaoh": 3 } },
+        { "text": "뛰어난 체력과 전투력", "scores": { "knight": 3 } },
+        { "text": "모든 것을 아는 지혜", "scores": { "scholar": 3 } },
+        { "text": "예술적 영감과 창작력", "scores": { "artist": 3 } },
+        { "text": "무엇이든 만들어내는 능력", "scores": { "inventor": 3 } },
+        { "text": "어디든 갈 수 있는 자유", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "가장 중요하게 생각하는 가치는?",
+      "choices": [
+        { "text": "권력과 영향력", "scores": { "pharaoh": 3 } },
+        { "text": "명예와 충성", "scores": { "knight": 3 } },
+        { "text": "지식과 지혜", "scores": { "scholar": 3 } },
+        { "text": "아름다움과 표현", "scores": { "artist": 3 } },
+        { "text": "혁신과 발전", "scores": { "inventor": 3 } },
+        { "text": "자유와 모험", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "옷을 고를 때 선호하는 스타일은?",
+      "choices": [
+        { "text": "고급스럽고 화려한 스타일", "scores": { "pharaoh": 3 } },
+        { "text": "클래식하고 정돈된 스타일", "scores": { "knight": 2, "scholar": 1 } },
+        { "text": "편안하고 단정한 스타일", "scores": { "scholar": 2, "inventor": 1 } },
+        { "text": "개성 있고 독특한 스타일", "scores": { "artist": 3 } },
+        { "text": "실용적이고 기능적인 스타일", "scores": { "inventor": 2, "explorer": 1 } },
+        { "text": "자유롭고 활동적인 스타일", "scores": { "explorer": 3 } }
+      ]
+    },
+    {
+      "question": "내면의 소리가 들린다면 뭐라고 할까요?",
+      "choices": [
+        { "text": "\"너는 왕이 될 운명이야\"", "scores": { "pharaoh": 3 } },
+        { "text": "\"정의를 위해 싸워라\"", "scores": { "knight": 3 } },
+        { "text": "\"진리를 탐구하라\"", "scores": { "scholar": 3 } },
+        { "text": "\"세상에 아름다움을 선사하라\"", "scores": { "artist": 3 } },
+        { "text": "\"새로운 것을 창조하라\"", "scores": { "inventor": 3 } },
+        { "text": "\"세상을 탐험하라\"", "scores": { "explorer": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "pharaoh",
+      "title": "고대 이집트의 파라오",
+      "description": "당신의 전생은 고대 이집트의 파라오였습니다! 태양신의 축복을 받아 백성을 다스렸던 당신은 지금도 카리스마와 리더십을 타고났습니다. 사람들이 자연스럽게 당신을 따르며, 큰 비전을 품고 있습니다.",
+      "traits": ["리더십", "카리스마", "권위", "비전", "결단력"]
+    },
+    {
+      "type": "knight",
+      "title": "중세 유럽의 기사",
+      "description": "당신의 전생은 명예를 중시하던 중세 기사였습니다! 정의를 위해 싸우고, 약자를 보호했던 당신은 지금도 용기와 충성심이 강합니다. 옳다고 믿는 것을 위해 행동하는 사람입니다.",
+      "traits": ["용기", "명예", "충성", "정의감", "보호 본능"]
+    },
+    {
+      "type": "scholar",
+      "title": "조선시대의 선비",
+      "description": "당신의 전생은 학문을 사랑했던 조선시대 선비였습니다! 책과 함께 살았던 당신은 지금도 지식에 대한 갈증이 강하고, 배우는 것을 즐깁니다. 깊은 사고와 통찰력의 소유자입니다.",
+      "traits": ["지혜", "학구열", "사색", "통찰력", "겸손"]
+    },
+    {
+      "type": "artist",
+      "title": "르네상스 시대의 예술가",
+      "description": "당신의 전생은 아름다움을 추구했던 르네상스 예술가였습니다! 그림, 음악, 조각 등 예술에 재능이 있었던 당신은 지금도 창작과 표현에 대한 욕구가 강합니다. 독특한 감성의 소유자!",
+      "traits": ["창의성", "감성", "표현력", "미적 감각", "자유로움"]
+    },
+    {
+      "type": "inventor",
+      "title": "산업혁명 시대의 발명가",
+      "description": "당신의 전생은 새로운 것을 만들었던 발명가였습니다! 기계와 기술에 관심이 많았던 당신은 지금도 문제 해결과 창조에 재능이 있습니다. 세상을 바꾸는 아이디어의 소유자!",
+      "traits": ["혁신", "창의력", "논리적", "호기심", "문제해결"]
+    },
+    {
+      "type": "explorer",
+      "title": "대항해시대의 탐험가",
+      "description": "당신의 전생은 미지의 세계를 탐험했던 모험가였습니다! 새로운 땅을 발견하고 항해했던 당신은 지금도 자유와 모험을 갈망합니다. 어디든 떠날 준비가 된 자유로운 영혼!",
+      "traits": ["모험심", "자유", "용기", "호기심", "적응력"]
+    }
+  ]
+}

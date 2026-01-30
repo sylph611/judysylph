@@ -1,0 +1,128 @@
+{
+  "slug": "learning-style",
+  "title": "학습 유형 테스트",
+  "description": "나에게 맞는 공부법은? 시각/청각/읽기/체험형 학습 유형을 알아보세요!",
+  "emoji": "📚",
+  "questions": [
+    {
+      "question": "새로운 것을 배울 때 가장 효과적인 방법은?",
+      "choices": [
+        { "text": "그림, 도표, 영상으로 보면서 배운다", "scores": { "visual": 3 } },
+        { "text": "강의를 듣거나 설명을 들으면서 배운다", "scores": { "auditory": 3 } },
+        { "text": "교재나 자료를 읽으면서 배운다", "scores": { "reading": 3 } },
+        { "text": "직접 해보면서 배운다", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "길을 찾을 때 선호하는 방식은?",
+      "choices": [
+        { "text": "지도나 네비게이션 화면을 본다", "scores": { "visual": 3 } },
+        { "text": "누군가 설명해주는 것을 듣는다", "scores": { "auditory": 3 } },
+        { "text": "주소나 설명을 글로 읽는다", "scores": { "reading": 3 } },
+        { "text": "일단 가보면서 찾는다", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "무언가를 기억할 때 나는?",
+      "choices": [
+        { "text": "그 장면이나 이미지가 떠오른다", "scores": { "visual": 3 } },
+        { "text": "그때 들었던 소리나 말이 떠오른다", "scores": { "auditory": 3 } },
+        { "text": "읽었던 내용이나 글이 떠오른다", "scores": { "reading": 3 } },
+        { "text": "그때의 느낌이나 감각이 떠오른다", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "여가 시간에 주로?",
+      "choices": [
+        { "text": "영화, 드라마, 유튜브를 본다", "scores": { "visual": 3 } },
+        { "text": "음악을 듣거나 팟캐스트를 듣는다", "scores": { "auditory": 3 } },
+        { "text": "책이나 기사를 읽는다", "scores": { "reading": 3 } },
+        { "text": "운동이나 DIY 활동을 한다", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "프레젠테이션을 할 때 선호하는 방식은?",
+      "choices": [
+        { "text": "시각자료와 이미지를 많이 활용한다", "scores": { "visual": 3 } },
+        { "text": "말로 설명하고 토론한다", "scores": { "auditory": 3 } },
+        { "text": "자세한 자료와 핸드아웃을 준비한다", "scores": { "reading": 3 } },
+        { "text": "시연이나 실제 예시를 보여준다", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "수업을 들을 때 가장 집중되는 순간은?",
+      "choices": [
+        { "text": "PPT나 칠판 내용을 볼 때", "scores": { "visual": 3 } },
+        { "text": "선생님 설명을 들을 때", "scores": { "auditory": 3 } },
+        { "text": "교재를 읽으면서 따라갈 때", "scores": { "reading": 3 } },
+        { "text": "실습이나 활동을 할 때", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "가구를 조립할 때?",
+      "choices": [
+        { "text": "그림 설명서를 보면서 한다", "scores": { "visual": 3 } },
+        { "text": "영상 튜토리얼을 들으며 한다", "scores": { "auditory": 3 } },
+        { "text": "글로 된 설명서를 읽으며 한다", "scores": { "reading": 3 } },
+        { "text": "일단 만져보면서 조립한다", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "누군가와 대화할 때?",
+      "choices": [
+        { "text": "상대의 표정과 몸짓을 많이 본다", "scores": { "visual": 3 } },
+        { "text": "말의 톤과 억양에 집중한다", "scores": { "auditory": 3 } },
+        { "text": "대화 내용을 메모하거나 정리한다", "scores": { "reading": 3 } },
+        { "text": "상대를 만지거나 가까이 다가간다", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "스트레스 해소 방법은?",
+      "choices": [
+        { "text": "아름다운 풍경을 보거나 그림을 본다", "scores": { "visual": 3 } },
+        { "text": "좋아하는 음악을 듣는다", "scores": { "auditory": 3 } },
+        { "text": "일기를 쓰거나 글을 쓴다", "scores": { "reading": 3 } },
+        { "text": "운동이나 산책을 한다", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "외국어를 배울 때 효과적인 방법은?",
+      "choices": [
+        { "text": "플래시카드나 이미지로 단어를 외운다", "scores": { "visual": 3 } },
+        { "text": "드라마나 노래를 들으며 배운다", "scores": { "auditory": 3 } },
+        { "text": "문법책을 읽고 예문을 분석한다", "scores": { "reading": 3 } },
+        { "text": "실제로 말해보고 대화해본다", "scores": { "kinesthetic": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "visual",
+      "title": "시각형 학습자 (Visual Learner)",
+      "description": "당신은 시각형 학습자입니다! 눈으로 보는 것을 통해 가장 잘 배우는 타입입니다. 그림, 도표, 차트, 영상, 색깔 등 시각적 자료가 학습에 큰 도움이 됩니다. 마인드맵을 그리거나, 형광펜으로 표시하며 공부하면 효과적입니다.",
+      "traits": ["시각 자료 선호", "이미지 기억", "마인드맵 활용", "색깔 구분", "도표 정리"],
+      "tips": ["플래시카드 활용하기", "컬러펜으로 노트 정리", "영상 강의 활용", "그림으로 개념 정리"]
+    },
+    {
+      "type": "auditory",
+      "title": "청각형 학습자 (Auditory Learner)",
+      "description": "당신은 청각형 학습자입니다! 귀로 듣는 것을 통해 가장 잘 배우는 타입입니다. 강의, 토론, 팟캐스트, 오디오북 등이 학습에 효과적입니다. 소리 내어 읽거나, 녹음해서 반복해 들으면 좋습니다.",
+      "traits": ["듣기 선호", "소리 기억", "토론 좋아함", "음악 학습", "강의 집중"],
+      "tips": ["오디오북 활용하기", "소리 내어 읽기", "녹음해서 반복 듣기", "스터디 그룹 참여"]
+    },
+    {
+      "type": "reading",
+      "title": "읽기/쓰기형 학습자 (Reading/Writing Learner)",
+      "description": "당신은 읽기/쓰기형 학습자입니다! 글을 읽고 쓰는 것을 통해 가장 잘 배우는 타입입니다. 교재, 노트 필기, 에세이 작성 등이 효과적입니다. 정보를 글로 정리하고, 반복해서 읽으면 잘 기억합니다.",
+      "traits": ["텍스트 선호", "노트 정리", "독서 좋아함", "글쓰기 능력", "목록 만들기"],
+      "tips": ["꼼꼼히 노트 필기", "요약 정리하기", "관련 책 읽기", "블로그나 일기 쓰기"]
+    },
+    {
+      "type": "kinesthetic",
+      "title": "체험형 학습자 (Kinesthetic Learner)",
+      "description": "당신은 체험형 학습자입니다! 직접 해보고 몸으로 경험하는 것을 통해 가장 잘 배우는 타입입니다. 실습, 실험, 롤플레이, 만들기 등 활동적인 학습이 효과적입니다. 움직이면서 공부하면 집중이 잘 됩니다.",
+      "traits": ["실습 선호", "체험 기억", "활동적 학습", "손으로 만들기", "움직임 필요"],
+      "tips": ["직접 해보며 배우기", "걸으면서 암기하기", "실험과 실습 참여", "롤플레이로 연습"]
+    }
+  ]
+}

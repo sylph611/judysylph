@@ -1,0 +1,128 @@
+{
+  "slug": "burnout",
+  "title": "Burnout Self-Assessment",
+  "description": "Feeling exhausted lately? Check your burnout risk and take care of yourself!",
+  "emoji": "🔥",
+  "questions": [
+    {
+      "question": "How do you feel when waking up in the morning?",
+      "choices": [
+        { "text": "Refreshed and full of energy", "scores": { "healthy": 3 } },
+        { "text": "Okay, I guess", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "Tired and don't want to get up", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Extreme fatigue and lethargy", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Your passion for work or studies is...",
+      "choices": [
+        { "text": "Still find it fun and rewarding", "scores": { "healthy": 3 } },
+        { "text": "Less than before but okay", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "Lost a lot of interest", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Feel completely meaningless", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Your work/study efficiency is...",
+      "choices": [
+        { "text": "Focused and productive", "scores": { "healthy": 3 } },
+        { "text": "Average", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "Hard to focus, making more mistakes", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Can't do anything properly", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Your relationships with others are...",
+      "choices": [
+        { "text": "Smooth and enjoyable", "scores": { "healthy": 3 } },
+        { "text": "Same as usual", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "More irritable, conversations are tiring", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "All relationships are hard, want isolation", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Your recent sleep quality is...",
+      "choices": [
+        { "text": "Sleep well, wake up refreshed", "scores": { "healthy": 3 } },
+        { "text": "Toss and turn sometimes but okay", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "Trouble falling asleep or wake up often", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Severe insomnia or oversleeping", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Any physical symptoms?",
+      "choices": [
+        { "text": "Healthy and feeling good", "scores": { "healthy": 3 } },
+        { "text": "Sometimes feel tired", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "Frequent headaches, digestive issues, etc.", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Chronic pain or illness", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Do you engage in hobbies during free time?",
+      "choices": [
+        { "text": "Regularly enjoy hobbies", "scores": { "healthy": 3 } },
+        { "text": "Sometimes", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "No time or motivation", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Don't want to do anything", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Your work-life balance is...",
+      "choices": [
+        { "text": "Well balanced", "scores": { "healthy": 3 } },
+        { "text": "A bit busy but manageable", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "Overwhelmed by work, no life", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Completely broken", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Your thoughts about the future are...",
+      "choices": [
+        { "text": "Hopeful and excited", "scores": { "healthy": 3 } },
+        { "text": "Neutral", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "Anxious and uncertain", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Feel hopeless", "scores": { "burnout": 3 } }
+      ]
+    },
+    {
+      "question": "Do you feel like you're taking care of yourself?",
+      "choices": [
+        { "text": "Taking good care of myself", "scores": { "healthy": 3 } },
+        { "text": "Somewhat taking care", "scores": { "caution": 2, "healthy": 1 } },
+        { "text": "No time for self-care", "scores": { "warning": 2, "caution": 1 } },
+        { "text": "Completely neglecting myself", "scores": { "burnout": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "healthy",
+      "title": "Healthy State",
+      "description": "You are currently in a mentally and physically healthy state! You're maintaining good work-life balance and managing stress well. Keep taking care of yourself and maintain this healthy lifestyle.",
+      "traits": ["Energetic", "Balanced life", "Positive mindset", "Good condition"],
+      "advice": "Keep up your current routine with regular rest and hobby activities."
+    },
+    {
+      "type": "caution",
+      "title": "Caution Needed",
+      "description": "You're experiencing some fatigue buildup. It's not serious yet, but managing it now is important. Take some rest and reduce stress factors.",
+      "traits": ["Light fatigue", "Occasional stress", "Management needed", "Prevention important"],
+      "advice": "Get enough sleep, exercise regularly, and engage in hobbies to recharge. Take some time away from work."
+    },
+    {
+      "type": "warning",
+      "title": "Warning Stage",
+      "description": "Significant fatigue and stress have accumulated. You're at high risk for burnout and need active intervention. Prioritize rest and seek help if needed.",
+      "traits": ["Chronic fatigue", "Low motivation", "Decreased focus", "Action needed"],
+      "advice": "Consider taking time off or reducing workload if possible. Consult a professional and prioritize self-care above all."
+    },
+    {
+      "type": "burnout",
+      "title": "Burnout State",
+      "description": "You are experiencing serious burnout. You're mentally and physically exhausted and may need professional help. Don't try to solve this alone - reach out for support.",
+      "traits": ["Extreme exhaustion", "Helplessness", "Loss of hope", "Immediate action needed"],
+      "advice": "Seeking professional help (counselor, mental health professional) is strongly recommended. Your health is the top priority right now."
+    }
+  ]
+}

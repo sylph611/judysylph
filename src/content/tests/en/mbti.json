@@ -1,0 +1,190 @@
+{
+  "slug": "mbti",
+  "title": "Quick MBTI Test",
+  "description": "Discover your MBTI personality type with 12 quick questions!",
+  "emoji": "🧠",
+  "questions": [
+    {
+      "question": "At a party or gathering, you...",
+      "choices": [
+        { "text": "Talk to many people and feel energized", "scores": { "ENFP": 2, "ESFP": 2, "ENTJ": 1, "ESTP": 1 } },
+        { "text": "Have deep conversations with a few close friends", "scores": { "INFJ": 2, "INFP": 2, "INTJ": 1, "INTP": 1 } }
+      ]
+    },
+    {
+      "question": "When starting a new project, you...",
+      "choices": [
+        { "text": "Create detailed plans and steps first", "scores": { "ISTJ": 2, "ESTJ": 2, "ISFJ": 1, "INTJ": 1 } },
+        { "text": "See the big picture and stay flexible", "scores": { "ENFP": 2, "ENTP": 2, "INFP": 1, "INTP": 1 } }
+      ]
+    },
+    {
+      "question": "When making decisions, you rely on...",
+      "choices": [
+        { "text": "Logic and objective facts", "scores": { "INTJ": 2, "ENTJ": 2, "INTP": 1, "ISTJ": 1 } },
+        { "text": "People's feelings and values", "scores": { "INFJ": 2, "ENFJ": 2, "ISFJ": 1, "INFP": 1 } }
+      ]
+    },
+    {
+      "question": "When a friend suddenly asks to hang out on the weekend...",
+      "choices": [
+        { "text": "Great! I'm ready to go!", "scores": { "ESFP": 2, "ESTP": 2, "ENFP": 1, "ESFJ": 1 } },
+        { "text": "I wish they told me earlier... Let me think about it", "scores": { "INFP": 2, "INTP": 2, "ISFP": 1, "INTJ": 1 } }
+      ]
+    },
+    {
+      "question": "When solving problems, you prefer to...",
+      "choices": [
+        { "text": "Use tried-and-tested methods", "scores": { "ISTJ": 2, "ISFJ": 2, "ESTJ": 1, "ESFJ": 1 } },
+        { "text": "Explore new ideas and possibilities", "scores": { "ENTP": 2, "INTP": 2, "ENFP": 1, "INTJ": 1 } }
+      ]
+    },
+    {
+      "question": "In team work, you usually...",
+      "choices": [
+        { "text": "Take the lead and set direction", "scores": { "ENTJ": 2, "ESTJ": 2, "ENFJ": 1, "ESTP": 1 } },
+        { "text": "Maintain harmony and support team members", "scores": { "ISFJ": 2, "INFJ": 2, "ESFJ": 1, "INFP": 1 } }
+      ]
+    },
+    {
+      "question": "When stressed, you...",
+      "choices": [
+        { "text": "Hang out with people to feel better", "scores": { "ESFP": 2, "ENFP": 2, "ESTP": 1, "ESFJ": 1 } },
+        { "text": "Need alone time to recharge", "scores": { "INFP": 2, "INTP": 2, "INFJ": 1, "ISFP": 1 } }
+      ]
+    },
+    {
+      "question": "When planning a trip, you...",
+      "choices": [
+        { "text": "Plan every detail carefully", "scores": { "ISTJ": 2, "ESTJ": 2, "ISFJ": 1, "ENTJ": 1 } },
+        { "text": "Set a rough direction and go with the flow", "scores": { "ENFP": 2, "ESFP": 2, "INFP": 1, "ESTP": 1 } }
+      ]
+    },
+    {
+      "question": "In conversations, you prefer to talk about...",
+      "choices": [
+        { "text": "Concrete facts and practical matters", "scores": { "ISTJ": 2, "ESTJ": 2, "ISFJ": 1, "ESFJ": 1 } },
+        { "text": "Ideas and possibilities", "scores": { "ENFP": 2, "ENTP": 2, "INFP": 1, "INTJ": 1 } }
+      ]
+    },
+    {
+      "question": "In conflict situations, you...",
+      "choices": [
+        { "text": "Address the core issue fairly", "scores": { "ENTJ": 2, "INTJ": 2, "ESTJ": 1, "ENTP": 1 } },
+        { "text": "Seek harmony and compromise", "scores": { "ENFJ": 2, "ISFJ": 2, "INFJ": 1, "ESFJ": 1 } }
+      ]
+    },
+    {
+      "question": "Your work/study style is...",
+      "choices": [
+        { "text": "Finish well before the deadline", "scores": { "ISTJ": 2, "ESTJ": 2, "ENTJ": 1, "ISFJ": 1 } },
+        { "text": "Best work comes near the deadline", "scores": { "ENFP": 2, "INTP": 2, "ENTP": 1, "INFP": 1 } }
+      ]
+    },
+    {
+      "question": "When meeting new people, you...",
+      "choices": [
+        { "text": "Initiate conversation and lead the interaction", "scores": { "ENFJ": 2, "ESFJ": 2, "ENTJ": 1, "ENFP": 1 } },
+        { "text": "Respond when others approach you", "scores": { "INFP": 2, "INTP": 2, "ISFP": 1, "INTJ": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "ENFP",
+      "title": "The Enthusiastic Campaigner (ENFP)",
+      "description": "You are an ENFP, full of passion and creativity! You love exploring new possibilities and creating deep connections with people. A free spirit who doesn't conform to rules, you inspire those around you with your energy and ideas.",
+      "traits": ["Creative", "Passionate", "Social", "Optimistic", "Free-spirited"]
+    },
+    {
+      "type": "INFP",
+      "title": "The Idealistic Mediator (INFP)",
+      "description": "You are an INFP with a rich inner world! You value ideals and principles, quietly wanting to make the world a better place. Highly empathetic with a talent for creative expression.",
+      "traits": ["Idealistic", "Empathetic", "Creative", "Introspective", "Values-driven"]
+    },
+    {
+      "type": "INTJ",
+      "title": "The Strategic Mastermind (INTJ)",
+      "description": "You are an INTJ with vision and strategy! Excellent at analyzing complex problems and making long-term plans. Independent with high standards, you steadily work toward your goals.",
+      "traits": ["Strategic", "Independent", "Analytical", "Decisive", "Perfectionist"]
+    },
+    {
+      "type": "ENTJ",
+      "title": "The Bold Commander (ENTJ)",
+      "description": "You are an ENTJ, a natural-born leader! Excellent at presenting vision and leading teams, you value efficiency and achievement. You enjoy challenges and make decisions with confidence.",
+      "traits": ["Leadership", "Decisive", "Efficient", "Confident", "Goal-oriented"]
+    },
+    {
+      "type": "INTP",
+      "title": "The Logical Thinker (INTP)",
+      "description": "You are an INTP overflowing with intellectual curiosity! You enjoy exploring logic and theory, solving complex problems. Original ideas and deep thinking are your strengths.",
+      "traits": ["Logical", "Analytical", "Curious", "Original", "Objective"]
+    },
+    {
+      "type": "ENTP",
+      "title": "The Witty Debater (ENTP)",
+      "description": "You are an ENTP, witty and challenging! You enjoy exploring new ideas and debating, questioning conventional approaches. Your quick thinking and eloquence captivate others.",
+      "traits": ["Argumentative", "Creative", "Witty", "Challenging", "Adaptable"]
+    },
+    {
+      "type": "ISTJ",
+      "title": "The Reliable Realist (ISTJ)",
+      "description": "You are an ISTJ, responsible and reliable! Systematic and meticulous, you always keep your promises. You value tradition and order, completing tasks to perfection.",
+      "traits": ["Responsible", "Systematic", "Reliable", "Realistic", "Thorough"]
+    },
+    {
+      "type": "ISFJ",
+      "title": "The Dedicated Defender (ISFJ)",
+      "description": "You are an ISFJ, warm and devoted! You love caring for and supporting those around you, quietly considerate. Detail-oriented with a strong sense of responsibility.",
+      "traits": ["Devoted", "Considerate", "Reliable", "Detail-oriented", "Patient"]
+    },
+    {
+      "type": "ESTJ",
+      "title": "The Strict Executive (ESTJ)",
+      "description": "You are an ESTJ who values order and efficiency! Excellent at leading organizations and creating systems, you uphold clear standards and rules. Practical and decisive.",
+      "traits": ["Organized", "Efficient", "Practical", "Leadership", "Principled"]
+    },
+    {
+      "type": "ESFJ",
+      "title": "The Social Diplomat (ESFJ)",
+      "description": "You are an ESFJ, warm and social! You enjoy harmonizing with people and helping others, quick to notice needs around you. Responsible with deep consideration.",
+      "traits": ["Social", "Considerate", "Cooperative", "Practical", "Loyal"]
+    },
+    {
+      "type": "INFJ",
+      "title": "The Insightful Counselor (INFJ)",
+      "description": "You are an INFJ with deep insight! You find great meaning in understanding and helping people, with an idealistic vision. Quiet but with strong convictions.",
+      "traits": ["Insightful", "Idealistic", "Devoted", "Quiet passion", "Empathetic"]
+    },
+    {
+      "type": "ENFJ",
+      "title": "The Charismatic Advocate (ENFJ)",
+      "description": "You are an ENFJ, charismatic and inspiring! You love leading people and helping them grow, wanting to contribute to community development. A warm leader.",
+      "traits": ["Charismatic", "Empathetic", "Altruistic", "Inspiring", "Leadership"]
+    },
+    {
+      "type": "ISFP",
+      "title": "The Curious Artist (ISFP)",
+      "description": "You are an ISFP with excellent artistic sense! You enjoy the present moment and explore the world in your own way. Gentle and warm, quietly considerate.",
+      "traits": ["Artistic", "Flexible", "Warm", "Present-focused", "Harmonious"]
+    },
+    {
+      "type": "ESFP",
+      "title": "The Free Entertainer (ESFP)",
+      "description": "You are an ESFP, spontaneous and vibrant! You enjoy the moment and bring energy to those around you. Social and fun-loving, you make the most of life.",
+      "traits": ["Vibrant", "Spontaneous", "Social", "Practical", "Optimistic"]
+    },
+    {
+      "type": "ISTP",
+      "title": "The Versatile Craftsman (ISTP)",
+      "description": "You are an ISTP, calm and analytical! Skilled at hands-on work and problem-solving, you assess situations logically. Independent and prefer efficient approaches.",
+      "traits": ["Analytical", "Practical", "Calm", "Independent", "Flexible"]
+    },
+    {
+      "type": "ESTP",
+      "title": "The Adventurous Entrepreneur (ESTP)",
+      "description": "You are an ESTP, action-oriented! With quick judgment and execution, you seize opportunities and enjoy thrills and adventure. Realistic and highly adaptable.",
+      "traits": ["Action-oriented", "Adaptable", "Realistic", "Energetic", "Challenging"]
+    }
+  ]
+}

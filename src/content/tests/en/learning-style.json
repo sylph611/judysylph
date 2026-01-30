@@ -1,0 +1,128 @@
+{
+  "slug": "learning-style",
+  "title": "Learning Style Test",
+  "description": "Discover your learning style! Are you Visual, Auditory, Reading/Writing, or Kinesthetic?",
+  "emoji": "📚",
+  "questions": [
+    {
+      "question": "The most effective way for you to learn something new is...",
+      "choices": [
+        { "text": "Watching diagrams, charts, or videos", "scores": { "visual": 3 } },
+        { "text": "Listening to lectures or explanations", "scores": { "auditory": 3 } },
+        { "text": "Reading textbooks or materials", "scores": { "reading": 3 } },
+        { "text": "Hands-on practice and doing", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "When finding directions, you prefer...",
+      "choices": [
+        { "text": "Looking at a map or navigation screen", "scores": { "visual": 3 } },
+        { "text": "Listening to someone's directions", "scores": { "auditory": 3 } },
+        { "text": "Reading written instructions", "scores": { "reading": 3 } },
+        { "text": "Just going and figuring it out", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "When you remember something, you recall...",
+      "choices": [
+        { "text": "The scene or image", "scores": { "visual": 3 } },
+        { "text": "The sounds or words spoken", "scores": { "auditory": 3 } },
+        { "text": "The text you read", "scores": { "reading": 3 } },
+        { "text": "The feeling or sensation", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "In your free time, you usually...",
+      "choices": [
+        { "text": "Watch movies, dramas, or YouTube", "scores": { "visual": 3 } },
+        { "text": "Listen to music or podcasts", "scores": { "auditory": 3 } },
+        { "text": "Read books or articles", "scores": { "reading": 3 } },
+        { "text": "Exercise or do DIY activities", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "When giving a presentation, you prefer to...",
+      "choices": [
+        { "text": "Use lots of visuals and images", "scores": { "visual": 3 } },
+        { "text": "Explain and discuss verbally", "scores": { "auditory": 3 } },
+        { "text": "Prepare detailed handouts", "scores": { "reading": 3 } },
+        { "text": "Demonstrate with real examples", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "In class, you focus best when...",
+      "choices": [
+        { "text": "Looking at slides or the board", "scores": { "visual": 3 } },
+        { "text": "Listening to the teacher's explanation", "scores": { "auditory": 3 } },
+        { "text": "Reading along with the textbook", "scores": { "reading": 3 } },
+        { "text": "Doing hands-on activities", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "When assembling furniture, you...",
+      "choices": [
+        { "text": "Follow the picture instructions", "scores": { "visual": 3 } },
+        { "text": "Watch a video tutorial", "scores": { "auditory": 3 } },
+        { "text": "Read the written manual", "scores": { "reading": 3 } },
+        { "text": "Just start putting it together", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "In conversations, you tend to...",
+      "choices": [
+        { "text": "Watch facial expressions and body language", "scores": { "visual": 3 } },
+        { "text": "Focus on tone and inflection", "scores": { "auditory": 3 } },
+        { "text": "Take notes or mentally organize", "scores": { "reading": 3 } },
+        { "text": "Touch or move closer to the person", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "Your stress relief method is...",
+      "choices": [
+        { "text": "Looking at beautiful scenery or art", "scores": { "visual": 3 } },
+        { "text": "Listening to favorite music", "scores": { "auditory": 3 } },
+        { "text": "Writing in a journal", "scores": { "reading": 3 } },
+        { "text": "Exercise or taking a walk", "scores": { "kinesthetic": 3 } }
+      ]
+    },
+    {
+      "question": "When learning a foreign language, you prefer...",
+      "choices": [
+        { "text": "Flashcards and images for vocabulary", "scores": { "visual": 3 } },
+        { "text": "Dramas and songs for immersion", "scores": { "auditory": 3 } },
+        { "text": "Grammar books and sentence analysis", "scores": { "reading": 3 } },
+        { "text": "Actually speaking and practicing", "scores": { "kinesthetic": 3 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "visual",
+      "title": "Visual Learner",
+      "description": "You are a Visual Learner! You learn best through seeing. Pictures, diagrams, charts, videos, and colors help you understand and remember. Try mind mapping or using highlighters when studying.",
+      "traits": ["Prefers visuals", "Image memory", "Uses mind maps", "Color coding", "Diagram lover"],
+      "tips": ["Use flashcards", "Color-code your notes", "Watch video tutorials", "Draw concepts as diagrams"]
+    },
+    {
+      "type": "auditory",
+      "title": "Auditory Learner",
+      "description": "You are an Auditory Learner! You learn best through hearing. Lectures, discussions, podcasts, and audiobooks are most effective. Try reading aloud or recording yourself to review.",
+      "traits": ["Prefers listening", "Sound memory", "Loves discussions", "Music learning", "Lecture-focused"],
+      "tips": ["Use audiobooks", "Read aloud", "Record and replay", "Join study groups"]
+    },
+    {
+      "type": "reading",
+      "title": "Reading/Writing Learner",
+      "description": "You are a Reading/Writing Learner! You learn best through reading and writing. Textbooks, note-taking, and essay writing are most effective. You remember well when you organize information in writing.",
+      "traits": ["Prefers text", "Note organizer", "Loves reading", "Writing skills", "List maker"],
+      "tips": ["Take detailed notes", "Write summaries", "Read related books", "Keep a journal or blog"]
+    },
+    {
+      "type": "kinesthetic",
+      "title": "Kinesthetic Learner",
+      "description": "You are a Kinesthetic Learner! You learn best through doing and experiencing. Practice, experiments, role-play, and hands-on activities are most effective. Moving while studying helps you focus.",
+      "traits": ["Prefers practice", "Experience memory", "Active learning", "Hands-on maker", "Needs movement"],
+      "tips": ["Learn by doing", "Walk while memorizing", "Join labs and workshops", "Practice through role-play"]
+    }
+  ]
+}
