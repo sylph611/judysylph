@@ -37,9 +37,9 @@ if (!result) {
 
 const pageTitle = `${result.title} - ${test.title} | JudySylph`;
 const pageDescription = `나의 결과: ${result.title}. ${result.description.substring(0, 100)}...`;
-const siteUrl = Astro.site?.toString() || 'https://judysylph.com';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://judysylph.com';
 const pageUrl = `${siteUrl}/ko/result/${slug}/${type}`;
-const ogImage = `${siteUrl}/og/${slug}-${type}.png`;
+const ogImage = `${siteUrl}/og/${slug}/${type}.svg`;
 
 const otherTests = getTestMeta(lang).filter(t => t.slug !== slug).slice(0, 3);
 
