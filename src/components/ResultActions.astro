@@ -1,0 +1,251 @@
+---
+interface Props {
+  url: string;
+  resultTitle: string;
+  resultEmoji: string;
+  testTitle: string;
+  lang: string;
+}
+
+const { url, resultTitle, resultEmoji, testTitle, lang } = Astro.props;
+const t = {
+  saveImage: lang === 'ko' ? '이미지로 저장' : 'Save as Image',
+  qrCode: lang === 'ko' ? 'QR 코드' : 'QR Code',
+  qrTitle: lang === 'ko' ? 'QR 코드로 공유하기' : 'Share via QR Code',
+  qrDesc: lang === 'ko' ? '친구가 스캔하면 이 결과를 볼 수 있어요' : 'Friends can scan to see your result',
+  close: lang === 'ko' ? '닫기' : 'Close',
+  saving: lang === 'ko' ? '저장 중...' : 'Saving...',
+  saved: lang === 'ko' ? '저장됨!' : 'Saved!'
+};
+---
+
+<div class="result-actions flex flex-wrap justify-center gap-3 mt-6">
+  <!-- Save as Image -->
+  <button
+    type="button"
+    id="save-image-btn"
+    class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+    data-title={resultTitle}
+    data-emoji={resultEmoji}
+    data-test={testTitle}
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    <span id="save-image-text">{t.saveImage}</span>
+  </button>
+
+  <!-- QR Code -->
+  <button
+    type="button"
+    id="qr-code-btn"
+    class="flex items-center gap-2 px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+    data-url={url}
+  >
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13 2h-2v2h2v2h-2v-2h-2v2h-2v-2h2v-2h-2v-2h2v2h2v-2h2v2zm0-2V13h2v2h-2zm0 4h2v2h-2v-2z"/>
+    </svg>
+    {t.qrCode}
+  </button>
+</div>
+
+<!-- QR Code Modal -->
+<div id="qr-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+  <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-sm mx-4 shadow-2xl">
+    <div class="text-center">
+      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{t.qrTitle}</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{t.qrDesc}</p>
+      <div id="qr-container" class="bg-white p-4 rounded-xl inline-block mb-4">
+        <!-- QR code will be rendered here -->
+      </div>
+      <button
+        type="button"
+        id="qr-close-btn"
+        class="w-full py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+      >
+        {t.close}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden canvas for image generation -->
+<canvas id="result-canvas" class="hidden"></canvas>
+
+<script define:vars={{ lang, savingText: t.saving, savedText: t.saved, saveImageText: t.saveImage }}>
+  // QR Code generation using qrcode-generator alternative with canvas
+  function generateQRCode(text, container) {
+    // Create a simple QR code using a public API
+    const size = 200;
+    const img = document.createElement('img');
+    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(text)}&format=svg`;
+    img.alt = 'QR Code';
+    img.width = size;
+    img.height = size;
+    img.className = 'rounded';
+    container.innerHTML = '';
+    container.appendChild(img);
+  }
+
+  // QR Modal handlers
+  const qrBtn = document.getElementById('qr-code-btn');
+  const qrModal = document.getElementById('qr-modal');
+  const qrContainer = document.getElementById('qr-container');
+  const qrCloseBtn = document.getElementById('qr-close-btn');
+
+  qrBtn?.addEventListener('click', () => {
+    const url = qrBtn.getAttribute('data-url') || window.location.href;
+    generateQRCode(url, qrContainer);
+    qrModal?.classList.remove('hidden');
+    qrModal?.classList.add('flex');
+
+    // GA tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'share', {
+        event_category: 'engagement',
+        event_label: 'qr_code',
+        content_type: 'result'
+      });
+    }
+  });
+
+  qrCloseBtn?.addEventListener('click', () => {
+    qrModal?.classList.add('hidden');
+    qrModal?.classList.remove('flex');
+  });
+
+  qrModal?.addEventListener('click', (e) => {
+    if (e.target === qrModal) {
+      qrModal.classList.add('hidden');
+      qrModal.classList.remove('flex');
+    }
+  });
+
+  // Image Save functionality
+  const saveImageBtn = document.getElementById('save-image-btn');
+  const saveImageText = document.getElementById('save-image-text');
+  const resultCanvas = document.getElementById('result-canvas');
+
+  saveImageBtn?.addEventListener('click', async () => {
+    const title = saveImageBtn.getAttribute('data-title') || '';
+    const emoji = saveImageBtn.getAttribute('data-emoji') || '';
+    const testName = saveImageBtn.getAttribute('data-test') || '';
+
+    if (saveImageText) saveImageText.textContent = savingText;
+    saveImageBtn.disabled = true;
+
+    try {
+      // Create canvas image
+      const canvas = resultCanvas;
+      const ctx = canvas.getContext('2d');
+      const width = 600;
+      const height = 800;
+      canvas.width = width;
+      canvas.height = height;
+
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, '#7c3aed');
+      gradient.addColorStop(1, '#a855f7');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      // White card
+      ctx.fillStyle = '#ffffff';
+      roundRect(ctx, 40, 40, width - 80, height - 80, 24);
+      ctx.fill();
+
+      // Emoji
+      ctx.font = '80px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(emoji, width / 2, 180);
+
+      // Title
+      ctx.fillStyle = '#1f2937';
+      ctx.font = 'bold 32px Arial, sans-serif';
+      wrapText(ctx, title, width / 2, 260, width - 120, 40);
+
+      // Test name
+      ctx.fillStyle = '#6b7280';
+      ctx.font = '20px Arial, sans-serif';
+      ctx.fillText(testName, width / 2, 340);
+
+      // Divider
+      ctx.strokeStyle = '#e5e7eb';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(80, 380);
+      ctx.lineTo(width - 80, 380);
+      ctx.stroke();
+
+      // URL
+      ctx.fillStyle = '#9333ea';
+      ctx.font = '18px Arial, sans-serif';
+      ctx.fillText('judysylph.com', width / 2, height - 100);
+
+      // Download
+      const dataUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = `${testName.replace(/\s+/g, '-')}-result.png`;
+      link.href = dataUrl;
+      link.click();
+
+      if (saveImageText) saveImageText.textContent = savedText;
+      setTimeout(() => {
+        if (saveImageText) saveImageText.textContent = saveImageText;
+        saveImageBtn.disabled = false;
+      }, 2000);
+
+      // GA tracking
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'share', {
+          event_category: 'engagement',
+          event_label: 'save_image',
+          content_type: 'result'
+        });
+      }
+    } catch (err) {
+      console.error('Failed to save image:', err);
+      if (saveImageText) saveImageText.textContent = saveImageText;
+      saveImageBtn.disabled = false;
+    }
+  });
+
+  // Helper: Rounded rectangle
+  function roundRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+  }
+
+  // Helper: Wrap text
+  function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+    const words = text.split(' ');
+    let line = '';
+    let lines = [];
+
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + words[n] + ' ';
+      const metrics = ctx.measureText(testLine);
+      if (metrics.width > maxWidth && n > 0) {
+        lines.push(line);
+        line = words[n] + ' ';
+      } else {
+        line = testLine;
+      }
+    }
+    lines.push(line);
+
+    for (let i = 0; i < lines.length; i++) {
+      ctx.fillText(lines[i].trim(), x, y + (i * lineHeight));
+    }
+  }
+</script>

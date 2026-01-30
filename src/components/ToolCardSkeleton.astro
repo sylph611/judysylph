@@ -1,0 +1,59 @@
+---
+// Skeleton placeholder for ToolCard during loading
+---
+
+<div
+  class="block bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700"
+>
+  <div class="flex items-start gap-4">
+    <!-- Emoji placeholder -->
+    <div class="skeleton w-10 h-10 rounded-lg flex-shrink-0"></div>
+
+    <div class="flex-1">
+      <!-- Category badge placeholder -->
+      <div class="skeleton h-3 w-16 rounded mb-2"></div>
+
+      <!-- Title placeholder -->
+      <div class="skeleton h-5 w-3/4 rounded mb-3"></div>
+
+      <!-- Description placeholder - 2 lines -->
+      <div class="skeleton h-3 w-full rounded mb-1"></div>
+      <div class="skeleton h-3 w-1/2 rounded"></div>
+    </div>
+
+    <!-- Arrow placeholder -->
+    <div class="skeleton w-4 h-4 rounded flex-shrink-0"></div>
+  </div>
+</div>
+
+<style>
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(229 231 235) 25%,
+      rgb(243 244 246) 50%,
+      rgb(229 231 235) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  :global(.dark) .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(55 65 81) 25%,
+      rgb(75 85 99) 50%,
+      rgb(55 65 81) 75%
+    );
+    background-size: 200% 100%;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+</style>

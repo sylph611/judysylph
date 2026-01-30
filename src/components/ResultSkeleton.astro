@@ -1,0 +1,83 @@
+---
+// Skeleton placeholder for Result page during loading
+---
+
+<div class="max-w-2xl mx-auto px-4 py-8">
+  <!-- Result card skeleton -->
+  <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center">
+    <!-- Emoji placeholder -->
+    <div class="skeleton w-20 h-20 rounded-full mx-auto mb-6"></div>
+
+    <!-- Title placeholder -->
+    <div class="skeleton h-8 w-48 rounded mx-auto mb-4"></div>
+
+    <!-- Subtitle placeholder -->
+    <div class="skeleton h-6 w-64 rounded mx-auto mb-6"></div>
+
+    <!-- Description placeholder -->
+    <div class="space-y-2 mb-8">
+      <div class="skeleton h-4 w-full rounded"></div>
+      <div class="skeleton h-4 w-full rounded"></div>
+      <div class="skeleton h-4 w-3/4 rounded mx-auto"></div>
+    </div>
+
+    <!-- Traits section -->
+    <div class="mb-8">
+      <div class="skeleton h-5 w-32 rounded mx-auto mb-4"></div>
+      <div class="flex flex-wrap justify-center gap-2">
+        <div class="skeleton h-8 w-20 rounded-full"></div>
+        <div class="skeleton h-8 w-24 rounded-full"></div>
+        <div class="skeleton h-8 w-18 rounded-full"></div>
+        <div class="skeleton h-8 w-22 rounded-full"></div>
+        <div class="skeleton h-8 w-20 rounded-full"></div>
+      </div>
+    </div>
+
+    <!-- Advice section -->
+    <div class="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6 mb-8">
+      <div class="skeleton h-5 w-20 rounded mx-auto mb-3"></div>
+      <div class="skeleton h-4 w-full rounded mb-2"></div>
+      <div class="skeleton h-4 w-2/3 rounded mx-auto"></div>
+    </div>
+
+    <!-- Share buttons placeholder -->
+    <div class="skeleton h-6 w-32 rounded mx-auto mb-4"></div>
+    <div class="flex justify-center gap-3">
+      <div class="skeleton h-10 w-28 rounded-lg"></div>
+      <div class="skeleton h-10 w-24 rounded-lg"></div>
+      <div class="skeleton h-10 w-28 rounded-lg"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(229 231 235) 25%,
+      rgb(243 244 246) 50%,
+      rgb(229 231 235) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  :global(.dark) .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgb(55 65 81) 25%,
+      rgb(75 85 99) 50%,
+      rgb(55 65 81) 75%
+    );
+    background-size: 200% 100%;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+</style>

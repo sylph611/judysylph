@@ -88,6 +88,7 @@ const jsonLd = {
   const loadingState = document.getElementById('loading-state');
   const slug = container.dataset.testSlug;
   const lang = container.dataset.lang;
+  const STORAGE_KEY = `test_progress_${slug}`;
 
   let currentQuestion = 0;
   const totalQuestions = testData.questions.length;
@@ -98,6 +99,66 @@ const jsonLd = {
     scores[r.type] = 0;
   });
 
+  // Restore progress from localStorage
+  function restoreProgress() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const data = JSON.parse(saved);
+        // Check if saved within 24 hours
+        if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
+          currentQuestion = data.currentQuestion;
+          Object.assign(scores, data.scores);
+
+          // Show resume dialog
+          if (currentQuestion > 0) {
+            const resume = confirm(
+              lang === 'ko'
+                ? `이전에 ${currentQuestion}번 문항까지 진행하셨습니다. 이어서 하시겠습니까?`
+                : `You previously completed ${currentQuestion} questions. Would you like to continue?`
+            );
+            if (resume) {
+              // Show the current question
+              document.querySelectorAll('.question-slide').forEach((slide, i) => {
+                slide.classList.toggle('hidden', i !== currentQuestion);
+              });
+            } else {
+              // Reset progress
+              currentQuestion = 0;
+              testData.results.forEach(r => { scores[r.type] = 0; });
+              localStorage.removeItem(STORAGE_KEY);
+            }
+          }
+        } else {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+    } catch (e) {
+      console.error('Failed to restore progress:', e);
+    }
+  }
+
+  // Save progress to localStorage
+  function saveProgress() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        currentQuestion,
+        scores,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      console.error('Failed to save progress:', e);
+    }
+  }
+
+  // Clear progress on completion
+  function clearProgress() {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+
+  // Restore on load
+  restoreProgress();
+
   // GA: Track test start
   if (typeof gtag !== 'undefined') {
     gtag('event', 'test_start', {
@@ -105,6 +166,18 @@ const jsonLd = {
       event_label: slug,
       test_name: testData.title
     });
+  }
+
+  // Track recently viewed tests
+  try {
+    const recentKey = 'recent_tests';
+    const recent = JSON.parse(localStorage.getItem(recentKey) || '[]');
+    const testInfo = { slug, title: testData.title, emoji: testData.emoji, timestamp: Date.now() };
+    const filtered = recent.filter(t => t.slug !== slug);
+    filtered.unshift(testInfo);
+    localStorage.setItem(recentKey, JSON.stringify(filtered.slice(0, 10)));
+  } catch (e) {
+    console.error('Failed to save recent test:', e);
   }
 
   // Handle choice selection
@@ -135,9 +208,13 @@ const jsonLd = {
           currentQuestion++;
           // Show next
           document.querySelectorAll('.question-slide')[currentQuestion].classList.remove('hidden');
+          // Save progress
+          saveProgress();
           // Scroll to top
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
+          // Clear progress on completion
+          clearProgress();
           // Show loading
           container.classList.add('hidden');
           loadingState.classList.remove('hidden');

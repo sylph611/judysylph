@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { ViewTransitions } from 'astro:transitions';
 import { getLangFromUrl, useTranslations, getAlternateLocaleUrl, type Lang } from '../i18n';
 import NotificationBanner from '../components/NotificationBanner.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
 
 interface Props {
   title: string;
@@ -49,6 +50,9 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
     <link rel="alternate" hreflang={alternateLang} href={`${siteUrl}${alternateUrl}`} />
     <link rel="alternate" hreflang={lang} href={fullCanonicalUrl} />
     <link rel="alternate" hreflang="x-default" href={`${siteUrl}/ko`} />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title={lang === 'ko' ? 'JudySylph 블로그 RSS' : 'JudySylph Blog RSS'} href={`${siteUrl}/rss.xml?lang=${lang}`} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -116,17 +120,35 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
     <ViewTransitions />
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- Skip to main content link (accessibility) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:outline-none"
+    >
+      {lang === 'ko' ? '본문으로 건너뛰기' : 'Skip to main content'}
+    </a>
+
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
-      <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700" role="banner">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between" role="navigation" aria-label={lang === 'ko' ? '메인 네비게이션' : 'Main navigation'}>
         <a href={`/${lang}`} class="text-2xl font-bold text-primary-600 dark:text-primary-400">
           JudySylph
         </a>
         <div class="flex items-center gap-4">
-          <a href={`/${lang}/history`} class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400" title={lang === 'ko' ? '내 기록' : 'My History'}>
-            📚
+          <a
+            href={`/${lang}/history`}
+            class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg p-1"
+            aria-label={lang === 'ko' ? '내 테스트 기록 보기' : 'View my test history'}
+          >
+            <span aria-hidden="true">📚</span>
+            <span class="sr-only">{lang === 'ko' ? '내 기록' : 'My History'}</span>
           </a>
-          <a href={alternateUrl} class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+          <a
+            href={alternateUrl}
+            class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg px-2 py-1"
+            aria-label={lang === 'ko' ? 'Switch to English' : '한국어로 전환'}
+            hreflang={alternateLang}
+          >
             {t('nav.language')}
           </a>
           <button
@@ -157,12 +179,12 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
     </div>
 
     <!-- Main Content -->
-    <main class="flex-grow">
+    <main id="main-content" class="flex-grow" role="main" tabindex="-1">
       <slot />
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12">
+    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12" role="contentinfo">
       <div class="max-w-6xl mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">
@@ -174,6 +196,10 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
             <a href={`/${lang}/privacy`} class="hover:text-primary-600 dark:hover:text-primary-400">{t('footer.privacy')}</a>
             <a href={`/${lang}/terms`} class="hover:text-primary-600 dark:hover:text-primary-400">{t('footer.terms')}</a>
             <a href={`/${lang}/contact`} class="hover:text-primary-600 dark:hover:text-primary-400">{t('footer.contact')}</a>
+            <a href={`/rss.xml?lang=${lang}`} class="hover:text-primary-600 dark:hover:text-primary-400 flex items-center gap-1" aria-label="RSS Feed">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+              RSS
+            </a>
           </div>
         </div>
         <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
@@ -203,5 +229,8 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
 
     <!-- Notification Banner -->
     <NotificationBanner lang={lang} />
+
+    <!-- Scroll to Top Button -->
+    <ScrollToTop />
   </body>
 </html>

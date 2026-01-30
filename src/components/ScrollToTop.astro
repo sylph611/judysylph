@@ -1,0 +1,69 @@
+---
+// Floating scroll to top button
+---
+
+<button
+  id="scroll-to-top"
+  type="button"
+  class="fixed bottom-6 right-6 z-40 p-3 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 transform translate-y-4 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+  aria-label="Scroll to top"
+>
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+  </svg>
+</button>
+
+<script>
+  const scrollBtn = document.getElementById('scroll-to-top');
+  let isVisible = false;
+
+  function toggleVisibility() {
+    const shouldShow = window.scrollY > 300;
+
+    if (shouldShow !== isVisible) {
+      isVisible = shouldShow;
+      if (shouldShow) {
+        scrollBtn?.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+        scrollBtn?.classList.add('opacity-100', 'visible', 'translate-y-0');
+      } else {
+        scrollBtn?.classList.add('opacity-0', 'invisible', 'translate-y-4');
+        scrollBtn?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+      }
+    }
+  }
+
+  // Throttled scroll handler
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        toggleVisibility();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  scrollBtn?.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    // GA tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'scroll_to_top', {
+        event_category: 'engagement'
+      });
+    }
+  });
+
+  // Initial check
+  toggleVisibility();
+</script>
+
+<style>
+  #scroll-to-top {
+    backdrop-filter: blur(4px);
+  }
+</style>

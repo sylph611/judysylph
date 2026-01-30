@@ -1,0 +1,155 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('severance-calculator', lang);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+};
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">2026년 근로기준법 기준</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="startDate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              입사일
+            </label>
+            <input type="date" id="startDate" required
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="endDate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              퇴사일
+            </label>
+            <input type="date" id="endDate" required
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+        </div>
+
+        <div>
+          <label for="avgSalary" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            퇴직 전 3개월 평균 월급여 (원)
+          </label>
+          <input type="text" id="avgSalary" placeholder="3,500,000" required
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          <p class="text-xs text-gray-500 mt-1">기본급 + 고정수당 + 연간 상여금/12</p>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">
+            계산하기
+          </button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+            초기화
+          </button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">계산 결과</h3>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+              <div class="text-sm text-gray-600 dark:text-gray-400">근속기간</div>
+              <div id="tenure" class="text-xl font-bold text-gray-900 dark:text-white">-</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+              <div class="text-sm text-gray-600 dark:text-gray-400">1일 평균임금</div>
+              <div id="dailyWage" class="text-xl font-bold text-gray-900 dark:text-white">-</div>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">예상 퇴직금</div>
+            <div id="severancePay" class="text-3xl font-bold text-primary-600 dark:text-primary-400">-</div>
+          </div>
+
+          <div class="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+            <p class="text-sm text-yellow-800 dark:text-yellow-200">
+              <strong>계산식:</strong> 퇴직금 = 1일 평균임금 × 30일 × (총 근속일수 / 365)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+      <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-2">2026년 퇴직금 지급 기준</h4>
+      <ul class="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+        <li>• 1년 이상 근무한 근로자에게 지급</li>
+        <li>• 퇴직일로부터 14일 이내 지급 의무</li>
+        <li>• 퇴직소득세 별도 (근속연수공제 적용)</li>
+      </ul>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로 돌아가기</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const avgSalaryInput = document.getElementById('avgSalary') as HTMLInputElement;
+
+  // Format number input
+  avgSalaryInput?.addEventListener('input', (e) => {
+    let value = (e.target as HTMLInputElement).value.replace(/[^\d]/g, '');
+    (e.target as HTMLInputElement).value = Number(value).toLocaleString('ko-KR');
+  });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const startDate = new Date((document.getElementById('startDate') as HTMLInputElement).value);
+    const endDate = new Date((document.getElementById('endDate') as HTMLInputElement).value);
+    const avgSalary = parseInt(avgSalaryInput.value.replace(/,/g, ''));
+
+    if (endDate <= startDate) {
+      alert('퇴사일은 입사일보다 이후여야 합니다.');
+      return;
+    }
+
+    // Calculate tenure
+    const diffTime = endDate.getTime() - startDate.getTime();
+    const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const years = Math.floor(totalDays / 365);
+    const months = Math.floor((totalDays % 365) / 30);
+    const days = totalDays % 30;
+
+    // Calculate daily wage (3 months salary / 91 days)
+    const dailyWage = Math.round((avgSalary * 3) / 91);
+
+    // Calculate severance pay
+    const severancePay = Math.round(dailyWage * 30 * (totalDays / 365));
+
+    // Display results
+    document.getElementById('result-area')?.classList.remove('hidden');
+    document.getElementById('tenure')!.textContent = `${years}년 ${months}개월 ${days}일`;
+    document.getElementById('dailyWage')!.textContent = dailyWage.toLocaleString('ko-KR') + '원';
+    document.getElementById('severancePay')!.textContent = severancePay.toLocaleString('ko-KR') + '원';
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>
