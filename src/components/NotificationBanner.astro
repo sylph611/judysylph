@@ -1,0 +1,130 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = {
+  title: lang === 'ko' ? '새 테스트 알림 받기' : 'Get notified about new tests',
+  description: lang === 'ko' ? '새로운 테스트가 추가되면 알림을 받아보세요!' : 'Be the first to know when new tests are added!',
+  subscribe: lang === 'ko' ? '알림 받기' : 'Enable Notifications',
+  subscribed: lang === 'ko' ? '알림 설정 완료!' : 'Notifications Enabled!',
+  dismiss: lang === 'ko' ? '다음에' : 'Maybe Later'
+};
+---
+
+<div
+  id="notification-banner"
+  class="hidden fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-4 border border-gray-200 dark:border-gray-700 z-50"
+>
+  <div class="flex items-start gap-4">
+    <div class="text-3xl">🔔</div>
+    <div class="flex-1">
+      <h4 class="font-bold text-gray-900 dark:text-white mb-1">{t.title}</h4>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">{t.description}</p>
+      <div class="flex gap-2">
+        <button
+          id="enable-notifications"
+          type="button"
+          class="px-4 py-2 bg-primary-600 text-white text-sm rounded-lg font-medium hover:bg-primary-700 transition-colors"
+          data-subscribed-text={t.subscribed}
+        >
+          {t.subscribe}
+        </button>
+        <button
+          id="dismiss-notifications"
+          type="button"
+          class="px-4 py-2 text-gray-600 dark:text-gray-400 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+        >
+          {t.dismiss}
+        </button>
+      </div>
+    </div>
+    <button
+      id="close-notification-banner"
+      type="button"
+      class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('notification-banner');
+  const enableBtn = document.getElementById('enable-notifications');
+  const dismissBtn = document.getElementById('dismiss-notifications');
+  const closeBtn = document.getElementById('close-notification-banner');
+
+  // Check if we should show the banner
+  function shouldShowBanner() {
+    const dismissed = localStorage.getItem('notificationBannerDismissed');
+    const subscribed = localStorage.getItem('notificationsEnabled');
+    const lastShown = localStorage.getItem('notificationBannerLastShown');
+
+    // Don't show if already subscribed
+    if (subscribed === 'true') return false;
+
+    // Don't show if dismissed in the last 7 days
+    if (dismissed && Date.now() - parseInt(dismissed) < 7 * 24 * 60 * 60 * 1000) return false;
+
+    // Don't show if shown in the last session
+    if (lastShown && Date.now() - parseInt(lastShown) < 60 * 60 * 1000) return false;
+
+    // Only show after user has spent some time on the site
+    return true;
+  }
+
+  // Show banner after delay
+  if (shouldShowBanner() && 'Notification' in window) {
+    setTimeout(() => {
+      banner?.classList.remove('hidden');
+      localStorage.setItem('notificationBannerLastShown', Date.now().toString());
+    }, 10000); // Show after 10 seconds
+  }
+
+  // Enable notifications
+  enableBtn?.addEventListener('click', async () => {
+    if (!('Notification' in window)) {
+      alert('This browser does not support notifications');
+      return;
+    }
+
+    const permission = await Notification.requestPermission();
+
+    if (permission === 'granted') {
+      localStorage.setItem('notificationsEnabled', 'true');
+
+      // Show success state
+      const subscribedText = enableBtn.getAttribute('data-subscribed-text') || 'Enabled!';
+      enableBtn.textContent = subscribedText;
+      enableBtn.disabled = true;
+      enableBtn.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+      enableBtn.classList.add('bg-green-600');
+
+      // Show a test notification
+      new Notification('JudySylph', {
+        body: '알림이 활성화되었습니다! 새 테스트가 추가되면 알려드릴게요.',
+        icon: '/icons/icon-192x192.svg'
+      });
+
+      // Hide banner after delay
+      setTimeout(() => {
+        banner?.classList.add('hidden');
+      }, 2000);
+    }
+  });
+
+  // Dismiss
+  dismissBtn?.addEventListener('click', () => {
+    localStorage.setItem('notificationBannerDismissed', Date.now().toString());
+    banner?.classList.add('hidden');
+  });
+
+  // Close
+  closeBtn?.addEventListener('click', () => {
+    banner?.classList.add('hidden');
+  });
+</script>

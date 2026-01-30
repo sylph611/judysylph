@@ -4,6 +4,7 @@ import Result from '../../../../components/Result.astro';
 import ShareButtons from '../../../../components/ShareButtons.astro';
 import AdBanner from '../../../../components/AdBanner.astro';
 import TestCard from '../../../../components/TestCard.astro';
+import Confetti from '../../../../components/Confetti.astro';
 import { getTest, getAllTests, getRecommendedTests } from '../../../../utils/tests';
 
 export function getStaticPaths() {
@@ -61,6 +62,9 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
+  <!-- Confetti Animation -->
+  <Confetti />
+
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Ad Banner Top -->
     <AdBanner slot="result" className="mb-8" />
@@ -84,6 +88,22 @@ const jsonLd = {
       description={result.description}
       lang={lang}
     />
+
+    <!-- Compare with Friend -->
+    <div class="mt-8 p-4 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl">
+      <div class="text-center">
+        <p class="text-gray-700 dark:text-gray-300 mb-3">Compare your results with a friend!</p>
+        <button
+          id="compare-btn"
+          type="button"
+          class="px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-xl font-medium hover:opacity-90 transition-opacity"
+          data-slug={slug}
+          data-type={type}
+        >
+          🤝 Compare with Friend
+        </button>
+      </div>
+    </div>
 
     <!-- Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -162,5 +182,24 @@ const jsonLd = {
 
     // Save on page load
     saveResult();
+
+    // Compare button handler
+    const compareBtn = document.getElementById('compare-btn');
+    compareBtn?.addEventListener('click', async () => {
+      const myType = compareBtn.getAttribute('data-type');
+      const testSlug = compareBtn.getAttribute('data-slug');
+      const compareUrl = `${window.location.origin}/en/result/${testSlug}/compare?me=${myType}&friend=`;
+
+      try {
+        await navigator.clipboard.writeText(compareUrl);
+        alert('Comparison link copied!\n\nSend the test link to your friend and ask for their result.\nThen add their result type after [friend=] in the copied link.');
+      } catch (err) {
+        // Prompt fallback
+        const friendType = prompt('Enter your friend\'s result type (e.g., dog, cat):');
+        if (friendType) {
+          window.location.href = `/en/result/${testSlug}/compare?me=${myType}&friend=${friendType}`;
+        }
+      }
+    });
   </script>
 </Layout>

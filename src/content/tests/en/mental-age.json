@@ -1,0 +1,158 @@
+{
+  "slug": "mental-age",
+  "title": "Mental Age Test",
+  "description": "What's your true mental age? Find out with 12 questions!",
+  "emoji": "🎂",
+  "questions": [
+    {
+      "question": "What activity do you most want to do on weekends?",
+      "choices": [
+        { "text": "Learning new hobbies or going on adventures", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "Partying or hanging out with friends", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "Watching movies or reading at home", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "Spending quiet time with family", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "What's your attitude toward new technology and trends?",
+      "choices": [
+        { "text": "I learn and try it immediately", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "I learn it if necessary", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "I try if others recommend it", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "I prefer what I'm familiar with", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "When you're stressed, how do you cope?",
+      "choices": [
+        { "text": "Games or YouTube", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "Talking to friends about it", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "Exercise or meditation", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "A cup of tea and a walk", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "What's most important when spending money?",
+      "choices": [
+        { "text": "Immediate happiness", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "Experiences and memories", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "Practicality and value", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "Saving for the future", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "What's the first thing you do when you wake up?",
+      "choices": [
+        { "text": "Check my smartphone", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "Shower and get ready", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "Stretching or exercise", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "Have a calm breakfast", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "When making important decisions?",
+      "choices": [
+        { "text": "I follow my gut feeling", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "I refer to friends or social media opinions", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "I research thoroughly and compare options", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "I judge based on experience and wisdom", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "At parties or gatherings, how are you?",
+      "choices": [
+        { "text": "Actively mingling with new people", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "Being the life of the party", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "Having deep conversations with close friends", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "Quietly observing and enjoying", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "How do you react when you make a mistake?",
+      "choices": [
+        { "text": "I quickly forget and move on", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "I feel down briefly but recover", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "I analyze the cause and improve", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "I accept it calmly", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "What's your ideal vacation?",
+      "choices": [
+        { "text": "Thrilling activities", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "Visiting trendy spots and taking photos", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "Leisurely cultural travel", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "Healing in nature", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "What's most important in life?",
+      "choices": [
+        { "text": "Fun and new experiences", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "Success and recognition", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "Stability and balance", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "Health and peace", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "What time do you go to bed?",
+      "choices": [
+        { "text": "After 2 AM", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "Around midnight", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "Around 11 PM", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "Before 10 PM", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "What's the happiest moment of your day?",
+      "choices": [
+        { "text": "Time spent with friends", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "When I achieve my goals", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "Time spent with family", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "Quiet time alone", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "teen",
+      "title": "Teens (Age 15)",
+      "emoji": "🎮",
+      "description": "Your mental age is eternally youthful - the teens! You're full of curiosity and passion for new things. Trend-savvy and fun-seeking, you bring energy to everyone around you. You might be impulsive at times, but that pure energy is your charm.",
+      "traits": ["Curious", "Passionate", "Trendy", "Pure-hearted", "Energetic"],
+      "advice": "Try to make some plans for the future occasionally. With that passion, you can achieve anything!"
+    },
+    {
+      "type": "twenties",
+      "title": "Twenties (Age 25)",
+      "emoji": "🌟",
+      "description": "Your mental age is the peak of youth - the twenties! You're full of challenging spirit and ambition for the world. Growing through experiences and valuing relationships, you actively enjoy life.",
+      "traits": ["Adventurous", "Social", "Ambitious", "Flexible", "Open-minded"],
+      "advice": "Passion is great, but sometimes you need to stop and reflect on yourself."
+    },
+    {
+      "type": "thirties",
+      "title": "Thirties (Age 35)",
+      "emoji": "💼",
+      "description": "Your mental age is the balanced thirties! Wisdom from experience harmonizes with ongoing vitality. Practical yet valuing quality of life, you know how to make wise choices.",
+      "traits": ["Balanced", "Practical", "Responsible", "Mature", "Goal-oriented"],
+      "advice": "Rather than pursuing perfection, sometimes enjoying the moment is important too. Give yourself some slack."
+    },
+    {
+      "type": "forties",
+      "title": "Forties (Age 45)",
+      "emoji": "🏡",
+      "description": "Your mental age is the stability-seeking forties! You understand the essence of life and know how to focus on what truly matters. Making wise decisions from experience, you value inner peace.",
+      "traits": ["Wise", "Stable", "Family-oriented", "Prudent", "Generous"],
+      "advice": "Keep your curiosity for new things alive. There's no age limit on learning."
+    },
+    {
+      "type": "fifties",
+      "title": "Fifties and Beyond (Age 55+)",
+      "emoji": "🌳",
+      "description": "Your mental age is the seasoned fifties and beyond! With rich experience and deep insight, you're like a sage who has transcended life. Valuing health and peace over material things, you provide stability to those around you.",
+      "traits": ["Insightful", "Serene", "Patient", "Embracing", "Wise"],
+      "advice": "Enjoy connecting with younger generations too. There's something to learn from each other."
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import TestCard from '../../components/TestCard.astro';
 import ToolCard from '../../components/ToolCard.astro';
+import SearchBar from '../../components/SearchBar.astro';
 import { getTestMeta, categoryLabels } from '../../utils/tests';
 import { getAllTools } from '../../utils/tools';
 import { useTranslations } from '../../i18n';
@@ -37,6 +38,13 @@ const categories = categoryLabels.ko;
           {t('tools.title')}
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="py-8 -mb-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <SearchBar lang={lang} />
     </div>
   </section>
 

@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "mbti-understanding",
+    "title": "Understanding MBTI Personality Types",
+    "description": "Learn about the 4 dimensions and 16 types of MBTI to better understand your personality.",
+    "content": "## What is MBTI?\n\nMBTI (Myers-Briggs Type Indicator) is a personality assessment tool developed by Katharine Briggs and Isabel Myers, based on Carl Jung's theory of psychological types.\n\n### The 4 Preference Pairs\n\n1. **Energy Direction (E vs I)**\n   - Extraversion (E): Energized by the outer world\n   - Introversion (I): Energized by the inner world\n\n2. **Perception Function (S vs N)**\n   - Sensing (S): Prefers concrete, practical information\n   - Intuition (N): Focuses on patterns and possibilities\n\n3. **Judging Function (T vs F)**\n   - Thinking (T): Makes decisions based on logic\n   - Feeling (F): Values harmony and relationships\n\n4. **Lifestyle (J vs P)**\n   - Judging (J): Prefers planned, organized life\n   - Perceiving (P): Prefers flexible, spontaneous life\n\n### Tips for Using MBTI\n\n- MBTI shows **preferences**, not absolute categories\n- Use it as a **tool** for self and others understanding\n- Don't be **limited** by your type - find directions for growth",
+    "emoji": "🧠",
+    "category": "Psychology",
+    "publishedAt": "2024-01-15",
+    "readingTime": 5
+  },
+  {
+    "slug": "stress-management-tips",
+    "title": "10 Daily Stress Management Techniques",
+    "description": "Effective stress relief methods for busy modern life.",
+    "content": "## Why Manage Stress?\n\nModerate stress can be motivating, but chronic stress harms both physical and mental health.\n\n### 10 Stress Management Tips\n\n1. **4-7-8 Breathing**: Inhale 4s, hold 7s, exhale 8s\n2. **Regular Exercise**: Even 30 minutes of walking helps\n3. **Quality Sleep**: 7-8 hours of good sleep\n4. **Digital Detox**: Turn off phone 1 hour before bed\n5. **Nature Time**: Walk in parks, grow plants\n6. **Hobbies**: Spend time on activities you love\n7. **Social Connection**: Talk with people you care about\n8. **Mindfulness**: Focus on the present moment\n9. **Set Boundaries**: Practice saying \"no\"\n10. **Gratitude Journal**: Write 3 things you're grateful for daily\n\n### Start Today\n\nYou don't need to try everything at once. Apply them one by one to your daily life.",
+    "emoji": "🧘",
+    "category": "Self-help",
+    "publishedAt": "2024-01-20",
+    "readingTime": 4
+  },
+  {
+    "slug": "love-language-guide",
+    "title": "The 5 Love Languages: What's Yours?",
+    "description": "Understand Gary Chapman's 5 Love Languages to improve your relationships.",
+    "content": "## What Are Love Languages?\n\nDr. Gary Chapman explains that people express and receive love in 5 different ways.\n\n### The 5 Love Languages\n\n1. **Words of Affirmation**\n   - Praise, encouragement, gratitude\n   - \"I'm proud of you\", \"I appreciate you\"\n\n2. **Quality Time**\n   - Undivided attention\n   - Conversations, shared activities\n\n3. **Receiving Gifts**\n   - Thoughtful, meaningful presents\n   - It's the thought that counts\n\n4. **Acts of Service**\n   - Actions that help\n   - Chores, running errands\n\n5. **Physical Touch**\n   - Physical contact\n   - Holding hands, hugs, pats\n\n### Applying in Relationships\n\n- Identify your primary love language\n- Discover your partner's love language\n- Express love in the way they prefer",
+    "emoji": "💕",
+    "category": "Relationships",
+    "publishedAt": "2024-02-01",
+    "readingTime": 4
+  }
+]

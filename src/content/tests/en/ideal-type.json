@@ -1,0 +1,156 @@
+{
+  "slug": "ideal-type",
+  "title": "Ideal Type Test",
+  "description": "What type of person is your true ideal type hidden in your subconscious?",
+  "emoji": "💘",
+  "questions": [
+    {
+      "question": "What's the most appealing first date location?",
+      "choices": [
+        { "text": "A restaurant with great ambiance", "scores": { "romantic": 2, "classic": 1 } },
+        { "text": "An amusement park or fun activities", "scores": { "playful": 2, "adventurous": 1 } },
+        { "text": "An exhibition or performance", "scores": { "intellectual": 2, "artistic": 1 } },
+        { "text": "Camping or hiking in nature", "scores": { "adventurous": 2, "caring": 1 } }
+      ]
+    },
+    {
+      "question": "What do you most want from a partner?",
+      "choices": [
+        { "text": "Romantic expressions and affection", "scores": { "romantic": 2, "caring": 1 } },
+        { "text": "Humor to laugh and have fun together", "scores": { "playful": 2, "adventurous": 1 } },
+        { "text": "Deep conversations and intellectual connection", "scores": { "intellectual": 2, "artistic": 1 } },
+        { "text": "Warm care and sense of security", "scores": { "caring": 2, "classic": 1 } }
+      ]
+    },
+    {
+      "question": "What's most important in your ideal type's appearance?",
+      "choices": [
+        { "text": "Neat and clean style", "scores": { "classic": 2, "caring": 1 } },
+        { "text": "Unique and distinctive vibe", "scores": { "artistic": 2, "intellectual": 1 } },
+        { "text": "Healthy and vibrant feeling", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Soft and warm impression", "scores": { "romantic": 2, "caring": 1 } }
+      ]
+    },
+    {
+      "question": "What's your preferred way to resolve conflicts?",
+      "choices": [
+        { "text": "Serious conversation to resolve it", "scores": { "intellectual": 2, "classic": 1 } },
+        { "text": "Lighten the mood with humor", "scores": { "playful": 2, "adventurous": 1 } },
+        { "text": "Make up with hugs and comfort", "scores": { "romantic": 2, "caring": 1 } },
+        { "text": "Take time to sort things out separately", "scores": { "caring": 2, "intellectual": 1 } }
+      ]
+    },
+    {
+      "question": "What's most important in daily life with a partner?",
+      "choices": [
+        { "text": "Surprises and special events", "scores": { "romantic": 2, "playful": 1 } },
+        { "text": "Exploring new places", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Shared hobbies and activities", "scores": { "artistic": 2, "intellectual": 1 } },
+        { "text": "Comfortable daily life together", "scores": { "caring": 2, "classic": 1 } }
+      ]
+    },
+    {
+      "question": "What profession seems attractive in a partner?",
+      "choices": [
+        { "text": "Stable professional career", "scores": { "classic": 2, "caring": 1 } },
+        { "text": "Creative arts field", "scores": { "artistic": 2, "romantic": 1 } },
+        { "text": "Dynamic adventurer type", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Warm education or service field", "scores": { "caring": 2, "romantic": 1 } }
+      ]
+    },
+    {
+      "question": "What hobbies would you want your ideal type to have?",
+      "choices": [
+        { "text": "Reading, watching movies", "scores": { "intellectual": 2, "artistic": 1 } },
+        { "text": "Sports, traveling", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Music, art, photography", "scores": { "artistic": 2, "romantic": 1 } },
+        { "text": "Cooking, home decorating", "scores": { "caring": 2, "classic": 1 } }
+      ]
+    },
+    {
+      "question": "What's the most heart-fluttering way to confess love?",
+      "choices": [
+        { "text": "A prepared event with gifts", "scores": { "romantic": 2, "classic": 1 } },
+        { "text": "A fun and playful confession", "scores": { "playful": 2, "adventurous": 1 } },
+        { "text": "A sincere letter or poem", "scores": { "artistic": 2, "intellectual": 1 } },
+        { "text": "Quiet, heartfelt words", "scores": { "caring": 2, "classic": 1 } }
+      ]
+    },
+    {
+      "question": "What future do you want with your partner?",
+      "choices": [
+        { "text": "A romantic married life", "scores": { "romantic": 2, "classic": 1 } },
+        { "text": "Traveling the world together", "scores": { "adventurous": 2, "playful": 1 } },
+        { "text": "Supporting each other's dreams", "scores": { "intellectual": 2, "artistic": 1 } },
+        { "text": "Building a warm family", "scores": { "caring": 2, "classic": 1 } }
+      ]
+    },
+    {
+      "question": "What words do you most want to hear from your partner?",
+      "choices": [
+        { "text": "I love you so much, every day is happy", "scores": { "romantic": 2, "caring": 1 } },
+        { "text": "Being with you is so fun", "scores": { "playful": 2, "adventurous": 1 } },
+        { "text": "I love the way you think", "scores": { "intellectual": 2, "artistic": 1 } },
+        { "text": "I'm always on your side", "scores": { "caring": 2, "classic": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "romantic",
+      "title": "Romantic Mood Maker",
+      "emoji": "🌹",
+      "description": "Your ideal type is someone who creates romantic atmospheres! You want a partner who remembers anniversaries, prepares surprises, and doesn't hesitate to express love. You're happiest with someone who makes every day special with sweet words and actions.",
+      "traits": ["Romantic", "Affectionate", "Thoughtful", "Sweet", "Event-loving"],
+      "advice": "Your partner's way of expressing love might be different. Cherish even small expressions of affection."
+    },
+    {
+      "type": "playful",
+      "title": "Fun Energizer",
+      "emoji": "😄",
+      "description": "Your ideal type is a cheerful person who always makes you laugh! You want a partner with great humor and positive energy. You're happiest with someone who can make any situation enjoyable.",
+      "traits": ["Humorous", "Positive", "Bright energy", "Fun", "Active"],
+      "advice": "Sometimes serious conversations are needed too. Find a balance between humor and seriousness."
+    },
+    {
+      "type": "intellectual",
+      "title": "Intellectual Soulmate",
+      "emoji": "📚",
+      "description": "Your ideal type is an intellectual person you can have deep conversations with! You want a partner who can discuss various topics, respects each other's thoughts, and grows together. You're happiest with someone who shares mental connections.",
+      "traits": ["Intellectual", "Conversational", "Growth-oriented", "Open-minded", "Insightful"],
+      "advice": "Emotional connection is important too. Share feelings beyond just logic."
+    },
+    {
+      "type": "adventurous",
+      "title": "Adventure Companion",
+      "emoji": "🏔️",
+      "description": "Your ideal type is an adventurous person to share new experiences with! You want a partner who isn't afraid of travel, challenges, and trying new things. You're happiest with someone you can explore the world with and create memories.",
+      "traits": ["Adventurous", "Active", "Brave", "Free-spirited", "Curious"],
+      "advice": "Stability and rest are also necessary. Sometimes take time to relax and recharge."
+    },
+    {
+      "type": "caring",
+      "title": "Warm Protector",
+      "emoji": "🤗",
+      "description": "Your ideal type is a considerate person who warmly embraces you! You want a partner who pays attention to details, stays by your side in tough times, and provides security. You're happiest with someone who becomes your sanctuary of peace.",
+      "traits": ["Considerate", "Warm", "Secure", "Protective", "Trustworthy"],
+      "advice": "Don't just depend on them - aim for a relationship where you care for each other."
+    },
+    {
+      "type": "artistic",
+      "title": "Artistic Soul",
+      "emoji": "🎭",
+      "description": "Your ideal type is someone with artistic sensibility! You want a partner with unique tastes, a creative perspective, and who pursues beauty. You're happiest with someone you can enjoy cultural activities and share emotions with.",
+      "traits": ["Artistic", "Emotional", "Unique", "Creative", "Aesthetic"],
+      "advice": "Consider practical aspects too. Balance between dreams and reality is important."
+    },
+    {
+      "type": "classic",
+      "title": "Classic Gentleman/Lady",
+      "emoji": "👔",
+      "description": "Your ideal type is someone with traditional manners and dignity! You want a partner who is polite, responsible, and can plan a stable future together. You're happiest with someone you can trust.",
+      "traits": ["Mannerly", "Responsible", "Trustworthy", "Stable", "Dignified"],
+      "advice": "Sometimes enjoy spontaneous fun too. Unplanned happiness exists."
+    }
+  ]
+}

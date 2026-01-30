@@ -1,0 +1,144 @@
+{
+  "slug": "mbti-compatibility",
+  "title": "MBTI Compatibility Test",
+  "description": "Which MBTI type is most compatible with yours? Find out through 10 scenarios!",
+  "emoji": "💑",
+  "questions": [
+    {
+      "question": "When planning a weekend date, you:",
+      "choices": [
+        { "text": "Plan ahead and make reservations", "scores": { "J": 2 } },
+        { "text": "Decide based on the mood that day", "scores": { "P": 2 } }
+      ]
+    },
+    {
+      "question": "At a party, you:",
+      "choices": [
+        { "text": "Actively chat with many people", "scores": { "E": 2 } },
+        { "text": "Have deep conversations with close friends", "scores": { "I": 2 } }
+      ]
+    },
+    {
+      "question": "When conflicts arise with your partner:",
+      "choices": [
+        { "text": "Try to resolve it logically", "scores": { "T": 2 } },
+        { "text": "Share feelings first", "scores": { "F": 2 } }
+      ]
+    },
+    {
+      "question": "When choosing a travel destination:",
+      "choices": [
+        { "text": "Based on actual reviews and information", "scores": { "S": 2 } },
+        { "text": "Decide by feeling and atmosphere", "scores": { "N": 2 } }
+      ]
+    },
+    {
+      "question": "When do you feel energized by your partner?",
+      "choices": [
+        { "text": "When doing activities together", "scores": { "E": 2 } },
+        { "text": "When quietly being together", "scores": { "I": 2 } }
+      ]
+    },
+    {
+      "question": "When choosing gifts:",
+      "choices": [
+        { "text": "Something practical and needed", "scores": { "S": 2, "T": 1 } },
+        { "text": "Something meaningful and special", "scores": { "N": 2, "F": 1 } }
+      ]
+    },
+    {
+      "question": "Your attitude toward meeting times:",
+      "choices": [
+        { "text": "Always on time", "scores": { "J": 2 } },
+        { "text": "Flexible about it", "scores": { "P": 2 } }
+      ]
+    },
+    {
+      "question": "When listening to your partner's worries:",
+      "choices": [
+        { "text": "Offer solutions", "scores": { "T": 2 } },
+        { "text": "Empathize and comfort", "scores": { "F": 2 } }
+      ]
+    },
+    {
+      "question": "When talking about the future:",
+      "choices": [
+        { "text": "Make concrete plans", "scores": { "S": 2, "J": 1 } },
+        { "text": "Share possibilities and dreams", "scores": { "N": 2, "P": 1 } }
+      ]
+    },
+    {
+      "question": "What's most important in a relationship?",
+      "choices": [
+        { "text": "Trust and stability", "scores": { "S": 1, "J": 1 } },
+        { "text": "Growth and understanding", "scores": { "N": 1, "F": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "ENFP",
+      "title": "Enthusiastic Campaigner ENFP",
+      "emoji": "🌈",
+      "description": "The type most compatible with you is ENFP! Passionate and creative, ENFPs are partners you can share new experiences with and enjoy deep conversations. You'll have a relationship where you support each other's ideas and help each other grow.",
+      "traits": ["Passionate", "Creative", "Empathetic", "Free-spirited", "Idealistic"],
+      "advice": "Pay attention to practical matters together to find balance."
+    },
+    {
+      "type": "INFJ",
+      "title": "Insightful Advocate INFJ",
+      "emoji": "🔮",
+      "description": "The type most compatible with you is INFJ! With deep insight and consideration, INFJs provide genuine understanding and emotional connection. You'll have a meaningful relationship where you understand each other's inner selves and grow together.",
+      "traits": ["Insightful", "Considerate", "Idealistic", "Devoted", "Intuitive"],
+      "advice": "Sometimes take time to enjoy things lightly."
+    },
+    {
+      "type": "ENTP",
+      "title": "Debate-Loving Debater ENTP",
+      "emoji": "💡",
+      "description": "The type most compatible with you is ENTP! Intellectually curious ENTPs are partners you can have interesting debates and share new ideas with. You'll have a relationship where you stimulate and grow each other.",
+      "traits": ["Logical", "Creative", "Challenging", "Humorous", "Independent"],
+      "advice": "Also value emotional connection."
+    },
+    {
+      "type": "INTJ",
+      "title": "Strategic Architect INTJ",
+      "emoji": "🎯",
+      "description": "The type most compatible with you is INTJ! Goal-oriented and deep-thinking INTJs are partners you can plan the future with and grow together. You'll have a relationship where you respect each other's independence and develop.",
+      "traits": ["Strategic", "Independent", "Intellectual", "Goal-oriented", "Prudent"],
+      "advice": "Share spontaneous fun together too."
+    },
+    {
+      "type": "ESFJ",
+      "title": "Warm Consul ESFJ",
+      "emoji": "🤝",
+      "description": "The type most compatible with you is ESFJ! Warm and dedicated ESFJs provide a stable relationship. You'll have a warm relationship where you take care of and consider each other.",
+      "traits": ["Warm", "Dedicated", "Social", "Considerate", "Practical"],
+      "advice": "Respect each other's personal time too."
+    },
+    {
+      "type": "ISFP",
+      "title": "Free-Spirited Adventurer ISFP",
+      "emoji": "🎨",
+      "description": "The type most compatible with you is ISFP! Emotional and free-spirited ISFPs are partners you can share beauty with and enjoy the present moment. You'll have a relationship where you respect each other's individuality.",
+      "traits": ["Emotional", "Artistic", "Free-spirited", "Present-focused", "Authentic"],
+      "advice": "Make future plans together too."
+    },
+    {
+      "type": "ESTJ",
+      "title": "Responsible Executive ESTJ",
+      "emoji": "📊",
+      "description": "The type most compatible with you is ESTJ! Reliable and responsible ESTJs provide a stable relationship. You'll have a dependable relationship where you achieve goals together.",
+      "traits": ["Responsible", "Organized", "Trustworthy", "Practical", "Leadership"],
+      "advice": "Share emotional moments together too."
+    },
+    {
+      "type": "ISTP",
+      "title": "Exploring Virtuoso ISTP",
+      "emoji": "🔧",
+      "description": "The type most compatible with you is ISTP! Independent and practical ISTPs provide a free and realistic relationship. You'll have a relationship where you respect each other's space and grow together.",
+      "traits": ["Independent", "Practical", "Logical", "Adaptable", "Observant"],
+      "advice": "Expressing feelings is important too. Share your heart."
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { getTest, getAllTests, getResultByType } from '../../../../utils/tests';
+
+export function getStaticPaths() {
+  const tests = getAllTests('en');
+  return tests.map((test) => ({
+    params: { slug: test.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const lang = 'en';
+const test = getTest(slug, lang);
+
+if (!test) {
+  return Astro.redirect('/en');
+}
+
+const pageTitle = `Compare Results - ${test.title} | JudySylph`;
+const pageDescription = `Compare your ${test.title} results with a friend!`;
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{test.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        Compare Results
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400">
+        {test.title} - Compare with your friend!
+      </p>
+    </div>
+
+    <!-- Comparison Container -->
+    <div id="comparison-container" class="hidden">
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- My Result -->
+        <div id="my-result" class="bg-gradient-to-br from-primary-100 to-primary-50 dark:from-primary-900/30 dark:to-primary-800/20 rounded-2xl p-6">
+          <div class="text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 font-medium mb-2">My Result</div>
+            <div id="my-emoji" class="text-5xl mb-3"></div>
+            <h3 id="my-title" class="text-xl font-bold text-gray-900 dark:text-white mb-2"></h3>
+            <p id="my-description" class="text-sm text-gray-600 dark:text-gray-400"></p>
+            <div id="my-traits" class="flex flex-wrap justify-center gap-1 mt-4"></div>
+          </div>
+        </div>
+
+        <!-- Friend Result -->
+        <div id="friend-result" class="bg-gradient-to-br from-secondary-100 to-secondary-50 dark:from-secondary-900/30 dark:to-secondary-800/20 rounded-2xl p-6">
+          <div class="text-center">
+            <div class="text-sm text-secondary-600 dark:text-secondary-400 font-medium mb-2">Friend's Result</div>
+            <div id="friend-emoji" class="text-5xl mb-3"></div>
+            <h3 id="friend-title" class="text-xl font-bold text-gray-900 dark:text-white mb-2"></h3>
+            <p id="friend-description" class="text-sm text-gray-600 dark:text-gray-400"></p>
+            <div id="friend-traits" class="flex flex-wrap justify-center gap-1 mt-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compatibility -->
+      <div id="compatibility-section" class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg mb-8">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 text-center">
+          Compatibility Analysis
+        </h3>
+        <div id="compatibility-result" class="text-center">
+          <div id="compatibility-emoji" class="text-6xl mb-4"></div>
+          <p id="compatibility-text" class="text-gray-700 dark:text-gray-300"></p>
+        </div>
+      </div>
+
+      <!-- Share Comparison -->
+      <div class="text-center">
+        <button
+          id="share-comparison"
+          type="button"
+          class="px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+        >
+          Share Comparison
+        </button>
+      </div>
+    </div>
+
+    <!-- No Comparison State -->
+    <div id="no-comparison" class="text-center py-12">
+      <div class="text-6xl mb-4">🤝</div>
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+        Select results to compare
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-6">
+        Complete the test first and click "Compare with Friend" on your result page.
+      </p>
+      <a
+        href={`/en/test/${slug}`}
+        class="inline-block px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+      >
+        Start Test
+      </a>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href={`/en/test/${slug}`} class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Take Test Again
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script define:vars={{ testData: test }}>
+  const urlParams = new URLSearchParams(window.location.search);
+  const myType = urlParams.get('me');
+  const friendType = urlParams.get('friend');
+
+  const comparisonContainer = document.getElementById('comparison-container');
+  const noComparison = document.getElementById('no-comparison');
+
+  if (myType && friendType) {
+    const myResult = testData.results.find(r => r.type === myType);
+    const friendResult = testData.results.find(r => r.type === friendType);
+
+    if (myResult && friendResult) {
+      // Show comparison
+      comparisonContainer?.classList.remove('hidden');
+      noComparison?.classList.add('hidden');
+
+      // Populate my result
+      document.getElementById('my-emoji').textContent = myResult.emoji;
+      document.getElementById('my-title').textContent = myResult.title;
+      document.getElementById('my-description').textContent = myResult.description.substring(0, 100) + '...';
+      document.getElementById('my-traits').innerHTML = myResult.traits.slice(0, 3).map(t =>
+        `<span class="px-2 py-1 bg-primary-200 dark:bg-primary-800 text-primary-800 dark:text-primary-200 rounded-full text-xs">${t}</span>`
+      ).join('');
+
+      // Populate friend result
+      document.getElementById('friend-emoji').textContent = friendResult.emoji;
+      document.getElementById('friend-title').textContent = friendResult.title;
+      document.getElementById('friend-description').textContent = friendResult.description.substring(0, 100) + '...';
+      document.getElementById('friend-traits').innerHTML = friendResult.traits.slice(0, 3).map(t =>
+        `<span class="px-2 py-1 bg-secondary-200 dark:bg-secondary-800 text-secondary-800 dark:text-secondary-200 rounded-full text-xs">${t}</span>`
+      ).join('');
+
+      // Calculate compatibility
+      let compatibilityScore = 50;
+      let compatibilityEmoji = '🤝';
+      let compatibilityText = 'A unique combination with different charms!';
+
+      if (myType === friendType) {
+        compatibilityScore = 100;
+        compatibilityEmoji = '💯';
+        compatibilityText = 'Perfect match! You two are very compatible!';
+      } else if (myResult.compatibility?.good?.includes(friendResult.title)) {
+        compatibilityScore = 90;
+        compatibilityEmoji = '💕';
+        compatibilityText = 'Great match! You complement each other well.';
+      } else if (myResult.compatibility?.bad?.includes(friendResult.title)) {
+        compatibilityScore = 30;
+        compatibilityEmoji = '🔥';
+        compatibilityText = 'Sparks may fly! Different but potentially exciting together.';
+      }
+
+      document.getElementById('compatibility-emoji').textContent = compatibilityEmoji;
+      document.getElementById('compatibility-text').textContent = compatibilityText;
+
+      // Share button
+      document.getElementById('share-comparison')?.addEventListener('click', async () => {
+        const shareUrl = window.location.href;
+        const shareText = `I got ${myResult.title}, my friend got ${friendResult.title}! Check out our ${testData.title} comparison!`;
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: 'Compare Results - JudySylph',
+              text: shareText,
+              url: shareUrl
+            });
+          } catch (err) {
+            // User cancelled or error
+          }
+        } else {
+          // Fallback to clipboard
+          try {
+            await navigator.clipboard.writeText(shareText + ' ' + shareUrl);
+            alert('Link copied!');
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        }
+      });
+    }
+  }
+</script>

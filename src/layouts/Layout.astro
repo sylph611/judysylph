@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 import { getLangFromUrl, useTranslations, getAlternateLocaleUrl, type Lang } from '../i18n';
+import NotificationBanner from '../components/NotificationBanner.astro';
 
 interface Props {
   title: string;
@@ -112,6 +114,9 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
+
+    <!-- View Transitions -->
+    <ViewTransitions />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Header -->
@@ -167,6 +172,8 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
             JudySylph
           </div>
           <div class="flex gap-6 text-sm text-gray-600 dark:text-gray-400">
+            <a href={`/${lang}/blog`} class="hover:text-primary-600 dark:hover:text-primary-400">{lang === 'ko' ? '블로그' : 'Blog'}</a>
+            <a href={`/${lang}/faq`} class="hover:text-primary-600 dark:hover:text-primary-400">FAQ</a>
             <a href={`/${lang}/privacy`} class="hover:text-primary-600 dark:hover:text-primary-400">{t('footer.privacy')}</a>
             <a href={`/${lang}/terms`} class="hover:text-primary-600 dark:hover:text-primary-400">{t('footer.terms')}</a>
             <a href={`/${lang}/contact`} class="hover:text-primary-600 dark:hover:text-primary-400">{t('footer.contact')}</a>
@@ -196,5 +203,8 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
         });
       }
     </script>
+
+    <!-- Notification Banner -->
+    <NotificationBanner lang={lang} />
   </body>
 </html>
