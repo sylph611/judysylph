@@ -125,4 +125,41 @@ const jsonLd = {
       </section>
     )}
   </div>
+  <!-- Save Result Script -->
+  <script define:vars={{ testTitle: test.title, resultTitle: result.title, resultEmoji: result.emoji || test.emoji, slug, type, testEmoji: test.emoji }}>
+    // Save result to localStorage
+    const saveResult = () => {
+      const history = JSON.parse(localStorage.getItem('testHistory') || '[]');
+
+      const newResult = {
+        id: Date.now(),
+        testSlug: slug,
+        testTitle: testTitle,
+        testEmoji: testEmoji,
+        resultType: type,
+        resultTitle: resultTitle,
+        resultEmoji: resultEmoji,
+        date: new Date().toISOString(),
+        lang: 'en'
+      };
+
+      // Check if same test was taken recently (within 1 hour)
+      const recentIndex = history.findIndex(h =>
+        h.testSlug === slug &&
+        h.resultType === type &&
+        Date.now() - new Date(h.date).getTime() < 3600000
+      );
+
+      if (recentIndex === -1) {
+        // Add new result at the beginning
+        history.unshift(newResult);
+        // Keep only last 50 results
+        if (history.length > 50) history.pop();
+        localStorage.setItem('testHistory', JSON.stringify(history));
+      }
+    };
+
+    // Save on page load
+    saveResult();
+  </script>
 </Layout>
