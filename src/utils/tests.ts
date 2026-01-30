@@ -55,7 +55,12 @@ const testCategories: Record<string, TestCategory> = {
   'burnout': 'career',
   'social': 'personality',
   'past-life': 'fun',
-  'travel': 'lifestyle'
+  'travel': 'lifestyle',
+  'mental-age': 'fun',
+  'hidden-talent': 'personality',
+  'ideal-type': 'love',
+  'food-personality': 'fun',
+  'mbti-compatibility': 'love'
 };
 
 export const categoryLabels = {
@@ -105,9 +110,20 @@ import pastLifeKo from '../content/tests/ko/past-life.json';
 import pastLifeEn from '../content/tests/en/past-life.json';
 import travelKo from '../content/tests/ko/travel.json';
 import travelEn from '../content/tests/en/travel.json';
+// New tests
+import mentalAgeKo from '../content/tests/ko/mental-age.json';
+import mentalAgeEn from '../content/tests/en/mental-age.json';
+import hiddenTalentKo from '../content/tests/ko/hidden-talent.json';
+import hiddenTalentEn from '../content/tests/en/hidden-talent.json';
+import idealTypeKo from '../content/tests/ko/ideal-type.json';
+import idealTypeEn from '../content/tests/en/ideal-type.json';
+import foodPersonalityKo from '../content/tests/ko/food-personality.json';
+import foodPersonalityEn from '../content/tests/en/food-personality.json';
+import mbtiCompatibilityKo from '../content/tests/ko/mbti-compatibility.json';
+import mbtiCompatibilityEn from '../content/tests/en/mbti-compatibility.json';
 
-const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo];
-const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn];
+const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo, mentalAgeKo, hiddenTalentKo, idealTypeKo, foodPersonalityKo, mbtiCompatibilityKo];
+const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn, mentalAgeEn, hiddenTalentEn, idealTypeEn, foodPersonalityEn, mbtiCompatibilityEn];
 
 export function getAllTests(lang: string): Test[] {
   return lang === 'ko' ? testsKo : testsEn;

@@ -1,0 +1,148 @@
+{
+  "slug": "hidden-talent",
+  "title": "숨겨진 재능 테스트",
+  "description": "아직 발견하지 못한 당신의 숨겨진 재능은 무엇일까요?",
+  "emoji": "💎",
+  "questions": [
+    {
+      "question": "혼자 있을 때 자연스럽게 하게 되는 것은?",
+      "choices": [
+        { "text": "무언가 그리거나 만든다", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "노래를 흥얼거리거나 악기 연주", "scores": { "music": 2, "creative": 1 } },
+        { "text": "글을 쓰거나 생각을 정리", "scores": { "writing": 2, "analysis": 1 } },
+        { "text": "새로운 것을 분석하고 연구", "scores": { "analysis": 2, "writing": 1 } }
+      ]
+    },
+    {
+      "question": "친구들이 당신에게 자주 하는 말은?",
+      "choices": [
+        { "text": "창의적이다, 독특하다", "scores": { "creative": 2, "music": 1 } },
+        { "text": "손재주가 좋다", "scores": { "craft": 2, "creative": 1 } },
+        { "text": "말을 잘한다, 설득력 있다", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "분석적이다, 논리적이다", "scores": { "analysis": 2, "communication": 1 } }
+      ]
+    },
+    {
+      "question": "문제가 생겼을 때 해결 방식은?",
+      "choices": [
+        { "text": "창의적이고 독특한 해결책 모색", "scores": { "creative": 2, "analysis": 1 } },
+        { "text": "직접 손으로 고치거나 만든다", "scores": { "craft": 2, "creative": 1 } },
+        { "text": "대화와 협상으로 해결", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "데이터와 논리로 분석", "scores": { "analysis": 2, "communication": 1 } }
+      ]
+    },
+    {
+      "question": "유튜브나 넷플릭스에서 주로 보는 콘텐츠는?",
+      "choices": [
+        { "text": "예술, 디자인, 영화", "scores": { "creative": 2, "music": 1 } },
+        { "text": "음악, 공연, 댄스", "scores": { "music": 2, "creative": 1 } },
+        { "text": "토크쇼, 인터뷰, 브이로그", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "다큐멘터리, 과학, 역사", "scores": { "analysis": 2, "writing": 1 } }
+      ]
+    },
+    {
+      "question": "어릴 때 좋아했던 활동은?",
+      "choices": [
+        { "text": "그림 그리기, 만들기", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "노래, 춤, 악기", "scores": { "music": 2, "creative": 1 } },
+        { "text": "이야기하기, 발표", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "퍼즐, 레고, 실험", "scores": { "analysis": 2, "craft": 1 } }
+      ]
+    },
+    {
+      "question": "선물을 줄 때 주로 어떤 것을 선택하나요?",
+      "choices": [
+        { "text": "직접 만든 것", "scores": { "craft": 2, "creative": 1 } },
+        { "text": "음악이나 공연 티켓", "scores": { "music": 2, "creative": 1 } },
+        { "text": "의미 있는 편지와 함께", "scores": { "writing": 2, "communication": 1 } },
+        { "text": "상대에게 꼭 필요한 실용적인 것", "scores": { "analysis": 2, "craft": 1 } }
+      ]
+    },
+    {
+      "question": "스트레스를 받으면 하고 싶은 것은?",
+      "choices": [
+        { "text": "그림 그리기나 창작 활동", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "음악 듣기나 연주", "scores": { "music": 2, "creative": 1 } },
+        { "text": "친구와 수다", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "퍼즐이나 게임", "scores": { "analysis": 2, "craft": 1 } }
+      ]
+    },
+    {
+      "question": "이상적인 직업 환경은?",
+      "choices": [
+        { "text": "자유롭게 아이디어를 표현", "scores": { "creative": 2, "writing": 1 } },
+        { "text": "손으로 무언가를 만드는 곳", "scores": { "craft": 2, "creative": 1 } },
+        { "text": "사람들과 소통하는 곳", "scores": { "communication": 2, "music": 1 } },
+        { "text": "연구하고 분석하는 곳", "scores": { "analysis": 2, "writing": 1 } }
+      ]
+    },
+    {
+      "question": "새로운 것을 배울 때 선호하는 방식은?",
+      "choices": [
+        { "text": "보고 따라하기", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "듣고 느끼기", "scores": { "music": 2, "communication": 1 } },
+        { "text": "대화하며 배우기", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "책이나 자료로 연구", "scores": { "analysis": 2, "writing": 1 } }
+      ]
+    },
+    {
+      "question": "가장 뿌듯할 때는?",
+      "choices": [
+        { "text": "창작물을 완성했을 때", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "공연이나 발표를 잘 마쳤을 때", "scores": { "music": 2, "communication": 1 } },
+        { "text": "누군가를 설득하거나 도왔을 때", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "어려운 문제를 해결했을 때", "scores": { "analysis": 2, "craft": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "creative",
+      "title": "예술적 창의력",
+      "emoji": "🎨",
+      "description": "당신의 숨겨진 재능은 예술적 창의력입니다! 남들과 다른 시각으로 세상을 보는 당신은 독특한 아이디어와 아름다움을 창조하는 능력을 가지고 있어요. 디자인, 사진, 영상 등 시각 예술 분야에서 빛날 수 있습니다.",
+      "traits": ["창의성", "독창성", "미적 감각", "상상력", "표현력"],
+      "advice": "당신의 창의적인 아이디어를 세상과 나눠보세요. 그림, 사진, 영상 등 다양한 매체로 표현해보세요."
+    },
+    {
+      "type": "music",
+      "title": "음악적 감각",
+      "emoji": "🎵",
+      "description": "당신의 숨겨진 재능은 음악적 감각입니다! 리듬과 멜로디에 민감한 당신은 음악을 통해 감정을 표현하고 전달하는 능력이 있어요. 악기 연주, 작곡, 노래 등 음악 분야에서 재능을 발휘할 수 있습니다.",
+      "traits": ["리듬감", "음감", "감성", "표현력", "집중력"],
+      "advice": "좋아하는 악기를 배워보거나, 노래를 시작해보세요. 음악으로 스트레스도 해소할 수 있어요."
+    },
+    {
+      "type": "craft",
+      "title": "손재주와 제작",
+      "emoji": "🔧",
+      "description": "당신의 숨겨진 재능은 손재주입니다! 손으로 무언가를 만들고 고치는 능력이 뛰어나요. DIY, 공예, 요리, 수리 등 실질적으로 무언가를 창조하는 분야에서 빛날 수 있습니다.",
+      "traits": ["손재주", "정교함", "인내심", "실용성", "완성도"],
+      "advice": "손으로 하는 취미를 시작해보세요. 목공예, 뜨개질, 요리 등 다양한 분야를 탐색해보세요."
+    },
+    {
+      "type": "writing",
+      "title": "글쓰기와 스토리텔링",
+      "emoji": "✍️",
+      "description": "당신의 숨겨진 재능은 글쓰기입니다! 생각과 감정을 글로 표현하는 능력이 뛰어나요. 소설, 시, 에세이, 블로그 등 다양한 형태의 글을 통해 사람들의 마음을 움직일 수 있습니다.",
+      "traits": ["표현력", "관찰력", "상상력", "공감력", "문장력"],
+      "advice": "매일 조금씩 글을 써보세요. 일기, 블로그, 단편 소설 등 어떤 형태든 좋아요."
+    },
+    {
+      "type": "communication",
+      "title": "소통과 설득력",
+      "emoji": "🎤",
+      "description": "당신의 숨겨진 재능은 소통 능력입니다! 사람들과 대화하고 설득하는 데 탁월해요. 강연, 협상, 상담, 영업 등 사람을 상대하는 분야에서 빛날 수 있습니다.",
+      "traits": ["화술", "공감력", "설득력", "경청", "유머감각"],
+      "advice": "토론 동아리나 발표 기회를 찾아보세요. 팟캐스트나 유튜브도 좋은 시작이 될 수 있어요."
+    },
+    {
+      "type": "analysis",
+      "title": "분석과 논리력",
+      "emoji": "🔬",
+      "description": "당신의 숨겨진 재능은 분석력입니다! 복잡한 문제를 논리적으로 분석하고 해결하는 능력이 뛰어나요. 연구, 데이터 분석, 전략 수립 등의 분야에서 빛날 수 있습니다.",
+      "traits": ["논리력", "분석력", "객관성", "체계성", "문제해결"],
+      "advice": "관심 있는 분야의 데이터를 분석해보세요. 프로그래밍이나 통계를 배워보는 것도 좋아요."
+    }
+  ]
+}

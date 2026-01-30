@@ -1,0 +1,158 @@
+{
+  "slug": "mental-age",
+  "title": "나의 정신연령 테스트",
+  "description": "당신의 진짜 정신연령은 몇 살일까요? 12가지 질문으로 알아보세요!",
+  "emoji": "🎂",
+  "questions": [
+    {
+      "question": "주말에 가장 하고 싶은 활동은?",
+      "choices": [
+        { "text": "새로운 취미 배우기나 모험", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "친구들과 파티나 모임", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "집에서 영화나 독서", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "가족과 조용히 시간 보내기", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "새로운 기술이나 트렌드에 대한 태도는?",
+      "choices": [
+        { "text": "즉시 배우고 시도해본다", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "필요하면 배운다", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "주변에서 권하면 시도", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "익숙한 것이 편하다", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "스트레스를 받으면?",
+      "choices": [
+        { "text": "게임이나 유튜브로 해소", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "친구에게 털어놓기", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "운동이나 명상", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "차 한잔과 산책", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "돈을 쓸 때 가장 중요하게 생각하는 것은?",
+      "choices": [
+        { "text": "지금 당장의 행복", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "경험과 추억", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "실용성과 가치", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "미래를 위한 저축", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "아침에 일어나면 가장 먼저 하는 것은?",
+      "choices": [
+        { "text": "스마트폰 확인", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "샤워하고 준비", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "스트레칭이나 운동", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "차분히 아침식사", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "중요한 결정을 내릴 때?",
+      "choices": [
+        { "text": "직감을 따른다", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "친구나 SNS 의견 참고", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "충분히 조사하고 비교", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "경험과 지혜로 판단", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "파티나 모임에서 나는?",
+      "choices": [
+        { "text": "새로운 사람과 적극 교류", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "분위기 메이커 역할", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "친한 사람들과 깊은 대화", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "조용히 관찰하며 즐김", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "실수를 했을 때 반응은?",
+      "choices": [
+        { "text": "금방 잊고 넘어간다", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "잠시 좌절했다 회복", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "원인을 분석하고 개선", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "담담하게 받아들임", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "이상적인 휴가는?",
+      "choices": [
+        { "text": "스릴 넘치는 액티비티", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "핫플 탐방과 인증샷", "scores": { "twenties": 2, "teen": 1 } },
+        { "text": "여유로운 문화 여행", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "자연 속 힐링", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "인생에서 가장 중요한 것은?",
+      "choices": [
+        { "text": "재미와 새로운 경험", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "성공과 인정", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "안정과 균형", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "건강과 평화", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "잠자리에 드는 시간은?",
+      "choices": [
+        { "text": "새벽 2시 이후", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "자정 무렵", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "밤 11시 전후", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "밤 10시 이전", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    },
+    {
+      "question": "하루 중 가장 행복한 순간은?",
+      "choices": [
+        { "text": "친구들과 노는 시간", "scores": { "teen": 2, "twenties": 1 } },
+        { "text": "목표를 달성했을 때", "scores": { "twenties": 2, "thirties": 1 } },
+        { "text": "가족과 함께하는 시간", "scores": { "thirties": 2, "forties": 1 } },
+        { "text": "조용한 자기만의 시간", "scores": { "forties": 2, "fifties": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "teen",
+      "title": "10대 (15세)",
+      "emoji": "🎮",
+      "description": "당신의 정신연령은 영원한 청춘, 10대입니다! 호기심이 넘치고 새로운 것에 대한 열정이 가득해요. 트렌드에 민감하고 재미를 추구하는 당신은 주변에 활력을 불어넣는 존재입니다. 때로는 충동적일 수 있지만, 그 순수한 에너지가 당신의 매력이에요.",
+      "traits": ["호기심", "열정적", "트렌디", "순수함", "활발함"],
+      "advice": "가끔은 미래를 위한 계획도 세워보세요. 그 열정을 잘 활용하면 뭐든 이룰 수 있어요!"
+    },
+    {
+      "type": "twenties",
+      "title": "20대 (25세)",
+      "emoji": "🌟",
+      "description": "당신의 정신연령은 청춘의 정점, 20대입니다! 도전정신이 넘치고 세상을 향한 야망이 가득해요. 경험을 통해 성장하고, 인간관계를 중요시하는 당신은 삶을 적극적으로 즐기는 타입입니다.",
+      "traits": ["도전적", "사교적", "야심찬", "유연함", "열린 마음"],
+      "advice": "열정은 좋지만, 가끔은 멈추고 자신을 돌아보는 시간도 필요해요."
+    },
+    {
+      "type": "thirties",
+      "title": "30대 (35세)",
+      "emoji": "💼",
+      "description": "당신의 정신연령은 균형 잡힌 30대입니다! 경험에서 우러나온 지혜와 여전한 활력이 조화를 이루고 있어요. 실용적이면서도 삶의 질을 중요시하는 당신은 현명한 선택을 할 줄 아는 사람입니다.",
+      "traits": ["균형감", "실용적", "책임감", "성숙함", "목표지향"],
+      "advice": "완벽을 추구하기보다 때로는 즐기는 것도 중요해요. 여유를 가져보세요."
+    },
+    {
+      "type": "forties",
+      "title": "40대 (45세)",
+      "emoji": "🏡",
+      "description": "당신의 정신연령은 안정을 추구하는 40대입니다! 삶의 본질을 아는 당신은 소중한 것에 집중할 줄 알아요. 경험에서 나온 지혜로 현명한 판단을 내리며, 내면의 평화를 중요시합니다.",
+      "traits": ["지혜로움", "안정적", "가족중심", "신중함", "관대함"],
+      "advice": "새로운 것에 대한 호기심도 유지해보세요. 배움에는 나이가 없답니다."
+    },
+    {
+      "type": "fifties",
+      "title": "50대 이상 (55세+)",
+      "emoji": "🌳",
+      "description": "당신의 정신연령은 노련한 50대 이상입니다! 풍부한 경험과 깊은 통찰력을 가진 당신은 삶을 달관한 현자와 같아요. 물질보다 건강과 평화를 중요시하며, 주변에 안정감을 줍니다.",
+      "traits": ["통찰력", "평온함", "인내심", "포용력", "지혜로움"],
+      "advice": "젊은 세대와의 교류도 즐겨보세요. 서로에게 배울 점이 있답니다."
+    }
+  ]
+}

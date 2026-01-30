@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const lang = 'en';
+const pageTitle = 'FAQ | JudySylph';
+const pageDescription = 'Find answers to frequently asked questions.';
+
+const faqs = [
+  {
+    question: 'Are the test results accurate?',
+    answer: 'Our tests are designed for fun and self-reflection. They are not scientifically validated psychological assessments. Please take the results lightly and enjoy them for entertainment. If you need professional psychological help, please consult a qualified professional.'
+  },
+  {
+    question: 'How is my personal data handled?',
+    answer: 'Test responses and results are not stored on our servers. All data is stored only in your browser\'s local storage, which is accessible only on your device. You can delete this data anytime through your browser settings.'
+  },
+  {
+    question: 'Can I save my results?',
+    answer: 'Yes! Your results are automatically saved to "My History" when you complete a test. Click the 📚 icon in the header to view all your past test results.'
+  },
+  {
+    question: 'Can I compare results with friends?',
+    answer: 'Yes! On the result page, click "Compare with Friend" to generate a comparison link. After your friend completes the same test, you can compare both results side by side.'
+  },
+  {
+    question: 'Are the tests free?',
+    answer: 'Yes, all tests and tools are completely free. Our site is supported by advertisements.'
+  },
+  {
+    question: 'When are new tests added?',
+    answer: 'We regularly add new tests. Enable notifications to be alerted when new tests are available.'
+  },
+  {
+    question: 'Is the site available in other languages?',
+    answer: 'Yes! Click the language switch button at the top of the page to switch to Korean. All tests and tools are available in both languages.'
+  },
+  {
+    question: 'I found a bug. How do I report it?',
+    answer: 'Please let us know through the Contact page. User feedback helps us improve our service.'
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="text-5xl mb-4">❓</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Frequently Asked Questions</h1>
+      <p class="text-gray-600 dark:text-gray-400">Find answers to common questions</p>
+    </div>
+
+    <!-- FAQ List -->
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="faq-item bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <button
+            type="button"
+            class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between gap-4"
+            data-index={index}
+          >
+            <span class="font-medium text-gray-900 dark:text-white">{faq.question}</span>
+            <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-4">
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-12 p-6 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl text-center">
+      <p class="text-gray-700 dark:text-gray-300 mb-4">Didn't find what you were looking for?</p>
+      <a
+        href="/en/contact"
+        class="inline-block px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/en" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Back to Home
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const item = toggle.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = item?.querySelector('.faq-icon');
+
+      // Close all others
+      document.querySelectorAll('.faq-item').forEach(other => {
+        if (other !== item) {
+          other.querySelector('.faq-answer')?.classList.add('hidden');
+          other.querySelector('.faq-icon')?.classList.remove('rotate-180');
+        }
+      });
+
+      // Toggle current
+      answer?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

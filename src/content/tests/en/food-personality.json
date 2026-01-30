@@ -1,0 +1,164 @@
+{
+  "slug": "food-personality",
+  "title": "Food Personality Test",
+  "description": "Discover your personality type based on your food preferences!",
+  "emoji": "🍕",
+  "questions": [
+    {
+      "question": "When you're hungry, what food comes to mind first?",
+      "choices": [
+        { "text": "Warm soup dishes", "scores": { "comfort": 2, "traditional": 1 } },
+        { "text": "Meat! Steak or BBQ", "scores": { "bold": 2, "social": 1 } },
+        { "text": "Fresh salad or fruit", "scores": { "healthy": 2, "trendy": 1 } },
+        { "text": "Fast food like pizza or burgers", "scores": { "fun": 2, "bold": 1 } }
+      ]
+    },
+    {
+      "question": "What's your attitude toward new foods?",
+      "choices": [
+        { "text": "I want to try it first!", "scores": { "adventurous": 2, "trendy": 1 } },
+        { "text": "I check reviews first", "scores": { "healthy": 2, "traditional": 1 } },
+        { "text": "Familiar food is the best", "scores": { "comfort": 2, "traditional": 1 } },
+        { "text": "I'll try if friends recommend it", "scores": { "social": 2, "fun": 1 } }
+      ]
+    },
+    {
+      "question": "What food do you prefer when eating alone?",
+      "choices": [
+        { "text": "Quick ramen or simple meals", "scores": { "fun": 2, "comfort": 1 } },
+        { "text": "Homemade healthy food", "scores": { "healthy": 2, "traditional": 1 } },
+        { "text": "Generous delivery food", "scores": { "bold": 2, "social": 1 } },
+        { "text": "Brunch at a cafe", "scores": { "trendy": 2, "adventurous": 1 } }
+      ]
+    },
+    {
+      "question": "Where do you usually choose to eat out?",
+      "choices": [
+        { "text": "A long-established restaurant", "scores": { "traditional": 2, "comfort": 1 } },
+        { "text": "A social media hotspot", "scores": { "trendy": 2, "adventurous": 1 } },
+        { "text": "A restaurant with great ambiance", "scores": { "bold": 2, "trendy": 1 } },
+        { "text": "A place where I can go with friends", "scores": { "social": 2, "fun": 1 } }
+      ]
+    },
+    {
+      "question": "What's most important when eating?",
+      "choices": [
+        { "text": "Taste", "scores": { "bold": 2, "traditional": 1 } },
+        { "text": "Health", "scores": { "healthy": 2, "comfort": 1 } },
+        { "text": "Presentation and atmosphere", "scores": { "trendy": 2, "adventurous": 1 } },
+        { "text": "The people I'm with", "scores": { "social": 2, "comfort": 1 } }
+      ]
+    },
+    {
+      "question": "What do you eat when stressed?",
+      "choices": [
+        { "text": "Sweet desserts or chocolate", "scores": { "comfort": 2, "fun": 1 } },
+        { "text": "Spicy food", "scores": { "bold": 2, "adventurous": 1 } },
+        { "text": "Healthy smoothie or tea", "scores": { "healthy": 2, "trendy": 1 } },
+        { "text": "Fried chicken and beer", "scores": { "social": 2, "fun": 1 } }
+      ]
+    },
+    {
+      "question": "How do you choose food when traveling?",
+      "choices": [
+        { "text": "Local traditional food is a must!", "scores": { "adventurous": 2, "traditional": 1 } },
+        { "text": "Checking off the best restaurants", "scores": { "trendy": 2, "bold": 1 } },
+        { "text": "Familiar food feels comfortable", "scores": { "comfort": 2, "healthy": 1 } },
+        { "text": "Decide together with the group", "scores": { "social": 2, "fun": 1 } }
+      ]
+    },
+    {
+      "question": "What's your attitude toward cooking?",
+      "choices": [
+        { "text": "I enjoy cooking", "scores": { "healthy": 2, "traditional": 1 } },
+        { "text": "I cook when necessary", "scores": { "comfort": 2, "fun": 1 } },
+        { "text": "I prefer meal kits or convenience food", "scores": { "trendy": 2, "bold": 1 } },
+        { "text": "Delivery is the best", "scores": { "social": 2, "fun": 1 } }
+      ]
+    },
+    {
+      "question": "What's your favorite snack?",
+      "choices": [
+        { "text": "Chips and crackers", "scores": { "fun": 2, "comfort": 1 } },
+        { "text": "Fruits and nuts", "scores": { "healthy": 2, "traditional": 1 } },
+        { "text": "Cafe drinks and desserts", "scores": { "trendy": 2, "adventurous": 1 } },
+        { "text": "Bar snacks", "scores": { "social": 2, "bold": 1 } }
+      ]
+    },
+    {
+      "question": "Do you take photos of food?",
+      "choices": [
+        { "text": "Always! It's a must before eating", "scores": { "trendy": 2, "adventurous": 1 } },
+        { "text": "Sometimes, only on special occasions", "scores": { "social": 2, "fun": 1 } },
+        { "text": "I rarely do", "scores": { "traditional": 2, "comfort": 1 } },
+        { "text": "I take photos if it's delicious", "scores": { "bold": 2, "healthy": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "comfort",
+      "title": "Comfort Food Lover",
+      "emoji": "🍲",
+      "description": "You're a comfort food lover who finds warm solace in food! You love the cozy flavors like mom's home cooking from childhood and find emotional stability through food. You have a sentimental personality with lots of warmth, someone who knows how to find happiness in everyday moments.",
+      "traits": ["Sentimental", "Warm", "Affectionate", "Stability-seeking", "Simple pleasures"],
+      "advice": "Try challenging new foods sometimes. You might discover unexpected joy."
+    },
+    {
+      "type": "bold",
+      "title": "Gourmet Explorer",
+      "emoji": "🥩",
+      "description": "You're a gourmet explorer who seeks intense experiences in food! You're passionate about delicious food and value having a proper meal. You know your preferences well and have a personality that doesn't compromise.",
+      "traits": ["Passionate", "Confident", "Quality-focused", "Bold", "Opinionated"],
+      "advice": "Respect others' tastes too. You might enjoy food from new perspectives."
+    },
+    {
+      "type": "healthy",
+      "title": "Healthy Foodie",
+      "emoji": "🥗",
+      "description": "You're a healthy foodie pursuing a healthy lifestyle! You're careful about food choices and try to eat what's good for your body. You have a thorough self-management personality and think from a long-term perspective.",
+      "traits": ["Health-conscious", "Self-disciplined", "Planned", "Careful", "Balanced"],
+      "advice": "Sometimes it's okay to eat whatever you feel like. Enjoyment is also part of health."
+    },
+    {
+      "type": "trendy",
+      "title": "Trendsetter",
+      "emoji": "🍣",
+      "description": "You're a trendsetter chasing new flavors and trends! You're interested in hotspots and new foods, viewing eating as part of your lifestyle. You're a person with unique and refined taste.",
+      "traits": ["Trendy", "Unique", "Sophisticated", "Curious", "Aesthetic"],
+      "advice": "Don't just follow trends - find your own taste too."
+    },
+    {
+      "type": "social",
+      "title": "Social Diner",
+      "emoji": "🎉",
+      "description": "You're a social diner who knows the joy of eating together! You value the time with people more than the food itself. You have a sociable and cheerful personality, someone who creates atmosphere wherever you go.",
+      "traits": ["Sociable", "Cheerful", "Relationship-focused", "Mood maker", "Considerate"],
+      "advice": "Try solo dining too. You might discover your own tastes."
+    },
+    {
+      "type": "adventurous",
+      "title": "Flavor Adventurer",
+      "emoji": "🌶️",
+      "description": "You're a flavor adventurer who challenges new tastes! You're curious about unfamiliar foods and enjoy trying things you've never eaten. You have an open and adventurous personality, pursuing new experiences in life too.",
+      "traits": ["Adventurous", "Curious", "Open-minded", "Challenging", "Flexible"],
+      "advice": "Sometimes discover new things in familiar flavors too."
+    },
+    {
+      "type": "traditional",
+      "title": "Traditional Gastronome",
+      "emoji": "🍚",
+      "description": "You're a traditional gastronome who appreciates time-tested flavors! You love proven restaurants and authentic recipes, and are interested in food history and culture. You have a careful and deep personality who values essence.",
+      "traits": ["Careful", "Deep", "Tradition-respecting", "Stability-seeking", "Essence-focused"],
+      "advice": "Keep an open mind about new fusion foods. There might be unexpected harmonies."
+    },
+    {
+      "type": "fun",
+      "title": "Fun Foodie",
+      "emoji": "🍟",
+      "description": "You're a fun foodie who simply enjoys eating! You like everything delicious and don't overthink about food. You have a positive and optimistic personality, someone who knows how to find happiness in small things.",
+      "traits": ["Positive", "Optimistic", "Flexible", "Spontaneous", "Happiness-seeking"],
+      "advice": "Plan a special food experience sometimes. You might discover new joys."
+    }
+  ]
+}

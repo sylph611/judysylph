@@ -4,6 +4,7 @@ import Result from '../../../../components/Result.astro';
 import ShareButtons from '../../../../components/ShareButtons.astro';
 import AdBanner from '../../../../components/AdBanner.astro';
 import TestCard from '../../../../components/TestCard.astro';
+import Confetti from '../../../../components/Confetti.astro';
 import { getTest, getAllTests, getRecommendedTests } from '../../../../utils/tests';
 
 export function getStaticPaths() {
@@ -61,6 +62,9 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
+  <!-- Confetti Animation -->
+  <Confetti />
+
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Ad Banner Top -->
     <AdBanner slot="result" className="mb-8" />
@@ -84,6 +88,22 @@ const jsonLd = {
       description={result.description}
       lang={lang}
     />
+
+    <!-- Compare with Friend -->
+    <div class="mt-8 p-4 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl">
+      <div class="text-center">
+        <p class="text-gray-700 dark:text-gray-300 mb-3">친구와 결과를 비교해보세요!</p>
+        <button
+          id="compare-btn"
+          type="button"
+          class="px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-xl font-medium hover:opacity-90 transition-opacity"
+          data-slug={slug}
+          data-type={type}
+        >
+          🤝 친구와 비교하기
+        </button>
+      </div>
+    </div>
 
     <!-- Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -162,5 +182,27 @@ const jsonLd = {
 
     // Save on page load
     saveResult();
+
+    // Compare button handler
+    const compareBtn = document.getElementById('compare-btn');
+    compareBtn?.addEventListener('click', async () => {
+      const myType = compareBtn.getAttribute('data-type');
+      const testSlug = compareBtn.getAttribute('data-slug');
+      const compareUrl = `${window.location.origin}/ko/result/${testSlug}/compare?me=${myType}&friend=`;
+
+      // Copy link and prompt user
+      const message = '링크를 복사해서 친구에게 보내세요.\n친구가 테스트를 완료하면 비교 결과를 볼 수 있어요!\n\n' + compareUrl + '[친구결과타입]';
+
+      try {
+        await navigator.clipboard.writeText(compareUrl);
+        alert('비교 링크가 복사되었습니다!\n\n친구에게 테스트 링크를 보내고, 결과를 알려달라고 하세요.\n그 다음 복사된 링크의 [friend=] 뒤에 친구의 결과 타입을 추가하면 비교 페이지로 이동합니다.');
+      } catch (err) {
+        // Prompt fallback
+        const friendType = prompt('친구의 결과 타입을 입력하세요 (예: dog, cat 등):');
+        if (friendType) {
+          window.location.href = `/ko/result/${testSlug}/compare?me=${myType}&friend=${friendType}`;
+        }
+      }
+    });
   </script>
 </Layout>

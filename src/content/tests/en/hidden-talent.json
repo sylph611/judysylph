@@ -1,0 +1,148 @@
+{
+  "slug": "hidden-talent",
+  "title": "Hidden Talent Test",
+  "description": "What hidden talent have you not yet discovered about yourself?",
+  "emoji": "💎",
+  "questions": [
+    {
+      "question": "What do you naturally do when you're alone?",
+      "choices": [
+        { "text": "Draw or make something", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "Hum songs or play an instrument", "scores": { "music": 2, "creative": 1 } },
+        { "text": "Write or organize my thoughts", "scores": { "writing": 2, "analysis": 1 } },
+        { "text": "Analyze and research new things", "scores": { "analysis": 2, "writing": 1 } }
+      ]
+    },
+    {
+      "question": "What do your friends often say about you?",
+      "choices": [
+        { "text": "You're creative, unique", "scores": { "creative": 2, "music": 1 } },
+        { "text": "You're good with your hands", "scores": { "craft": 2, "creative": 1 } },
+        { "text": "You speak well, you're persuasive", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "You're analytical, logical", "scores": { "analysis": 2, "communication": 1 } }
+      ]
+    },
+    {
+      "question": "How do you solve problems?",
+      "choices": [
+        { "text": "Look for creative, unique solutions", "scores": { "creative": 2, "analysis": 1 } },
+        { "text": "Fix or make things with my hands", "scores": { "craft": 2, "creative": 1 } },
+        { "text": "Resolve through dialogue and negotiation", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "Analyze with data and logic", "scores": { "analysis": 2, "communication": 1 } }
+      ]
+    },
+    {
+      "question": "What content do you mainly watch on YouTube or Netflix?",
+      "choices": [
+        { "text": "Art, design, movies", "scores": { "creative": 2, "music": 1 } },
+        { "text": "Music, performances, dance", "scores": { "music": 2, "creative": 1 } },
+        { "text": "Talk shows, interviews, vlogs", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "Documentaries, science, history", "scores": { "analysis": 2, "writing": 1 } }
+      ]
+    },
+    {
+      "question": "What activities did you enjoy as a child?",
+      "choices": [
+        { "text": "Drawing, crafting", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "Singing, dancing, instruments", "scores": { "music": 2, "creative": 1 } },
+        { "text": "Storytelling, presentations", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "Puzzles, Lego, experiments", "scores": { "analysis": 2, "craft": 1 } }
+      ]
+    },
+    {
+      "question": "What do you usually choose when giving gifts?",
+      "choices": [
+        { "text": "Something I made myself", "scores": { "craft": 2, "creative": 1 } },
+        { "text": "Music or concert tickets", "scores": { "music": 2, "creative": 1 } },
+        { "text": "A meaningful letter included", "scores": { "writing": 2, "communication": 1 } },
+        { "text": "Something practical they really need", "scores": { "analysis": 2, "craft": 1 } }
+      ]
+    },
+    {
+      "question": "What do you want to do when stressed?",
+      "choices": [
+        { "text": "Draw or do creative activities", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "Listen to music or play an instrument", "scores": { "music": 2, "creative": 1 } },
+        { "text": "Chat with friends", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "Puzzles or games", "scores": { "analysis": 2, "craft": 1 } }
+      ]
+    },
+    {
+      "question": "What's your ideal work environment?",
+      "choices": [
+        { "text": "Freely expressing ideas", "scores": { "creative": 2, "writing": 1 } },
+        { "text": "Making things with my hands", "scores": { "craft": 2, "creative": 1 } },
+        { "text": "Communicating with people", "scores": { "communication": 2, "music": 1 } },
+        { "text": "Researching and analyzing", "scores": { "analysis": 2, "writing": 1 } }
+      ]
+    },
+    {
+      "question": "What's your preferred way of learning new things?",
+      "choices": [
+        { "text": "Watching and following along", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "Listening and feeling", "scores": { "music": 2, "communication": 1 } },
+        { "text": "Learning through conversation", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "Researching through books and materials", "scores": { "analysis": 2, "writing": 1 } }
+      ]
+    },
+    {
+      "question": "When do you feel most proud?",
+      "choices": [
+        { "text": "When I complete a creative work", "scores": { "creative": 2, "craft": 1 } },
+        { "text": "When I finish a performance or presentation well", "scores": { "music": 2, "communication": 1 } },
+        { "text": "When I persuade or help someone", "scores": { "communication": 2, "writing": 1 } },
+        { "text": "When I solve a difficult problem", "scores": { "analysis": 2, "craft": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "creative",
+      "title": "Artistic Creativity",
+      "emoji": "🎨",
+      "description": "Your hidden talent is artistic creativity! You see the world from a unique perspective and have the ability to create original ideas and beauty. You can shine in visual arts fields like design, photography, and video.",
+      "traits": ["Creativity", "Originality", "Aesthetic sense", "Imagination", "Expressiveness"],
+      "advice": "Share your creative ideas with the world. Try expressing them through various media like art, photography, and video."
+    },
+    {
+      "type": "music",
+      "title": "Musical Sense",
+      "emoji": "🎵",
+      "description": "Your hidden talent is musical sense! Sensitive to rhythm and melody, you have the ability to express and convey emotions through music. You can showcase your talent in music fields like playing instruments, composing, and singing.",
+      "traits": ["Rhythm", "Pitch", "Sensitivity", "Expressiveness", "Focus"],
+      "advice": "Try learning an instrument you like or start singing. Music can also help relieve stress."
+    },
+    {
+      "type": "craft",
+      "title": "Craftsmanship",
+      "emoji": "🔧",
+      "description": "Your hidden talent is craftsmanship! You excel at making and fixing things with your hands. You can shine in practical fields like DIY, crafts, cooking, and repairs.",
+      "traits": ["Dexterity", "Precision", "Patience", "Practicality", "Perfectionism"],
+      "advice": "Start hobbies that involve working with your hands. Explore various fields like woodworking, knitting, and cooking."
+    },
+    {
+      "type": "writing",
+      "title": "Writing & Storytelling",
+      "emoji": "✍️",
+      "description": "Your hidden talent is writing! You excel at expressing thoughts and emotions through words. You can move people's hearts through various forms of writing like novels, poetry, essays, and blogs.",
+      "traits": ["Expressiveness", "Observation", "Imagination", "Empathy", "Eloquence"],
+      "advice": "Try writing a little every day. Any form is good - journals, blogs, short stories."
+    },
+    {
+      "type": "communication",
+      "title": "Communication & Persuasion",
+      "emoji": "🎤",
+      "description": "Your hidden talent is communication! You excel at talking to people and persuading them. You can shine in people-oriented fields like public speaking, negotiation, counseling, and sales.",
+      "traits": ["Eloquence", "Empathy", "Persuasion", "Listening", "Humor"],
+      "advice": "Look for debate clubs or presentation opportunities. Podcasts and YouTube can also be a good start."
+    },
+    {
+      "type": "analysis",
+      "title": "Analysis & Logic",
+      "emoji": "🔬",
+      "description": "Your hidden talent is analytical ability! You excel at logically analyzing and solving complex problems. You can shine in fields like research, data analysis, and strategy development.",
+      "traits": ["Logic", "Analytical ability", "Objectivity", "Systematic thinking", "Problem-solving"],
+      "advice": "Try analyzing data in areas that interest you. Learning programming or statistics could also be beneficial."
+    }
+  ]
+}
