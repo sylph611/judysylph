@@ -4,7 +4,7 @@ import Result from '../../../../components/Result.astro';
 import ShareButtons from '../../../../components/ShareButtons.astro';
 import AdBanner from '../../../../components/AdBanner.astro';
 import TestCard from '../../../../components/TestCard.astro';
-import { getTest, getAllTests, getTestMeta } from '../../../../utils/tests';
+import { getTest, getAllTests, getRecommendedTests } from '../../../../utils/tests';
 
 export function getStaticPaths() {
   const tests = getAllTests('ko');
@@ -41,7 +41,7 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://judysylph.
 const pageUrl = `${siteUrl}/ko/result/${slug}/${type}`;
 const ogImage = `${siteUrl}/og/${slug}/${type}.svg`;
 
-const otherTests = getTestMeta(lang).filter(t => t.slug !== slug).slice(0, 3);
+const otherTests = getRecommendedTests(lang, slug, 3);
 
 // JSON-LD structured data
 const jsonLd = {
@@ -104,12 +104,13 @@ const jsonLd = {
     <!-- Ad Banner Bottom -->
     <AdBanner slot="result" className="mt-8" />
 
-    <!-- Other Tests -->
+    <!-- Recommended Tests -->
     {otherTests.length > 0 && (
       <section class="mt-16">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-          다른 테스트도 해보세요
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center">
+          이 테스트를 한 사람들이 좋아한 테스트
         </h2>
+        <p class="text-gray-600 dark:text-gray-400 text-center mb-6">비슷한 관심사의 테스트를 추천합니다</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           {otherTests.map((t) => (
             <TestCard

@@ -30,13 +30,52 @@ export interface Test {
   results: ResultType[];
 }
 
+export type TestCategory = 'personality' | 'love' | 'career' | 'lifestyle' | 'fun';
+
 export interface TestMeta {
   slug: string;
   title: string;
   description: string;
   emoji: string;
   questionCount: number;
+  category: TestCategory;
 }
+
+// Category mapping for all tests
+const testCategories: Record<string, TestCategory> = {
+  'animal': 'personality',
+  'love-style': 'love',
+  'color': 'personality',
+  'stress': 'lifestyle',
+  'career': 'career',
+  'mbti': 'personality',
+  'love-language': 'love',
+  'learning-style': 'career',
+  'spending': 'lifestyle',
+  'burnout': 'career',
+  'social': 'personality',
+  'past-life': 'fun',
+  'travel': 'lifestyle'
+};
+
+export const categoryLabels = {
+  ko: {
+    all: '전체',
+    personality: '성격',
+    love: '연애',
+    career: '직업',
+    lifestyle: '라이프',
+    fun: '재미'
+  },
+  en: {
+    all: 'All',
+    personality: 'Personality',
+    love: 'Love',
+    career: 'Career',
+    lifestyle: 'Lifestyle',
+    fun: 'Fun'
+  }
+};
 
 // Import all test data
 import animalKo from '../content/tests/ko/animal.json';
@@ -86,8 +125,27 @@ export function getTestMeta(lang: string): TestMeta[] {
     title: t.title,
     description: t.description,
     emoji: t.emoji,
-    questionCount: t.questions.length
+    questionCount: t.questions.length,
+    category: testCategories[t.slug] || 'personality'
   }));
+}
+
+export function getTestsByCategory(lang: string, category: TestCategory): TestMeta[] {
+  return getTestMeta(lang).filter(t => t.category === category);
+}
+
+export function getRecommendedTests(lang: string, currentSlug: string, limit: number = 3): TestMeta[] {
+  const currentTest = getTestMeta(lang).find(t => t.slug === currentSlug);
+  if (!currentTest) return getTestMeta(lang).slice(0, limit);
+
+  const allTests = getTestMeta(lang).filter(t => t.slug !== currentSlug);
+
+  // Prioritize same category, then random
+  const sameCategory = allTests.filter(t => t.category === currentTest.category);
+  const otherCategory = allTests.filter(t => t.category !== currentTest.category);
+
+  const recommended = [...sameCategory, ...otherCategory].slice(0, limit);
+  return recommended;
 }
 
 export function calculateResult(test: Test, scores: Record<string, number>): ResultType {

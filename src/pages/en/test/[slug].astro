@@ -98,6 +98,15 @@ const jsonLd = {
     scores[r.type] = 0;
   });
 
+  // GA: Track test start
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'test_start', {
+      event_category: 'test',
+      event_label: slug,
+      test_name: testData.title
+    });
+  }
+
   // Handle choice selection
   document.querySelectorAll('.choice-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -141,6 +150,16 @@ const jsonLd = {
               maxScore = score;
               maxType = type;
             }
+          }
+
+          // GA: Track test complete
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'test_complete', {
+              event_category: 'test',
+              event_label: slug,
+              test_name: testData.title,
+              result_type: maxType
+            });
           }
 
           // Redirect to result page

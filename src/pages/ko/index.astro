@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import TestCard from '../../components/TestCard.astro';
 import ToolCard from '../../components/ToolCard.astro';
-import { getTestMeta } from '../../utils/tests';
+import { getTestMeta, categoryLabels } from '../../utils/tests';
 import { getAllTools } from '../../utils/tools';
 import { useTranslations } from '../../i18n';
 
@@ -10,6 +10,7 @@ const lang = 'ko';
 const t = useTranslations(lang);
 const tests = getTestMeta(lang);
 const tools = getAllTools(lang);
+const categories = categoryLabels.ko;
 ---
 
 <Layout title={t('site.title')} description={t('site.description')}>
@@ -42,20 +43,62 @@ const tools = getAllTools(lang);
   <!-- Tests Section -->
   <section id="tests" class="py-16">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+      <h2 class="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
         {t('home.allTests')}
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Category Filter -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button
+          data-category="all"
+          class="category-btn px-4 py-2 rounded-full font-medium transition-all bg-primary-600 text-white"
+        >
+          {categories.all}
+        </button>
+        <button
+          data-category="personality"
+          class="category-btn px-4 py-2 rounded-full font-medium transition-all bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+        >
+          {categories.personality}
+        </button>
+        <button
+          data-category="love"
+          class="category-btn px-4 py-2 rounded-full font-medium transition-all bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+        >
+          {categories.love}
+        </button>
+        <button
+          data-category="career"
+          class="category-btn px-4 py-2 rounded-full font-medium transition-all bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+        >
+          {categories.career}
+        </button>
+        <button
+          data-category="lifestyle"
+          class="category-btn px-4 py-2 rounded-full font-medium transition-all bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+        >
+          {categories.lifestyle}
+        </button>
+        <button
+          data-category="fun"
+          class="category-btn px-4 py-2 rounded-full font-medium transition-all bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+        >
+          {categories.fun}
+        </button>
+      </div>
+
+      <div id="test-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {tests.map((test) => (
-          <TestCard
-            slug={test.slug}
-            title={test.title}
-            description={test.description}
-            emoji={test.emoji}
-            questionCount={test.questionCount}
-            lang={lang}
-          />
+          <div class="test-card" data-category={test.category}>
+            <TestCard
+              slug={test.slug}
+              title={test.title}
+              description={test.description}
+              emoji={test.emoji}
+              questionCount={test.questionCount}
+              lang={lang}
+            />
+          </div>
         ))}
       </div>
     </div>
@@ -107,3 +150,40 @@ const tools = getAllTools(lang);
     </div>
   </section>
 </Layout>
+
+<script>
+  // Category filter
+  const categoryBtns = document.querySelectorAll('.category-btn');
+  const testCards = document.querySelectorAll('.test-card');
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      // Update button styles
+      categoryBtns.forEach(b => {
+        b.classList.remove('bg-primary-600', 'text-white');
+        b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+      });
+      btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+      btn.classList.add('bg-primary-600', 'text-white');
+
+      // Filter cards
+      testCards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          (card as HTMLElement).style.display = 'block';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      // GA event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'filter_category', {
+          event_category: 'engagement',
+          event_label: category
+        });
+      }
+    });
+  });
+</script>
