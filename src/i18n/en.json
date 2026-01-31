@@ -19,7 +19,9 @@
     "allTools": "Online Tools",
     "startTest": "Start Test",
     "useTool": "Use Tool",
-    "viewAll": "View All"
+    "viewAll": "View All",
+    "aboutTitle": "About JudySylph",
+    "aboutDescription": "JudySylph offers fun and insightful personality tests along with useful online tools. Discover your personality, love style, stress coping mechanisms, and more. Use our variety of calculators and converters for everyday needs. All services are free, and you can share your results with friends."
   },
   "test": {
     "question": "Question",
@@ -40,6 +42,7 @@
     "title": "Online Tools",
     "description": "A collection of free online tools useful in everyday life",
     "useTool": "Use",
+    "viewAll": "View all tools →",
     "categories": {
       "text": "Text",
       "date": "Date/Time",

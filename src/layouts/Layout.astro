@@ -143,6 +143,12 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
         </a>
         <div class="flex items-center gap-4">
           <a
+            href={`/${lang}/blog`}
+            class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg px-2 py-1"
+          >
+            {lang === 'ko' ? '블로그' : 'Blog'}
+          </a>
+          <a
             href={`/${lang}/history`}
             class="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg p-1"
             aria-label={lang === 'ko' ? '내 테스트 기록 보기' : 'View my test history'}

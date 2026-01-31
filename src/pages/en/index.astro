@@ -6,6 +6,7 @@ import SearchBar from '../../components/SearchBar.astro';
 import TestCardSkeleton from '../../components/TestCardSkeleton.astro';
 import ToolCardSkeleton from '../../components/ToolCardSkeleton.astro';
 import RecentTests from '../../components/RecentTests.astro';
+import RecentBlogPosts from '../../components/RecentBlogPosts.astro';
 import { getTestMeta, categoryLabels } from '../../utils/tests';
 import { getAllTools } from '../../utils/tools';
 import { useTranslations } from '../../i18n';
@@ -163,23 +164,23 @@ const categories = categoryLabels.en;
 
       <div class="text-center mt-8">
         <a href={`/${lang}/tools`} class="text-primary-600 dark:text-primary-400 hover:underline font-medium">
-          View All Tools →
+          {t('tools.viewAll')}
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Recent Blog Posts -->
+  <RecentBlogPosts lang={lang} />
+
   <!-- About Section -->
   <section class="py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-        About JudySylph
+        {t('home.aboutTitle')}
       </h2>
       <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-        JudySylph provides fun and insightful psychological tests along with useful everyday tools.
-        Discover your personality, love style, stress coping methods, and more.
-        Use our convenient calculators and converters for your daily needs.
-        All services are free, and you can share your results with friends.
+        {t('home.aboutDescription')}
       </p>
     </div>
   </section>

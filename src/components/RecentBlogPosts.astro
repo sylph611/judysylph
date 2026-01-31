@@ -1,0 +1,78 @@
+---
+import { getRecentPosts, calculateReadingTime } from '../utils/blog';
+
+interface Props {
+  lang: 'ko' | 'en';
+}
+
+const { lang } = Astro.props;
+const posts = await getRecentPosts(lang, 3);
+
+const texts = {
+  ko: {
+    title: '최근 블로그 글',
+    description: '유용한 정보와 가이드를 확인하세요',
+    readTime: '분 읽기',
+    viewAll: '모든 글 보기 →',
+  },
+  en: {
+    title: 'Recent Blog Posts',
+    description: 'Check out our latest guides and tips',
+    readTime: 'min read',
+    viewAll: 'View all posts →',
+  },
+};
+
+const t = texts[lang];
+---
+
+{posts.length > 0 && (
+  <section class="py-16 bg-gray-50 dark:bg-gray-800/50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          {t.title}
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400">
+          {t.description}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {posts.map((post) => {
+          const postSlug = post.slug.replace(new RegExp(`^${lang}/`), '');
+          const readingTime = calculateReadingTime(post.body || '');
+          return (
+            <a
+              href={`/${lang}/blog/${postSlug}`}
+              class="block bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600"
+            >
+              <div class="text-4xl mb-4">{post.data.emoji}</div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full">
+                  {post.data.category}
+                </span>
+                <span class="text-xs text-gray-500">{readingTime}{t.readTime}</span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+                {post.data.title}
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                {post.data.description}
+              </p>
+            </a>
+          );
+        })}
+      </div>
+
+      <div class="text-center mt-8">
+        <a
+          href={`/${lang}/blog`}
+          class="text-primary-600 dark:text-primary-400 hover:underline font-medium"
+        >
+          {t.viewAll}
+        </a>
+      </div>
+    </div>
+  </section>
+)}

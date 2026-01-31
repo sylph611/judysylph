@@ -1,23 +1,28 @@
 import type { APIRoute } from 'astro';
-import blogPostsKo from '../content/blog/ko.json';
-import blogPostsEn from '../content/blog/en.json';
+import { getCollection } from 'astro:content';
 
 const siteUrl = 'https://judysylph.com';
 
-interface BlogPost {
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function generateRssItem(post: {
   slug: string;
   title: string;
   description: string;
-  content: string;
   emoji: string;
   category: string;
-  publishedAt: string;
-  readingTime: number;
-}
-
-function generateRssItem(post: BlogPost, lang: string): string {
-  const postUrl = `${siteUrl}/${lang}/blog/${post.slug}`;
-  const pubDate = new Date(post.publishedAt).toUTCString();
+  publishDate: Date;
+}, lang: string): string {
+  const postSlug = post.slug.replace(new RegExp(`^${lang}/`), '');
+  const postUrl = `${siteUrl}/${lang}/blog/${postSlug}`;
+  const pubDate = post.publishDate.toUTCString();
 
   return `
     <item>
@@ -25,7 +30,7 @@ function generateRssItem(post: BlogPost, lang: string): string {
       <link>${postUrl}</link>
       <guid isPermaLink="true">${postUrl}</guid>
       <description><![CDATA[${post.description}]]></description>
-      <category>${post.category}</category>
+      <category>${escapeXml(post.category)}</category>
       <pubDate>${pubDate}</pubDate>
     </item>`;
 }
@@ -34,16 +39,25 @@ export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const lang = url.searchParams.get('lang') || 'ko';
 
-  const posts: BlogPost[] = lang === 'en' ? blogPostsEn : blogPostsKo;
-  const sortedPosts = [...posts].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  // Get posts from content collection
+  const allPosts = await getCollection('blog', ({ id }) => id.startsWith(`${lang}/`));
+
+  const sortedPosts = allPosts
+    .map(post => ({
+      slug: post.slug,
+      title: post.data.title,
+      description: post.data.description,
+      emoji: post.data.emoji,
+      category: post.data.category,
+      publishDate: post.data.publishDate,
+    }))
+    .sort((a, b) => b.publishDate.getTime() - a.publishDate.getTime());
 
   const channelTitle = lang === 'ko' ? 'JudySylph 블로그' : 'JudySylph Blog';
   const channelDesc =
     lang === 'ko'
-      ? '심리 테스트와 자기 발견에 대한 유용한 정보를 제공합니다.'
-      : 'Useful information about psychology tests and self-discovery.';
+      ? '재무, 세금, 부동산 등 실용적인 정보와 계산 가이드를 제공합니다.'
+      : 'Practical guides on finance, taxes, real estate, and useful calculators.';
 
   const rssContent = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
