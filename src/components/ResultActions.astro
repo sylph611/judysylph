@@ -72,7 +72,7 @@ const t = {
 <!-- Hidden canvas for image generation -->
 <canvas id="result-canvas" class="hidden"></canvas>
 
-<script define:vars={{ lang, savingText: t.saving, savedText: t.saved, saveImageText: t.saveImage }}>
+<script define:vars={{ lang, savingText: t.saving, savedText: t.saved, defaultSaveText: t.saveImage }}>
   // QR Code generation using qrcode-generator alternative with canvas
   function generateQRCode(text, container) {
     // Create a simple QR code using a public API
@@ -123,7 +123,7 @@ const t = {
 
   // Image Save functionality
   const saveImageBtn = document.getElementById('save-image-btn');
-  const saveImageText = document.getElementById('save-image-text');
+  const saveImageTextEl = document.getElementById('save-image-text');
   const resultCanvas = document.getElementById('result-canvas');
 
   saveImageBtn?.addEventListener('click', async () => {
@@ -131,7 +131,7 @@ const t = {
     const emoji = saveImageBtn.getAttribute('data-emoji') || '';
     const testName = saveImageBtn.getAttribute('data-test') || '';
 
-    if (saveImageText) saveImageText.textContent = savingText;
+    if (saveImageTextEl) saveImageTextEl.textContent = savingText;
     saveImageBtn.disabled = true;
 
     try {
@@ -190,9 +190,9 @@ const t = {
       link.href = dataUrl;
       link.click();
 
-      if (saveImageText) saveImageText.textContent = savedText;
+      if (saveImageTextEl) saveImageTextEl.textContent = savedText;
       setTimeout(() => {
-        if (saveImageText) saveImageText.textContent = saveImageText;
+        if (saveImageTextEl) saveImageTextEl.textContent = defaultSaveText;
         saveImageBtn.disabled = false;
       }, 2000);
 
@@ -206,7 +206,7 @@ const t = {
       }
     } catch (err) {
       console.error('Failed to save image:', err);
-      if (saveImageText) saveImageText.textContent = saveImageText;
+      if (saveImageTextEl) saveImageTextEl.textContent = defaultSaveText;
       saveImageBtn.disabled = false;
     }
   });
