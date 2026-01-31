@@ -15,16 +15,20 @@ const defaultPlaceholder = lang === 'ko' ? '테스트나 도구 검색...' : 'Se
       id="search-input"
       class="w-full px-4 py-3 pl-12 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500"
       placeholder={placeholder || defaultPlaceholder}
+      aria-label={lang === 'ko' ? '테스트 및 도구 검색' : 'Search tests and tools'}
+      aria-controls="search-results"
+      aria-autocomplete="list"
     />
-    <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
     </svg>
     <button
       id="search-clear"
       type="button"
       class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden"
+      aria-label={lang === 'ko' ? '검색어 지우기' : 'Clear search'}
     >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
@@ -34,6 +38,8 @@ const defaultPlaceholder = lang === 'ko' ? '테스트나 도구 검색...' : 'Se
   <div
     id="search-results"
     class="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 hidden z-50 max-h-96 overflow-y-auto"
+    role="listbox"
+    aria-label={lang === 'ko' ? '검색 결과' : 'Search results'}
   >
     <!-- Loading Skeleton -->
     <div id="search-loading" class="hidden">

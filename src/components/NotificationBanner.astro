@@ -28,6 +28,7 @@ const t = {
           type="button"
           class="px-4 py-2 bg-primary-600 text-white text-sm rounded-lg font-medium hover:bg-primary-700 transition-colors"
           data-subscribed-text={t.subscribed}
+          aria-label={t.subscribe}
         >
           {t.subscribe}
         </button>
@@ -35,6 +36,7 @@ const t = {
           id="dismiss-notifications"
           type="button"
           class="px-4 py-2 text-gray-600 dark:text-gray-400 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+          aria-label={t.dismiss}
         >
           {t.dismiss}
         </button>
@@ -44,8 +46,9 @@ const t = {
       id="close-notification-banner"
       type="button"
       class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+      aria-label={lang === 'ko' ? '알림 배너 닫기' : 'Close notification banner'}
     >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
