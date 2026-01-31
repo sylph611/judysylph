@@ -28,8 +28,9 @@ const t = {
     data-title={resultTitle}
     data-emoji={resultEmoji}
     data-test={testTitle}
+    aria-label={t.saveImage}
   >
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>
     <span id="save-image-text">{t.saveImage}</span>
@@ -41,8 +42,9 @@ const t = {
     id="qr-code-btn"
     class="flex items-center gap-2 px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
     data-url={url}
+    aria-label={t.qrCode}
   >
-    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13 2h-2v2h2v2h-2v-2h-2v2h-2v-2h2v-2h-2v-2h2v2h2v-2h2v2zm0-2V13h2v2h-2zm0 4h2v2h-2v-2z"/>
     </svg>
     {t.qrCode}
@@ -50,10 +52,10 @@ const t = {
 </div>
 
 <!-- QR Code Modal -->
-<div id="qr-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+<div id="qr-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
   <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-sm mx-4 shadow-2xl">
     <div class="text-center">
-      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{t.qrTitle}</h3>
+      <h3 id="qr-modal-title" class="text-lg font-bold text-gray-900 dark:text-white mb-2">{t.qrTitle}</h3>
       <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{t.qrDesc}</p>
       <div id="qr-container" class="bg-white p-4 rounded-xl inline-block mb-4">
         <!-- QR code will be rendered here -->
@@ -62,6 +64,7 @@ const t = {
         type="button"
         id="qr-close-btn"
         class="w-full py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        aria-label={t.close}
       >
         {t.close}
       </button>
