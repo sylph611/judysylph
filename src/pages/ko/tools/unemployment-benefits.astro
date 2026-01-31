@@ -1,17 +1,28 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { getTool } from '../../../utils/tools';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps, getToolStepType } from '../../../utils/tools';
 
 const lang = 'ko';
 const tool = getTool('unemployment-benefits', lang);
 
-const jsonLd = {
+const siteUrl = 'https://judysylph.com';
+const stepType = getToolStepType('unemployment-benefits');
+const steps = calculatorSteps['ko'][stepType];
+
+const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": tool?.title,
   "description": tool?.description,
-  "applicationCategory": "FinanceApplication"
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
 };
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
 ---
 
 <Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>

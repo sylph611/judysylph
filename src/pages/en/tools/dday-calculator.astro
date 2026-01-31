@@ -1,28 +1,28 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { getTool } from '../../../utils/tools';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps, getToolStepType } from '../../../utils/tools';
 
 const lang = 'en';
 const tool = getTool('dday-calculator', lang);
 
-const jsonLd = {
+const siteUrl = 'https://judysylph.com';
+const stepType = getToolStepType('dday-calculator');
+const steps = calculatorSteps['en'][stepType];
+
+const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": tool?.title,
   "description": tool?.description,
-  "applicationCategory": "UtilityApplication",
+  "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "JudySylph",
-    "url": "https://judysylph.com"
-  }
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 };
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'en', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'en', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
 ---
 
 <Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>

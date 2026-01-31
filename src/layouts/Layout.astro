@@ -10,7 +10,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonicalUrl?: string;
-  jsonLd?: Record<string, unknown>;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const { title, description, ogImage, canonicalUrl, jsonLd } = Astro.props;
@@ -120,7 +120,11 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
       "sameAs": []
     })} />
     {jsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      Array.isArray(jsonLd)
+        ? jsonLd.map((schema) => (
+            <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+          ))
+        : <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
 
     <!-- View Transitions -->
