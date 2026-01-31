@@ -1,12 +1,12 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { getAllPosts } from '../../../utils/blog';
+import { getAllPosts, calculateReadingTime } from '../../../utils/blog';
 
 const lang = 'ko';
-const posts = getAllPosts(lang);
+const posts = await getAllPosts(lang);
 
 const pageTitle = '블로그 | JudySylph';
-const pageDescription = '심리학, 자기계발, 관계에 대한 유익한 글을 읽어보세요.';
+const pageDescription = '재무, 세금, 부동산 등 실용적인 정보와 계산 가이드를 제공합니다.';
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -15,43 +15,60 @@ const pageDescription = '심리학, 자기계발, 관계에 대한 유익한 글
     <div class="text-center mb-12">
       <div class="text-5xl mb-4">📝</div>
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">블로그</h1>
-      <p class="text-gray-600 dark:text-gray-400">심리학, 자기계발, 관계에 대한 이야기</p>
+      <p class="text-gray-600 dark:text-gray-400">재무, 세금, 부동산에 대한 실용 가이드</p>
     </div>
 
     <!-- Blog Posts -->
-    <div class="space-y-6">
-      {posts.map((post) => (
-        <a
-          href={`/ko/blog/${post.slug}`}
-          class="block bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600"
-        >
-          <div class="flex items-start gap-4">
-            <div class="text-4xl">{post.emoji}</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full">
-                  {post.category}
-                </span>
-                <span class="text-xs text-gray-500">{post.readingTime}분 읽기</span>
+    {posts.length > 0 ? (
+      <div class="space-y-6">
+        {posts.map(async (post) => {
+          const readingTime = calculateReadingTime(post.body);
+          const slug = post.slug.replace(/^ko\//, '');
+
+          return (
+            <a
+              href={`/ko/blog/${slug}`}
+              class="block bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600"
+            >
+              <div class="flex items-start gap-4">
+                <div class="text-4xl">{post.data.emoji}</div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full">
+                      {post.data.category}
+                    </span>
+                    <span class="text-xs text-gray-500">{readingTime}분 읽기</span>
+                  </div>
+                  <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    {post.data.title}
+                  </h2>
+                  <p class="text-gray-600 dark:text-gray-400 line-clamp-2">
+                    {post.data.description}
+                  </p>
+                  <div class="mt-3 flex items-center gap-4">
+                    <time class="text-sm text-gray-500">
+                      {post.data.publishDate.toLocaleDateString('ko-KR', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                    {post.data.keywords.slice(0, 3).map((keyword) => (
+                      <span class="text-xs text-gray-400">#{keyword}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                {post.title}
-              </h2>
-              <p class="text-gray-600 dark:text-gray-400 line-clamp-2">
-                {post.description}
-              </p>
-              <div class="mt-3 text-sm text-gray-500">
-                {new Date(post.publishedAt).toLocaleDateString('ko-KR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </div>
-            </div>
-          </div>
-        </a>
-      ))}
-    </div>
+            </a>
+          );
+        })}
+      </div>
+    ) : (
+      <div class="text-center py-12 bg-gray-50 dark:bg-gray-800 rounded-2xl">
+        <div class="text-5xl mb-4">📭</div>
+        <p class="text-gray-600 dark:text-gray-400">아직 작성된 글이 없습니다.</p>
+      </div>
+    )}
 
     <!-- Back Link -->
     <div class="mt-12 text-center">
