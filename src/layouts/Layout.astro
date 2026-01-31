@@ -32,8 +32,14 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- DNS Prefetch & Preconnect for external services -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://api.qrserver.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+
     <!-- PWA -->
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href={lang === 'en' ? '/manifest-en.json' : '/manifest.json'} />
     <meta name="theme-color" content="#7c3aed" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
