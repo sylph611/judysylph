@@ -1,0 +1,150 @@
+{
+  "slug": "personal-color",
+  "title": "Personal Color Psychology Test",
+  "description": "What's your personal color based on personality? Find your colors with 12 questions!",
+  "emoji": "🎨",
+  "questions": [
+    {
+      "question": "What do people often say about your first impression?",
+      "choices": [
+        { "text": "Bright and radiant", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Calm and elegant", "scores": { "summer": 2, "winter": 1 } },
+        { "text": "Warm and comfortable", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "Chic and charismatic", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "Which natural scenery attracts you most?",
+      "choices": [
+        { "text": "Cherry blossoms in spring garden", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Misty lake with lavender fields", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "Autumn forest with golden fields", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "Snow-covered mountains and night sky", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "Preferred accessory color?",
+      "choices": [
+        { "text": "Gold or rose gold", "scores": { "spring": 2, "autumn": 1 } },
+        { "text": "Soft silver or pearl", "scores": { "summer": 2, "winter": 1 } },
+        { "text": "Antique gold or bronze", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "White gold or platinum", "scores": { "winter": 2, "summer": 1 } }
+      ]
+    },
+    {
+      "question": "How would you describe your energy level?",
+      "choices": [
+        { "text": "Bright and energetic", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Soft and quiet", "scores": { "summer": 2, "autumn": 1 } },
+        { "text": "Calm and stable", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "Intense and focused", "scores": { "winter": 2, "spring": 1 } }
+      ]
+    },
+    {
+      "question": "How do you relieve stress?",
+      "choices": [
+        { "text": "Chatting with friends", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Quiet music or reading", "scores": { "summer": 2, "winter": 1 } },
+        { "text": "Nature walks or café visits", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "Exercise or alone time", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "Preferred fashion style?",
+      "choices": [
+        { "text": "Cute and lovely", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Romantic and feminine", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "Natural and vintage", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "Modern and simple", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "Your favorite time of day?",
+      "choices": [
+        { "text": "Sunny morning", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Sunset afternoon", "scores": { "summer": 2, "autumn": 1 } },
+        { "text": "Warm evening", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "Quiet night", "scores": { "winter": 2, "summer": 1 } }
+      ]
+    },
+    {
+      "question": "Your conversation style?",
+      "choices": [
+        { "text": "Fun and playful", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Considerate and gentle", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "Sincere and deep", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "Logical and clear", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "Your ideal interior style?",
+      "choices": [
+        { "text": "Bright pastel tones", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Calm gray and blue tones", "scores": { "summer": 2, "winter": 1 } },
+        { "text": "Wood and terracotta natural tones", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "Black & white monotone", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "How do you express emotions?",
+      "choices": [
+        { "text": "Openly and expressively", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Subtly and delicately", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "Deeply and seriously", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "Restrained and intensely", "scores": { "winter": 2, "summer": 1 } }
+      ]
+    },
+    {
+      "question": "Preferred lip color?",
+      "choices": [
+        { "text": "Coral, peach shades", "scores": { "spring": 2, "autumn": 1 } },
+        { "text": "Rose, pink shades", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "Brick, orange-brown shades", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "Red, burgundy shades", "scores": { "winter": 2, "summer": 1 } }
+      ]
+    },
+    {
+      "question": "When do you feel most confident?",
+      "choices": [
+        { "text": "Meeting new people", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "Creating harmony", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "Building trust", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "Achieving goals", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "spring",
+      "title": "Spring Warm Tone",
+      "emoji": "🌸",
+      "description": "Your personal color is the bright and vibrant Spring Warm! With bright, warm energy that lights up those around you, colors like coral, peach, bright orange, and light green suit you perfectly. Gold accessories especially shine on you!",
+      "traits": ["Bright", "Energetic", "Friendly", "Optimistic", "Social"],
+      "advice": "Choose bright and vivid colors over dark ones. Navy or brown suits you better than black!"
+    },
+    {
+      "type": "summer",
+      "title": "Summer Cool Tone",
+      "emoji": "💜",
+      "description": "Your personal color is the soft and elegant Summer Cool! With your calm and sophisticated vibe, colors like lavender, rose pink, sky blue, and gray suit you perfectly. Silver or pearl accessories look stunning on you!",
+      "traits": ["Elegant", "Calm", "Delicate", "Considerate", "Intellectual"],
+      "advice": "Choose pastels or muted tones over primary colors. Ivory looks better on you than pure white!"
+    },
+    {
+      "type": "autumn",
+      "title": "Autumn Warm Tone",
+      "emoji": "🍂",
+      "description": "Your personal color is the deep and warm Autumn Warm! With your stable and trustworthy vibe, natural earth tones like mustard, terracotta, khaki, and brown suit you perfectly. Gold or antique accessories look great on you!",
+      "traits": ["Trustworthy", "Stable", "Serious", "Warm", "Natural"],
+      "advice": "Choose toned-down warm colors. Dark brown or khaki suits you better than black!"
+    },
+    {
+      "type": "winter",
+      "title": "Winter Cool Tone",
+      "emoji": "❄️",
+      "description": "Your personal color is the vivid and bold Winter Cool! With your charisma and sophistication, high-contrast colors like burgundy, royal blue, black, and pure white suit you perfectly. Silver or white gold accessories shine on you!",
+      "traits": ["Charismatic", "Sophisticated", "Confident", "Independent", "Strong"],
+      "advice": "Choose vivid, high-contrast colors. You're the type who looks best in black and white!"
+    }
+  ]
+}

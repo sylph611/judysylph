@@ -1,0 +1,158 @@
+{
+  "slug": "alter-ego",
+  "title": "Your Alter Ego Test",
+  "description": "A hidden self different from your usual persona! What type is your alter ego?",
+  "emoji": "🎭",
+  "questions": [
+    {
+      "question": "What do you most want to do when alone?",
+      "choices": [
+        { "text": "Dance to upbeat music", "scores": { "performer": 2, "rebel": 1 } },
+        { "text": "Enjoy secret hobbies", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Make bold plans", "scores": { "rebel": 2, "leader": 1 } },
+        { "text": "Meditate and explore inner self", "scores": { "mystic": 2, "creator": 1 } }
+      ]
+    },
+    {
+      "question": "A secret desire you have?",
+      "choices": [
+        { "text": "Want to be cheered on stage", "scores": { "performer": 2, "leader": 1 } },
+        { "text": "Want recognition for my creations", "scores": { "creator": 2, "performer": 1 } },
+        { "text": "Want to break all the rules", "scores": { "rebel": 2, "mystic": 1 } },
+        { "text": "Want to lead the world", "scores": { "leader": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "question": "If you had a secret social media account?",
+      "choices": [
+        { "text": "Fun daily vlog full of personality", "scores": { "performer": 2, "creator": 1 } },
+        { "text": "Aesthetic artwork gallery", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Honest social commentary", "scores": { "rebel": 2, "leader": 1 } },
+        { "text": "Spiritual and philosophical posts", "scores": { "mystic": 2, "creator": 1 } }
+      ]
+    },
+    {
+      "question": "If you could be someone else for a day?",
+      "choices": [
+        { "text": "Popular celebrity", "scores": { "performer": 2, "leader": 1 } },
+        { "text": "Famous artist/writer", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Free wanderer", "scores": { "rebel": 2, "performer": 1 } },
+        { "text": "Influential leader", "scores": { "leader": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "question": "What do you imagine when stressed?",
+      "choices": [
+        { "text": "Singing on stage", "scores": { "performer": 2, "rebel": 1 } },
+        { "text": "Being absorbed in my studio", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Throwing everything away and leaving", "scores": { "rebel": 2, "performer": 1 } },
+        { "text": "Leading people", "scores": { "leader": 2, "creator": 1 } }
+      ]
+    },
+    {
+      "question": "An ability you most envy?",
+      "choices": [
+        { "text": "Charisma that captivates people", "scores": { "performer": 2, "leader": 1 } },
+        { "text": "Ability to create from nothing", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Freedom from all constraints", "scores": { "rebel": 2, "performer": 1 } },
+        { "text": "Power to inspire others", "scores": { "leader": 2, "creator": 1 } }
+      ]
+    },
+    {
+      "question": "The biggest difference from your usual self?",
+      "choices": [
+        { "text": "Actually love attention", "scores": { "performer": 2, "leader": 1 } },
+        { "text": "Actually very sensitive", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Actually quite rebellious", "scores": { "rebel": 2, "performer": 1 } },
+        { "text": "Actually very ambitious", "scores": { "leader": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "question": "How do you change when drunk?",
+      "choices": [
+        { "text": "Get excited and wild", "scores": { "performer": 2, "rebel": 1 } },
+        { "text": "Become emotional and poetic", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Say things I usually can't", "scores": { "rebel": 2, "leader": 1 } },
+        { "text": "Get into serious life talks", "scores": { "mystic": 2, "leader": 1 } }
+      ]
+    },
+    {
+      "question": "What was your childhood dream job?",
+      "choices": [
+        { "text": "Singer/Actor/Idol", "scores": { "performer": 2, "creator": 1 } },
+        { "text": "Painter/Writer/Designer", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Explorer/Pirate/Rockstar", "scores": { "rebel": 2, "performer": 1 } },
+        { "text": "President/CEO/Hero", "scores": { "leader": 2, "rebel": 1 } }
+      ]
+    },
+    {
+      "question": "Your hidden self at parties?",
+      "choices": [
+        { "text": "Life of the party leading the vibe", "scores": { "performer": 2, "leader": 1 } },
+        { "text": "Observer in the corner", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Unpredictable wildcard", "scores": { "rebel": 2, "performer": 1 } },
+        { "text": "Natural center of attention", "scores": { "leader": 2, "creator": 1 } }
+      ]
+    },
+    {
+      "question": "What do people often say about you?",
+      "choices": [
+        { "text": "Surprisingly entertaining!", "scores": { "performer": 2, "rebel": 1 } },
+        { "text": "Surprisingly emotional!", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Surprisingly bold!", "scores": { "rebel": 2, "leader": 1 } },
+        { "text": "Surprisingly charismatic!", "scores": { "leader": 2, "performer": 1 } }
+      ]
+    },
+    {
+      "question": "A color that represents the real you?",
+      "choices": [
+        { "text": "Flashy gold/pink", "scores": { "performer": 2, "leader": 1 } },
+        { "text": "Emotional purple/sky blue", "scores": { "creator": 2, "mystic": 1 } },
+        { "text": "Bold red/black", "scores": { "rebel": 2, "performer": 1 } },
+        { "text": "Deep navy/green", "scores": { "leader": 2, "mystic": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "performer",
+      "title": "Stage Stealer",
+      "emoji": "🌟",
+      "description": "Your alter ego is a star on stage - the Stage Stealer! You might be quiet normally, but deep inside you desire attention and want to shine. When you perform in front of others, the real you emerges!",
+      "traits": ["Charismatic", "Expressive", "Charming", "Confident", "Entertainer"],
+      "advice": "Don't hide it! Find your stage - karaoke, dancing, YouTube - anywhere to unleash your inner performer."
+    },
+    {
+      "type": "creator",
+      "title": "Hidden Artist",
+      "emoji": "🎨",
+      "description": "Your alter ego is a creative soul - the Hidden Artist! You may seem ordinary in daily life, but inside you have an intense desire to create and express. Your artistic sensitivity is your true self.",
+      "traits": ["Creative", "Sensitive", "Immersive", "Original", "Artistic"],
+      "advice": "Start creating! Writing, drawing, music - your works are needed in this world."
+    },
+    {
+      "type": "rebel",
+      "title": "Free Spirit",
+      "emoji": "🔥",
+      "description": "Your alter ego is a free rebel - the Free Spirit! You live according to social expectations and rules, but inside you want to throw it all away and live freely. Boldness is your true self.",
+      "traits": ["Freedom", "Challenge", "Bold", "Independent", "Pioneer"],
+      "advice": "Step out of your comfort zone! Start with small rebellions to free your spirit."
+    },
+    {
+      "type": "leader",
+      "title": "Shadow Leader",
+      "emoji": "👑",
+      "description": "Your alter ego is a born leader - the Shadow Leader! You live humbly, but inside you have ambitions to lead people and wield influence. Charisma is your true self.",
+      "traits": ["Leadership", "Charisma", "Vision", "Influence", "Decisive"],
+      "advice": "Take on leadership roles! Show your leadership in projects, groups, and communities."
+    },
+    {
+      "type": "mystic",
+      "title": "Soul Seeker",
+      "emoji": "🔮",
+      "description": "Your alter ego is a spiritual explorer - the Soul Seeker! You're grounded in reality, but inside you yearn to explore the meaning of life and inner worlds. Deep insight is your true self.",
+      "traits": ["Intuitive", "Insightful", "Philosophical", "Spiritual", "Deep"],
+      "advice": "Explore meditation, philosophy, and psychology. Your insights can deepen the world."
+    }
+  ]
+}

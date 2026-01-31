@@ -1,0 +1,150 @@
+{
+  "slug": "hsp",
+  "title": "HSP 예민함 테스트",
+  "description": "당신은 얼마나 예민한 사람인가요? 고민감성(HSP) 성향을 알아보세요!",
+  "emoji": "🦋",
+  "questions": [
+    {
+      "question": "시끄러운 환경에서 집중하기가?",
+      "choices": [
+        { "text": "전혀 어렵지 않다", "scores": { "low": 2 } },
+        { "text": "조금 신경 쓰인다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "꽤 힘들다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "거의 불가능하다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "다른 사람의 기분 변화를 얼마나 빨리 알아채나요?",
+      "choices": [
+        { "text": "직접 말해야 안다", "scores": { "low": 2 } },
+        { "text": "대체로 눈치챈다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "표정만 봐도 안다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "말하기 전에 이미 느낀다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "강한 빛이나 냄새에 민감한가요?",
+      "choices": [
+        { "text": "거의 신경 안 쓴다", "scores": { "low": 2 } },
+        { "text": "강하면 조금 불편하다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "꽤 예민하게 반응한다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "매우 민감해서 피한다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "슬픈 영화나 뉴스를 볼 때?",
+      "choices": [
+        { "text": "담담하게 본다", "scores": { "low": 2 } },
+        { "text": "잠깐 감정이입 한다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "꽤 오래 마음에 남는다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "며칠간 우울해진다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "바쁜 하루를 보낸 후?",
+      "choices": [
+        { "text": "바로 다음 일정 소화 가능", "scores": { "low": 2 } },
+        { "text": "잠깐 쉬면 괜찮다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "혼자만의 시간이 필요하다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "완전히 지쳐서 회복에 오래 걸린다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "갑작스러운 계획 변경에 대한 반응은?",
+      "choices": [
+        { "text": "유연하게 대처한다", "scores": { "low": 2 } },
+        { "text": "약간 불편하지만 적응", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "스트레스를 받는다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "매우 힘들고 불안하다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "카페인이나 알코올에 대한 민감도는?",
+      "choices": [
+        { "text": "많이 마셔도 괜찮다", "scores": { "low": 2 } },
+        { "text": "적당히 영향 받는다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "조금만 마셔도 예민해진다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "거의 못 마신다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "예술 작품(음악, 미술)을 볼 때?",
+      "choices": [
+        { "text": "그냥 본다", "scores": { "low": 2 } },
+        { "text": "좋으면 기분이 좋다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "깊이 감동받는다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "압도당해서 눈물이 난다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "누군가 화나있을 때 나는?",
+      "choices": [
+        { "text": "별로 영향 안 받는다", "scores": { "low": 2 } },
+        { "text": "약간 불편하다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "내 기분도 안 좋아진다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "마치 내가 화난 것처럼 느껴진다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "복잡하고 미묘한 것들을 알아차리는 편인가요?",
+      "choices": [
+        { "text": "잘 모르겠다", "scores": { "low": 2 } },
+        { "text": "가끔 알아챈다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "자주 알아챈다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "항상 세부사항까지 인지한다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "배고프거나 피곤할 때 기분 변화는?",
+      "choices": [
+        { "text": "별 차이 없다", "scores": { "low": 2 } },
+        { "text": "약간 짜증난다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "확실히 예민해진다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "완전히 다른 사람이 된다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "폭력적인 콘텐츠(영화, 게임)에 대한 반응은?",
+      "choices": [
+        { "text": "재미있게 본다", "scores": { "low": 2 } },
+        { "text": "괜찮지만 선호하진 않는다", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "불편해서 피한다", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "절대 못 본다", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "low",
+      "title": "담담한 마음 (낮은 민감성)",
+      "emoji": "🪨",
+      "description": "당신은 외부 자극에 크게 흔들리지 않는 단단한 마음의 소유자입니다. 스트레스 상황에서도 침착함을 유지하며, 감정적 동요가 적어 안정적인 모습을 보여줍니다. 다만 때로는 다른 사람의 미묘한 감정을 놓칠 수 있어요.",
+      "traits": ["안정적", "침착함", "스트레스 내성", "실용적", "독립적"],
+      "advice": "가끔은 주변 사람들의 감정에 더 귀 기울여 보세요. 당신의 안정감이 큰 위로가 될 수 있어요."
+    },
+    {
+      "type": "moderate",
+      "title": "균형 잡힌 감수성 (중간 민감성)",
+      "emoji": "🌿",
+      "description": "당신은 적당한 민감성을 가진 균형 잡힌 사람입니다. 상황에 따라 유연하게 반응하며, 필요할 때 공감하고 필요할 때 거리를 둘 줄 아는 지혜가 있어요. 대부분의 환경에 잘 적응합니다.",
+      "traits": ["균형감", "적응력", "공감능력", "유연함", "사회성"],
+      "advice": "당신의 균형 감각은 큰 장점이에요. 자신의 감정도 소중히 여기면서 타인과 조화를 이루세요."
+    },
+    {
+      "type": "high",
+      "title": "섬세한 영혼 (높은 민감성)",
+      "emoji": "🦋",
+      "description": "당신은 HSP(Highly Sensitive Person) 성향을 가진 섬세한 영혼입니다. 다른 사람이 놓치는 미묘한 것들을 감지하고, 깊은 공감능력을 가지고 있어요. 예술적 감수성이 뛰어나지만 과자극에 쉽게 지칠 수 있습니다.",
+      "traits": ["섬세함", "깊은 공감", "직관력", "창의성", "감수성"],
+      "advice": "혼자만의 충전 시간을 꼭 확보하세요. 당신의 민감성은 세상을 더 아름답게 보는 능력이에요."
+    },
+    {
+      "type": "veryhigh",
+      "title": "초민감자 (매우 높은 민감성)",
+      "emoji": "✨",
+      "description": "당신은 매우 높은 민감성을 가진 초민감자입니다. 세상의 모든 것을 깊이 느끼고 경험하며, 뛰어난 직관력과 공감능력을 가지고 있어요. 하지만 일상적인 자극에도 쉽게 압도당할 수 있어 자기 관리가 중요합니다.",
+      "traits": ["초직관력", "깊은 감정", "예술적", "치유능력", "통찰력"],
+      "advice": "자극 조절과 경계 설정이 필수예요. 당신의 민감성은 특별한 재능이니 스스로를 보호하면서 활용하세요."
+    }
+  ]
+}

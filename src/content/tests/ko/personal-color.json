@@ -1,0 +1,150 @@
+{
+  "slug": "personal-color",
+  "title": "퍼스널컬러 심리 테스트",
+  "description": "당신의 성격과 어울리는 퍼스널컬러는? 12가지 질문으로 나만의 컬러를 찾아보세요!",
+  "emoji": "🎨",
+  "questions": [
+    {
+      "question": "첫인상으로 자주 듣는 말은?",
+      "choices": [
+        { "text": "밝고 화사해 보인다", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "차분하고 우아해 보인다", "scores": { "summer": 2, "winter": 1 } },
+        { "text": "따뜻하고 편안해 보인다", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "시크하고 카리스마 있다", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "가장 끌리는 자연 풍경은?",
+      "choices": [
+        { "text": "벚꽃이 만개한 봄 정원", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "안개 낀 호수와 라벤더 밭", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "단풍 물든 숲과 황금빛 들판", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "눈 덮인 산과 밤하늘", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "선호하는 액세서리 색상은?",
+      "choices": [
+        { "text": "골드 또는 로즈골드", "scores": { "spring": 2, "autumn": 1 } },
+        { "text": "은은한 실버 또는 펄", "scores": { "summer": 2, "winter": 1 } },
+        { "text": "앤틱 골드 또는 브론즈", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "화이트 골드 또는 플래티넘", "scores": { "winter": 2, "summer": 1 } }
+      ]
+    },
+    {
+      "question": "에너지 레벨은 어떤 편인가요?",
+      "choices": [
+        { "text": "밝고 활기차다", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "부드럽고 조용하다", "scores": { "summer": 2, "autumn": 1 } },
+        { "text": "차분하고 안정적이다", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "강렬하고 집중적이다", "scores": { "winter": 2, "spring": 1 } }
+      ]
+    },
+    {
+      "question": "스트레스 해소 방법은?",
+      "choices": [
+        { "text": "친구들과 수다 떨기", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "조용히 음악 듣거나 독서", "scores": { "summer": 2, "winter": 1 } },
+        { "text": "자연 속 산책이나 카페", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "운동이나 혼자만의 시간", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "선호하는 패션 스타일은?",
+      "choices": [
+        { "text": "귀엽고 사랑스러운 스타일", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "로맨틱하고 여성스러운 스타일", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "내추럴하고 빈티지한 스타일", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "모던하고 심플한 스타일", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "가장 좋아하는 시간대는?",
+      "choices": [
+        { "text": "햇살 가득한 오전", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "노을 지는 오후", "scores": { "summer": 2, "autumn": 1 } },
+        { "text": "따뜻한 저녁", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "고요한 밤", "scores": { "winter": 2, "summer": 1 } }
+      ]
+    },
+    {
+      "question": "대화 스타일은?",
+      "choices": [
+        { "text": "유쾌하고 재미있게", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "배려하며 부드럽게", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "진솔하고 깊이 있게", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "논리적이고 명확하게", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "이상적인 인테리어는?",
+      "choices": [
+        { "text": "밝고 화사한 파스텔톤", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "차분한 그레이와 블루톤", "scores": { "summer": 2, "winter": 1 } },
+        { "text": "우드와 테라코타 자연톤", "scores": { "autumn": 2, "spring": 1 } },
+        { "text": "블랙&화이트 모노톤", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    },
+    {
+      "question": "감정 표현 방식은?",
+      "choices": [
+        { "text": "솔직하고 표현적", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "은은하고 섬세하게", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "깊고 진중하게", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "절제되고 강렬하게", "scores": { "winter": 2, "summer": 1 } }
+      ]
+    },
+    {
+      "question": "선호하는 립 컬러는?",
+      "choices": [
+        { "text": "코랄, 피치 계열", "scores": { "spring": 2, "autumn": 1 } },
+        { "text": "로즈, 핑크 계열", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "브릭, 오렌지 브라운 계열", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "레드, 버건디 계열", "scores": { "winter": 2, "summer": 1 } }
+      ]
+    },
+    {
+      "question": "가장 자신 있는 순간은?",
+      "choices": [
+        { "text": "새로운 사람을 만날 때", "scores": { "spring": 2, "summer": 1 } },
+        { "text": "조화를 이끌어낼 때", "scores": { "summer": 2, "spring": 1 } },
+        { "text": "신뢰를 쌓아갈 때", "scores": { "autumn": 2, "winter": 1 } },
+        { "text": "목표를 달성할 때", "scores": { "winter": 2, "autumn": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "spring",
+      "title": "봄 웜톤 (Spring Warm)",
+      "emoji": "🌸",
+      "description": "당신의 퍼스널컬러는 화사하고 생기 넘치는 봄 웜톤입니다! 밝고 따뜻한 에너지로 주변을 환하게 만드는 당신은 코랄, 피치, 밝은 오렌지, 연두 같은 생동감 있는 컬러가 잘 어울려요. 골드 액세서리가 특히 빛나요!",
+      "traits": ["밝음", "활발함", "친근함", "낙천적", "사교적"],
+      "advice": "어두운 색보다는 밝고 선명한 컬러를 선택하세요. 검정보다 네이비나 브라운이 더 어울려요!"
+    },
+    {
+      "type": "summer",
+      "title": "여름 쿨톤 (Summer Cool)",
+      "emoji": "💜",
+      "description": "당신의 퍼스널컬러는 부드럽고 우아한 여름 쿨톤입니다! 차분하고 세련된 분위기의 당신은 라벤더, 로즈핑크, 스카이블루, 그레이 같은 소프트한 컬러가 잘 어울려요. 실버나 펄 액세서리가 빛나요!",
+      "traits": ["우아함", "차분함", "섬세함", "배려심", "지적"],
+      "advice": "원색보다는 파스텔이나 뮤트톤을 선택하세요. 흰색은 순백보다 아이보리가 더 좋아요!"
+    },
+    {
+      "type": "autumn",
+      "title": "가을 웜톤 (Autumn Warm)",
+      "emoji": "🍂",
+      "description": "당신의 퍼스널컬러는 깊고 따뜻한 가을 웜톤입니다! 안정적이고 신뢰감 있는 분위기의 당신은 머스타드, 테라코타, 카키, 브라운 같은 자연스러운 어스톤 컬러가 잘 어울려요. 골드나 앤틱 액세서리가 멋져요!",
+      "traits": ["신뢰감", "안정감", "진중함", "따뜻함", "자연스러움"],
+      "advice": "톤다운된 따뜻한 컬러를 선택하세요. 검정보다 다크브라운이나 카키가 더 어울려요!"
+    },
+    {
+      "type": "winter",
+      "title": "겨울 쿨톤 (Winter Cool)",
+      "emoji": "❄️",
+      "description": "당신의 퍼스널컬러는 선명하고 강렬한 겨울 쿨톤입니다! 카리스마와 세련됨을 가진 당신은 버건디, 로얄블루, 블랙, 퓨어화이트 같은 대비가 강한 컬러가 잘 어울려요. 실버나 화이트골드 액세서리가 빛나요!",
+      "traits": ["카리스마", "세련됨", "자신감", "독립적", "강인함"],
+      "advice": "선명하고 대비가 강한 컬러를 선택하세요. 검정과 흰색이 가장 잘 어울리는 타입이에요!"
+    }
+  ]
+}

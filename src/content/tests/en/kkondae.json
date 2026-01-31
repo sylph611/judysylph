@@ -1,0 +1,150 @@
+{
+  "slug": "kkondae",
+  "title": "Old-Fashioned Mindset Test",
+  "description": "How old-fashioned is your mindset? Take this honest self-assessment!",
+  "emoji": "👴",
+  "questions": [
+    {
+      "question": "When a junior suggests a new approach?",
+      "choices": [
+        { "text": "Accept it if it's a good idea", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Listen first, then decide", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Say it probably won't work based on experience", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "I tried that, it doesn't work", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "About trending slang and memes?",
+      "choices": [
+        { "text": "Actively learn and use them", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Understand but don't use them", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Don't understand, don't care", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "Think they destroy the language", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "At dinner parties or gatherings?",
+      "choices": [
+        { "text": "Enjoy matching the vibe", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Participate moderately in conversation", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Mainly talk about myself", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "Need to lead to feel satisfied", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "How often do you say \"Kids these days...\"?",
+      "choices": [
+        { "text": "Never say that", "scores": { "cool": 2 } },
+        { "text": "Think it but hold back", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Say it often", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "It's a habit", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "When someone does things differently?",
+      "choices": [
+        { "text": "OK if results are good", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Watch and advise if needed", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Tell them to do it my way", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "Do it myself out of frustration", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "When giving advice, you usually say?",
+      "choices": [
+        { "text": "Just for your reference", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "How about trying this?", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "From my experience, this is right", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "Do as I say. You'll thank me later", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "About younger generation's work-life balance?",
+      "choices": [
+        { "text": "It's a natural right", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Understand but sometimes wish for more", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Wish they had more passion", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "In my day, we worked all night...", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "When someone has a different opinion?",
+      "choices": [
+        { "text": "Listen with interest", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Accept if it makes sense", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Try to convince them I'm right", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "They lack experience", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "How often do you say \"Back in my day...\"?",
+      "choices": [
+        { "text": "Never say that", "scores": { "cool": 2 } },
+        { "text": "Rarely, without comparison", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Quite often", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "Almost daily", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "When a junior makes a mistake?",
+      "choices": [
+        { "text": "It's okay, do better next time", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Ask why it happened", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "I told you so earlier...", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "That's why you should listen to me", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "When learning new technology or tools?",
+      "choices": [
+        { "text": "Actively learn", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Learn if necessary", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Only learn essentials", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "Old ways are better", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "How often do you give compliments?",
+      "choices": [
+        { "text": "Praise immediately when deserved", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "Express occasionally", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "Don't praise the obvious", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "Praise makes people lazy", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "cool",
+      "title": "Cool Senior (0% Old-Fashioned)",
+      "emoji": "😎",
+      "description": "Congratulations! You're far from being old-fashioned - you're a cool senior! You're open-minded, accepting diverse opinions, and respectful of generational differences. You're a role model for juniors. Keep it up!",
+      "traits": ["Open-minded", "Respectful", "Flexible", "Good listener", "Encouraging"],
+      "advice": "You're perfect as you are! Keep communicating with younger generations and learning from each other."
+    },
+    {
+      "type": "mild",
+      "title": "Mild Senior (25% Old-Fashioned)",
+      "emoji": "🙂",
+      "description": "You're generally open-minded but occasionally show slight old-fashioned tendencies. The good news is you're self-aware and can control it! With a bit more attention, you can be the perfect senior.",
+      "traits": ["Balanced", "Self-aware", "Trying", "Neutral", "Understanding"],
+      "advice": "Before sharing your thoughts, try listening to others completely. Small differences make big changes!"
+    },
+    {
+      "type": "senior",
+      "title": "Senior Tendency (60% Old-Fashioned)",
+      "emoji": "😐",
+      "description": "Some caution needed! It's understandable to want to share wisdom from experience, but sometimes it may feel like imposition. Recognizing the line between advice and interference is important.",
+      "traits": ["Experience-focused", "Traditional", "Leadership", "Responsible", "Stubborn"],
+      "advice": "Advice only when asked! Watching without intervening is also caring. Try accepting differences."
+    },
+    {
+      "type": "kkondae",
+      "title": "True Old-Fashioned (100%)",
+      "emoji": "👴",
+      "description": "To be honest... your old-fashioned level is quite high! How about letting go of the idea that your experience and methods are the best? The world changes, and there's no single right answer.",
+      "traits": ["Stubborn", "Overconfident in experience", "Change-resistant", "One-sided", "Past-oriented"],
+      "advice": "No more 'back in my day'! Start asking juniors, 'How do you do it these days?' This one phrase can change relationships."
+    }
+  ]
+}

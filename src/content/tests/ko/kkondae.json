@@ -1,0 +1,150 @@
+{
+  "slug": "kkondae",
+  "title": "꼰대력 테스트",
+  "description": "내 안의 꼰대 성향은 얼마나 될까요? 솔직하게 알아보는 꼰대력 진단!",
+  "emoji": "👴",
+  "questions": [
+    {
+      "question": "후배가 새로운 방식을 제안하면?",
+      "choices": [
+        { "text": "좋은 아이디어면 바로 수용한다", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "일단 들어보고 판단한다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "경험상 안 될 것 같다고 말한다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "내가 해봤는데 그건 안 돼", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "요즘 유행하는 신조어나 밈에 대해?",
+      "choices": [
+        { "text": "적극적으로 배우고 사용한다", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "알아듣긴 하지만 쓰진 않는다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "이해가 안 되고 관심도 없다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "한국어를 파괴한다고 생각한다", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "회식이나 모임에서 나는?",
+      "choices": [
+        { "text": "분위기에 맞게 즐긴다", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "대화에 적당히 참여한다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "내 이야기를 주로 한다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "내가 리드해야 직성이 풀린다", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "\"요즘 것들은...\"이라는 말을 얼마나 하나요?",
+      "choices": [
+        { "text": "그런 말 안 한다", "scores": { "cool": 2 } },
+        { "text": "가끔 생각은 하지만 참는다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "종종 한다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "입버릇처럼 한다", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "일 처리 방식이 다른 사람을 보면?",
+      "choices": [
+        { "text": "결과가 좋으면 OK", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "지켜보다가 필요하면 조언", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "내 방식대로 하라고 한다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "답답해서 직접 한다", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "조언할 때 주로 하는 말은?",
+      "choices": [
+        { "text": "참고로 들어봐", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "이렇게 해보는 건 어때?", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "내 경험상 이게 맞아", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "내 말대로 해. 나중에 고마워할 거야", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "젊은 세대의 워라밸 중시에 대해?",
+      "choices": [
+        { "text": "당연한 권리라고 생각한다", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "이해는 하지만 아쉬울 때도 있다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "좀 더 열정이 있으면 좋겠다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "우리 때는 밤새 일했는데...", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "대화 중 상대방이 다른 의견을 내면?",
+      "choices": [
+        { "text": "흥미롭게 경청한다", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "일리 있으면 수긍한다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "내 생각이 맞다고 설득한다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "경험이 부족해서 그래", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "\"라떼는~\" (나 때는~) 얼마나 말하나요?",
+      "choices": [
+        { "text": "그런 말 안 한다", "scores": { "cool": 2 } },
+        { "text": "정말 가끔, 비교 없이", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "자주 하는 편이다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "거의 매일 한다", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "실수한 후배에게 하는 말은?",
+      "choices": [
+        { "text": "괜찮아, 다음에 잘하면 돼", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "왜 그랬는지 들어본다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "내가 미리 말했는데...", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "그러니까 내 말을 들었어야지", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "새로운 기술이나 도구를 배울 때?",
+      "choices": [
+        { "text": "적극적으로 배운다", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "필요하면 배운다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "꼭 필요한 것만 배운다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "기존 방식이 더 좋다", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    },
+    {
+      "question": "칭찬을 얼마나 자주 하나요?",
+      "choices": [
+        { "text": "잘하면 바로바로 칭찬한다", "scores": { "cool": 2, "mild": 1 } },
+        { "text": "가끔 표현한다", "scores": { "mild": 2, "cool": 1 } },
+        { "text": "당연한 건 굳이 칭찬 안 한다", "scores": { "senior": 2, "mild": 1 } },
+        { "text": "칭찬하면 나태해진다고 생각한다", "scores": { "kkondae": 2, "senior": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "cool",
+      "title": "쿨한 선배 (꼰대력 0%)",
+      "emoji": "😎",
+      "description": "축하합니다! 당신은 꼰대와 거리가 먼 쿨한 선배입니다! 열린 마음으로 다양한 의견을 수용하고, 세대 차이를 존중할 줄 아는 멋진 사람이에요. 후배들에게 롤모델이 되는 당신, 그 자세를 유지하세요!",
+      "traits": ["열린 마음", "존중", "유연함", "경청", "격려"],
+      "advice": "지금 그대로가 완벽해요! 계속 젊은 세대와 소통하며 서로 배워가세요."
+    },
+    {
+      "type": "mild",
+      "title": "마일드 시니어 (꼰대력 25%)",
+      "emoji": "🙂",
+      "description": "당신은 대체로 열린 편이지만 가끔 꼰대 기질이 살짝 나올 때가 있어요. 하지만 자각하고 조절할 줄 아는 당신! 약간의 주의만 기울이면 완벽한 선배가 될 수 있어요.",
+      "traits": ["균형감", "자기 인식", "노력형", "중립적", "이해심"],
+      "advice": "내 생각을 말하기 전에 상대의 이야기를 끝까지 들어보세요. 작은 차이가 큰 변화를 만들어요!"
+    },
+    {
+      "type": "senior",
+      "title": "시니어 성향 (꼰대력 60%)",
+      "emoji": "😐",
+      "description": "조금 주의가 필요해요! 경험에서 나온 지혜를 나누고 싶은 마음은 이해하지만, 때로는 그것이 강요처럼 느껴질 수 있어요. 조언과 간섭의 경계를 인식하는 것이 중요합니다.",
+      "traits": ["경험 중시", "전통적", "리더십", "책임감", "고집"],
+      "advice": "조언은 구할 때만! 상대가 묻지 않으면 지켜보는 것도 배려예요. 다름을 인정해보세요."
+    },
+    {
+      "type": "kkondae",
+      "title": "진성 꼰대 (꼰대력 100%)",
+      "emoji": "👴",
+      "description": "솔직히 말씀드리면... 꼰대력이 상당히 높습니다! 내 경험과 방식이 최고라는 생각, 잠시 내려놓아 보는 건 어떨까요? 세상은 변하고, 정답은 하나가 아니에요.",
+      "traits": ["고집", "경험 과신", "변화 거부", "일방적", "과거 지향"],
+      "advice": "\"나 때는~\" 금지! 오늘부터 후배에게 먼저 물어보세요. \"요즘은 어떻게 해?\" 이 한마디가 관계를 바꿔요."
+    }
+  ]
+}
