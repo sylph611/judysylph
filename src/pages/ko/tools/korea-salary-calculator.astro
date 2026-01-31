@@ -1,0 +1,282 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('korea-salary-calculator', lang);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">2025년 기준</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="calc-form" class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">연봉 (원)</label>
+          <input type="text" id="salary" placeholder="50,000,000" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-lg" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">부양가족 수 (본인 포함)</label>
+            <select id="dependents" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="1">1명 (본인만)</option>
+              <option value="2">2명</option>
+              <option value="3">3명</option>
+              <option value="4">4명</option>
+              <option value="5">5명 이상</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">20세 이하 자녀 수</label>
+            <select id="children" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+              <option value="0">없음</option>
+              <option value="1">1명</option>
+              <option value="2">2명</option>
+              <option value="3">3명 이상</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">비과세액 (월, 식대/교통비 등)</label>
+          <input type="text" id="taxFree" placeholder="200,000" value="200,000" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          <p class="text-xs text-gray-500 mt-1">식대 월 20만원까지 비과세</p>
+        </div>
+
+        <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700">계산하기</button>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-6 text-white text-center mb-6">
+          <div class="text-sm opacity-80 mb-1">월 실수령액</div>
+          <div id="r-net-month" class="text-4xl font-bold mb-2">-</div>
+          <div class="text-sm opacity-80">연 실수령액: <span id="r-net-year" class="font-medium">-</span></div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-4">📊 급여 상세</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center p-3 bg-white dark:bg-gray-800 rounded-lg">
+              <span class="text-gray-600 dark:text-gray-400">월 급여 (세전)</span>
+              <span id="r-gross-month" class="font-bold text-lg">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-red-800 dark:text-red-200 mb-4">💸 공제 내역 (월)</h3>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">국민연금</span><span id="r-pension" class="font-medium text-red-600">-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">건강보험</span><span id="r-health" class="font-medium text-red-600">-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">장기요양보험</span><span id="r-longterm" class="font-medium text-red-600">-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">고용보험</span><span id="r-employ" class="font-medium text-red-600">-</span></div>
+            <div class="flex justify-between border-t border-red-200 dark:border-red-800 pt-2 mt-2">
+              <span class="font-medium text-gray-700 dark:text-gray-300">4대보험 소계</span>
+              <span id="r-insurance-total" class="font-bold text-red-600">-</span>
+            </div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">근로소득세</span><span id="r-income-tax" class="font-medium text-red-600">-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">지방소득세</span><span id="r-local-tax" class="font-medium text-red-600">-</span></div>
+            <div class="flex justify-between border-t border-red-200 dark:border-red-800 pt-2 mt-2">
+              <span class="font-medium text-gray-700 dark:text-gray-300">세금 소계</span>
+              <span id="r-tax-total" class="font-bold text-red-600">-</span>
+            </div>
+            <div class="flex justify-between border-t-2 border-red-300 dark:border-red-700 pt-3 mt-3">
+              <span class="font-bold text-gray-900 dark:text-white">총 공제액</span>
+              <span id="r-total-deduct" class="font-bold text-xl text-red-600">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-5 mb-6">
+          <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-4">📈 연간 요약</h3>
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 text-center">
+              <div class="text-gray-500 dark:text-gray-400">연봉</div>
+              <div id="r-gross-year" class="font-bold text-lg">-</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 text-center">
+              <div class="text-gray-500 dark:text-gray-400">연간 공제</div>
+              <div id="r-deduct-year" class="font-bold text-lg text-red-500">-</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 text-center">
+              <div class="text-gray-500 dark:text-gray-400">실효세율</div>
+              <div id="r-effective-rate" class="font-bold text-lg">-</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 text-center">
+              <div class="text-gray-500 dark:text-gray-400">실수령 비율</div>
+              <div id="r-net-rate" class="font-bold text-lg text-green-600">-</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 mb-6">
+          <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">⚠️ 참고사항</h4>
+          <ul class="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+            <li>• 간이세액표 기준 추정치이며, 실제와 다를 수 있습니다</li>
+            <li>• 연말정산 시 추가 공제로 환급받을 수 있습니다</li>
+            <li>• 퇴직금, 성과급 별도 시 실수령액이 달라집니다</li>
+          </ul>
+        </div>
+
+        <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-5">
+          <h3 class="text-lg font-semibold text-primary-800 dark:text-primary-200 mb-3">🔗 관련 계산기</h3>
+          <div class="flex flex-wrap gap-2">
+            <a href="/ko/tools/salary-percentile" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">📊 연봉 백분위</a>
+            <a href="/ko/tools/apartment-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🏢 내 집 마련 계산기</a>
+            <a href="/ko/tools/car-affordability" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-gray-700 transition-colors">🚗 차량 구매 여력</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const salaryInput = document.getElementById('salary') as HTMLInputElement;
+  const taxFreeInput = document.getElementById('taxFree') as HTMLInputElement;
+
+  [salaryInput, taxFreeInput].forEach(el => {
+    el?.addEventListener('input', e => {
+      const v = (e.target as HTMLInputElement).value.replace(/\D/g,'');
+      (e.target as HTMLInputElement).value = Number(v).toLocaleString();
+    });
+  });
+
+  // 2025년 4대보험 요율
+  const PENSION_RATE = 0.045; // 국민연금 4.5%
+  const PENSION_MAX = 617000; // 월 상한액 (기준소득월액 상한 약 590만원 * 4.5%)
+  const HEALTH_RATE = 0.03545; // 건강보험 3.545%
+  const LONGTERM_RATE = 0.1295; // 장기요양보험 (건강보험의 12.95%)
+  const EMPLOY_RATE = 0.009; // 고용보험 0.9%
+
+  // 근로소득 간이세액표 (월급여 기준, 2025년)
+  // 실제로는 매우 복잡하므로 간소화된 추정 사용
+  function calcIncomeTax(monthlyTaxable: number, dependents: number, children: number): number {
+    // 연간 과세표준 추정
+    const yearlyTaxable = monthlyTaxable * 12;
+
+    // 근로소득공제 (간소화)
+    let deduction = 0;
+    if (yearlyTaxable <= 5000000) {
+      deduction = yearlyTaxable * 0.7;
+    } else if (yearlyTaxable <= 15000000) {
+      deduction = 3500000 + (yearlyTaxable - 5000000) * 0.4;
+    } else if (yearlyTaxable <= 45000000) {
+      deduction = 7500000 + (yearlyTaxable - 15000000) * 0.15;
+    } else if (yearlyTaxable <= 100000000) {
+      deduction = 12000000 + (yearlyTaxable - 45000000) * 0.05;
+    } else {
+      deduction = 14750000 + (yearlyTaxable - 100000000) * 0.02;
+    }
+
+    // 인적공제 (본인 150만원 + 부양가족 1인당 150만원)
+    const personalDeduction = dependents * 1500000;
+
+    // 과세표준
+    const taxBase = Math.max(0, yearlyTaxable - deduction - personalDeduction);
+
+    // 소득세 계산 (2025년 세율)
+    let tax = 0;
+    if (taxBase <= 14000000) {
+      tax = taxBase * 0.06;
+    } else if (taxBase <= 50000000) {
+      tax = 840000 + (taxBase - 14000000) * 0.15;
+    } else if (taxBase <= 88000000) {
+      tax = 6240000 + (taxBase - 50000000) * 0.24;
+    } else if (taxBase <= 150000000) {
+      tax = 15360000 + (taxBase - 88000000) * 0.35;
+    } else if (taxBase <= 300000000) {
+      tax = 37060000 + (taxBase - 150000000) * 0.38;
+    } else if (taxBase <= 500000000) {
+      tax = 94060000 + (taxBase - 300000000) * 0.40;
+    } else if (taxBase <= 1000000000) {
+      tax = 174060000 + (taxBase - 500000000) * 0.42;
+    } else {
+      tax = 384060000 + (taxBase - 1000000000) * 0.45;
+    }
+
+    // 자녀세액공제 (1인 15만원, 2인 35만원, 3인이상 35만원 + 추가 30만원)
+    let childCredit = 0;
+    if (children === 1) childCredit = 150000;
+    else if (children === 2) childCredit = 350000;
+    else if (children >= 3) childCredit = 350000 + (children - 2) * 300000;
+
+    // 근로소득세액공제 (간소화)
+    let earnedIncomeCredit = 0;
+    if (tax <= 1300000) {
+      earnedIncomeCredit = tax * 0.55;
+    } else {
+      earnedIncomeCredit = 715000 + (tax - 1300000) * 0.30;
+    }
+    earnedIncomeCredit = Math.min(earnedIncomeCredit, 740000); // 한도
+
+    const finalTax = Math.max(0, tax - childCredit - earnedIncomeCredit);
+    return Math.round(finalTax / 12); // 월 세액
+  }
+
+  function formatWon(amount: number): string {
+    return amount.toLocaleString() + '원';
+  }
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const yearSalary = parseInt(salaryInput.value.replace(/,/g,''));
+    const monthlyTaxFree = parseInt(taxFreeInput.value.replace(/,/g,'')) || 0;
+    const dependents = parseInt((document.getElementById('dependents') as HTMLSelectElement).value);
+    const children = parseInt((document.getElementById('children') as HTMLSelectElement).value);
+
+    const monthSalary = Math.round(yearSalary / 12);
+    const monthlyTaxable = monthSalary - monthlyTaxFree;
+
+    // 4대보험 계산 (과세소득 기준)
+    const pension = Math.min(Math.round(monthlyTaxable * PENSION_RATE), PENSION_MAX);
+    const health = Math.round(monthlyTaxable * HEALTH_RATE);
+    const longterm = Math.round(health * LONGTERM_RATE);
+    const employ = Math.round(monthlyTaxable * EMPLOY_RATE);
+    const insuranceTotal = pension + health + longterm + employ;
+
+    // 세금 계산
+    const incomeTax = calcIncomeTax(monthlyTaxable, dependents, children);
+    const localTax = Math.round(incomeTax * 0.1); // 지방소득세 10%
+    const taxTotal = incomeTax + localTax;
+
+    // 총 공제 및 실수령액
+    const totalDeduct = insuranceTotal + taxTotal;
+    const netMonth = monthSalary - totalDeduct;
+    const netYear = netMonth * 12;
+    const deductYear = totalDeduct * 12;
+
+    // 결과 표시
+    document.getElementById('result-area')?.classList.remove('hidden');
+
+    document.getElementById('r-net-month')!.textContent = formatWon(netMonth);
+    document.getElementById('r-net-year')!.textContent = formatWon(netYear);
+    document.getElementById('r-gross-month')!.textContent = formatWon(monthSalary);
+
+    document.getElementById('r-pension')!.textContent = '-' + formatWon(pension);
+    document.getElementById('r-health')!.textContent = '-' + formatWon(health);
+    document.getElementById('r-longterm')!.textContent = '-' + formatWon(longterm);
+    document.getElementById('r-employ')!.textContent = '-' + formatWon(employ);
+    document.getElementById('r-insurance-total')!.textContent = '-' + formatWon(insuranceTotal);
+
+    document.getElementById('r-income-tax')!.textContent = '-' + formatWon(incomeTax);
+    document.getElementById('r-local-tax')!.textContent = '-' + formatWon(localTax);
+    document.getElementById('r-tax-total')!.textContent = '-' + formatWon(taxTotal);
+    document.getElementById('r-total-deduct')!.textContent = '-' + formatWon(totalDeduct);
+
+    document.getElementById('r-gross-year')!.textContent = formatWon(yearSalary);
+    document.getElementById('r-deduct-year')!.textContent = '-' + formatWon(deductYear);
+    document.getElementById('r-effective-rate')!.textContent = (deductYear / yearSalary * 100).toFixed(1) + '%';
+    document.getElementById('r-net-rate')!.textContent = (netYear / yearSalary * 100).toFixed(1) + '%';
+  });
+</script>
