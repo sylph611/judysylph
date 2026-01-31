@@ -1,0 +1,150 @@
+{
+  "slug": "hsp",
+  "title": "HSP Sensitivity Test",
+  "description": "Are you a Highly Sensitive Person? Discover your sensitivity level with 12 questions!",
+  "emoji": "🦋",
+  "questions": [
+    {
+      "question": "How difficult is it to concentrate in a noisy environment?",
+      "choices": [
+        { "text": "Not difficult at all", "scores": { "low": 2 } },
+        { "text": "Slightly distracting", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Quite difficult", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Almost impossible", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "How quickly do you notice changes in others' moods?",
+      "choices": [
+        { "text": "Only when they tell me", "scores": { "low": 2 } },
+        { "text": "Usually notice it", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Can tell from their expression", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Feel it before they speak", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "Are you sensitive to bright lights or strong smells?",
+      "choices": [
+        { "text": "Hardly notice them", "scores": { "low": 2 } },
+        { "text": "Uncomfortable if intense", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "React quite sensitively", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Very sensitive, I avoid them", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "When watching sad movies or news?",
+      "choices": [
+        { "text": "Watch calmly", "scores": { "low": 2 } },
+        { "text": "Briefly empathize", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Stays with me for a while", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Feel sad for days", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "After a busy day?",
+      "choices": [
+        { "text": "Ready for more activities", "scores": { "low": 2 } },
+        { "text": "Fine after a short break", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Need alone time to recharge", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Completely drained, need long recovery", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "How do you react to sudden plan changes?",
+      "choices": [
+        { "text": "Handle it flexibly", "scores": { "low": 2 } },
+        { "text": "Slightly uncomfortable but adapt", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Get stressed", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Very difficult and anxious", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "Your sensitivity to caffeine or alcohol?",
+      "choices": [
+        { "text": "Can have a lot", "scores": { "low": 2 } },
+        { "text": "Moderately affected", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Sensitive even with small amounts", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Can barely have any", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "When experiencing art (music, paintings)?",
+      "choices": [
+        { "text": "Just observe it", "scores": { "low": 2 } },
+        { "text": "Feel good if I like it", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Deeply moved", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Overwhelmed to tears", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "When someone around you is angry?",
+      "choices": [
+        { "text": "Not really affected", "scores": { "low": 2 } },
+        { "text": "Slightly uncomfortable", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "My mood worsens too", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Feel as if I'm the angry one", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "Do you notice complex and subtle things?",
+      "choices": [
+        { "text": "Not really", "scores": { "low": 2 } },
+        { "text": "Sometimes", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Often", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Always aware of every detail", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "Mood changes when hungry or tired?",
+      "choices": [
+        { "text": "Not much difference", "scores": { "low": 2 } },
+        { "text": "Get slightly irritable", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Definitely more sensitive", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Become a completely different person", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    },
+    {
+      "question": "Reaction to violent content (movies, games)?",
+      "choices": [
+        { "text": "Enjoy watching", "scores": { "low": 2 } },
+        { "text": "Okay but not preferred", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Uncomfortable, I avoid it", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Absolutely cannot watch", "scores": { "veryhigh": 2, "high": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "low",
+      "title": "Steady Mind (Low Sensitivity)",
+      "emoji": "🪨",
+      "description": "You have a steady mind that isn't easily shaken by external stimuli. You remain calm under stress and show emotional stability. However, you might sometimes miss subtle emotional cues from others.",
+      "traits": ["Stable", "Calm", "Stress-resistant", "Practical", "Independent"],
+      "advice": "Sometimes pay more attention to others' feelings. Your stability can be a great comfort to those around you."
+    },
+    {
+      "type": "moderate",
+      "title": "Balanced Sensitivity (Moderate)",
+      "emoji": "🌿",
+      "description": "You have balanced sensitivity. You respond flexibly to situations, knowing when to empathize and when to maintain distance. You adapt well to most environments.",
+      "traits": ["Balanced", "Adaptable", "Empathetic", "Flexible", "Social"],
+      "advice": "Your sense of balance is a strength. Cherish your own feelings while maintaining harmony with others."
+    },
+    {
+      "type": "high",
+      "title": "Delicate Soul (High Sensitivity)",
+      "emoji": "🦋",
+      "description": "You are a Highly Sensitive Person (HSP) with a delicate soul. You notice subtle things others miss and have deep empathy. You have great artistic sensitivity but can easily become overstimulated.",
+      "traits": ["Delicate", "Deep empathy", "Intuitive", "Creative", "Sensitive"],
+      "advice": "Make sure to have recharge time alone. Your sensitivity is an ability to see the world more beautifully."
+    },
+    {
+      "type": "veryhigh",
+      "title": "Ultra Sensitive (Very High)",
+      "emoji": "✨",
+      "description": "You have very high sensitivity. You deeply feel and experience everything, with exceptional intuition and empathy. Daily stimuli can easily overwhelm you, so self-care is essential.",
+      "traits": ["Ultra-intuitive", "Deep emotions", "Artistic", "Healing", "Insightful"],
+      "advice": "Stimulus management and boundary setting are essential. Your sensitivity is a special gift - protect yourself while using it."
+    }
+  ]
+}
