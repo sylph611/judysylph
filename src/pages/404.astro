@@ -1,10 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const lang = 'ko';
+// Try to detect language from referrer or default to Korean
+const referrer = Astro.request.headers.get('referer') || '';
+const lang = referrer.includes('/en/') || referrer.includes('/en') ? 'en' : 'ko';
+
+const t = {
+  title: lang === 'ko' ? '페이지를 찾을 수 없습니다' : 'Page Not Found',
+  description: lang === 'ko' ? '요청하신 페이지를 찾을 수 없습니다.' : 'The page you requested could not be found.',
+  message: lang === 'ko' ? '요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.' : 'The page you are looking for might have been removed or moved.',
+  home: lang === 'ko' ? '홈으로 가기' : 'Go Home',
+  tools: lang === 'ko' ? '도구 보기' : 'View Tools',
+  popularTests: lang === 'ko' ? '인기 테스트를 해보세요' : 'Try Popular Tests',
+  switchLang: lang === 'ko' ? 'Switch to English' : '한국어로 보기'
+};
+
+const popularTests = lang === 'ko' ? [
+  { href: '/ko/test/mbti', emoji: '🧠', name: 'MBTI 테스트' },
+  { href: '/ko/test/animal', emoji: '🐾', name: '동물 테스트' },
+  { href: '/ko/test/love-language', emoji: '💕', name: '사랑의 언어' },
+  { href: '/ko/test/travel', emoji: '✈️', name: '여행지 테스트' }
+] : [
+  { href: '/en/test/mbti', emoji: '🧠', name: 'MBTI Test' },
+  { href: '/en/test/animal', emoji: '🐾', name: 'Animal Test' },
+  { href: '/en/test/love-language', emoji: '💕', name: 'Love Language' },
+  { href: '/en/test/travel', emoji: '✈️', name: 'Travel Test' }
+];
 ---
 
-<Layout title="페이지를 찾을 수 없습니다 | JudySylph" description="요청하신 페이지를 찾을 수 없습니다.">
+<Layout title={`${t.title} | JudySylph`} description={t.description}>
   <div class="max-w-2xl mx-auto px-4 py-16 text-center">
     <!-- 404 Illustration -->
     <div class="text-9xl mb-8">🔍</div>
@@ -12,54 +36,47 @@ const lang = 'ko';
     <h1 class="text-6xl font-bold text-gray-900 dark:text-white mb-4">404</h1>
 
     <p class="text-2xl text-gray-600 dark:text-gray-400 mb-8">
-      페이지를 찾을 수 없습니다
+      {t.title}
     </p>
 
     <p class="text-gray-500 dark:text-gray-500 mb-8">
-      요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.
+      {t.message}
     </p>
 
     <!-- Quick Actions -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
       <a
-        href="/ko"
+        href={`/${lang}`}
         class="px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
       >
-        🏠 홈으로 가기
+        🏠 {t.home}
       </a>
       <a
-        href="/ko/tools"
+        href={`/${lang}/tools`}
         class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
       >
-        🔧 도구 보기
+        🔧 {t.tools}
       </a>
     </div>
 
     <!-- Popular Tests -->
     <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
       <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
-        인기 테스트를 해보세요
+        {t.popularTests}
       </h2>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="/ko/test/mbti" class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors">
-          🧠 MBTI 테스트
-        </a>
-        <a href="/ko/test/animal" class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors">
-          🐾 동물 테스트
-        </a>
-        <a href="/ko/test/love-language" class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors">
-          💕 사랑의 언어
-        </a>
-        <a href="/ko/test/travel" class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors">
-          ✈️ 여행지 테스트
-        </a>
+        {popularTests.map(test => (
+          <a href={test.href} class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-sm hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors">
+            {test.emoji} {test.name}
+          </a>
+        ))}
       </div>
     </div>
 
     <!-- Language Switch -->
     <div class="mt-8 text-sm text-gray-500 dark:text-gray-400">
-      <a href="/en" class="hover:text-primary-600 dark:hover:text-primary-400">
-        Switch to English →
+      <a href={lang === 'ko' ? '/en' : '/ko'} class="hover:text-primary-600 dark:hover:text-primary-400">
+        {t.switchLang} →
       </a>
     </div>
   </div>

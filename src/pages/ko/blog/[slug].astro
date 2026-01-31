@@ -227,7 +227,7 @@ const breadcrumbSchema = {
           url: window.location.href
         });
       } catch (e) {
-        console.log('Share cancelled');
+        // User cancelled share
       }
     } else {
       navigator.clipboard.writeText(window.location.href);
