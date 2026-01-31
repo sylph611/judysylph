@@ -12,7 +12,7 @@ const tool = getTool('korea-salary-calculator', lang);
       <div class="text-5xl mb-4">{tool?.emoji}</div>
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
       <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
-      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">2025년 기준</p>
+      <p class="text-sm text-primary-600 dark:text-primary-400 mt-2">2026년 기준</p>
     </div>
 
     <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
@@ -151,14 +151,14 @@ const tool = getTool('korea-salary-calculator', lang);
     });
   });
 
-  // 2025년 4대보험 요율
+  // 2026년 4대보험 요율 (예상치)
   const PENSION_RATE = 0.045; // 국민연금 4.5%
-  const PENSION_MAX = 617000; // 월 상한액 (기준소득월액 상한 약 590만원 * 4.5%)
-  const HEALTH_RATE = 0.03545; // 건강보험 3.545%
-  const LONGTERM_RATE = 0.1295; // 장기요양보험 (건강보험의 12.95%)
+  const PENSION_MAX = 637000; // 월 상한액 (기준소득월액 상한 약 617만원 * 4.5%)
+  const HEALTH_RATE = 0.0361; // 건강보험 3.61%
+  const LONGTERM_RATE = 0.1327; // 장기요양보험 (건강보험의 13.27%)
   const EMPLOY_RATE = 0.009; // 고용보험 0.9%
 
-  // 근로소득 간이세액표 (월급여 기준, 2025년)
+  // 근로소득 간이세액표 (월급여 기준, 2026년)
   // 실제로는 매우 복잡하므로 간소화된 추정 사용
   function calcIncomeTax(monthlyTaxable: number, dependents: number, children: number): number {
     // 연간 과세표준 추정
@@ -184,7 +184,7 @@ const tool = getTool('korea-salary-calculator', lang);
     // 과세표준
     const taxBase = Math.max(0, yearlyTaxable - deduction - personalDeduction);
 
-    // 소득세 계산 (2025년 세율)
+    // 소득세 계산 (2026년 세율)
     let tax = 0;
     if (taxBase <= 14000000) {
       tax = taxBase * 0.06;
