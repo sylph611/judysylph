@@ -152,48 +152,60 @@ const jsonLd = {
   </div>
 </Layout>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-<script>
-  const qrInput = document.getElementById('qr-input') as HTMLTextAreaElement;
-  const qrSize = document.getElementById('qr-size') as HTMLSelectElement;
-  const qrColor = document.getElementById('qr-color') as HTMLInputElement;
-  const generateBtn = document.getElementById('generate-btn');
-  const qrResult = document.getElementById('qr-result');
-  const qrCanvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
-  const downloadBtn = document.getElementById('download-btn');
+<script is:inline src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script is:inline>
+  function setupQRGenerator() {
+    const qrInput = document.getElementById('qr-input');
+    const qrSize = document.getElementById('qr-size');
+    const qrColor = document.getElementById('qr-color');
+    const generateBtn = document.getElementById('generate-btn');
+    const qrResult = document.getElementById('qr-result');
+    const qrCanvas = document.getElementById('qr-canvas');
+    const downloadBtn = document.getElementById('download-btn');
 
-  generateBtn?.addEventListener('click', () => {
-    const text = qrInput?.value.trim();
-    if (!text) {
-      alert('Please enter some text');
-      return;
-    }
+    if (!generateBtn || generateBtn.dataset.initialized) return;
+    generateBtn.dataset.initialized = 'true';
 
-    const size = parseInt(qrSize?.value || '256');
-    const color = qrColor?.value || '#000000';
-
-    // @ts-ignore
-    QRCode.toCanvas(qrCanvas, text, {
-      width: size,
-      margin: 2,
-      color: {
-        dark: color,
-        light: '#ffffff'
-      }
-    }, (error: any) => {
-      if (error) {
-        console.error(error);
-        alert('Failed to generate QR code');
+    generateBtn.addEventListener('click', function() {
+      const text = qrInput?.value.trim();
+      if (!text) {
+        alert('Please enter some text');
         return;
       }
-      qrResult?.classList.remove('hidden');
-    });
-  });
 
-  downloadBtn?.addEventListener('click', () => {
-    const link = document.createElement('a');
-    link.download = 'qrcode.png';
-    link.href = qrCanvas?.toDataURL('image/png') || '';
-    link.click();
-  });
+      const size = parseInt(qrSize?.value || '256');
+      const color = qrColor?.value || '#000000';
+
+      if (typeof QRCode !== 'undefined') {
+        QRCode.toCanvas(qrCanvas, text, {
+          width: size,
+          margin: 2,
+          color: {
+            dark: color,
+            light: '#ffffff'
+          }
+        }, function(error) {
+          if (error) {
+            console.error(error);
+            alert('Failed to generate QR code');
+            return;
+          }
+          qrResult?.classList.remove('hidden');
+        });
+      } else {
+        alert('Loading QR library. Please try again in a moment.');
+      }
+    });
+
+    downloadBtn?.addEventListener('click', function() {
+      const link = document.createElement('a');
+      link.download = 'qrcode.png';
+      link.href = qrCanvas?.toDataURL('image/png') || '';
+      link.click();
+    });
+  }
+
+  // Run on initial load and after View Transitions
+  setupQRGenerator();
+  document.addEventListener('astro:page-load', setupQRGenerator);
 </script>
