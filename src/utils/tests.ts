@@ -60,7 +60,11 @@ const testCategories: Record<string, TestCategory> = {
   'hidden-talent': 'personality',
   'ideal-type': 'love',
   'food-personality': 'fun',
-  'mbti-compatibility': 'love'
+  'mbti-compatibility': 'love',
+  'hsp': 'personality',
+  'personal-color': 'personality',
+  'kkondae': 'fun',
+  'alter-ego': 'personality'
 };
 
 export const categoryLabels = {
@@ -121,9 +125,18 @@ import foodPersonalityKo from '../content/tests/ko/food-personality.json';
 import foodPersonalityEn from '../content/tests/en/food-personality.json';
 import mbtiCompatibilityKo from '../content/tests/ko/mbti-compatibility.json';
 import mbtiCompatibilityEn from '../content/tests/en/mbti-compatibility.json';
+// New tests - 2025
+import hspKo from '../content/tests/ko/hsp.json';
+import hspEn from '../content/tests/en/hsp.json';
+import personalColorKo from '../content/tests/ko/personal-color.json';
+import personalColorEn from '../content/tests/en/personal-color.json';
+import kkondaeKo from '../content/tests/ko/kkondae.json';
+import kkondaeEn from '../content/tests/en/kkondae.json';
+import alterEgoKo from '../content/tests/ko/alter-ego.json';
+import alterEgoEn from '../content/tests/en/alter-ego.json';
 
-const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo, mentalAgeKo, hiddenTalentKo, idealTypeKo, foodPersonalityKo, mbtiCompatibilityKo];
-const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn, mentalAgeEn, hiddenTalentEn, idealTypeEn, foodPersonalityEn, mbtiCompatibilityEn];
+const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo, mentalAgeKo, hiddenTalentKo, idealTypeKo, foodPersonalityKo, mbtiCompatibilityKo, hspKo, personalColorKo, kkondaeKo, alterEgoKo];
+const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn, mentalAgeEn, hiddenTalentEn, idealTypeEn, foodPersonalityEn, mbtiCompatibilityEn, hspEn, personalColorEn, kkondaeEn, alterEgoEn];
 
 export function getAllTests(lang: string): Test[] {
   return lang === 'ko' ? testsKo : testsEn;
