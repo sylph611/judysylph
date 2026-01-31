@@ -6,6 +6,7 @@ import SearchBar from '../../components/SearchBar.astro';
 import TestCardSkeleton from '../../components/TestCardSkeleton.astro';
 import ToolCardSkeleton from '../../components/ToolCardSkeleton.astro';
 import RecentTests from '../../components/RecentTests.astro';
+import RecentBlogPosts from '../../components/RecentBlogPosts.astro';
 import { getTestMeta, categoryLabels } from '../../utils/tests';
 import { getAllTools } from '../../utils/tools';
 import { useTranslations } from '../../i18n';
@@ -163,23 +164,23 @@ const categories = categoryLabels.ko;
 
       <div class="text-center mt-8">
         <a href={`/${lang}/tools`} class="text-primary-600 dark:text-primary-400 hover:underline font-medium">
-          모든 도구 보기 →
+          {t('tools.viewAll')}
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Recent Blog Posts -->
+  <RecentBlogPosts lang={lang} />
+
   <!-- About Section -->
   <section class="py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-        JudySylph 소개
+        {t('home.aboutTitle')}
       </h2>
       <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-        JudySylph는 재미있고 통찰력 있는 심리 테스트와 유용한 도구를 제공합니다.
-        자신의 성격, 연애 스타일, 스트레스 대처 방식 등을 알아보고,
-        일상에서 필요한 다양한 계산과 변환도 간편하게 이용해보세요.
-        모든 서비스는 무료이며, 결과를 친구들과 공유할 수 있습니다.
+        {t('home.aboutDescription')}
       </p>
     </div>
   </section>

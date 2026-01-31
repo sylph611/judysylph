@@ -65,10 +65,13 @@ export function generateArticleSchema(post: BlogPost, url: string, siteUrl: stri
     "@type": "Article",
     "headline": post.data.title,
     "description": post.data.description,
+    "image": `${siteUrl}/og/blog.svg`,
     "datePublished": post.data.publishDate.toISOString(),
+    "dateModified": post.data.publishDate.toISOString(),
     "author": {
       "@type": "Organization",
-      "name": "JudySylph"
+      "name": "JudySylph",
+      "url": siteUrl
     },
     "publisher": {
       "@type": "Organization",
