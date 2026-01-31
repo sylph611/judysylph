@@ -21,13 +21,34 @@ export function getLangFromUrl(url: URL): Lang {
 export function useTranslations(lang: Lang) {
   return function t(key: string): string {
     const keys = key.split('.');
-    let value: any = translations[lang];
 
+    // Try current language first
+    let value: any = translations[lang];
     for (const k of keys) {
       value = value?.[k];
     }
+    if (value) return value;
 
-    return value || key;
+    // Fallback to English if not default language
+    if (lang !== 'en') {
+      let fallbackValue: any = translations['en'];
+      for (const k of keys) {
+        fallbackValue = fallbackValue?.[k];
+      }
+      if (fallbackValue) return fallbackValue;
+    }
+
+    // Fallback to Korean as last resort
+    if (lang !== 'ko') {
+      let fallbackValue: any = translations['ko'];
+      for (const k of keys) {
+        fallbackValue = fallbackValue?.[k];
+      }
+      if (fallbackValue) return fallbackValue;
+    }
+
+    // Return key if nothing found
+    return key;
   };
 }
 
