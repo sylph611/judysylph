@@ -1,0 +1,56 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="-30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="30" cy="0" r="8" fill="white"/>
+    <circle cx="60" cy="0" r="8" fill="white" opacity="0.4"/>
+  </g>
+
+  <rect x="90" y="180" width="900" height="600" rx="30" fill="white"/>
+
+  <text x="540" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#6b7280">
+    실제 테스트 결과 예시
+  </text>
+
+  <text x="540" y="420" text-anchor="middle" font-size="100">😐</text>
+
+  <text x="540" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#1f2937">
+    선배 기질 (60%)
+  </text>
+
+  <text x="540" y="640" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#6b7280">
+    경험을 공유하고 싶은 마음은 이해하지만
+  </text>
+  <text x="540" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#6b7280">
+    가끔 그 선이 강요로 느껴질 수 있어요
+  </text>
+
+  <!-- User reactions -->
+  <g transform="translate(540, 900)">
+    <rect x="-400" y="-60" width="350" height="120" rx="20" fill="white" opacity="0.2"/>
+    <text x="-225" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="white">"ㅋㅋㅋ 찔린다"</text>
+    <text x="-225" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="white" opacity="0.7">@user123</text>
+
+    <rect x="50" y="-60" width="350" height="120" rx="20" fill="white" opacity="0.2"/>
+    <text x="225" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="white">"팩트폭력..."</text>
+    <text x="225" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="white" opacity="0.7">@user456</text>
+  </g>
+
+  <text x="540" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="white">
+    댓글로 결과 공유해주세요! 💬
+  </text>
+
+  <text x="540" y="1280" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.7">
+    →
+  </text>
+</svg>

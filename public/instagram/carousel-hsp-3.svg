@@ -1,0 +1,53 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="-30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="0" cy="0" r="8" fill="white"/>
+    <circle cx="30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="60" cy="0" r="8" fill="white" opacity="0.4"/>
+  </g>
+
+  <rect x="90" y="180" width="900" height="500" rx="30" fill="white"/>
+
+  <text x="540" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#7c3aed">
+    3개 이상 해당되면?
+  </text>
+
+  <text x="540" y="450" text-anchor="middle" font-size="120">🦋</text>
+
+  <text x="540" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#1f2937">
+    HSP일 수 있어요!
+  </text>
+
+  <rect x="90" y="750" width="900" height="450" rx="30" fill="white" opacity="0.15"/>
+
+  <text x="540" y="850" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="white">
+    HSP (Highly Sensitive Person)
+  </text>
+  <text x="540" y="920" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.9">
+    고민감성 인간
+  </text>
+
+  <text x="540" y="1020" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="white" opacity="0.85">
+    전체 인구의 15-20%가 해당되는
+  </text>
+  <text x="540" y="1070" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="white" opacity="0.85">
+    타고난 기질적 특성입니다
+  </text>
+  <text x="540" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.7">
+    (질병이나 장애가 아니에요!)
+  </text>
+
+  <text x="540" y="1280" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.7">
+    →
+  </text>
+</svg>

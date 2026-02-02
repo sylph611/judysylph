@@ -1,0 +1,49 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <text x="100" y="200" font-size="50" opacity="0.2">✨</text>
+  <text x="950" y="1200" font-size="45" opacity="0.2">⭐</text>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="-30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="60" cy="0" r="8" fill="white"/>
+  </g>
+
+  <text x="540" y="350" text-anchor="middle" font-size="180">🎭</text>
+
+  <text x="540" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="white">
+    나의 부캐 테스트
+  </text>
+  <text x="540" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="white" opacity="0.9">
+    숨겨진 또 다른 나 발견하기
+  </text>
+
+  <rect x="140" y="700" width="800" height="300" rx="30" fill="white"/>
+  <text x="540" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" fill="#1f2937">
+    👆 프로필 링크 클릭
+  </text>
+  <text x="540" y="870" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#6b7280">
+    또는
+  </text>
+  <text x="540" y="940" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="#8b5cf6">
+    judysylph.com
+  </text>
+
+  <text x="540" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white">
+    💜 저장하고 나중에 해도 OK!
+  </text>
+
+  <text x="540" y="1180" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white">
+    👥 부캐 궁금한 친구 태그하기
+  </text>
+</svg>

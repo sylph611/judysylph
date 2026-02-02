@@ -1,0 +1,64 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="-30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="30" cy="0" r="8" fill="white"/>
+    <circle cx="60" cy="0" r="8" fill="white" opacity="0.4"/>
+  </g>
+
+  <rect x="90" y="180" width="900" height="650" rx="30" fill="white"/>
+
+  <text x="540" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#6b7280">
+    실제 결과 예시
+  </text>
+
+  <text x="540" y="420" text-anchor="middle" font-size="100">🔥</text>
+
+  <text x="540" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="#1f2937">
+    프리 스피릿
+  </text>
+  <text x="540" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#6b7280">
+    자유로운 반항아
+  </text>
+
+  <g transform="translate(540, 720)">
+    <rect x="-300" y="-25" width="120" height="50" rx="25" fill="#8b5cf6" opacity="0.15"/>
+    <text x="-240" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#8b5cf6">자유</text>
+    <rect x="-150" y="-25" width="120" height="50" rx="25" fill="#8b5cf6" opacity="0.15"/>
+    <text x="-90" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#8b5cf6">도전</text>
+    <rect x="0" y="-25" width="120" height="50" rx="25" fill="#8b5cf6" opacity="0.15"/>
+    <text x="60" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#8b5cf6">대담함</text>
+    <rect x="150" y="-25" width="120" height="50" rx="25" fill="#8b5cf6" opacity="0.15"/>
+    <text x="210" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#8b5cf6">독립심</text>
+  </g>
+
+  <text x="540" y="920" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.9">
+    "모든 것을 던지고 자유롭게 살고 싶은
+  </text>
+  <text x="540" y="970" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.9">
+    욕망이 숨어있어요"
+  </text>
+
+  <text x="540" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="white">
+    나의 부캐는 뭘까? 🤔
+  </text>
+
+  <rect x="240" y="1150" width="600" height="80" rx="40" fill="white"/>
+  <text x="540" y="1205" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#8b5cf6">
+    12문항 · 3분 · 무료
+  </text>
+
+  <text x="540" y="1300" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.7">
+    →
+  </text>
+</svg>

@@ -1,0 +1,61 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="-30" cy="0" r="8" fill="white"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="60" cy="0" r="8" fill="white" opacity="0.4"/>
+  </g>
+
+  <text x="540" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" fill="white">
+    혹시 이런 적 있으신가요?
+  </text>
+
+  <g transform="translate(540, 380)">
+    <rect x="-420" y="-70" width="840" height="140" rx="20" fill="white"/>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#1f2937">
+      겉으로는 조용한데 속으로는 🔥
+    </text>
+  </g>
+
+  <g transform="translate(540, 560)">
+    <rect x="-420" y="-70" width="840" height="140" rx="20" fill="white"/>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#1f2937">
+      혼자 있으면 갑자기 끼 폭발 💃
+    </text>
+  </g>
+
+  <g transform="translate(540, 740)">
+    <rect x="-420" y="-70" width="840" height="140" rx="20" fill="white"/>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#1f2937">
+      은근히 리더 하고 싶은 마음 👑
+    </text>
+  </g>
+
+  <g transform="translate(540, 920)">
+    <rect x="-420" y="-70" width="840" height="140" rx="20" fill="white"/>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#1f2937">
+      아무도 모르는 예술가 감성 🎨
+    </text>
+  </g>
+
+  <g transform="translate(540, 1100)">
+    <rect x="-420" y="-70" width="840" height="140" rx="20" fill="white"/>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#1f2937">
+      사실 다 던지고 떠나고 싶음 ✈️
+    </text>
+  </g>
+
+  <text x="540" y="1280" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.7">
+    →
+  </text>
+</svg>

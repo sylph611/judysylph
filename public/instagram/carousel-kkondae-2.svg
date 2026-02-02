@@ -1,0 +1,59 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="-30" cy="0" r="8" fill="white"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="60" cy="0" r="8" fill="white" opacity="0.4"/>
+  </g>
+
+  <text x="540" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" fill="white">
+    혹시 이런 말 자주 하시나요?
+  </text>
+
+  <!-- Quote cards -->
+  <g transform="translate(540, 380)">
+    <rect x="-420" y="-80" width="840" height="160" rx="20" fill="white"/>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#1f2937">
+      "나 때는 말이야..."
+    </text>
+  </g>
+
+  <g transform="translate(540, 580)">
+    <rect x="-420" y="-80" width="840" height="160" rx="20" fill="white"/>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#1f2937">
+      "요즘 애들은..."
+    </text>
+  </g>
+
+  <g transform="translate(540, 780)">
+    <rect x="-420" y="-80" width="840" height="160" rx="20" fill="white"/>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#1f2937">
+      "내가 해봐서 아는데..."
+    </text>
+  </g>
+
+  <g transform="translate(540, 980)">
+    <rect x="-420" y="-80" width="840" height="160" rx="20" fill="white"/>
+    <text x="0" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#1f2937">
+      "다 너 잘되라고 하는 말이야"
+    </text>
+  </g>
+
+  <text x="540" y="1180" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="white">
+    1개라도 해당되면...? 😱
+  </text>
+
+  <text x="540" y="1280" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.7">
+    →
+  </text>
+</svg>

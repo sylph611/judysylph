@@ -1,0 +1,43 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <text x="150" y="200" font-size="60" opacity="0.2">✨</text>
+  <text x="900" y="300" font-size="50" opacity="0.2">⭐</text>
+  <text x="100" y="1100" font-size="45" opacity="0.2">🌟</text>
+  <text x="950" y="1200" font-size="55" opacity="0.2">✨</text>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white"/>
+    <circle cx="-30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="60" cy="0" r="8" fill="white" opacity="0.4"/>
+  </g>
+
+  <text x="540" y="480" text-anchor="middle" font-size="200">🎭</text>
+
+  <text x="540" y="680" text-anchor="middle" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="white">
+    평소의 나
+  </text>
+  <text x="540" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="white">
+    vs
+  </text>
+  <text x="540" y="880" text-anchor="middle" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="white">
+    숨겨진 나
+  </text>
+
+  <text x="540" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="white" opacity="0.9">
+    나의 부캐 찾기 테스트
+  </text>
+
+  <text x="540" y="1250" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.7">
+    → 밀어서 확인
+  </text>
+</svg>
