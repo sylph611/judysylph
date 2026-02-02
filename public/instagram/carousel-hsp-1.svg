@@ -1,0 +1,37 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <circle cx="100" cy="150" r="80" fill="white" opacity="0.1"/>
+  <circle cx="980" cy="1200" r="100" fill="white" opacity="0.1"/>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white"/>
+    <circle cx="-30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="60" cy="0" r="8" fill="white" opacity="0.4"/>
+  </g>
+
+  <text x="540" y="500" text-anchor="middle" font-size="200">🦋</text>
+
+  <text x="540" y="700" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">
+    혹시 나...
+  </text>
+  <text x="540" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">
+    너무 예민한 걸까?
+  </text>
+
+  <text x="540" y="950" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="white" opacity="0.9">
+    HSP 민감성 테스트
+  </text>
+
+  <text x="540" y="1250" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.7">
+    → 밀어서 체크해보세요
+  </text>
+</svg>

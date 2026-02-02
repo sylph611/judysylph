@@ -1,0 +1,46 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <!-- Slide indicator -->
+  <g transform="translate(540, 80)">
+    <circle cx="-60" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="-30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="30" cy="0" r="8" fill="white" opacity="0.4"/>
+    <circle cx="60" cy="0" r="8" fill="white"/>
+  </g>
+
+  <text x="540" y="350" text-anchor="middle" font-size="180">🦋</text>
+
+  <text x="540" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="white">
+    HSP 테스트
+  </text>
+  <text x="540" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="white" opacity="0.9">
+    나의 민감성 레벨 확인하기
+  </text>
+
+  <rect x="140" y="700" width="800" height="300" rx="30" fill="white"/>
+  <text x="540" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" fill="#1f2937">
+    👆 프로필 링크 클릭
+  </text>
+  <text x="540" y="870" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#6b7280">
+    또는
+  </text>
+  <text x="540" y="940" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="#7c3aed">
+    judysylph.com
+  </text>
+
+  <text x="540" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white">
+    💜 저장하고 나중에 해도 OK!
+  </text>
+
+  <text x="540" y="1200" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white">
+    👥 예민한 친구 태그하기
+  </text>
+</svg>
