@@ -1,0 +1,83 @@
+<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#d946ef"/>
+    </linearGradient>
+    <linearGradient id="mask-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+
+  <!-- Decorative sparkles -->
+  <text x="150" y="150" font-size="40" opacity="0.4">✨</text>
+  <text x="900" y="200" font-size="50" opacity="0.4">⭐</text>
+  <text x="100" y="900" font-size="45" opacity="0.4">🌟</text>
+  <text x="950" y="950" font-size="35" opacity="0.4">✨</text>
+
+  <!-- Main card -->
+  <rect x="90" y="180" width="900" height="720" rx="40" fill="white" filter="url(#shadow)"/>
+
+  <!-- Dual mask emoji -->
+  <text x="540" y="380" text-anchor="middle" font-size="140">🎭</text>
+
+  <!-- Title -->
+  <text x="540" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#1f2937">
+    숨겨진 나의 부캐는?
+  </text>
+
+  <!-- Subtitle -->
+  <text x="540" y="565" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#6b7280">
+    Alter Ego 테스트
+  </text>
+
+  <!-- Character types -->
+  <g transform="translate(540, 670)">
+    <g transform="translate(-200, 0)">
+      <circle cx="0" cy="0" r="35" fill="#fbbf24"/>
+      <text x="0" y="8" text-anchor="middle" font-size="30">🌟</text>
+      <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#6b7280">스타</text>
+    </g>
+    <g transform="translate(-70, 0)">
+      <circle cx="0" cy="0" r="35" fill="#a855f7"/>
+      <text x="0" y="8" text-anchor="middle" font-size="30">🎨</text>
+      <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#6b7280">아티스트</text>
+    </g>
+    <g transform="translate(60, 0)">
+      <circle cx="0" cy="0" r="35" fill="#ef4444"/>
+      <text x="0" y="8" text-anchor="middle" font-size="30">🔥</text>
+      <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#6b7280">반항아</text>
+    </g>
+    <g transform="translate(190, 0)">
+      <circle cx="0" cy="0" r="35" fill="#3b82f6"/>
+      <text x="0" y="8" text-anchor="middle" font-size="30">👑</text>
+      <text x="0" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#6b7280">리더</text>
+    </g>
+  </g>
+
+  <!-- CTA -->
+  <rect x="290" y="780" width="500" height="80" rx="40" fill="#8b5cf6"/>
+  <text x="540" y="835" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">
+    부캐 발견하기 →
+  </text>
+
+  <!-- Site name -->
+  <text x="540" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.9">
+    judysylph.com
+  </text>
+</svg>

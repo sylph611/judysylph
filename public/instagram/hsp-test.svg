@@ -1,0 +1,60 @@
+<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="50%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="80" fill="white" opacity="0.1"/>
+  <circle cx="980" cy="980" r="120" fill="white" opacity="0.1"/>
+  <circle cx="900" cy="200" r="60" fill="white" opacity="0.08"/>
+  <circle cx="150" cy="900" r="100" fill="white" opacity="0.08"/>
+
+  <!-- Main card -->
+  <rect x="90" y="180" width="900" height="720" rx="40" fill="white" filter="url(#shadow)"/>
+
+  <!-- Emoji -->
+  <text x="540" y="380" text-anchor="middle" font-size="150">🦋</text>
+
+  <!-- Title -->
+  <text x="540" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="#1f2937">
+    나는 예민한 사람일까?
+  </text>
+
+  <!-- Subtitle -->
+  <text x="540" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#6b7280">
+    HSP 민감성 테스트
+  </text>
+
+  <!-- Features -->
+  <g transform="translate(540, 680)">
+    <rect x="-280" y="-25" width="160" height="50" rx="25" fill="#a855f7" opacity="0.15"/>
+    <text x="-200" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#7c3aed">12문항</text>
+
+    <rect x="-80" y="-25" width="160" height="50" rx="25" fill="#a855f7" opacity="0.15"/>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#7c3aed">3분 소요</text>
+
+    <rect x="120" y="-25" width="160" height="50" rx="25" fill="#a855f7" opacity="0.15"/>
+    <text x="200" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#7c3aed">무료</text>
+  </g>
+
+  <!-- CTA -->
+  <rect x="290" y="760" width="500" height="80" rx="40" fill="#7c3aed"/>
+  <text x="540" y="815" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">
+    지금 테스트하기 →
+  </text>
+
+  <!-- Site name -->
+  <text x="540" y="1000" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.9">
+    judysylph.com
+  </text>
+</svg>
