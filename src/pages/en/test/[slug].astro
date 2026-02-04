@@ -1,7 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Question from '../../../components/Question.astro';
-import AdBanner from '../../../components/AdBanner.astro';
 import { getTest, getAllTests } from '../../../utils/tests';
 
 export function getStaticPaths() {
@@ -67,10 +66,6 @@ const jsonLd = {
             lang={lang}
           />
 
-          {/* Ad between questions (every 5 questions) */}
-          {(index + 1) % 5 === 0 && index !== test.questions.length - 1 && (
-            <AdBanner slot="inline" className="my-6" />
-          )}
         </div>
       ))}
     </div>

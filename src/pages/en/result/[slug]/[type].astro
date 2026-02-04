@@ -3,7 +3,6 @@ import Layout from '../../../../layouts/Layout.astro';
 import Result from '../../../../components/Result.astro';
 import ShareButtons from '../../../../components/ShareButtons.astro';
 import ResultActions from '../../../../components/ResultActions.astro';
-import AdBanner from '../../../../components/AdBanner.astro';
 import TestCard from '../../../../components/TestCard.astro';
 import Confetti from '../../../../components/Confetti.astro';
 import { getTest, getAllTests, getRecommendedTests } from '../../../../utils/tests';
@@ -67,9 +66,6 @@ const jsonLd = {
   <Confetti />
 
   <div class="max-w-4xl mx-auto px-4 py-8">
-    <!-- Ad Banner Top -->
-    <AdBanner slot="result" className="mb-8" />
-
     <!-- Result Component -->
     <Result
       type={result.type}
@@ -130,9 +126,6 @@ const jsonLd = {
         View Other Tests
       </a>
     </div>
-
-    <!-- Ad Banner Bottom -->
-    <AdBanner slot="result" className="mt-8" />
 
     <!-- Recommended Tests -->
     {otherTests.length > 0 && (
