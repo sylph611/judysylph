@@ -1,0 +1,150 @@
+{
+  "slug": "empathy",
+  "title": "Empathy Test",
+  "description": "How high is your emotional intelligence (EQ)? Measure your empathy level!",
+  "emoji": "💕",
+  "questions": [
+    {
+      "question": "When a friend shares sad news, you:",
+      "choices": [
+        { "text": "Feel tears welling up too", "scores": { "high": 2, "above": 1 } },
+        { "text": "Sincerely comfort them", "scores": { "above": 2, "average": 1 } },
+        { "text": "Offer practical solutions", "scores": { "average": 2, "below": 1 } },
+        { "text": "Not sure how to react", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "During emotional movie scenes:",
+      "choices": [
+        { "text": "I cry almost every time", "scores": { "high": 2, "above": 1 } },
+        { "text": "I often get teary-eyed", "scores": { "above": 2, "average": 1 } },
+        { "text": "I'm occasionally moved", "scores": { "average": 2, "below": 1 } },
+        { "text": "I rarely feel affected", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "Can you tell someone's mood just by their expression?",
+      "choices": [
+        { "text": "Almost always accurately", "scores": { "high": 2, "above": 1 } },
+        { "text": "Most of the time", "scores": { "above": 2, "average": 1 } },
+        { "text": "Sometimes", "scores": { "average": 2, "below": 1 } },
+        { "text": "Not really", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "When someone near you is struggling:",
+      "choices": [
+        { "text": "I quietly stay by their side", "scores": { "high": 2, "above": 1 } },
+        { "text": "I ask what they need", "scores": { "above": 2, "average": 1 } },
+        { "text": "I give them advice", "scores": { "average": 2, "below": 1 } },
+        { "text": "I leave them alone", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "How much are you affected by others' emotions?",
+      "choices": [
+        { "text": "Very much, I absorb their feelings", "scores": { "high": 2, "above": 1 } },
+        { "text": "To some extent", "scores": { "above": 2, "average": 1 } },
+        { "text": "Sometimes", "scores": { "average": 2, "below": 1 } },
+        { "text": "Rarely", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "When you see an animal in pain:",
+      "choices": [
+        { "text": "My heart aches deeply", "scores": { "high": 2, "above": 1 } },
+        { "text": "I feel sorry for it", "scores": { "above": 2, "average": 1 } },
+        { "text": "I think about helping", "scores": { "average": 2, "below": 1 } },
+        { "text": "It doesn't affect me much", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "During conflicts, do you try to understand the other side?",
+      "choices": [
+        { "text": "Always try to understand first", "scores": { "high": 2, "above": 1 } },
+        { "text": "I make an effort to", "scores": { "above": 2, "average": 1 } },
+        { "text": "My perspective comes first", "scores": { "average": 2, "below": 1 } },
+        { "text": "Their perspective isn't my priority", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "When you see tragic news:",
+      "choices": [
+        { "text": "It weighs on me for a while", "scores": { "high": 2, "above": 1 } },
+        { "text": "I feel genuinely sad", "scores": { "above": 2, "average": 1 } },
+        { "text": "I think about it briefly", "scores": { "average": 2, "below": 1 } },
+        { "text": "It doesn't really affect me", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "When a friend succeeds:",
+      "choices": [
+        { "text": "Genuinely happy and proud of them", "scores": { "high": 2, "above": 1 } },
+        { "text": "Happy to congratulate them", "scores": { "above": 2, "average": 1 } },
+        { "text": "Happy but slightly envious", "scores": { "average": 2, "below": 1 } },
+        { "text": "Feel neutral about it", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "Can you sense what someone needs without them saying it?",
+      "choices": [
+        { "text": "Often, yes", "scores": { "high": 2, "above": 1 } },
+        { "text": "Sometimes", "scores": { "above": 2, "average": 1 } },
+        { "text": "They need to tell me", "scores": { "average": 2, "below": 1 } },
+        { "text": "I'm not sure", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "Do you enjoy deep, meaningful conversations?",
+      "choices": [
+        { "text": "I love them", "scores": { "high": 2, "above": 1 } },
+        { "text": "I like them", "scores": { "above": 2, "average": 1 } },
+        { "text": "I prefer light conversation", "scores": { "average": 2, "below": 1 } },
+        { "text": "I'd rather not have long talks", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "Can you intuitively tell when someone is lying?",
+      "choices": [
+        { "text": "Almost always", "scores": { "high": 2, "above": 1 } },
+        { "text": "Often", "scores": { "above": 2, "average": 1 } },
+        { "text": "Sometimes", "scores": { "average": 2, "below": 1 } },
+        { "text": "Not really", "scores": { "below": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "high",
+      "title": "Empathy Genius (Top EQ)",
+      "emoji": "💖",
+      "description": "You have an extraordinary ability to deeply understand and connect with others' emotions. People feel truly understood around you and naturally open up. Your empathy is a remarkable gift!",
+      "traits": ["Deep Empathy", "Emotional Awareness", "Healer", "Great Listener", "Intuitive"],
+      "advice": "Protect yourself from absorbing too much emotional energy. Healthy boundaries are important."
+    },
+    {
+      "type": "above",
+      "title": "High Empath (Above Average EQ)",
+      "emoji": "🤗",
+      "description": "You have above-average empathy! You understand others' feelings well and respond appropriately. You're likely the go-to person for emotional support among your friends.",
+      "traits": ["Understanding", "Caring", "Good Communicator", "Warm", "Trustworthy"],
+      "advice": "Consider developing your empathy further. You'd excel in counseling or helping professions!"
+    },
+    {
+      "type": "average",
+      "title": "Balanced Empathy (Average EQ)",
+      "emoji": "😊",
+      "description": "You have a balanced level of empathy. You navigate well between logic and emotion, adapting flexibly to situations. Sometimes being a bit more emotionally present could help.",
+      "traits": ["Balanced", "Practical", "Adaptive", "Neutral", "Flexible"],
+      "advice": "Try listening with your heart before your head sometimes. It can deepen your relationships."
+    },
+    {
+      "type": "below",
+      "title": "Logical Thinker (Developing EQ)",
+      "emoji": "🧠",
+      "description": "You tend to prioritize logic and reason over emotions. You're great at problem-solving but may find emotional exchanges challenging. Empathy can be developed with practice!",
+      "traits": ["Logical", "Analytical", "Objective", "Independent", "Direct"],
+      "advice": "When someone shares a problem, try responding to their feelings before offering solutions."
+    }
+  ]
+}

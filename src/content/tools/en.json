@@ -194,5 +194,40 @@
     "description": "Analyze whether buying or leasing a car is more cost-effective for you.",
     "emoji": "🚙",
     "category": "Finance"
+  },
+  {
+    "slug": "compound-interest",
+    "title": "Compound Interest Calculator",
+    "description": "Calculate compound interest and final amount based on principal, rate, and time period.",
+    "emoji": "📈",
+    "category": "Finance"
+  },
+  {
+    "slug": "calorie-calculator",
+    "title": "Calorie Calculator",
+    "description": "Calculate your daily calorie needs and BMR based on age, gender, and activity level.",
+    "emoji": "🔥",
+    "category": "Health"
+  },
+  {
+    "slug": "body-fat-calculator",
+    "title": "Body Fat Calculator",
+    "description": "Estimate your body fat percentage and health status based on body measurements.",
+    "emoji": "💪",
+    "category": "Health"
+  },
+  {
+    "slug": "sleep-calculator",
+    "title": "Sleep Calculator",
+    "description": "Find optimal sleep cycles based on your bedtime or wake-up time for better rest.",
+    "emoji": "😴",
+    "category": "Health"
+  },
+  {
+    "slug": "tip-calculator",
+    "title": "Tip Calculator",
+    "description": "Calculate tip amount and total bill. Split between multiple people.",
+    "emoji": "💵",
+    "category": "Life"
   }
 ]

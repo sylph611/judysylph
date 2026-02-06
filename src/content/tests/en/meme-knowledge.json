@@ -1,0 +1,150 @@
+{
+  "slug": "meme-knowledge",
+  "title": "Meme Knowledge Test",
+  "description": "How well do you know internet culture? Test your meme literacy!",
+  "emoji": "🤣",
+  "questions": [
+    {
+      "question": "When you see a new meme format, you:",
+      "choices": [
+        { "text": "Immediately understand and use it", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "Get it after seeing a few examples", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Need someone to explain it", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "Don't really care about memes", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "How often do you browse TikTok or YouTube Shorts?",
+      "choices": [
+        { "text": "Daily, for hours", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "Sometimes when bored", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Rarely", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "What's that?", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "When a friend sends you a meme:",
+      "choices": [
+        { "text": "Reply with an even better meme", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "LOL and react", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Ask what it means if confused", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "Usually ignore it", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "Do you know what 'OK Boomer' means?",
+      "choices": [
+        { "text": "Yes, and I've used it ironically", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "Yes, it's dismissing old-fashioned views", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Heard of it but not sure", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "No idea", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "Have you ever participated in an internet challenge?",
+      "choices": [
+        { "text": "Multiple times, posted them too", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "Tried one or two", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Just watched others do it", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "Internet challenges aren't my thing", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "When new slang emerges online:",
+      "choices": [
+        { "text": "I notice and use it right away", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "I catch on after a few days", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "I learn about it much later", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "I usually miss it completely", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "Your knowledge of 'Rickrolling':",
+      "choices": [
+        { "text": "A classic, I've done it to others", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "I know what it is", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Sounds familiar", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "Never heard of it", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "How do you communicate with friends online?",
+      "choices": [
+        { "text": "Mostly memes and references", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "Mix of memes and regular chat", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Mostly regular messages", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "Prefer calls over texting", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "Do you know what 'based' means in internet slang?",
+      "choices": [
+        { "text": "Yes, use it regularly", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "I think it means authentic/cool", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "I've seen it but not sure", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "No clue", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "Your reaction to seeing 'We live in a society':",
+      "choices": [
+        { "text": "Instant Joker reference recognition", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "It's a meme, right?", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Seems philosophical?", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "Just a regular statement?", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "How quickly do you catch on to trending audio on social media?",
+      "choices": [
+        { "text": "I recognize them instantly", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "After hearing it a few times", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Usually takes me a while", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "I don't follow audio trends", "scores": { "outsider": 2 } }
+      ]
+    },
+    {
+      "question": "Do you use internet slang in real life?",
+      "choices": [
+        { "text": "All the time, ironically or not", "scores": { "expert": 2, "intermediate": 1 } },
+        { "text": "Sometimes with the right crowd", "scores": { "intermediate": 2, "beginner": 1 } },
+        { "text": "Rarely, feels awkward", "scores": { "beginner": 2, "outsider": 1 } },
+        { "text": "Never, I prefer proper language", "scores": { "outsider": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "expert",
+      "title": "Meme Master",
+      "emoji": "👑",
+      "description": "You're a certified Meme Master! You're always on the cutting edge of internet culture, catching trends before they go mainstream. Your friends probably come to you to explain the latest memes. You speak fluent internet!",
+      "traits": ["Trendsetter", "Humor Expert", "Social Media Native", "Quick Wit", "Culturally Aware"],
+      "advice": "Your meme knowledge is a superpower! Just remember not everyone speaks internet fluently."
+    },
+    {
+      "type": "intermediate",
+      "title": "Meme Enthusiast",
+      "emoji": "😎",
+      "description": "You're a solid Meme Enthusiast! You understand most memes and can navigate internet culture with ease. You might not catch every trend immediately, but you're definitely in the loop. Keep scrolling!",
+      "traits": ["Adaptable", "Balanced", "Casual Scroller", "Socially Connected", "Witty"],
+      "advice": "You've got a good balance! Keep enjoying memes without making it your whole personality."
+    },
+    {
+      "type": "beginner",
+      "title": "Meme Novice",
+      "emoji": "🤔",
+      "description": "You're a Meme Novice - aware of internet culture but still learning the language. You might miss some references or need things explained, but you're curious and willing to learn. Everyone starts somewhere!",
+      "traits": ["Curious", "Learning", "Observer", "Genuine", "Open-minded"],
+      "advice": "Spend some time on TikTok or meme pages to naturally pick up the culture!"
+    },
+    {
+      "type": "outsider",
+      "title": "Meme Outsider",
+      "emoji": "🧐",
+      "description": "You're a Meme Outsider - and that's perfectly fine! Internet culture isn't your thing, and you prefer more traditional forms of communication. You have your own interests and don't feel the need to follow every trend.",
+      "traits": ["Independent", "Classic", "Focused", "Authentic", "Individualist"],
+      "advice": "You don't need to know every meme to live a fulfilling life. Stay true to yourself!"
+    }
+  ]
+}

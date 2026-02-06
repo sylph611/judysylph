@@ -1,0 +1,174 @@
+{
+  "slug": "food-persona",
+  "title": "If I Were Food Test",
+  "description": "If you were a food, what would you be? Discover your food persona based on your personality!",
+  "emoji": "🍕",
+  "questions": [
+    {
+      "question": "At a gathering, your role is:",
+      "choices": [
+        { "text": "The life of the party", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Quietly blending in", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Not the center but would be missed", "scores": { "side": 2, "soup": 1 } },
+        { "text": "Show up last to wrap things up", "scores": { "dessert": 2, "coffee": 1 } }
+      ]
+    },
+    {
+      "question": "Describe your personality in one word:",
+      "choices": [
+        { "text": "Flashy", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Comforting", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Unique", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "Addictive", "scores": { "coffee": 2, "chicken": 1 } }
+      ]
+    },
+    {
+      "question": "When stressed, you:",
+      "choices": [
+        { "text": "Go out for good food", "scores": { "chicken": 2, "pizza": 1 } },
+        { "text": "Rest at home", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Eat something sweet", "scores": { "dessert": 2, "coffee": 1 } },
+        { "text": "Get caffeine", "scores": { "coffee": 2, "side": 1 } }
+      ]
+    },
+    {
+      "question": "How would friends describe you?",
+      "choices": [
+        { "text": "Fun to be around", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Comfortable and reliable", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Unique and distinctive", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "Something's missing without you", "scores": { "coffee": 2, "soup": 1 } }
+      ]
+    },
+    {
+      "question": "Meeting new people, you:",
+      "choices": [
+        { "text": "Approach and start talking first", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Get to know them slowly", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Show off your unique charm", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "Only talk when necessary", "scores": { "coffee": 2, "side": 1 } }
+      ]
+    },
+    {
+      "question": "Your ideal weekend:",
+      "choices": [
+        { "text": "Party with friends", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Relaxing at home", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Trying new experiences", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "Solo time at a café", "scores": { "coffee": 2, "dessert": 1 } }
+      ]
+    },
+    {
+      "question": "Your dating style:",
+      "choices": [
+        { "text": "Passionate and proactive", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Warm and devoted", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Push-pull and exciting", "scores": { "dessert": 2, "side": 1 } },
+        { "text": "Independent and cool", "scores": { "coffee": 2, "side": 1 } }
+      ]
+    },
+    {
+      "question": "Your charm point is:",
+      "choices": [
+        { "text": "Energy that makes everyone happy", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Making everyone comfortable", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Unforgettable uniqueness", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "Depth that grows on people", "scores": { "coffee": 2, "soup": 1 } }
+      ]
+    },
+    {
+      "question": "In conflict situations, you:",
+      "choices": [
+        { "text": "Address it head-on", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Talk it through", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Take time to think", "scores": { "coffee": 2, "dessert": 1 } },
+        { "text": "Handle it your own way", "scores": { "side": 2, "coffee": 1 } }
+      ]
+    },
+    {
+      "question": "In team projects, you're the:",
+      "choices": [
+        { "text": "Leader/Presenter", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Supporter/Worker", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Idea generator", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "Analyzer/Reviewer", "scores": { "coffee": 2, "side": 1 } }
+      ]
+    },
+    {
+      "question": "Your life values:",
+      "choices": [
+        { "text": "Fun and happiness", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Stability and peace", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Freedom and individuality", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "Growth and achievement", "scores": { "coffee": 2, "rice": 1 } }
+      ]
+    },
+    {
+      "question": "First impression vs after knowing you:",
+      "choices": [
+        { "text": "Same - bright and lively", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "Better the more you know me", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "Surprising hidden charm", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "Need to know me deeply to appreciate", "scores": { "coffee": 2, "soup": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "pizza",
+      "title": "Pizza",
+      "emoji": "🍕",
+      "description": "The party star! You're Pizza - the center of attention with colorful, diverse charm. Everyone loves having you around. You bring energy and fun wherever you go!",
+      "traits": ["Social", "Flashy", "Popular", "Versatile", "Leader"],
+      "advice": "Sometimes take quiet breaks too. Watch out for burnout!"
+    },
+    {
+      "type": "rice",
+      "title": "White Rice",
+      "emoji": "🍚",
+      "description": "Essential comfort! You're White Rice - not flashy but reliably comforting. Everyone feels at ease with you, and you complement any situation perfectly.",
+      "traits": ["Stable", "Trustworthy", "Inclusive", "Humble", "Devoted"],
+      "advice": "It's okay to be the star sometimes! Show your worth more."
+    },
+    {
+      "type": "soup",
+      "title": "Warm Soup",
+      "emoji": "🍲",
+      "description": "Heartwarming healer! You're Warm Soup - comforting tired souls with deep empathy. People feel relaxed and healed around you.",
+      "traits": ["Warm", "Healing", "Empathetic", "Caring", "Patient"],
+      "advice": "Don't forget to take care of yourself while caring for others."
+    },
+    {
+      "type": "chicken",
+      "title": "Fried Chicken",
+      "emoji": "🍗",
+      "description": "Crowd favorite! You're Fried Chicken - irresistible charm welcomed everywhere. Special days and ordinary days alike become better with you!",
+      "traits": ["Charming", "Lively", "Positive", "Social", "Fun"],
+      "advice": "Don't let popularity go to your head. Cherish genuine relationships."
+    },
+    {
+      "type": "dessert",
+      "title": "Sweet Dessert",
+      "emoji": "🍰",
+      "description": "Special moment maker! You're Sweet Dessert - bringing joy and excitement. You have a magical charm that brightens everyone's day.",
+      "traits": ["Sweet", "Romantic", "Emotional", "Special", "Artistic"],
+      "advice": "Sometimes you might want to be the main dish. Go for it!"
+    },
+    {
+      "type": "coffee",
+      "title": "Coffee",
+      "emoji": "☕",
+      "description": "Addictively deep! You're Coffee - deep and intense charm. Might seem bitter at first, but people can't start their day without you once they get to know you.",
+      "traits": ["Deep", "Independent", "Intellectual", "Charismatic", "Unique"],
+      "advice": "Show your softer side sometimes. It deepens relationships."
+    },
+    {
+      "type": "side",
+      "title": "Side Dish",
+      "emoji": "🥗",
+      "description": "Uniquely memorable! You're a distinctive Side Dish - not the main but the meal would be bland without you. You leave an unforgettable impression.",
+      "traits": ["Unique", "Original", "Diverse", "Fresh", "Harmonious"],
+      "advice": "Your uniqueness is your strength. Never try to be ordinary!"
+    }
+  ]
+}
