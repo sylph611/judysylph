@@ -1,0 +1,150 @@
+{
+  "slug": "digital-detox",
+  "title": "Digital Detox Test",
+  "description": "How dependent are you on your smartphone and digital devices? Check your digital addiction level!",
+  "emoji": "📱",
+  "questions": [
+    {
+      "question": "First thing you do when you wake up:",
+      "choices": [
+        { "text": "Check my phone", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Stretch and drink water", "scores": { "low": 2, "moderate": 1 } },
+        { "text": "Turn off alarm and lie in bed", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Head straight to the bathroom", "scores": { "low": 2, "healthy": 1 } }
+      ]
+    },
+    {
+      "question": "When going to the bathroom:",
+      "choices": [
+        { "text": "Always bring my phone", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Sometimes bring it", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Rarely bring it", "scores": { "low": 2, "healthy": 1 } },
+        { "text": "Never bring it", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "When battery drops below 20%:",
+      "choices": [
+        { "text": "Feel anxious and restless", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Slightly concerned", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Don't really care", "scores": { "low": 2, "healthy": 1 } },
+        { "text": "Actually feel liberated", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "Your average daily screen time:",
+      "choices": [
+        { "text": "8+ hours", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "5-7 hours", "scores": { "moderate": 2, "high": 1 } },
+        { "text": "3-4 hours", "scores": { "low": 2, "moderate": 1 } },
+        { "text": "2 hours or less", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "When a notification pops up:",
+      "choices": [
+        { "text": "Check it immediately", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Finish what I'm doing first", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Check later when free", "scores": { "low": 2, "healthy": 1 } },
+        { "text": "Keep notifications off", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "When hanging out with friends:",
+      "choices": [
+        { "text": "Phone in hand or on table", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "In bag but check often", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "In bag, check occasionally", "scores": { "low": 2, "healthy": 1 } },
+        { "text": "On silent, don't check", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "Right before falling asleep:",
+      "choices": [
+        { "text": "Scrolling on my phone", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Sometimes on my phone", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Reading or meditating", "scores": { "low": 2, "healthy": 1 } },
+        { "text": "No devices, just sleep", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "A day without your phone would be:",
+      "choices": [
+        { "text": "Unimaginable, impossible", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Very inconvenient", "scores": { "moderate": 2, "high": 1 } },
+        { "text": "Slightly inconvenient but fine", "scores": { "low": 2, "moderate": 1 } },
+        { "text": "Actually would be nice", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "How often do you check social media:",
+      "choices": [
+        { "text": "Constantly, habitually", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "10+ times a day", "scores": { "moderate": 2, "high": 1 } },
+        { "text": "2-3 times a day", "scores": { "low": 2, "moderate": 1 } },
+        { "text": "Rarely or don't use it", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "During meals:",
+      "choices": [
+        { "text": "Always on my phone", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Only when eating alone", "scores": { "moderate": 2, "low": 1 } },
+        { "text": "Rarely check", "scores": { "low": 2, "healthy": 1 } },
+        { "text": "Never check", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "When you have a moment of boredom:",
+      "choices": [
+        { "text": "Immediately grab my phone", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Look at some screen", "scores": { "moderate": 2, "high": 1 } },
+        { "text": "Observe surroundings or think", "scores": { "low": 2, "healthy": 1 } },
+        { "text": "Meditate or just rest", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    },
+    {
+      "question": "Eye fatigue after phone use:",
+      "choices": [
+        { "text": "Always tired and dry", "scores": { "high": 2, "moderate": 1 } },
+        { "text": "Often feel fatigued", "scores": { "moderate": 2, "high": 1 } },
+        { "text": "Sometimes", "scores": { "low": 2, "moderate": 1 } },
+        { "text": "Rarely notice", "scores": { "healthy": 2, "low": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "high",
+      "title": "Digital Dependent",
+      "emoji": "🔴",
+      "description": "You're quite dependent on digital devices. You feel anxious without your phone and spend most of your day with screens. A conscious digital detox is needed.",
+      "traits": ["High dependency", "Notification sensitive", "Poor sleep quality", "Eye strain", "FOMO"],
+      "advice": "Start with 1 hour of 'no phone time' daily. Keeping your phone away 1 hour before bed can make a big difference."
+    },
+    {
+      "type": "moderate",
+      "title": "Needs Balance",
+      "emoji": "🟡",
+      "description": "You have some digital dependency, but it's not severe. Unconscious phone use has become habitual. A bit more mindful usage would help.",
+      "traits": ["Habitual use", "Moderate dependency", "Improvable", "Self-aware", "Needs adjustment"],
+      "advice": "Use screen time apps to track your usage patterns and turn off unnecessary app notifications."
+    },
+    {
+      "type": "low",
+      "title": "Healthy Digital User",
+      "emoji": "🟢",
+      "description": "You use digital devices appropriately when needed. You're not controlled by your phone but use it proactively. Keep up your current habits!",
+      "traits": ["Self-controlled", "Purposeful use", "Balanced", "Healthy habits", "Good boundaries"],
+      "advice": "Maintain your good habits. Consider trying a complete digital-free day occasionally."
+    },
+    {
+      "type": "healthy",
+      "title": "Digital Minimalist",
+      "emoji": "🌿",
+      "description": "You're very free from digital devices. You only use them when necessary and enjoy offline activities. You have a healthy digital lifestyle that's rare in modern society.",
+      "traits": ["Minimal use", "Offline preference", "High focus", "Quality sleep", "Present moment"],
+      "advice": "Excellent! You can be a positive influence on others. Share your digital wellness tips!"
+    }
+  ]
+}

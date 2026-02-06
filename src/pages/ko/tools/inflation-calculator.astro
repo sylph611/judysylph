@@ -1,0 +1,153 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('inflation-calculator', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['ko']['financial'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="inflation-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="amount" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              과거 금액 (원)
+            </label>
+            <input type="number" id="amount" placeholder="1000000" min="0"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
+          </div>
+          <div>
+            <label for="start-year" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              기준 연도
+            </label>
+            <input type="number" id="start-year" placeholder="2000" min="1950" max="2025"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
+          </div>
+          <div>
+            <label for="end-year" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              비교 연도
+            </label>
+            <input type="number" id="end-year" placeholder="2026" min="1950" max="2030" value="2026"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
+          </div>
+          <div>
+            <label for="rate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              평균 물가상승률 (%)
+            </label>
+            <input type="number" id="rate" placeholder="2.5" value="2.5" min="0" max="20" step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">
+            계산하기
+          </button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+            초기화
+          </button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">과거 금액</div>
+            <div id="result-past" class="text-xl font-bold text-gray-900 dark:text-white">0원</div>
+            <div id="result-past-year" class="text-sm text-gray-500">0년</div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 mb-1">현재 가치</div>
+            <div id="result-current" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0원</div>
+            <div id="result-current-year" class="text-sm text-primary-500">0년</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">누적 물가상승률</div>
+            <div id="result-inflation" class="text-xl font-bold text-red-600 dark:text-red-400">0%</div>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-4">
+          <p class="text-sm text-blue-800 dark:text-blue-200">
+            <strong>해석:</strong> <span id="result-explanation"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로 돌아가기</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('inflation-form') as HTMLFormElement;
+  const amountInput = document.getElementById('amount') as HTMLInputElement;
+  const startYearInput = document.getElementById('start-year') as HTMLInputElement;
+  const endYearInput = document.getElementById('end-year') as HTMLInputElement;
+  const rateInput = document.getElementById('rate') as HTMLInputElement;
+
+  function formatNumber(num: number): string {
+    return new Intl.NumberFormat('ko-KR').format(Math.round(num));
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const amount = parseFloat(amountInput.value);
+    const startYear = parseInt(startYearInput.value);
+    const endYear = parseInt(endYearInput.value);
+    const rate = parseFloat(rateInput.value) / 100;
+
+    if (!amount || !startYear || !endYear) {
+      alert('모든 항목을 입력해주세요');
+      return;
+    }
+
+    const years = endYear - startYear;
+    const inflationMultiplier = Math.pow(1 + rate, years);
+    const currentValue = amount * inflationMultiplier;
+    const totalInflation = (inflationMultiplier - 1) * 100;
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-past') as HTMLElement).textContent = formatNumber(amount) + '원';
+    (document.getElementById('result-past-year') as HTMLElement).textContent = startYear + '년';
+    (document.getElementById('result-current') as HTMLElement).textContent = formatNumber(currentValue) + '원';
+    (document.getElementById('result-current-year') as HTMLElement).textContent = endYear + '년';
+    (document.getElementById('result-inflation') as HTMLElement).textContent = '+' + totalInflation.toFixed(1) + '%';
+    (document.getElementById('result-explanation') as HTMLElement).textContent =
+      `${startYear}년의 ${formatNumber(amount)}원은 ${endYear}년 기준으로 ${formatNumber(currentValue)}원의 구매력을 가집니다. ${years}년간 물가가 ${totalInflation.toFixed(1)}% 상승했습니다.`;
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

@@ -1,0 +1,177 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('carbon-footprint', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['en']['health'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'en', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'en', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="carbon-form" class="space-y-6">
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">🚗 Transportation</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="car-miles" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Weekly Car Miles</label>
+              <input type="number" id="car-miles" placeholder="100" min="0" value="0"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+            </div>
+            <div>
+              <label for="flight-hours" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Annual Flight Hours</label>
+              <input type="number" id="flight-hours" placeholder="10" min="0" value="0"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">🏠 Home</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="electricity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Monthly Electricity (kWh)</label>
+              <input type="number" id="electricity" placeholder="900" min="0" value="900"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+            </div>
+            <div>
+              <label for="gas" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Monthly Natural Gas (therms)</label>
+              <input type="number" id="gas" placeholder="50" min="0" value="50"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">🍖 Diet</h3>
+          <div>
+            <label for="diet" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Diet Type</label>
+            <select id="diet" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="high-meat">Meat daily</option>
+              <option value="medium-meat" selected>Meat 3-4 times/week</option>
+              <option value="low-meat">Meat 1-2 times/week</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">Calculate</button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">Reset</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="text-center mb-6">
+          <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">Estimated Annual Carbon Footprint</div>
+          <div id="result-total" class="text-4xl font-bold text-primary-600 dark:text-primary-400">0</div>
+          <div class="text-gray-600 dark:text-gray-400">tons CO₂</div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🚗</div>
+            <div id="result-transport" class="font-bold text-gray-900 dark:text-white">0t</div>
+            <div class="text-xs text-gray-500">Transport</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🏠</div>
+            <div id="result-home" class="font-bold text-gray-900 dark:text-white">0t</div>
+            <div class="text-xs text-gray-500">Home</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🍖</div>
+            <div id="result-food" class="font-bold text-gray-900 dark:text-white">0t</div>
+            <div class="text-xs text-gray-500">Diet</div>
+          </div>
+        </div>
+
+        <div id="comparison" class="bg-green-50 dark:bg-green-900/30 rounded-xl p-4">
+          <h4 class="font-bold text-green-800 dark:text-green-200 mb-2">Comparison</h4>
+          <p id="comparison-text" class="text-sm text-green-700 dark:text-green-300"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← Back to Tools</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('carbon-form') as HTMLFormElement;
+
+  const dietFactors: Record<string, number> = {
+    'high-meat': 3.3,
+    'medium-meat': 2.5,
+    'low-meat': 1.9,
+    'vegetarian': 1.7,
+    'vegan': 1.5
+  };
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const carMiles = parseFloat((document.getElementById('car-miles') as HTMLInputElement).value) || 0;
+    const flightHours = parseFloat((document.getElementById('flight-hours') as HTMLInputElement).value) || 0;
+    const electricity = parseFloat((document.getElementById('electricity') as HTMLInputElement).value) || 0;
+    const gas = parseFloat((document.getElementById('gas') as HTMLInputElement).value) || 0;
+    const diet = (document.getElementById('diet') as HTMLSelectElement).value;
+
+    // CO2 calculations (simplified)
+    const carCO2 = carMiles * 52 * 0.404 / 1000; // lbs to tons (US average)
+    const flightCO2 = flightHours * 250 / 1000;
+    const transportCO2 = carCO2 + flightCO2;
+
+    const electricityCO2 = electricity * 12 * 0.92 / 2000; // lbs CO2 per kWh (US average)
+    const gasCO2 = gas * 12 * 11.7 / 2000; // lbs CO2 per therm
+    const homeCO2 = electricityCO2 + gasCO2;
+
+    const foodCO2 = dietFactors[diet];
+
+    const totalCO2 = transportCO2 + homeCO2 + foodCO2;
+    const usAvg = 16.0; // US average CO2 per capita
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-total') as HTMLElement).textContent = totalCO2.toFixed(1);
+    (document.getElementById('result-transport') as HTMLElement).textContent = transportCO2.toFixed(1) + 't';
+    (document.getElementById('result-home') as HTMLElement).textContent = homeCO2.toFixed(1) + 't';
+    (document.getElementById('result-food') as HTMLElement).textContent = foodCO2.toFixed(1) + 't';
+
+    const comparison = totalCO2 < usAvg
+      ? `${((1 - totalCO2/usAvg) * 100).toFixed(0)}% below US average (${usAvg}t). Great job!`
+      : `${((totalCO2/usAvg - 1) * 100).toFixed(0)}% above US average (${usAvg}t). Consider ways to reduce your footprint.`;
+    (document.getElementById('comparison-text') as HTMLElement).textContent = comparison;
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

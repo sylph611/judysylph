@@ -236,5 +236,40 @@
     "description": "식사 금액과 팁 비율을 입력하면 팁 금액과 총액을 계산합니다. 인원 나누기 가능.",
     "emoji": "💵",
     "category": "생활"
+  },
+  {
+    "slug": "inflation-calculator",
+    "title": "인플레이션 계산기",
+    "description": "과거 금액이 현재 얼마의 가치인지, 물가 상승률에 따른 구매력 변화를 계산합니다.",
+    "emoji": "📉",
+    "category": "재무"
+  },
+  {
+    "slug": "roi-calculator",
+    "title": "투자 수익률(ROI) 계산기",
+    "description": "투자 금액과 수익을 입력하면 수익률(ROI)과 연환산 수익률을 계산합니다.",
+    "emoji": "📈",
+    "category": "재무"
+  },
+  {
+    "slug": "net-worth-calculator",
+    "title": "순자산 계산기",
+    "description": "자산과 부채를 입력하면 순자산을 계산하고 재무 건강 상태를 분석합니다.",
+    "emoji": "💎",
+    "category": "재무"
+  },
+  {
+    "slug": "carbon-footprint",
+    "title": "탄소발자국 계산기",
+    "description": "일상 활동에 따른 탄소 배출량을 계산하고 환경 영향을 확인합니다.",
+    "emoji": "🌱",
+    "category": "생활"
+  },
+  {
+    "slug": "water-intake",
+    "title": "물 섭취량 계산기",
+    "description": "체중과 활동량에 따른 하루 권장 물 섭취량을 계산합니다.",
+    "emoji": "💧",
+    "category": "건강"
   }
 ]
