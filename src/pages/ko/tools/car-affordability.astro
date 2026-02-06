@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import AdBanner from '../../../components/AdBanner.astro';
 import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps, getToolStepType } from '../../../utils/tools';
 
 const lang = 'ko';
@@ -125,6 +126,8 @@ const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
         <li>• <strong>월 유지비</strong>: 보험, 유류비, 정비비 등 월 50~80만원 예상</li>
       </ul>
     </div>
+    <AdBanner className="mt-8" />
+
     <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
   </div>
 </Layout>

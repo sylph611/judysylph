@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import AdBanner from '../../../components/AdBanner.astro';
 import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
 
 const lang = 'ko';
@@ -100,6 +101,8 @@ const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
         </div>
       </div>
     </div>
+
+    <AdBanner className="mt-8" />
 
     <div class="mt-8 text-center">
       <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로 돌아가기</a>

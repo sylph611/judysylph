@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import AdBanner from '../../../components/AdBanner.astro';
 import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps, getToolStepType } from '../../../utils/tools';
 
 const lang = 'ko';
@@ -82,6 +83,8 @@ const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
       <h4 class="font-bold text-blue-800 dark:text-blue-200 mb-2">2026년 세율 정보</h4>
       <p class="text-sm text-blue-700 dark:text-blue-300">US: 10~37% / UK: 0~45% / CA: 15~33% (연방)</p>
     </div>
+    <AdBanner className="mt-8" />
+
     <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
   </div>
 </Layout>

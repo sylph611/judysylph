@@ -1,96 +1,40 @@
 ---
 interface Props {
-  slot: 'header' | 'inline' | 'sidebar' | 'result';
+  slot?: string;
+  format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle';
   className?: string;
 }
 
-const { slot, className = '' } = Astro.props;
-
-const slotConfig = {
-  header: {
-    width: '728px',
-    height: '90px',
-    label: '728x90'
-  },
-  inline: {
-    width: '100%',
-    height: '250px',
-    label: '300x250'
-  },
-  sidebar: {
-    width: '300px',
-    height: '600px',
-    label: '300x600'
-  },
-  result: {
-    width: '100%',
-    height: '280px',
-    label: '336x280'
-  }
-};
-
-const config = slotConfig[slot];
+const { slot, format = 'auto', className = '' } = Astro.props;
 ---
 
-<div class={`ad-container ad-${slot} ${className}`}>
-  <div
-    class="ad-placeholder flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-400 dark:text-gray-500 text-sm"
-    style={`width: ${config.width}; height: ${config.height}; max-width: 100%;`}
-  >
-    <!-- Google AdSense placeholder -->
-    <div class="text-center">
-      <span class="block">Ad Space</span>
-      <span class="block text-xs">({config.label})</span>
-    </div>
-
-    <!--
-    Uncomment and replace with your AdSense code:
-    <ins class="adsbygoogle"
-      style={`display:block;width:${config.width};height:${config.height};max-width:100%;`}
-      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-      data-ad-slot="XXXXXXXXXX"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
-  </div>
+<div class={`ad-container my-6 flex justify-center ${className}`}>
+  <ins
+    class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-4221589332879382"
+    data-ad-slot={slot}
+    data-ad-format={format}
+    data-full-width-responsive="true"
+  ></ins>
 </div>
+
+<script is:inline>
+  (function() {
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {}
+  })();
+</script>
 
 <style>
   .ad-container {
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
+    min-height: 100px;
+    background: transparent;
   }
 
-  .ad-header {
+  /* Hide empty ad containers */
+  .ad-container:empty {
     display: none;
-  }
-
-  @media (min-width: 768px) {
-    .ad-header {
-      display: flex;
-    }
-  }
-
-  .ad-inline {
-    margin: 1.5rem 0;
-  }
-
-  .ad-sidebar {
-    display: none;
-    position: sticky;
-    top: 100px;
-  }
-
-  @media (min-width: 1024px) {
-    .ad-sidebar {
-      display: flex;
-    }
-  }
-
-  .ad-result {
-    margin: 2rem auto;
-    max-width: 336px;
   }
 </style>

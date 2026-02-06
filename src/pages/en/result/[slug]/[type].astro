@@ -5,6 +5,7 @@ import ShareButtons from '../../../../components/ShareButtons.astro';
 import ResultActions from '../../../../components/ResultActions.astro';
 import TestCard from '../../../../components/TestCard.astro';
 import Confetti from '../../../../components/Confetti.astro';
+import AdBanner from '../../../../components/AdBanner.astro';
 import { getTest, getAllTests, getRecommendedTests } from '../../../../utils/tests';
 
 export function getStaticPaths() {
@@ -111,6 +112,9 @@ const jsonLd = {
       </div>
     </div>
 
+    <!-- Ad Banner -->
+    <AdBanner className="mt-8" />
+
     <!-- Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
       <a
@@ -126,6 +130,9 @@ const jsonLd = {
         View Other Tests
       </a>
     </div>
+
+    <!-- Ad Banner 2 -->
+    <AdBanner className="mt-8" />
 
     <!-- Recommended Tests -->
     {otherTests.length > 0 && (
