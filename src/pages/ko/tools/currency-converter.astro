@@ -1,0 +1,154 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('currency-converter', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['ko']['financial'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="currency-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="amount" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">금액</label>
+            <input type="number" id="amount" placeholder="1000" min="0" step="0.01"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="from-currency" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">변환 전</label>
+            <select id="from-currency" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="KRW" selected>KRW (원)</option>
+              <option value="USD">USD (달러)</option>
+              <option value="EUR">EUR (유로)</option>
+              <option value="JPY">JPY (엔)</option>
+              <option value="CNY">CNY (위안)</option>
+              <option value="GBP">GBP (파운드)</option>
+            </select>
+          </div>
+          <div>
+            <label for="to-currency" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">변환 후</label>
+            <select id="to-currency" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="KRW">KRW (원)</option>
+              <option value="USD" selected>USD (달러)</option>
+              <option value="EUR">EUR (유로)</option>
+              <option value="JPY">JPY (엔)</option>
+              <option value="CNY">CNY (위안)</option>
+              <option value="GBP">GBP (파운드)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">변환하기</button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">초기화</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-6 text-center">
+          <div class="text-sm text-primary-600 dark:text-primary-400 mb-2">변환 결과</div>
+          <div class="flex items-center justify-center gap-4">
+            <div>
+              <span id="result-from-amount" class="text-2xl font-bold text-gray-900 dark:text-white">0</span>
+              <span id="result-from-currency" class="text-lg text-gray-600 dark:text-gray-400 ml-1">KRW</span>
+            </div>
+            <span class="text-2xl text-gray-400">=</span>
+            <div>
+              <span id="result-to-amount" class="text-3xl font-bold text-primary-600 dark:text-primary-400">0</span>
+              <span id="result-to-currency" class="text-xl text-primary-500 ml-1">USD</span>
+            </div>
+          </div>
+          <div id="result-rate" class="text-sm text-gray-500 dark:text-gray-400 mt-4">환율: 1 USD = 1,350 KRW</div>
+        </div>
+
+        <div class="mt-4 bg-blue-50 dark:bg-blue-900/30 rounded-xl p-4">
+          <p class="text-sm text-blue-800 dark:text-blue-200">
+            <strong>참고:</strong> 표시된 환율은 참고용 고정 환율입니다. 실제 거래 시에는 은행이나 환전소의 실시간 환율을 확인하세요.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('currency-form') as HTMLFormElement;
+
+  // Reference exchange rates (to USD)
+  const ratesFromUSD: Record<string, number> = {
+    'USD': 1,
+    'KRW': 1350,
+    'EUR': 0.92,
+    'JPY': 150,
+    'CNY': 7.25,
+    'GBP': 0.79
+  };
+
+  function formatNumber(num: number, decimals: number = 2): string {
+    return new Intl.NumberFormat('ko-KR', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    }).format(num);
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const amount = parseFloat((document.getElementById('amount') as HTMLInputElement).value);
+    const fromCurrency = (document.getElementById('from-currency') as HTMLSelectElement).value;
+    const toCurrency = (document.getElementById('to-currency') as HTMLSelectElement).value;
+
+    if (!amount) {
+      alert('금액을 입력해주세요');
+      return;
+    }
+
+    // Convert to USD first, then to target currency
+    const amountInUSD = amount / ratesFromUSD[fromCurrency];
+    const result = amountInUSD * ratesFromUSD[toCurrency];
+    const rate = ratesFromUSD[toCurrency] / ratesFromUSD[fromCurrency];
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-from-amount') as HTMLElement).textContent = formatNumber(amount);
+    (document.getElementById('result-from-currency') as HTMLElement).textContent = fromCurrency;
+    (document.getElementById('result-to-amount') as HTMLElement).textContent = formatNumber(result);
+    (document.getElementById('result-to-currency') as HTMLElement).textContent = toCurrency;
+    (document.getElementById('result-rate') as HTMLElement).textContent =
+      `환율: 1 ${fromCurrency} = ${formatNumber(rate, 4)} ${toCurrency}`;
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

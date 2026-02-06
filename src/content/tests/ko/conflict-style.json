@@ -1,0 +1,170 @@
+{
+  "slug": "conflict-style",
+  "title": "갈등 해결 스타일 테스트",
+  "description": "당신은 갈등 상황에서 어떻게 대처하나요?",
+  "emoji": "⚖️",
+  "questions": [
+    {
+      "question": "친구와 의견 충돌이 생겼을 때 나는?",
+      "choices": [
+        { "text": "내 의견을 관철시키려 노력한다", "scores": { "competing": 2 } },
+        { "text": "서로 양보해서 중간점을 찾는다", "scores": { "compromising": 2 } },
+        { "text": "친구 의견을 따라준다", "scores": { "accommodating": 2 } },
+        { "text": "일단 그 상황을 피한다", "scores": { "avoiding": 2 } },
+        { "text": "함께 최선의 해결책을 찾는다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "팀 프로젝트에서 갈등이 생기면?",
+      "choices": [
+        { "text": "리더십을 발휘해 방향을 정한다", "scores": { "competing": 2 } },
+        { "text": "모두가 조금씩 양보하자고 제안한다", "scores": { "compromising": 2 } },
+        { "text": "다수 의견을 따른다", "scores": { "accommodating": 2 } },
+        { "text": "갈등에서 한 발 물러나 관망한다", "scores": { "avoiding": 2 } },
+        { "text": "모든 의견을 통합한 방안을 찾는다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "연인과 다툼이 생기면?",
+      "choices": [
+        { "text": "내가 맞다는 것을 설득한다", "scores": { "competing": 2 } },
+        { "text": "각자 조금씩 양보한다", "scores": { "compromising": 2 } },
+        { "text": "연인의 기분을 맞춰준다", "scores": { "accommodating": 2 } },
+        { "text": "일단 시간을 두고 냉각기를 가진다", "scores": { "avoiding": 2 } },
+        { "text": "대화로 근본적인 해결책을 찾는다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "직장에서 상사와 의견이 다를 때?",
+      "choices": [
+        { "text": "근거를 들어 내 의견을 주장한다", "scores": { "competing": 2, "collaborating": 1 } },
+        { "text": "절충안을 제시한다", "scores": { "compromising": 2 } },
+        { "text": "상사 의견을 따른다", "scores": { "accommodating": 2 } },
+        { "text": "언급을 피하고 넘어간다", "scores": { "avoiding": 2 } },
+        { "text": "함께 더 나은 방안을 모색한다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "가족 간 갈등 상황에서 나는?",
+      "choices": [
+        { "text": "내 입장을 분명히 밝힌다", "scores": { "competing": 2 } },
+        { "text": "서로 조금씩 양보하자고 한다", "scores": { "compromising": 2 } },
+        { "text": "평화를 위해 양보한다", "scores": { "accommodating": 2 } },
+        { "text": "그 자리를 피한다", "scores": { "avoiding": 2 } },
+        { "text": "모두가 만족할 해결책을 찾는다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "온라인에서 논쟁이 벌어지면?",
+      "choices": [
+        { "text": "끝까지 토론한다", "scores": { "competing": 2 } },
+        { "text": "상대방 의견도 일부 인정한다", "scores": { "compromising": 2 } },
+        { "text": "상대방 입장을 존중한다고 말한다", "scores": { "accommodating": 2 } },
+        { "text": "댓글을 달지 않고 조용히 넘어간다", "scores": { "avoiding": 2 } },
+        { "text": "건설적인 대화를 이끌어낸다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "누군가 나를 불공평하게 대하면?",
+      "choices": [
+        { "text": "바로 항의한다", "scores": { "competing": 2 } },
+        { "text": "부분적으로 수용하고 부분적으로 거부한다", "scores": { "compromising": 2 } },
+        { "text": "일단 참고 넘어간다", "scores": { "accommodating": 2, "avoiding": 1 } },
+        { "text": "그 사람과의 관계를 피한다", "scores": { "avoiding": 2 } },
+        { "text": "왜 그런 행동을 했는지 대화를 시도한다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "친구들 사이에서 갈등 중재를 할 때?",
+      "choices": [
+        { "text": "옳다고 생각하는 편을 지지한다", "scores": { "competing": 2 } },
+        { "text": "양쪽 다 조금씩 양보하라고 한다", "scores": { "compromising": 2 } },
+        { "text": "양쪽 다 좋은 말로 달래준다", "scores": { "accommodating": 2 } },
+        { "text": "관여하지 않으려 한다", "scores": { "avoiding": 2 } },
+        { "text": "양쪽 입장을 들어보고 해결책을 제시한다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "내 잘못이 아닌데 비난받을 때?",
+      "choices": [
+        { "text": "강하게 반박한다", "scores": { "competing": 2 } },
+        { "text": "일부는 인정하고 일부는 해명한다", "scores": { "compromising": 2 } },
+        { "text": "일단 사과하고 넘어간다", "scores": { "accommodating": 2 } },
+        { "text": "무시하고 신경 쓰지 않는다", "scores": { "avoiding": 2 } },
+        { "text": "차분하게 상황을 설명한다", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "갈등 해결에서 가장 중요한 것은?",
+      "choices": [
+        { "text": "내 권리와 입장을 지키는 것", "scores": { "competing": 2 } },
+        { "text": "빠른 해결과 현실적 타협", "scores": { "compromising": 2 } },
+        { "text": "관계를 유지하는 것", "scores": { "accommodating": 2 } },
+        { "text": "스트레스를 받지 않는 것", "scores": { "avoiding": 2 } },
+        { "text": "모두에게 최선인 결과를 찾는 것", "scores": { "collaborating": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "competing",
+      "title": "경쟁형",
+      "emoji": "🦁",
+      "description": "자신의 입장을 적극적으로 주장하는 타입! 자신감 있고 결단력이 있습니다.",
+      "traits": ["자신감", "결단력", "목표 지향", "리더십"],
+      "advice": "때로는 상대방의 입장도 경청해보세요. 승리보다 관계가 중요할 때도 있습니다.",
+      "compatibility": {
+        "good": ["compromising", "collaborating"],
+        "bad": ["competing"]
+      }
+    },
+    {
+      "type": "collaborating",
+      "title": "협력형",
+      "emoji": "🤝",
+      "description": "윈윈 해결책을 찾는 타입! 모든 사람의 니즈를 충족시키려 노력합니다.",
+      "traits": ["창의적 문제해결", "공감력", "인내심", "통합적 사고"],
+      "advice": "항상 완벽한 해결책을 찾으려다 시간이 오래 걸릴 수 있어요. 때로는 빠른 결정도 필요합니다.",
+      "compatibility": {
+        "good": ["collaborating", "compromising"],
+        "bad": ["avoiding"]
+      }
+    },
+    {
+      "type": "compromising",
+      "title": "타협형",
+      "emoji": "⚖️",
+      "description": "현실적인 중간점을 찾는 타입! 효율적이고 공정한 해결을 추구합니다.",
+      "traits": ["현실적", "공정함", "효율적", "실용적"],
+      "advice": "적당한 타협도 좋지만, 중요한 가치는 양보하지 않는 것도 필요해요.",
+      "compatibility": {
+        "good": ["collaborating", "competing"],
+        "bad": ["avoiding"]
+      }
+    },
+    {
+      "type": "avoiding",
+      "title": "회피형",
+      "emoji": "🕊️",
+      "description": "갈등을 피하고 평화를 선호하는 타입! 스트레스 없는 환경을 추구합니다.",
+      "traits": ["평화로움", "인내력", "독립적", "냉정함"],
+      "advice": "피하는 것이 항상 해결책은 아니에요. 때로는 직면하는 것이 더 빠른 해결책이 됩니다.",
+      "compatibility": {
+        "good": ["accommodating", "avoiding"],
+        "bad": ["competing"]
+      }
+    },
+    {
+      "type": "accommodating",
+      "title": "수용형",
+      "emoji": "💕",
+      "description": "관계를 가장 중시하는 타입! 상대방의 니즈를 우선시하며 화합을 추구합니다.",
+      "traits": ["배려심", "유연함", "이타적", "협조적"],
+      "advice": "다른 사람을 위해 자신을 희생하지 마세요. 당신의 니즈도 중요합니다.",
+      "compatibility": {
+        "good": ["competing", "collaborating"],
+        "bad": ["accommodating"]
+      }
+    }
+  ]
+}

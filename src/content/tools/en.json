@@ -264,5 +264,40 @@
     "description": "Calculate your recommended daily water intake based on weight and activity level.",
     "emoji": "💧",
     "category": "Health"
+  },
+  {
+    "slug": "currency-converter",
+    "title": "Currency Converter",
+    "description": "Convert between currencies using exchange rates. Supports USD, EUR, JPY and more.",
+    "emoji": "💱",
+    "category": "Finance"
+  },
+  {
+    "slug": "stock-profit",
+    "title": "Stock Profit Calculator",
+    "description": "Calculate profit, loss, and ROI from stock trades. Includes commission fees.",
+    "emoji": "📊",
+    "category": "Finance"
+  },
+  {
+    "slug": "timezone-converter",
+    "title": "Timezone Converter",
+    "description": "Convert times between major world cities. Perfect for scheduling international meetings.",
+    "emoji": "🌍",
+    "category": "Date/Time"
+  },
+  {
+    "slug": "weight-goal",
+    "title": "Weight Goal Calculator",
+    "description": "Calculate calorie adjustments needed and estimated time to reach your target weight.",
+    "emoji": "🎯",
+    "category": "Health"
+  },
+  {
+    "slug": "loan-repayment",
+    "title": "Loan Repayment Calculator",
+    "description": "Calculate monthly payments and total interest for any loan amount and term.",
+    "emoji": "🏦",
+    "category": "Finance"
   }
 ]

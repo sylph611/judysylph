@@ -1,0 +1,160 @@
+{
+  "slug": "sns-personality",
+  "title": "Social Media Personality Test",
+  "description": "What your social media habits reveal about your personality",
+  "emoji": "📱",
+  "questions": [
+    {
+      "question": "When posting a photo on Instagram:",
+      "choices": [
+        { "text": "Only after perfect filters and editing", "scores": { "perfectionist": 2, "curator": 1 } },
+        { "text": "Post it as-is, unedited", "scores": { "authentic": 2 } },
+        { "text": "Usually post memes or funny content", "scores": { "entertainer": 2 } },
+        { "text": "Rarely post, mostly just browse", "scores": { "lurker": 2 } }
+      ]
+    },
+    {
+      "question": "When you get a notification:",
+      "choices": [
+        { "text": "Check and respond immediately", "scores": { "entertainer": 2, "authentic": 1 } },
+        { "text": "Check it when you have time", "scores": { "curator": 2 } },
+        { "text": "Keep notifications off, check occasionally", "scores": { "lurker": 2 } },
+        { "text": "Carefully review all notifications", "scores": { "perfectionist": 2 } }
+      ]
+    },
+    {
+      "question": "How often do you post stories?",
+      "choices": [
+        { "text": "Multiple times a day", "scores": { "entertainer": 2, "authentic": 1 } },
+        { "text": "Only for special moments", "scores": { "curator": 2 } },
+        { "text": "Watch others' but don't post my own", "scores": { "lurker": 2 } },
+        { "text": "Only perfectly curated stories", "scores": { "perfectionist": 2 } }
+      ]
+    },
+    {
+      "question": "When friends post something:",
+      "choices": [
+        { "text": "Like and comment on everything", "scores": { "authentic": 2, "entertainer": 1 } },
+        { "text": "Only like what I truly enjoy", "scores": { "curator": 2 } },
+        { "text": "Just view without reacting", "scores": { "lurker": 2 } },
+        { "text": "Think carefully before leaving witty comments", "scores": { "perfectionist": 2, "entertainer": 1 } }
+      ]
+    },
+    {
+      "question": "Managing your profile:",
+      "choices": [
+        { "text": "Update frequently, keep it fresh", "scores": { "perfectionist": 2 } },
+        { "text": "Carefully choose what represents me", "scores": { "curator": 2 } },
+        { "text": "Keep it natural and authentic", "scores": { "authentic": 2 } },
+        { "text": "Don't really pay attention to it", "scores": { "lurker": 2 } }
+      ]
+    },
+    {
+      "question": "About follower count:",
+      "choices": [
+        { "text": "More is better! I do care about it", "scores": { "perfectionist": 2, "entertainer": 1 } },
+        { "text": "Just close friends is enough", "scores": { "authentic": 2 } },
+        { "text": "Only follow accounts I'm interested in", "scores": { "curator": 2 } },
+        { "text": "Numbers don't really matter", "scores": { "lurker": 2 } }
+      ]
+    },
+    {
+      "question": "When there's drama online:",
+      "choices": [
+        { "text": "Actively share my opinion", "scores": { "authentic": 2, "entertainer": 1 } },
+        { "text": "Drop a witty comment to defuse it", "scores": { "entertainer": 2 } },
+        { "text": "Quietly observe", "scores": { "lurker": 2 } },
+        { "text": "Close the feed, too uncomfortable", "scores": { "curator": 2, "perfectionist": 1 } }
+      ]
+    },
+    {
+      "question": "Main reason for using social media:",
+      "choices": [
+        { "text": "Document and share my life", "scores": { "authentic": 2 } },
+        { "text": "Get inspiration and follow trends", "scores": { "curator": 2 } },
+        { "text": "Watch entertaining content", "scores": { "lurker": 2, "entertainer": 1 } },
+        { "text": "Build my personal brand", "scores": { "perfectionist": 2 } }
+      ]
+    },
+    {
+      "question": "Using DMs (Direct Messages):",
+      "choices": [
+        { "text": "Use them actively", "scores": { "entertainer": 2, "authentic": 1 } },
+        { "text": "Only when necessary", "scores": { "curator": 2 } },
+        { "text": "Rarely use them", "scores": { "lurker": 2 } },
+        { "text": "Keep organized conversations only", "scores": { "perfectionist": 2 } }
+      ]
+    },
+    {
+      "question": "Have you taken a social media break?",
+      "choices": [
+        { "text": "Never, always active", "scores": { "entertainer": 2, "perfectionist": 1 } },
+        { "text": "Sometimes do a digital detox", "scores": { "curator": 2, "authentic": 1 } },
+        { "text": "I don't use it much anyway", "scores": { "lurker": 2 } },
+        { "text": "Quit immediately when stressed", "scores": { "authentic": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "perfectionist",
+      "title": "Perfectionist Influencer",
+      "emoji": "✨",
+      "description": "Your feed is like a gallery! You put effort into every post and maintain a consistent aesthetic.",
+      "traits": ["Aesthetic sense", "Detail-oriented", "Personal branding", "Trend-savvy"],
+      "advice": "It's okay not to be perfect. Sometimes sharing raw moments can feel more authentic.",
+      "compatibility": {
+        "good": ["curator", "perfectionist"],
+        "bad": ["authentic"]
+      }
+    },
+    {
+      "type": "authentic",
+      "title": "Authentic Realist",
+      "emoji": "💯",
+      "description": "Unfiltered you! You share life as it is and value genuine connections.",
+      "traits": ["Honest expression", "Authenticity", "Natural", "Open-minded"],
+      "advice": "Honesty is great, but remember to maintain some boundaries online. Protect your privacy too.",
+      "compatibility": {
+        "good": ["entertainer", "authentic"],
+        "bad": ["perfectionist"]
+      }
+    },
+    {
+      "type": "entertainer",
+      "title": "Social Entertainer",
+      "emoji": "🎉",
+      "description": "The popular one! You entertain with fun content and actively engage with everyone.",
+      "traits": ["Sense of humor", "High activity", "Social skills", "Trendsetter"],
+      "advice": "You're full of energy, but take breaks too. Watch out for digital fatigue.",
+      "compatibility": {
+        "good": ["authentic", "entertainer"],
+        "bad": ["lurker"]
+      }
+    },
+    {
+      "type": "curator",
+      "title": "Quiet Curator",
+      "emoji": "🎨",
+      "description": "Thoughtful and selective! You value quality over quantity and choose meaningful content.",
+      "traits": ["Selective taste", "Privacy-conscious", "Thoughtful", "Deep interests"],
+      "advice": "Light sharing is okay too. People are interested in your everyday life, even if it's not perfect.",
+      "compatibility": {
+        "good": ["perfectionist", "lurker"],
+        "bad": ["entertainer"]
+      }
+    },
+    {
+      "type": "lurker",
+      "title": "Silent Observer",
+      "emoji": "👀",
+      "description": "The social media ninja! You prefer watching and enjoying content over active participation.",
+      "traits": ["Observant", "Privacy-focused", "Low social media dependency", "Independent"],
+      "advice": "Try engaging sometimes. A simple like or comment can be the start of a connection.",
+      "compatibility": {
+        "good": ["curator", "lurker"],
+        "bad": ["entertainer"]
+      }
+    }
+  ]
+}

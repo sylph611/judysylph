@@ -1,0 +1,148 @@
+{
+  "slug": "time-management",
+  "title": "시간 활용 테스트",
+  "description": "당신의 시간 관리 스타일을 알아보세요",
+  "emoji": "⏰",
+  "questions": [
+    {
+      "question": "중요한 마감이 다가오면 나는?",
+      "choices": [
+        { "text": "미리미리 끝내놔서 여유롭다", "scores": { "planner": 2 } },
+        { "text": "마감 직전에 집중력이 폭발한다", "scores": { "sprinter": 2 } },
+        { "text": "하다가 다른 일에 빠진다", "scores": { "multitasker": 2 } },
+        { "text": "흐름에 맡기고 자연스럽게 진행한다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "일정을 관리하는 방식은?",
+      "choices": [
+        { "text": "캘린더에 세세하게 기록한다", "scores": { "planner": 2 } },
+        { "text": "큰 일정만 머릿속에 기억한다", "scores": { "sprinter": 2, "flexible": 1 } },
+        { "text": "여러 앱과 도구를 활용한다", "scores": { "multitasker": 2 } },
+        { "text": "그때그때 상황에 맞게 조절한다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "아침에 일어나면 가장 먼저?",
+      "choices": [
+        { "text": "오늘 할 일 리스트를 확인한다", "scores": { "planner": 2 } },
+        { "text": "급한 일이 있는지 체크한다", "scores": { "sprinter": 2 } },
+        { "text": "SNS, 뉴스 등 여러 개를 동시에 본다", "scores": { "multitasker": 2 } },
+        { "text": "느긋하게 하루를 시작한다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "여러 일이 겹쳤을 때 나는?",
+      "choices": [
+        { "text": "우선순위를 정해 하나씩 처리한다", "scores": { "planner": 2 } },
+        { "text": "가장 급한 것부터 빠르게 처리한다", "scores": { "sprinter": 2 } },
+        { "text": "동시에 여러 개를 진행한다", "scores": { "multitasker": 2 } },
+        { "text": "할 수 있는 것부터 천천히 한다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "약속 시간에 대한 생각은?",
+      "choices": [
+        { "text": "항상 10분 전에 도착한다", "scores": { "planner": 2 } },
+        { "text": "딱 맞춰서 도착한다", "scores": { "sprinter": 2 } },
+        { "text": "가는 길에 다른 볼일도 본다", "scores": { "multitasker": 2 } },
+        { "text": "상황에 따라 유동적이다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "휴일 하루를 보내는 방식은?",
+      "choices": [
+        { "text": "미리 계획한 대로 알차게 보낸다", "scores": { "planner": 2 } },
+        { "text": "밀린 일을 몰아서 처리한다", "scores": { "sprinter": 2 } },
+        { "text": "이것저것 하다 보면 하루가 간다", "scores": { "multitasker": 2 } },
+        { "text": "아무것도 안 하고 쉰다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "새로운 프로젝트를 시작할 때?",
+      "choices": [
+        { "text": "단계별 계획을 먼저 세운다", "scores": { "planner": 2 } },
+        { "text": "일단 시작하고 보완해 나간다", "scores": { "sprinter": 2 } },
+        { "text": "여러 아이디어를 동시에 시도한다", "scores": { "multitasker": 2 } },
+        { "text": "영감이 올 때까지 기다린다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "작업 중 방해받으면?",
+      "choices": [
+        { "text": "나중에 처리하고 지금 일에 집중한다", "scores": { "planner": 2 } },
+        { "text": "빨리 처리하고 다시 돌아온다", "scores": { "sprinter": 2 } },
+        { "text": "자연스럽게 그 일도 같이 한다", "scores": { "multitasker": 2 } },
+        { "text": "흐름이 깨지면 쉬었다 한다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "장기 목표를 세울 때?",
+      "choices": [
+        { "text": "세부 마일스톤까지 정한다", "scores": { "planner": 2 } },
+        { "text": "큰 방향만 정하고 실행에 집중한다", "scores": { "sprinter": 2 } },
+        { "text": "여러 목표를 동시에 추구한다", "scores": { "multitasker": 2 } },
+        { "text": "상황 보면서 유연하게 조정한다", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "시간이 남으면 나는?",
+      "choices": [
+        { "text": "다음 일을 미리 준비한다", "scores": { "planner": 2 } },
+        { "text": "밀린 일을 처리한다", "scores": { "sprinter": 2 } },
+        { "text": "새로운 것을 시작한다", "scores": { "multitasker": 2 } },
+        { "text": "그냥 쉬거나 여유를 즐긴다", "scores": { "flexible": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "planner",
+      "title": "철저한 플래너",
+      "emoji": "📋",
+      "description": "계획의 달인! 모든 일을 체계적으로 준비하고, 시간을 효율적으로 활용합니다.",
+      "traits": ["체계적", "예측 가능", "목표 지향적", "안정적"],
+      "advice": "계획도 좋지만, 가끔은 예상치 못한 상황도 즐겨보세요. 유연성도 중요한 능력입니다.",
+      "compatibility": {
+        "good": ["planner", "sprinter"],
+        "bad": ["flexible"]
+      }
+    },
+    {
+      "type": "sprinter",
+      "title": "마감 스프린터",
+      "emoji": "🏃",
+      "description": "압박 속에서 빛나는 타입! 데드라인이 다가올수록 집중력이 폭발합니다.",
+      "traits": ["순발력", "집중력", "빠른 실행력", "스트레스 내성"],
+      "advice": "마감 직전의 스트레스는 건강에 해로울 수 있어요. 가끔은 미리 시작해보는 것도 좋습니다.",
+      "compatibility": {
+        "good": ["sprinter", "planner"],
+        "bad": ["multitasker"]
+      }
+    },
+    {
+      "type": "multitasker",
+      "title": "멀티태스커",
+      "emoji": "🎪",
+      "description": "여러 일을 동시에! 다양한 관심사를 가지고, 여러 프로젝트를 병행합니다.",
+      "traits": ["다재다능", "호기심", "적응력", "에너지 넘침"],
+      "advice": "많은 일을 하다 보면 하나도 제대로 못 끝날 수 있어요. 가끔은 집중할 대상을 좁혀보세요.",
+      "compatibility": {
+        "good": ["flexible", "multitasker"],
+        "bad": ["planner"]
+      }
+    },
+    {
+      "type": "flexible",
+      "title": "유연한 플로우어",
+      "emoji": "🌊",
+      "description": "흐름을 따라가는 타입! 상황에 맞게 유연하게 대처하며, 여유로운 시간 관리를 합니다.",
+      "traits": ["적응력", "스트레스 적음", "자유로움", "직관적"],
+      "advice": "여유도 좋지만, 중요한 일은 놓치지 않도록 주의하세요. 기본적인 구조는 도움이 됩니다.",
+      "compatibility": {
+        "good": ["multitasker", "flexible"],
+        "bad": ["planner"]
+      }
+    }
+  ]
+}

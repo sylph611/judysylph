@@ -1,0 +1,219 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('timezone-converter', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['ko']['converter'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="timezone-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="from-timezone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">기준 도시</label>
+            <select id="from-timezone" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="Asia/Seoul" selected>서울 (KST, UTC+9)</option>
+              <option value="Asia/Tokyo">도쿄 (JST, UTC+9)</option>
+              <option value="Asia/Shanghai">상하이 (CST, UTC+8)</option>
+              <option value="America/New_York">뉴욕 (EST/EDT)</option>
+              <option value="America/Los_Angeles">LA (PST/PDT)</option>
+              <option value="Europe/London">런던 (GMT/BST)</option>
+              <option value="Europe/Paris">파리 (CET/CEST)</option>
+              <option value="Australia/Sydney">시드니 (AEST/AEDT)</option>
+            </select>
+          </div>
+          <div>
+            <label for="input-time" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">시간</label>
+            <input type="time" id="input-time" value="09:00"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div class="md:col-span-2">
+            <label for="input-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">날짜</label>
+            <input type="date" id="input-date"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">변환하기</button>
+          <button type="button" id="now-btn" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">현재 시간</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">세계 주요 도시 시간</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🇰🇷</div>
+            <div class="text-sm text-primary-600 dark:text-primary-400">서울</div>
+            <div id="time-seoul" class="font-bold text-primary-600 dark:text-primary-400">00:00</div>
+            <div id="date-seoul" class="text-xs text-gray-500">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🇺🇸</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">뉴욕</div>
+            <div id="time-newyork" class="font-bold text-gray-900 dark:text-white">00:00</div>
+            <div id="date-newyork" class="text-xs text-gray-500">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🇺🇸</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">LA</div>
+            <div id="time-la" class="font-bold text-gray-900 dark:text-white">00:00</div>
+            <div id="date-la" class="text-xs text-gray-500">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🇬🇧</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">런던</div>
+            <div id="time-london" class="font-bold text-gray-900 dark:text-white">00:00</div>
+            <div id="date-london" class="text-xs text-gray-500">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🇫🇷</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">파리</div>
+            <div id="time-paris" class="font-bold text-gray-900 dark:text-white">00:00</div>
+            <div id="date-paris" class="text-xs text-gray-500">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🇯🇵</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">도쿄</div>
+            <div id="time-tokyo" class="font-bold text-gray-900 dark:text-white">00:00</div>
+            <div id="date-tokyo" class="text-xs text-gray-500">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🇨🇳</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">상하이</div>
+            <div id="time-shanghai" class="font-bold text-gray-900 dark:text-white">00:00</div>
+            <div id="date-shanghai" class="text-xs text-gray-500">-</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-2xl mb-1">🇦🇺</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">시드니</div>
+            <div id="time-sydney" class="font-bold text-gray-900 dark:text-white">00:00</div>
+            <div id="date-sydney" class="text-xs text-gray-500">-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('timezone-form') as HTMLFormElement;
+  const nowBtn = document.getElementById('now-btn');
+  const dateInput = document.getElementById('input-date') as HTMLInputElement;
+
+  // Set default date to today
+  const today = new Date();
+  dateInput.value = today.toISOString().split('T')[0];
+
+  const timezones: Record<string, string> = {
+    'seoul': 'Asia/Seoul',
+    'newyork': 'America/New_York',
+    'la': 'America/Los_Angeles',
+    'london': 'Europe/London',
+    'paris': 'Europe/Paris',
+    'tokyo': 'Asia/Tokyo',
+    'shanghai': 'Asia/Shanghai',
+    'sydney': 'Australia/Sydney'
+  };
+
+  function formatTime(date: Date, timezone: string): { time: string, dateStr: string } {
+    const options: Intl.DateTimeFormatOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: timezone
+    };
+    const dateOptions: Intl.DateTimeFormatOptions = {
+      month: 'short',
+      day: 'numeric',
+      timeZone: timezone
+    };
+    return {
+      time: new Intl.DateTimeFormat('ko-KR', options).format(date),
+      dateStr: new Intl.DateTimeFormat('ko-KR', dateOptions).format(date)
+    };
+  }
+
+  function convertTimes() {
+    const fromTimezone = (document.getElementById('from-timezone') as HTMLSelectElement).value;
+    const inputTime = (document.getElementById('input-time') as HTMLInputElement).value;
+    const inputDate = (document.getElementById('input-date') as HTMLInputElement).value;
+
+    if (!inputTime || !inputDate) return;
+
+    // Create date in the selected timezone
+    const dateStr = `${inputDate}T${inputTime}:00`;
+    const date = new Date(dateStr);
+
+    // Calculate offset
+    const localOffset = date.getTimezoneOffset() * 60000;
+    const targetDate = new Date(date.getTime() + localOffset);
+
+    // Adjust for the source timezone
+    const sourceOffset = getTimezoneOffset(fromTimezone, targetDate);
+    const utcDate = new Date(targetDate.getTime() - sourceOffset);
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    for (const [city, tz] of Object.entries(timezones)) {
+      const cityOffset = getTimezoneOffset(tz, utcDate);
+      const cityDate = new Date(utcDate.getTime() + cityOffset);
+      const { time, dateStr: dStr } = formatTime(cityDate, tz);
+      (document.getElementById(`time-${city}`) as HTMLElement).textContent = time;
+      (document.getElementById(`date-${city}`) as HTMLElement).textContent = dStr;
+    }
+  }
+
+  function getTimezoneOffset(timezone: string, date: Date): number {
+    const utcDate = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' }));
+    const tzDate = new Date(date.toLocaleString('en-US', { timeZone: timezone }));
+    return tzDate.getTime() - utcDate.getTime();
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    convertTimes();
+  });
+
+  nowBtn?.addEventListener('click', () => {
+    const now = new Date();
+    dateInput.value = now.toISOString().split('T')[0];
+    (document.getElementById('input-time') as HTMLInputElement).value =
+      now.toTimeString().slice(0, 5);
+    (document.getElementById('from-timezone') as HTMLSelectElement).value =
+      Intl.DateTimeFormat().resolvedOptions().timeZone;
+    convertTimes();
+  });
+</script>

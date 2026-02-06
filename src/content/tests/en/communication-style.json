@@ -1,0 +1,148 @@
+{
+  "slug": "communication-style",
+  "title": "Communication Style Test",
+  "description": "Discover your unique way of communicating with others",
+  "emoji": "💬",
+  "questions": [
+    {
+      "question": "When you disagree with a friend, you:",
+      "choices": [
+        { "text": "Explain your opinion logically", "scores": { "direct": 2, "analytical": 1 } },
+        { "text": "Speak gently while considering their feelings", "scores": { "supportive": 2, "expressive": 1 } },
+        { "text": "Express your thoughts passionately", "scores": { "expressive": 2, "direct": 1 } },
+        { "text": "Listen to their side completely first", "scores": { "supportive": 2, "analytical": 1 } }
+      ]
+    },
+    {
+      "question": "In meetings, you typically:",
+      "choices": [
+        { "text": "Get straight to the point", "scores": { "direct": 2, "analytical": 1 } },
+        { "text": "Present data and evidence", "scores": { "analytical": 2, "direct": 1 } },
+        { "text": "Energize the room with ideas", "scores": { "expressive": 2, "supportive": 1 } },
+        { "text": "Help coordinate everyone's opinions", "scores": { "supportive": 2, "expressive": 1 } }
+      ]
+    },
+    {
+      "question": "When asking someone for a favor:",
+      "choices": [
+        { "text": "Directly state what you need", "scores": { "direct": 2 } },
+        { "text": "Explain the situation then ask for help", "scores": { "analytical": 2 } },
+        { "text": "Chat casually then naturally bring it up", "scores": { "expressive": 2 } },
+        { "text": "Apologetically and carefully ask", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "Your texting style is:",
+      "choices": [
+        { "text": "Short and concise", "scores": { "direct": 2 } },
+        { "text": "Complete sentences with proper grammar", "scores": { "analytical": 2 } },
+        { "text": "Fun with lots of emojis", "scores": { "expressive": 2 } },
+        { "text": "Warm and friendly tone", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "In conflict situations, you:",
+      "choices": [
+        { "text": "Address the issue directly and offer solutions", "scores": { "direct": 2, "analytical": 1 } },
+        { "text": "Analyze the cause objectively", "scores": { "analytical": 2, "direct": 1 } },
+        { "text": "Express your feelings and try to talk it out", "scores": { "expressive": 2, "supportive": 1 } },
+        { "text": "Try to understand the other person first", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "When giving presentations:",
+      "choices": [
+        { "text": "Lead with conclusions, then evidence", "scores": { "direct": 2 } },
+        { "text": "Use structured, data-driven approach", "scores": { "analytical": 2 } },
+        { "text": "Captivate with storytelling", "scores": { "expressive": 2 } },
+        { "text": "Engage interactively with the audience", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "Meeting a new team member:",
+      "choices": [
+        { "text": "Start with work-related topics", "scores": { "direct": 2, "analytical": 1 } },
+        { "text": "Ask questions to understand them", "scores": { "analytical": 2 } },
+        { "text": "Approach with positive energy first", "scores": { "expressive": 2 } },
+        { "text": "Create a comfortable atmosphere", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "When giving feedback:",
+      "choices": [
+        { "text": "Be honest and direct", "scores": { "direct": 2 } },
+        { "text": "Give specific examples", "scores": { "analytical": 2 } },
+        { "text": "Emphasize positive aspects", "scores": { "expressive": 2, "supportive": 1 } },
+        { "text": "Be considerate of their feelings", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "Your phone call style:",
+      "choices": [
+        { "text": "Keep it brief, just the essentials", "scores": { "direct": 2 } },
+        { "text": "Convey information systematically", "scores": { "analytical": 2 } },
+        { "text": "Chat and catch up warmly", "scores": { "expressive": 2 } },
+        { "text": "Listen more than talk", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "When misunderstood, you:",
+      "choices": [
+        { "text": "Clarify immediately", "scores": { "direct": 2 } },
+        { "text": "Organize facts and explain", "scores": { "analytical": 2 } },
+        { "text": "Express frustration emotionally", "scores": { "expressive": 2 } },
+        { "text": "Wait for it to naturally resolve", "scores": { "supportive": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "direct",
+      "title": "Direct Communicator",
+      "emoji": "🎯",
+      "description": "You quickly grasp the core and communicate directly! You prefer efficient and clear communication.",
+      "traits": ["Results-oriented", "Time-efficient", "Clear expression", "Quick decisions"],
+      "advice": "Sometimes consider others' feelings too. A softer approach can lead to better outcomes.",
+      "compatibility": {
+        "good": ["analytical", "direct"],
+        "bad": ["supportive"]
+      }
+    },
+    {
+      "type": "analytical",
+      "title": "Analytical Communicator",
+      "emoji": "📊",
+      "description": "You communicate logically and systematically! You value accurate information and evidence.",
+      "traits": ["Logical thinking", "Thorough preparation", "Objective view", "Careful judgment"],
+      "advice": "Pursuing perfection might make you miss the right timing. Sometimes quick decisions are needed.",
+      "compatibility": {
+        "good": ["direct", "analytical"],
+        "bad": ["expressive"]
+      }
+    },
+    {
+      "type": "expressive",
+      "title": "Expressive Communicator",
+      "emoji": "🎨",
+      "description": "You're energetic and creative in communication! You love connecting with people and sharing ideas.",
+      "traits": ["Passionate expression", "Creative thinking", "Positive energy", "Good humor"],
+      "advice": "Your enthusiasm might make you miss what others are saying. Listening is important too.",
+      "compatibility": {
+        "good": ["supportive", "expressive"],
+        "bad": ["analytical"]
+      }
+    },
+    {
+      "type": "supportive",
+      "title": "Supportive Communicator",
+      "emoji": "🤝",
+      "description": "You're warm and empathetic! You make others comfortable and value harmony.",
+      "traits": ["High empathy", "Good listener", "Harmony-seeking", "Thoughtful"],
+      "advice": "Your opinions matter too. Practice expressing yourself honestly sometimes.",
+      "compatibility": {
+        "good": ["expressive", "supportive"],
+        "bad": ["direct"]
+      }
+    }
+  ]
+}

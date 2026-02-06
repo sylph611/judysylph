@@ -74,7 +74,12 @@ const testCategories: Record<string, TestCategory> = {
   'ai-style': 'personality',
   'eco-personality': 'lifestyle',
   'work-life-balance': 'career',
-  'money-personality': 'lifestyle'
+  'money-personality': 'lifestyle',
+  'communication-style': 'personality',
+  'sns-personality': 'lifestyle',
+  'time-management': 'career',
+  'conflict-style': 'personality',
+  'leadership-style': 'career'
 };
 
 export const categoryLabels = {
@@ -166,9 +171,20 @@ import workLifeBalanceKo from '../content/tests/ko/work-life-balance.json';
 import workLifeBalanceEn from '../content/tests/en/work-life-balance.json';
 import moneyPersonalityKo from '../content/tests/ko/money-personality.json';
 import moneyPersonalityEn from '../content/tests/en/money-personality.json';
+// Trending tests - 2026 (batch 2)
+import communicationStyleKo from '../content/tests/ko/communication-style.json';
+import communicationStyleEn from '../content/tests/en/communication-style.json';
+import snsPersonalityKo from '../content/tests/ko/sns-personality.json';
+import snsPersonalityEn from '../content/tests/en/sns-personality.json';
+import timeManagementKo from '../content/tests/ko/time-management.json';
+import timeManagementEn from '../content/tests/en/time-management.json';
+import conflictStyleKo from '../content/tests/ko/conflict-style.json';
+import conflictStyleEn from '../content/tests/en/conflict-style.json';
+import leadershipStyleKo from '../content/tests/ko/leadership-style.json';
+import leadershipStyleEn from '../content/tests/en/leadership-style.json';
 
-const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo, mentalAgeKo, hiddenTalentKo, idealTypeKo, foodPersonalityKo, mbtiCompatibilityKo, hspKo, personalColorKo, kkondaeKo, alterEgoKo, memeKnowledgeKo, empathyKo, foodPersonaKo, auraKo, thinkingFeelingKo, digitalDetoxKo, aiStyleKo, ecoPersonalityKo, workLifeBalanceKo, moneyPersonalityKo];
-const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn, mentalAgeEn, hiddenTalentEn, idealTypeEn, foodPersonalityEn, mbtiCompatibilityEn, hspEn, personalColorEn, kkondaeEn, alterEgoEn, memeKnowledgeEn, empathyEn, foodPersonaEn, auraEn, thinkingFeelingEn, digitalDetoxEn, aiStyleEn, ecoPersonalityEn, workLifeBalanceEn, moneyPersonalityEn];
+const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo, mentalAgeKo, hiddenTalentKo, idealTypeKo, foodPersonalityKo, mbtiCompatibilityKo, hspKo, personalColorKo, kkondaeKo, alterEgoKo, memeKnowledgeKo, empathyKo, foodPersonaKo, auraKo, thinkingFeelingKo, digitalDetoxKo, aiStyleKo, ecoPersonalityKo, workLifeBalanceKo, moneyPersonalityKo, communicationStyleKo, snsPersonalityKo, timeManagementKo, conflictStyleKo, leadershipStyleKo];
+const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn, mentalAgeEn, hiddenTalentEn, idealTypeEn, foodPersonalityEn, mbtiCompatibilityEn, hspEn, personalColorEn, kkondaeEn, alterEgoEn, memeKnowledgeEn, empathyEn, foodPersonaEn, auraEn, thinkingFeelingEn, digitalDetoxEn, aiStyleEn, ecoPersonalityEn, workLifeBalanceEn, moneyPersonalityEn, communicationStyleEn, snsPersonalityEn, timeManagementEn, conflictStyleEn, leadershipStyleEn];
 
 export function getAllTests(lang: string): Test[] {
   return lang === 'ko' ? testsKo : testsEn;
