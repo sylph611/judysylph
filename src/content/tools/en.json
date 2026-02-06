@@ -229,5 +229,40 @@
     "description": "Calculate tip amount and total bill. Split between multiple people.",
     "emoji": "💵",
     "category": "Life"
+  },
+  {
+    "slug": "inflation-calculator",
+    "title": "Inflation Calculator",
+    "description": "Calculate how past money values compare to today. Understand purchasing power changes.",
+    "emoji": "📉",
+    "category": "Finance"
+  },
+  {
+    "slug": "roi-calculator",
+    "title": "ROI Calculator",
+    "description": "Calculate return on investment (ROI) and annualized returns from your investments.",
+    "emoji": "📈",
+    "category": "Finance"
+  },
+  {
+    "slug": "net-worth-calculator",
+    "title": "Net Worth Calculator",
+    "description": "Calculate your net worth by entering assets and liabilities. Analyze financial health.",
+    "emoji": "💎",
+    "category": "Finance"
+  },
+  {
+    "slug": "carbon-footprint",
+    "title": "Carbon Footprint Calculator",
+    "description": "Calculate your carbon emissions from daily activities and understand your environmental impact.",
+    "emoji": "🌱",
+    "category": "Life"
+  },
+  {
+    "slug": "water-intake",
+    "title": "Water Intake Calculator",
+    "description": "Calculate your recommended daily water intake based on weight and activity level.",
+    "emoji": "💧",
+    "category": "Health"
   }
 ]

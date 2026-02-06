@@ -1,0 +1,204 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('water-intake', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['ko']['health'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="water-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="weight" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              체중 (kg)
+            </label>
+            <input type="number" id="weight" placeholder="65" min="30" max="200"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="activity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              활동 수준
+            </label>
+            <select id="activity" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="sedentary">거의 운동 안 함 (사무직)</option>
+              <option value="light">가벼운 운동 (주 1-2회)</option>
+              <option value="moderate" selected>보통 운동 (주 3-5회)</option>
+              <option value="active">활발한 운동 (주 6-7회)</option>
+              <option value="athlete">매우 활동적 (운동선수급)</option>
+            </select>
+          </div>
+          <div>
+            <label for="climate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              기후/환경
+            </label>
+            <select id="climate" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="cool">서늘한 환경</option>
+              <option value="normal" selected>보통</option>
+              <option value="hot">더운 환경</option>
+              <option value="very-hot">매우 더운 환경</option>
+            </select>
+          </div>
+          <div>
+            <label for="caffeine" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              카페인 섭취
+            </label>
+            <select id="caffeine" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="none">없음</option>
+              <option value="low">하루 1-2잔</option>
+              <option value="medium" selected>하루 3-4잔</option>
+              <option value="high">하루 5잔 이상</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">
+            계산하기
+          </button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+            초기화
+          </button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="text-center mb-6">
+          <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">하루 권장 물 섭취량</div>
+          <div class="flex items-center justify-center gap-2">
+            <span id="result-ml" class="text-5xl font-bold text-blue-600 dark:text-blue-400">0</span>
+            <span class="text-2xl text-gray-600 dark:text-gray-400">ml</span>
+          </div>
+          <div id="result-glasses" class="text-gray-600 dark:text-gray-400 mt-2">약 0잔 (200ml 기준)</div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-4 text-center">
+            <div class="text-3xl mb-1">🌅</div>
+            <div class="text-sm text-blue-800 dark:text-blue-200">기상 직후</div>
+            <div id="result-morning" class="font-bold text-blue-600 dark:text-blue-400">300ml</div>
+          </div>
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-4 text-center">
+            <div class="text-3xl mb-1">☀️</div>
+            <div class="text-sm text-blue-800 dark:text-blue-200">오전</div>
+            <div id="result-am" class="font-bold text-blue-600 dark:text-blue-400">500ml</div>
+          </div>
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-4 text-center">
+            <div class="text-3xl mb-1">🌤️</div>
+            <div class="text-sm text-blue-800 dark:text-blue-200">오후</div>
+            <div id="result-pm" class="font-bold text-blue-600 dark:text-blue-400">500ml</div>
+          </div>
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-4 text-center">
+            <div class="text-3xl mb-1">🌙</div>
+            <div class="text-sm text-blue-800 dark:text-blue-200">저녁</div>
+            <div id="result-evening" class="font-bold text-blue-600 dark:text-blue-400">300ml</div>
+          </div>
+        </div>
+
+        <div class="bg-green-50 dark:bg-green-900/30 rounded-xl p-4">
+          <h4 class="font-bold text-green-800 dark:text-green-200 mb-2">💡 물 섭취 팁</h4>
+          <ul class="text-sm text-green-700 dark:text-green-300 space-y-1">
+            <li>• 갈증을 느끼기 전에 조금씩 자주 마시세요</li>
+            <li>• 식사 30분 전 물 한 잔이 소화에 도움됩니다</li>
+            <li>• 운동 전후로 추가 수분 섭취가 필요합니다</li>
+            <li>• 카페인 음료는 수분 섭취량에서 제외하세요</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로 돌아가기</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('water-form') as HTMLFormElement;
+
+  const activityFactors: Record<string, number> = {
+    'sedentary': 30,
+    'light': 35,
+    'moderate': 40,
+    'active': 45,
+    'athlete': 50
+  };
+
+  const climateFactors: Record<string, number> = {
+    'cool': 0.9,
+    'normal': 1.0,
+    'hot': 1.15,
+    'very-hot': 1.3
+  };
+
+  const caffeineFactors: Record<string, number> = {
+    'none': 0,
+    'low': 100,
+    'medium': 200,
+    'high': 350
+  };
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const weight = parseFloat((document.getElementById('weight') as HTMLInputElement).value);
+    const activity = (document.getElementById('activity') as HTMLSelectElement).value;
+    const climate = (document.getElementById('climate') as HTMLSelectElement).value;
+    const caffeine = (document.getElementById('caffeine') as HTMLSelectElement).value;
+
+    if (!weight) {
+      alert('체중을 입력해주세요');
+      return;
+    }
+
+    const baseIntake = weight * activityFactors[activity];
+    const climateAdjusted = baseIntake * climateFactors[climate];
+    const caffeineAdjusted = climateAdjusted + caffeineFactors[caffeine];
+    const totalMl = Math.round(caffeineAdjusted);
+    const glasses = Math.round(totalMl / 200);
+
+    const morning = Math.round(totalMl * 0.15);
+    const am = Math.round(totalMl * 0.30);
+    const pm = Math.round(totalMl * 0.35);
+    const evening = Math.round(totalMl * 0.20);
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-ml') as HTMLElement).textContent = totalMl.toString();
+    (document.getElementById('result-glasses') as HTMLElement).textContent = `약 ${glasses}잔 (200ml 기준)`;
+    (document.getElementById('result-morning') as HTMLElement).textContent = morning + 'ml';
+    (document.getElementById('result-am') as HTMLElement).textContent = am + 'ml';
+    (document.getElementById('result-pm') as HTMLElement).textContent = pm + 'ml';
+    (document.getElementById('result-evening') as HTMLElement).textContent = evening + 'ml';
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

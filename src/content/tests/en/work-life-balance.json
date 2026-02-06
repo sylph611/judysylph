@@ -1,0 +1,150 @@
+{
+  "slug": "work-life-balance",
+  "title": "Work-Life Balance Test",
+  "description": "How balanced is your work and life? Diagnose your work-life balance style!",
+  "emoji": "⚖️",
+  "questions": [
+    {
+      "question": "When you get work messages after hours:",
+      "choices": [
+        { "text": "Always check and respond", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Only check urgent ones", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Check next day at work", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Block after-hours contact", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "About working on weekends:",
+      "choices": [
+        { "text": "Do it often, isn't it normal?", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Sometimes when unavoidable", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Rarely do it", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Never do it", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "About using vacation days:",
+      "choices": [
+        { "text": "Barely use them, they expire", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Use about half", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Use most of them", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Use all and want more", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "Your thoughts on overtime:",
+      "choices": [
+        { "text": "Overtime shows passion", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Do it when necessary", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Want to avoid if possible", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Leaving on time is principle", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "Time invested in hobbies:",
+      "choices": [
+        { "text": "What hobby? No time", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Occasionally squeeze in time", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Enjoy regularly", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Big part of my life", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "Promotion vs personal time:",
+      "choices": [
+        { "text": "Promotion is more important", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Lean slightly toward promotion", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Lean slightly toward personal time", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Personal time is way more important", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "How you relieve work stress:",
+      "choices": [
+        { "text": "No time to relieve stress", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Just sleep it off", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Exercise, hobbies, etc.", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Don't work hard enough to stress", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "Checking work during vacation:",
+      "choices": [
+        { "text": "Check frequently", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Once a day or so", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Only urgent matters briefly", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Never check", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "An ideal workplace is:",
+      "choices": [
+        { "text": "Lots of growth and challenges", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Reasonable workload and pay", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Guaranteed work-life balance", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Minimum work, maximum freedom", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "What you want to do most now:",
+      "choices": [
+        { "text": "Take on bigger projects", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Skill up, self-development", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Travel, rest", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Do nothing and relax", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "Monday morning feeling:",
+      "choices": [
+        { "text": "Let's work hard today!", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Just another day at work", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Bit annoying but let's go", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Wish it was Friday already", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "Salary vs work-life balance, choose one:",
+      "choices": [
+        { "text": "Salary! Need money", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "Salary is slightly more important", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "Balance is slightly more important", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "Balance! Quality of life first", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "workaholic",
+      "title": "Workaholic",
+      "emoji": "🔥",
+      "description": "Work is life for you! You have strong drive for achievement and growth, finding great satisfaction in work. But burnout risk is high, so you need time to take care of yourself.",
+      "traits": ["High work immersion", "Achievement oriented", "Self-sacrificing", "Burnout risk", "Career focused"],
+      "advice": "Stop and check your health and relationships. You need to be healthy first to work well."
+    },
+    {
+      "type": "work_lean",
+      "title": "Work-Leaning Balancer",
+      "emoji": "📊",
+      "description": "You value work but aren't a complete workaholic. You pursue career growth while securing minimum personal time. A bit more balance would be good.",
+      "traits": ["Career priority", "Some leisure", "Growth seeking", "Slight imbalance", "Goal oriented"],
+      "advice": "Not bad, but practice completely disconnecting from work after hours and on weekends."
+    },
+    {
+      "type": "balanced",
+      "title": "Balance Master",
+      "emoji": "⚖️",
+      "description": "You balance work and life well! You work hard but also value personal time. You maintain the ideal work-life balance that many people envy.",
+      "traits": ["Balanced life", "Self-management", "Efficient", "Healthy boundaries", "High satisfaction"],
+      "advice": "Excellent! Maintain your current balance, and sometimes be even more generous to yourself."
+    },
+    {
+      "type": "life_lean",
+      "title": "Life First",
+      "emoji": "🌴",
+      "description": "You value quality of life most! Work is a means to live, and true happiness is found outside work. You value your own time and freedom. Cool!",
+      "traits": ["Quality life priority", "Relaxed", "Freedom seeking", "Low stress", "Personal time focused"],
+      "advice": "Great values! But if you have career goals, sometimes periods of work focus may be needed."
+    }
+  ]
+}

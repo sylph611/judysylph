@@ -1,0 +1,150 @@
+{
+  "slug": "money-personality",
+  "title": "Money Personality Test",
+  "description": "What's your financial personality? Discover your unique money style!",
+  "emoji": "💰",
+  "questions": [
+    {
+      "question": "When your paycheck arrives, first thing you do:",
+      "choices": [
+        { "text": "Transfer to savings/investment", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Check this month's spending plan", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Buy what I need first", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Nothing special", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "About tracking expenses:",
+      "choices": [
+        { "text": "Record daily in detail", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Use apps to auto-track", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Try sometimes but give up", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Never tried it", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "During sale season:",
+      "choices": [
+        { "text": "Make list of needs and buy only those", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Don't buy if don't need, even on sale", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Good opportunity, buy first", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Don't follow sale info", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "When eating out with friends:",
+      "choices": [
+        { "text": "Prefer splitting the bill", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Within planned dining budget", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Treat everyone if feeling good", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Don't think about money, just enjoy", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "When you want something:",
+      "choices": [
+        { "text": "Check need, compare prices, decide", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "OK if doesn't affect savings goals", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Buy with installments", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Buy immediately without thinking", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "Your thoughts on investing:",
+      "choices": [
+        { "text": "Diversified portfolio, long-term", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Safe deposits/savings are best", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "All-in on hot stocks", "scores": { "impulsive": 2, "spender": 1 } },
+        { "text": "Don't invest, just spend", "scores": { "spender": 2, "impulsive": 1 } }
+      ]
+    },
+    {
+      "question": "When unexpected expenses arise:",
+      "choices": [
+        { "text": "Use emergency fund", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Adjust other budget items", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Will save next month...", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Can't help it, just spend", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "When you get a bonus:",
+      "choices": [
+        { "text": "Save or invest all of it", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Save some, treat myself with rest", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Gift to myself!", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Naturally disappears from account", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "Your current savings rate:",
+      "choices": [
+        { "text": "30%+ of monthly income", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "10-30% of monthly income", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Barely saving", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "In overdraft...", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "Your money philosophy:",
+      "choices": [
+        { "text": "Money is for saving for future", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Money is for managing systematically", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Money is for spending", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Money? Use it if have, don't if not", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "Credit card usage:",
+      "choices": [
+        { "text": "Rarely use, prefer cash", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Use strategically for benefits", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Use often, it's convenient", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "Revolving credit, installments normal", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    },
+    {
+      "question": "Financial goals for 5 years from now:",
+      "choices": [
+        { "text": "Have specific amount and plan", "scores": { "planner": 2, "saver": 1 } },
+        { "text": "Have goals but not specific", "scores": { "saver": 2, "planner": 1 } },
+        { "text": "Will figure out when time comes", "scores": { "spender": 2, "impulsive": 1 } },
+        { "text": "5 years? Never thought about it", "scores": { "impulsive": 2, "spender": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "saver",
+      "title": "Super Saver",
+      "emoji": "🏦",
+      "description": "You find security in saving money! Saving and frugality are habitual, and you can delay current spending for the future. You're very financially stable.",
+      "traits": ["High savings rate", "Frugal habits", "Future oriented", "Security seeker", "Thrifty"],
+      "advice": "Great saving habits! But sometimes invest in enjoying the present too. Money is a tool for happiness."
+    },
+    {
+      "type": "planner",
+      "title": "Financial Planner",
+      "emoji": "📋",
+      "description": "Master of systematic money management! You manage income and expenses systematically and operate assets according to goals. A balanced type who saves and spends wisely.",
+      "traits": ["Planned management", "Goal setting", "Analytical", "Balanced", "Efficient"],
+      "advice": "You have the best financial habits! You can be a positive influence on those around you."
+    },
+    {
+      "type": "spender",
+      "title": "Flex Master",
+      "emoji": "🛍️",
+      "description": "Life is short! Money is meant to be spent. You invest generously in things you like and want. You value present happiness, but need preparation for the future too.",
+      "traits": ["Spending oriented", "Present focused", "Self-rewarding", "Rich lifestyle", "Low savings"],
+      "advice": "Enjoying life is important, but try saving at least 10% of income first."
+    },
+    {
+      "type": "impulsive",
+      "title": "YOLO Fighter",
+      "emoji": "🎲",
+      "description": "You don't make big plans about money. Spend when you have it, make do when you don't. Seems free, but be careful about falling into financial instability.",
+      "traits": ["Impulsive spending", "No planning", "Spontaneous", "Financially unstable", "Optimistic"],
+      "advice": "Start small. Install a budget app, set up automatic savings to take care of your financial health."
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('inflation-calculator', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['en']['financial'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'en', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'en', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="inflation-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="amount" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Past Amount ($)</label>
+            <input type="number" id="amount" placeholder="1000" min="0"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="start-year" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">From Year</label>
+            <input type="number" id="start-year" placeholder="2000" min="1950" max="2025"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="end-year" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">To Year</label>
+            <input type="number" id="end-year" placeholder="2026" min="1950" max="2030" value="2026"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="rate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Average Inflation Rate (%)</label>
+            <input type="number" id="rate" placeholder="2.5" value="2.5" min="0" max="20" step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">Calculate</button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">Reset</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Past Amount</div>
+            <div id="result-past" class="text-xl font-bold text-gray-900 dark:text-white">$0</div>
+            <div id="result-past-year" class="text-sm text-gray-500">Year 0</div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 mb-1">Current Value</div>
+            <div id="result-current" class="text-2xl font-bold text-primary-600 dark:text-primary-400">$0</div>
+            <div id="result-current-year" class="text-sm text-primary-500">Year 0</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Cumulative Inflation</div>
+            <div id="result-inflation" class="text-xl font-bold text-red-600 dark:text-red-400">0%</div>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-4">
+          <p class="text-sm text-blue-800 dark:text-blue-200"><strong>Interpretation:</strong> <span id="result-explanation"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← Back to Tools</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('inflation-form') as HTMLFormElement;
+
+  function formatCurrency(num: number): string {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(num);
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const amount = parseFloat((document.getElementById('amount') as HTMLInputElement).value);
+    const startYear = parseInt((document.getElementById('start-year') as HTMLInputElement).value);
+    const endYear = parseInt((document.getElementById('end-year') as HTMLInputElement).value);
+    const rate = parseFloat((document.getElementById('rate') as HTMLInputElement).value) / 100;
+
+    if (!amount || !startYear || !endYear) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    const years = endYear - startYear;
+    const inflationMultiplier = Math.pow(1 + rate, years);
+    const currentValue = amount * inflationMultiplier;
+    const totalInflation = (inflationMultiplier - 1) * 100;
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-past') as HTMLElement).textContent = formatCurrency(amount);
+    (document.getElementById('result-past-year') as HTMLElement).textContent = 'Year ' + startYear;
+    (document.getElementById('result-current') as HTMLElement).textContent = formatCurrency(currentValue);
+    (document.getElementById('result-current-year') as HTMLElement).textContent = 'Year ' + endYear;
+    (document.getElementById('result-inflation') as HTMLElement).textContent = '+' + totalInflation.toFixed(1) + '%';
+    (document.getElementById('result-explanation') as HTMLElement).textContent =
+      `${formatCurrency(amount)} in ${startYear} has the purchasing power of ${formatCurrency(currentValue)} in ${endYear}. Prices increased ${totalInflation.toFixed(1)}% over ${years} years.`;
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

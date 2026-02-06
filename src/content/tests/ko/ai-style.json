@@ -1,0 +1,150 @@
+{
+  "slug": "ai-style",
+  "title": "AI 활용 스타일 테스트",
+  "description": "당신은 AI를 어떻게 활용하나요? AI 시대의 나의 성향을 알아보세요!",
+  "emoji": "🤖",
+  "questions": [
+    {
+      "question": "AI 챗봇(ChatGPT 등)을 처음 접했을 때 반응은?",
+      "choices": [
+        { "text": "와, 대박! 바로 이것저것 시도해봄", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "신기하네, 어디에 쓸 수 있을까?", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "음... 일단 지켜보자", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "그게 뭔데? 별로 관심 없음", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI에게 가장 많이 물어보는 것은?",
+      "choices": [
+        { "text": "창작, 아이디어, 브레인스토밍", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "업무 효율화, 문서 작성", "scores": { "pragmatist": 2, "enthusiast": 1 } },
+        { "text": "단순 검색, 정보 확인", "scores": { "skeptic": 2, "pragmatist": 1 } },
+        { "text": "거의 사용 안 함", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI가 잘못된 정보를 줬을 때:",
+      "choices": [
+        { "text": "다른 방식으로 질문해본다", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "다른 소스로 검증한다", "scores": { "pragmatist": 2, "enthusiast": 1 } },
+        { "text": "역시 AI는 믿을 수 없어", "scores": { "skeptic": 2, "pragmatist": 1 } },
+        { "text": "AI를 별로 안 써서 모름", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI 관련 뉴스나 기술에 대해:",
+      "choices": [
+        { "text": "항상 관심있게 찾아보고 직접 테스트", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "유용해 보이면 관심을 가짐", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "가끔 뉴스로 접하는 정도", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "별로 관심 없음", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI가 내 직업을 대체할 수 있다는 말에:",
+      "choices": [
+        { "text": "AI를 활용하는 사람이 되면 됨", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "일부는 대체되겠지만 적응하면 됨", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "걱정되긴 하지만 아직은...", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "기계가 사람을 대체할 수 없음", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI 이미지 생성 도구(Midjourney 등)에 대해:",
+      "choices": [
+        { "text": "직접 만들어보고 프롬프트 연구 중", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "몇 번 써봤고 재밌더라", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "있다는 건 알지만 안 써봄", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "그런 게 있나?", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI에게 개인적인 고민을 상담한다면?",
+      "choices": [
+        { "text": "이미 해봤고 도움이 됐음", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "해볼 만할 것 같음", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "좀 이상할 것 같음", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "절대 안 함, 기계한테 뭘", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "회사/학교에서 AI 사용에 대해:",
+      "choices": [
+        { "text": "적극적으로 도입하자고 제안", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "효율적이면 사용해야지", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "시키면 하겠지만 굳이...", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "AI 없이도 잘 해왔음", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI가 작성한 글이나 코드를:",
+      "choices": [
+        { "text": "기반으로 삼아 발전시킴", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "참고용으로 활용함", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "검토는 하지만 잘 안 씀", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "믿을 수 없어서 안 씀", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "10년 후 AI와 인간의 관계는?",
+      "choices": [
+        { "text": "AI가 인간의 능력을 확장시킬 것", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "공존하며 각자 역할이 있을 것", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "잘 모르겠고 불확실함", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "AI가 너무 발전하면 위험", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI 프롬프트 작성 능력은?",
+      "choices": [
+        { "text": "고급 프롬프트 엔지니어링 수준", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "원하는 결과를 얻을 수 있음", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "기본적인 질문 정도", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "프롬프트가 뭔지 모름", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI 유료 서비스 결제에 대해:",
+      "choices": [
+        { "text": "이미 여러 개 구독 중", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "필요하면 결제할 의향 있음", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "무료만 써도 충분함", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "AI에 돈을 쓸 생각 없음", "scores": { "skeptic": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "pioneer",
+      "title": "AI 개척자",
+      "emoji": "🚀",
+      "description": "AI 기술의 최전선에 계시네요! 새로운 AI 도구가 나오면 가장 먼저 시도하고, 다양한 활용법을 탐구합니다. AI를 단순한 도구가 아닌 창작과 혁신의 파트너로 여기고 있어요.",
+      "traits": ["얼리어답터", "혁신적", "실험 정신", "미래 지향적", "적극적 활용"],
+      "advice": "훌륭한 AI 리터러시를 갖고 계시네요! 주변 사람들에게도 AI 활용법을 알려주고, 커뮤니티에서 인사이트를 공유해보세요."
+    },
+    {
+      "type": "enthusiast",
+      "title": "AI 활용러",
+      "emoji": "💡",
+      "description": "AI의 가치를 잘 이해하고 실생활에 적극 활용하고 계시네요. 업무 효율화부터 창작까지, AI를 스마트하게 사용합니다. 균형 잡힌 시각으로 AI를 대하고 있어요.",
+      "traits": ["실용적 활용", "균형 잡힌 시각", "효율 추구", "개방적", "학습 의지"],
+      "advice": "좋은 균형을 유지하고 계세요. 더 깊은 프롬프트 기법을 배워보면 활용도가 더욱 높아질 거예요."
+    },
+    {
+      "type": "pragmatist",
+      "title": "AI 관망러",
+      "emoji": "🤔",
+      "description": "AI에 대해 신중한 태도를 취하고 계시네요. 필요성을 느끼면 사용하지만, 맹목적인 신뢰는 하지 않습니다. 검증된 것만 받아들이는 실용주의적 접근을 하고 있어요.",
+      "traits": ["신중함", "실용주의", "검증 중시", "보수적", "관찰자"],
+      "advice": "신중함도 좋지만, 작은 것부터 AI를 활용해보세요. 간단한 질문이나 요약 요청부터 시작하면 편해질 거예요."
+    },
+    {
+      "type": "skeptic",
+      "title": "AI 회의론자",
+      "emoji": "🧐",
+      "description": "AI에 대해 회의적인 시각을 가지고 계시네요. 기술보다 인간의 능력을 더 신뢰하며, AI 의존에 우려를 느끼고 있습니다. 비판적 사고는 중요하지만, 변화에 대한 이해도 필요해요.",
+      "traits": ["비판적 사고", "전통 중시", "인간 중심", "기술 회의", "독립적"],
+      "advice": "AI를 완전히 거부하기보다, 도구로서의 가능성을 열어두세요. 정보 검색이나 번역 같은 간단한 용도로 시작해보는 건 어떨까요?"
+    }
+  ]
+}

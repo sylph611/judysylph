@@ -1,0 +1,150 @@
+{
+  "slug": "ai-style",
+  "title": "AI Usage Style Test",
+  "description": "How do you use AI? Discover your AI interaction style in the age of artificial intelligence!",
+  "emoji": "🤖",
+  "questions": [
+    {
+      "question": "When you first encountered AI chatbots (like ChatGPT):",
+      "choices": [
+        { "text": "Wow, amazing! Tried everything immediately", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Interesting, what can I use it for?", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Hmm... let's wait and see", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "What's that? Not really interested", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "What do you most ask AI about:",
+      "choices": [
+        { "text": "Creative ideas, brainstorming", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Work efficiency, document writing", "scores": { "pragmatist": 2, "enthusiast": 1 } },
+        { "text": "Simple searches, fact checking", "scores": { "skeptic": 2, "pragmatist": 1 } },
+        { "text": "Rarely use it", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "When AI gives wrong information:",
+      "choices": [
+        { "text": "Try asking in a different way", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Verify with other sources", "scores": { "pragmatist": 2, "enthusiast": 1 } },
+        { "text": "See, AI can't be trusted", "scores": { "skeptic": 2, "pragmatist": 1 } },
+        { "text": "Don't use AI much so unsure", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "About AI news and technology:",
+      "choices": [
+        { "text": "Always follow and test new things", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Interested if it seems useful", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Occasionally see it in news", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "Not really interested", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "When told AI might replace your job:",
+      "choices": [
+        { "text": "I'll become someone who uses AI", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Some will be replaced, but I'll adapt", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Worried, but not yet...", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "Machines can't replace humans", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "About AI image generators (like Midjourney):",
+      "choices": [
+        { "text": "Use it and study prompts actively", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Tried it a few times, it's fun", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Know about it but haven't tried", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "There's such a thing?", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "Consulting AI about personal problems:",
+      "choices": [
+        { "text": "Already did, it was helpful", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Seems worth trying", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Would feel weird", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "Never, why talk to a machine", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "About using AI at work/school:",
+      "choices": [
+        { "text": "Actively suggest implementing it", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Use it if efficient", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Would if asked, but not proactively", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "Did fine without AI", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI-generated text or code:",
+      "choices": [
+        { "text": "Use as base and improve it", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Use as reference", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Review but rarely use", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "Don't trust it, don't use", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "AI and humans in 10 years:",
+      "choices": [
+        { "text": "AI will extend human capabilities", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Will coexist with different roles", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Uncertain, hard to tell", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "Too much AI is dangerous", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "Your AI prompt writing skills:",
+      "choices": [
+        { "text": "Advanced prompt engineering level", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Can get desired results", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Basic questions only", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "Don't know what prompts are", "scores": { "skeptic": 2 } }
+      ]
+    },
+    {
+      "question": "Paying for AI services:",
+      "choices": [
+        { "text": "Already subscribe to several", "scores": { "pioneer": 2, "enthusiast": 1 } },
+        { "text": "Would pay if needed", "scores": { "enthusiast": 2, "pragmatist": 1 } },
+        { "text": "Free is enough", "scores": { "pragmatist": 2, "skeptic": 1 } },
+        { "text": "No intention to spend on AI", "scores": { "skeptic": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "pioneer",
+      "title": "AI Pioneer",
+      "emoji": "🚀",
+      "description": "You're at the forefront of AI technology! You're first to try new AI tools and explore various use cases. You see AI not as a simple tool but as a partner for creativity and innovation.",
+      "traits": ["Early adopter", "Innovative", "Experimental", "Future-oriented", "Active user"],
+      "advice": "You have excellent AI literacy! Share your knowledge with others and contribute insights to communities."
+    },
+    {
+      "type": "enthusiast",
+      "title": "AI Enthusiast",
+      "emoji": "💡",
+      "description": "You understand AI's value and actively use it in daily life. From work efficiency to creativity, you use AI smartly. You have a balanced perspective on AI.",
+      "traits": ["Practical use", "Balanced view", "Efficiency seeker", "Open-minded", "Willing to learn"],
+      "advice": "Keep up the good balance! Learning advanced prompting techniques will increase your effectiveness."
+    },
+    {
+      "type": "pragmatist",
+      "title": "AI Observer",
+      "emoji": "🤔",
+      "description": "You take a cautious approach to AI. You use it when you see the need but don't blindly trust it. You have a pragmatic approach of accepting only what's proven.",
+      "traits": ["Cautious", "Pragmatic", "Verification-focused", "Conservative", "Observer"],
+      "advice": "Caution is good, but try using AI for small things. Start with simple questions or summaries."
+    },
+    {
+      "type": "skeptic",
+      "title": "AI Skeptic",
+      "emoji": "🧐",
+      "description": "You have a skeptical view of AI. You trust human abilities more than technology and worry about AI dependency. Critical thinking is important, but understanding change is also needed.",
+      "traits": ["Critical thinking", "Traditional values", "Human-centered", "Tech skeptical", "Independent"],
+      "advice": "Rather than completely rejecting AI, stay open to its possibilities. Try simple uses like search or translation."
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "slug": "work-life-balance",
+  "title": "워라밸 테스트",
+  "description": "당신의 일과 삶의 균형은 어떤가요? 워라밸 성향을 진단해보세요!",
+  "emoji": "⚖️",
+  "questions": [
+    {
+      "question": "퇴근 후 업무 연락이 오면:",
+      "choices": [
+        { "text": "무조건 확인하고 답한다", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "급한 것만 확인한다", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "다음 날 출근해서 본다", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "퇴근 후 연락은 차단", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "주말에 일하는 것에 대해:",
+      "choices": [
+        { "text": "자주 한다, 당연한 거 아닌가", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "가끔 어쩔 수 없이", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "거의 안 한다", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "절대 안 한다", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "연차/휴가 사용에 대해:",
+      "choices": [
+        { "text": "거의 못 쓰고 사라진다", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "반 정도만 사용한다", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "대부분 사용한다", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "꼭 다 쓰고 추가 휴가도", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "야근에 대한 생각:",
+      "choices": [
+        { "text": "야근은 열정의 증거", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "필요하면 해야지", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "가능한 피하고 싶다", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "정시 퇴근이 원칙", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "취미 생활에 투자하는 시간은:",
+      "choices": [
+        { "text": "취미가 뭐지? 시간이 없다", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "가끔 짬내서", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "주기적으로 즐긴다", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "삶의 큰 비중을 차지함", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "승진/성과 vs 개인 시간이라면:",
+      "choices": [
+        { "text": "승진이 더 중요하다", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "승진 쪽으로 약간 기울어", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "개인 시간 쪽으로 약간", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "개인 시간이 훨씬 중요", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "업무 스트레스 해소 방법은:",
+      "choices": [
+        { "text": "스트레스 해소할 시간이 없다", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "잠으로 버틴다", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "운동, 취미 등으로 해소", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "애초에 스트레스 받을 만큼 안 함", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "휴가 중 업무 확인은:",
+      "choices": [
+        { "text": "수시로 확인한다", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "하루에 한 번 정도", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "급한 것만 간단히", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "절대 안 본다", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "이상적인 직장이란:",
+      "choices": [
+        { "text": "성장과 도전의 기회가 많은 곳", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "적당한 업무량과 보상", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "워라밸이 보장되는 곳", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "최소한의 일, 최대한의 자유", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "요즘 가장 하고 싶은 것은:",
+      "choices": [
+        { "text": "더 큰 프로젝트 도전", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "스킬업, 자기계발", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "여행, 휴식", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "아무것도 안 하고 쉬기", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "월요일 아침 기분은:",
+      "choices": [
+        { "text": "오늘도 열심히!", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "그냥 평범하게 출근", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "좀 귀찮지만 가야지", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "벌써 금요일이면 좋겠다", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    },
+    {
+      "question": "연봉 vs 워라밸, 둘 중 하나라면:",
+      "choices": [
+        { "text": "연봉! 돈이 있어야", "scores": { "workaholic": 2, "work_lean": 1 } },
+        { "text": "연봉이 조금 더 중요", "scores": { "work_lean": 2, "balanced": 1 } },
+        { "text": "워라밸이 조금 더 중요", "scores": { "balanced": 2, "life_lean": 1 } },
+        { "text": "워라밸! 삶의 질이 먼저", "scores": { "life_lean": 2, "balanced": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "workaholic",
+      "title": "워커홀릭",
+      "emoji": "🔥",
+      "description": "일이 곧 삶인 타입! 성과와 성장에 대한 열망이 강하고, 일에서 큰 만족을 얻습니다. 하지만 번아웃 위험이 높으니 자신을 돌보는 시간도 필요해요.",
+      "traits": ["높은 업무 몰입", "성과 지향", "자기 희생", "번아웃 위험", "커리어 중심"],
+      "advice": "잠깐 멈춰서 자신의 건강과 관계를 점검해보세요. 일을 잘하려면 먼저 자신이 건강해야 합니다."
+    },
+    {
+      "type": "work_lean",
+      "title": "일 중심 균형러",
+      "emoji": "📊",
+      "description": "일을 중요하게 여기지만 완전한 워커홀릭은 아닌 타입. 커리어 성장을 추구하면서도 최소한의 개인 시간은 확보하려 합니다. 조금 더 균형을 맞추면 좋겠어요.",
+      "traits": ["커리어 우선", "적당한 여유", "성장 추구", "약간의 불균형", "목표 지향"],
+      "advice": "현재도 나쁘지 않지만, 퇴근 후나 주말에 완전히 일을 내려놓는 연습을 해보세요."
+    },
+    {
+      "type": "balanced",
+      "title": "균형 마스터",
+      "emoji": "⚖️",
+      "description": "일과 삶의 균형을 잘 맞추고 있는 타입! 일도 열심히 하지만 개인 시간도 소중히 여깁니다. 많은 사람들이 부러워하는 이상적인 워라밸을 유지하고 있어요.",
+      "traits": ["균형 잡힌 삶", "자기 관리", "효율적", "건강한 경계", "만족도 높음"],
+      "advice": "훌륭해요! 현재의 균형을 유지하면서, 가끔은 자신에게 더 관대해져도 좋아요."
+    },
+    {
+      "type": "life_lean",
+      "title": "라이프 퍼스트",
+      "emoji": "🌴",
+      "description": "삶의 질을 가장 중요하게 여기는 타입! 일은 생활을 위한 수단이고, 진정한 행복은 일 밖에서 찾습니다. 자신만의 시간과 자유를 소중히 여기는 당신, 멋져요!",
+      "traits": ["삶의 질 우선", "여유로움", "자유 추구", "스트레스 낮음", "개인 시간 중시"],
+      "advice": "좋은 가치관이에요. 다만 커리어 목표가 있다면 가끔은 업무에 더 집중하는 시기도 필요할 수 있어요."
+    }
+  ]
+}

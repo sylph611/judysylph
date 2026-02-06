@@ -1,0 +1,150 @@
+{
+  "slug": "eco-personality",
+  "title": "Eco Personality Test",
+  "description": "What's your environmental awareness level? Discover your eco-friendly personality!",
+  "emoji": "🌍",
+  "questions": [
+    {
+      "question": "When ordering drinks at a cafe:",
+      "choices": [
+        { "text": "Bring my own tumbler", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Ask for a mug cup", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Take the disposable cup", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Don't think about it", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "When grocery shopping, reusable bags:",
+      "choices": [
+        { "text": "Always bring them", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Bring when I remember", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Rarely bring them", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Plastic bags are convenient", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "Your attitude toward recycling:",
+      "choices": [
+        { "text": "Carefully wash and sort", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Do basic sorting", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Sort roughly", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Too lazy, just throw away", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "For short distance travel:",
+      "choices": [
+        { "text": "Walk or bike", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Use public transport", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Take car or taxi", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Whatever's most convenient", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "When seeing environmental news:",
+      "choices": [
+        { "text": "Actively research and plan action", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Read with interest and share", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Just scroll past", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Not really interested", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "When buying products, eco-friendly options:",
+      "choices": [
+        { "text": "Buy eco-friendly even if pricier", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Choose eco if similar price", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Don't really care", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Cheapest is best", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "About meat consumption:",
+      "choices": [
+        { "text": "Reduce or avoid for environment", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Sometimes choose vegetarian", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Eat without concern", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Love meat, eat daily", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "Air conditioning/heating usage:",
+      "choices": [
+        { "text": "Minimal, prefer natural ventilation", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Use at appropriate temperature", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Use as I please", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Comfort is priority", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "About secondhand/upcycling:",
+      "choices": [
+        { "text": "Actively use them", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Use occasionally", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Interested but don't do it", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Prefer buying new", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "Environmental campaigns or petitions:",
+      "choices": [
+        { "text": "Actively participate and donate", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Participate when opportunity arises", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Too lazy to participate", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Not interested", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "Your shower time:",
+      "choices": [
+        { "text": "Under 5 minutes, quick", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "About 10 minutes", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "20+ minutes, long", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Don't track time", "scores": { "indifferent": 2 } }
+      ]
+    },
+    {
+      "question": "Your thoughts on climate change:",
+      "choices": [
+        { "text": "Serious issue, everyone must act", "scores": { "activist": 2, "conscious": 1 } },
+        { "text": "Worried but individuals are limited", "scores": { "conscious": 2, "casual": 1 } },
+        { "text": "Feels like distant future", "scores": { "casual": 2, "indifferent": 1 } },
+        { "text": "Seems exaggerated", "scores": { "indifferent": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "activist",
+      "title": "Earth Guardian",
+      "emoji": "🌱",
+      "description": "A true eco-warrior who actively acts for the environment! From daily practices to social campaigns, you spare no effort for the planet. The world would change with more people like you.",
+      "traits": ["Active practice", "High awareness", "Sustainability seeker", "Influential", "Responsible"],
+      "advice": "Excellent! You're probably inspiring those around you. Consider joining community activities or environmental organizations."
+    },
+    {
+      "type": "conscious",
+      "title": "Conscious Consumer",
+      "emoji": "🍃",
+      "description": "You recognize environmental issues and try to practice in daily life! Not perfect, but you make conscious choices. Small actions add up to big change.",
+      "traits": ["Conscious consumption", "Balance seeker", "Willing to practice", "Information receptive", "Growth potential"],
+      "advice": "You're heading in the right direction. Try changing one more habit to be more eco-friendly."
+    },
+    {
+      "type": "casual",
+      "title": "Eco Beginner",
+      "emoji": "🌤️",
+      "description": "You have some interest in the environment but it doesn't translate to action yet. Understandable that it's hard to care about environment in busy daily life, but why not start with small changes?",
+      "traits": ["Some interest", "Lacks practice", "Seeks convenience", "Change potential", "Needs information"],
+      "advice": "Don't overthink it. Start with easy things like reducing disposables and proper recycling."
+    },
+    {
+      "type": "indifferent",
+      "title": "Eco Indifferent",
+      "emoji": "😶",
+      "description": "Honestly, you're not very interested in environmental issues. Personal convenience comes first, and environment feels like a distant topic. But remember, climate change affects us all.",
+      "traits": ["Indifferent", "Convenience first", "Short-term view", "Needs change", "Lacks awareness"],
+      "advice": "Learn why environmental issues matter. Watching documentaries or reading articles might change your perspective."
+    }
+  ]
+}
