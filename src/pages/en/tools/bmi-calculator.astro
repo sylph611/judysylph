@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import AdBanner from '../../../components/AdBanner.astro';
 import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps, getToolStepType } from '../../../utils/tools';
 
 const lang = 'en';
@@ -121,6 +122,8 @@ const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
     </div>
 
     <!-- Back Link -->
+    <AdBanner className="mt-8" />
+
     <div class="mt-8 text-center">
       <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
         ← Back to Tools
