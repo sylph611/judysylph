@@ -1,0 +1,174 @@
+{
+  "slug": "food-persona",
+  "title": "내가 음식이라면 테스트",
+  "description": "만약 당신이 음식이라면 어떤 음식일까요? 성격으로 알아보는 나의 음식 페르소나!",
+  "emoji": "🍕",
+  "questions": [
+    {
+      "question": "모임에서 당신의 역할은?",
+      "choices": [
+        { "text": "분위기를 띄우는 메인", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "조용히 분위기를 맞추는 편", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "센터는 아니지만 없으면 아쉬운 존재", "scores": { "side": 2, "soup": 1 } },
+        { "text": "마지막에 등장해서 마무리", "scores": { "dessert": 2, "coffee": 1 } }
+      ]
+    },
+    {
+      "question": "당신의 성격을 한 단어로?",
+      "choices": [
+        { "text": "화려함", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "편안함", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "독특함", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "중독성", "scores": { "coffee": 2, "chicken": 1 } }
+      ]
+    },
+    {
+      "question": "스트레스 받을 때 어떻게 하나요?",
+      "choices": [
+        { "text": "맛있는 거 먹으러 간다", "scores": { "chicken": 2, "pizza": 1 } },
+        { "text": "집에서 쉰다", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "달달한 거 먹는다", "scores": { "dessert": 2, "coffee": 1 } },
+        { "text": "카페인 충전", "scores": { "coffee": 2, "side": 1 } }
+      ]
+    },
+    {
+      "question": "친구들이 당신을 어떻게 묘사하나요?",
+      "choices": [
+        { "text": "같이 있으면 재밌어", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "편하고 믿음직해", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "독특하고 개성 있어", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "없으면 뭔가 허전해", "scores": { "coffee": 2, "soup": 1 } }
+      ]
+    },
+    {
+      "question": "새로운 사람을 만나면?",
+      "choices": [
+        { "text": "먼저 다가가서 말을 건다", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "천천히 알아간다", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "나만의 매력을 어필한다", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "필요할 때만 대화한다", "scores": { "coffee": 2, "side": 1 } }
+      ]
+    },
+    {
+      "question": "이상적인 주말은?",
+      "choices": [
+        { "text": "친구들과 파티", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "집에서 푹 쉬기", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "새로운 경험하기", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "카페에서 혼자 시간", "scores": { "coffee": 2, "dessert": 1 } }
+      ]
+    },
+    {
+      "question": "연애 스타일은?",
+      "choices": [
+        { "text": "열정적이고 적극적", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "따뜻하고 헌신적", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "밀당과 설렘 중시", "scores": { "dessert": 2, "side": 1 } },
+        { "text": "독립적이고 쿨함", "scores": { "coffee": 2, "side": 1 } }
+      ]
+    },
+    {
+      "question": "당신의 매력 포인트는?",
+      "choices": [
+        { "text": "모두를 즐겁게 하는 에너지", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "누구에게나 편안함을 주는 것", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "한 번 보면 잊을 수 없는 개성", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "깊이 알수록 빠져드는 매력", "scores": { "coffee": 2, "soup": 1 } }
+      ]
+    },
+    {
+      "question": "갈등 상황에서 당신은?",
+      "choices": [
+        { "text": "화끈하게 해결한다", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "대화로 풀어간다", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "시간을 두고 생각한다", "scores": { "coffee": 2, "dessert": 1 } },
+        { "text": "나만의 방식으로 해결", "scores": { "side": 2, "coffee": 1 } }
+      ]
+    },
+    {
+      "question": "팀 프로젝트에서 당신의 역할은?",
+      "choices": [
+        { "text": "리더/발표자", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "실무/뒷받침", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "아이디어 뱅크", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "분석/검토", "scores": { "coffee": 2, "side": 1 } }
+      ]
+    },
+    {
+      "question": "당신이 추구하는 삶의 가치는?",
+      "choices": [
+        { "text": "재미와 행복", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "안정과 평화", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "자유와 개성", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "성장과 성취", "scores": { "coffee": 2, "rice": 1 } }
+      ]
+    },
+    {
+      "question": "첫인상 vs 알고 난 후?",
+      "choices": [
+        { "text": "첫인상 그대로 밝고 활발", "scores": { "pizza": 2, "chicken": 1 } },
+        { "text": "알수록 더 좋은 사람", "scores": { "rice": 2, "soup": 1 } },
+        { "text": "예상 못한 반전 매력", "scores": { "side": 2, "dessert": 1 } },
+        { "text": "깊이 알아야 진가 발휘", "scores": { "coffee": 2, "soup": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "pizza",
+      "title": "피자",
+      "emoji": "🍕",
+      "description": "파티의 주인공! 당신은 모임의 센터, 피자입니다! 화려하고 다채로운 매력으로 모든 사람의 사랑을 받아요. 어디서든 분위기를 띄우고, 함께하면 즐거운 에너지를 전파하는 타입이에요.",
+      "traits": ["사교적", "화려함", "인기", "다재다능", "리더십"],
+      "advice": "가끔은 조용히 쉬는 시간도 필요해요. 번아웃 조심!"
+    },
+    {
+      "type": "rice",
+      "title": "흰쌀밥",
+      "emoji": "🍚",
+      "description": "없으면 안 되는 존재! 당신은 언제나 든든한 흰쌀밥입니다. 화려하진 않지만, 곁에 있으면 편안하고 믿음직스러워요. 누구와도 잘 어울리고, 어떤 상황에서도 중심을 잡아주는 타입이에요.",
+      "traits": ["안정적", "신뢰", "포용력", "겸손", "헌신적"],
+      "advice": "가끔은 주인공이 되어도 괜찮아요! 당신의 가치를 드러내세요."
+    },
+    {
+      "type": "soup",
+      "title": "따뜻한 국물",
+      "emoji": "🍲",
+      "description": "마음을 녹이는 힐링! 당신은 지친 사람에게 위로가 되는 따뜻한 국물이에요. 깊은 공감 능력과 따뜻한 마음으로 주변 사람들을 치유해주는 존재입니다. 당신이 있으면 마음이 놓여요.",
+      "traits": ["따뜻함", "치유", "공감", "배려", "인내심"],
+      "advice": "남을 돌보면서 자신도 잊지 마세요. 당신도 쉴 자격이 있어요."
+    },
+    {
+      "type": "chicken",
+      "title": "치킨",
+      "emoji": "🍗",
+      "description": "모두가 좋아하는 인기쟁이! 당신은 거부할 수 없는 매력의 치킨입니다. 바삭하고 맛있는 매력으로 어디서든 환영받아요. 특별한 날에도, 평범한 날에도 당신이 있으면 더 즐거워져요!",
+      "traits": ["매력적", "활발함", "긍정적", "사교적", "유쾌함"],
+      "advice": "인기에 취하지 말고, 진정한 관계를 소중히 하세요."
+    },
+    {
+      "type": "dessert",
+      "title": "달콤한 디저트",
+      "emoji": "🍰",
+      "description": "특별한 순간을 만드는 당신! 디저트처럼 달콤하고 특별한 존재예요. 일상에 설렘과 기쁨을 선사하고, 함께하면 기분이 좋아지는 마법 같은 매력이 있어요.",
+      "traits": ["달콤함", "로맨틱", "감성적", "특별함", "예술적"],
+      "advice": "메인 요리가 되고 싶을 때도 있을 거예요. 도전해보세요!"
+    },
+    {
+      "type": "coffee",
+      "title": "커피",
+      "emoji": "☕",
+      "description": "중독성 있는 깊은 매력! 당신은 커피처럼 깊고 강렬한 매력을 가졌어요. 처음엔 쌉쌀할 수 있지만, 알면 알수록 빠져드는 중독성이 있어요. 당신 없이는 하루가 시작되지 않는 사람이 분명 있을 거예요.",
+      "traits": ["깊이", "독립적", "지적", "카리스마", "개성"],
+      "advice": "가끔은 부드러운 면도 보여주세요. 관계가 더 깊어질 거예요."
+    },
+    {
+      "type": "side",
+      "title": "반찬/사이드",
+      "emoji": "🥗",
+      "description": "독특한 개성의 소유자! 당신은 개성 넘치는 반찬 같은 존재예요. 메인은 아니지만, 당신이 없으면 식사가 심심해요. 나만의 색깔과 독특한 매력으로 잊을 수 없는 인상을 남기는 타입이에요.",
+      "traits": ["개성", "독창성", "다양성", "신선함", "조화"],
+      "advice": "당신의 독특함이 강점이에요. 절대 평범해지려 하지 마세요!"
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps, getToolStepType } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('compound-interest', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['ko']['financial'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="compound-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="principal" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              원금 (원)
+            </label>
+            <input
+              type="number"
+              id="principal"
+              placeholder="10000000"
+              min="0"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+          </div>
+          <div>
+            <label for="rate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              연이율 (%)
+            </label>
+            <input
+              type="number"
+              id="rate"
+              placeholder="5"
+              min="0"
+              max="100"
+              step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+          </div>
+          <div>
+            <label for="years" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              투자 기간 (년)
+            </label>
+            <input
+              type="number"
+              id="years"
+              placeholder="10"
+              min="1"
+              max="50"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+          </div>
+          <div>
+            <label for="compound-freq" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              복리 주기
+            </label>
+            <select
+              id="compound-freq"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            >
+              <option value="1">연 1회</option>
+              <option value="2">반년 (연 2회)</option>
+              <option value="4">분기 (연 4회)</option>
+              <option value="12" selected>월 (연 12회)</option>
+              <option value="365">일 (연 365회)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            type="submit"
+            class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+          >
+            계산하기
+          </button>
+          <button
+            type="reset"
+            class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+          >
+            초기화
+          </button>
+        </div>
+      </form>
+
+      <!-- Results -->
+      <div id="result-area" class="mt-8 hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">원금</div>
+            <div id="result-principal" class="text-xl font-bold text-gray-900 dark:text-white">0원</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">이자</div>
+            <div id="result-interest" class="text-xl font-bold text-green-600 dark:text-green-400">0원</div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 mb-1">최종 금액</div>
+            <div id="result-total" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0원</div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">연도별 잔액</h3>
+          <div id="yearly-breakdown" class="space-y-2 max-h-64 overflow-y-auto"></div>
+        </div>
+
+        <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
+          <p class="text-sm text-blue-800 dark:text-blue-200">
+            <strong>참고:</strong> 복리는 이자에 이자가 붙는 방식으로, 장기 투자시 단리보다 훨씬 큰 수익을 얻을 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← 도구 목록으로 돌아가기
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('compound-form') as HTMLFormElement;
+  const principalInput = document.getElementById('principal') as HTMLInputElement;
+  const rateInput = document.getElementById('rate') as HTMLInputElement;
+  const yearsInput = document.getElementById('years') as HTMLInputElement;
+  const freqSelect = document.getElementById('compound-freq') as HTMLSelectElement;
+  const resultArea = document.getElementById('result-area');
+  const resultPrincipal = document.getElementById('result-principal');
+  const resultInterest = document.getElementById('result-interest');
+  const resultTotal = document.getElementById('result-total');
+  const yearlyBreakdown = document.getElementById('yearly-breakdown');
+
+  function formatNumber(num: number): string {
+    return new Intl.NumberFormat('ko-KR').format(Math.round(num));
+  }
+
+  function calculateCompoundInterest(principal: number, rate: number, years: number, n: number) {
+    const r = rate / 100;
+    const yearlyData = [];
+
+    for (let t = 1; t <= years; t++) {
+      const amount = principal * Math.pow(1 + r / n, n * t);
+      yearlyData.push({
+        year: t,
+        amount: amount,
+        interest: amount - principal
+      });
+    }
+
+    const finalAmount = principal * Math.pow(1 + r / n, n * years);
+    return {
+      finalAmount,
+      totalInterest: finalAmount - principal,
+      yearlyData
+    };
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const principal = parseFloat(principalInput.value);
+    const rate = parseFloat(rateInput.value);
+    const years = parseInt(yearsInput.value);
+    const freq = parseInt(freqSelect.value);
+
+    if (!principal || !rate || !years) {
+      alert('모든 항목을 입력해주세요');
+      return;
+    }
+
+    const result = calculateCompoundInterest(principal, rate, years, freq);
+
+    resultArea?.classList.remove('hidden');
+    if (resultPrincipal) resultPrincipal.textContent = formatNumber(principal) + '원';
+    if (resultInterest) resultInterest.textContent = '+' + formatNumber(result.totalInterest) + '원';
+    if (resultTotal) resultTotal.textContent = formatNumber(result.finalAmount) + '원';
+
+    if (yearlyBreakdown) {
+      yearlyBreakdown.innerHTML = result.yearlyData.map(data => `
+        <div class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-600 last:border-0">
+          <span class="text-gray-700 dark:text-gray-300">${data.year}년차</span>
+          <div class="text-right">
+            <span class="font-medium text-gray-900 dark:text-white">${formatNumber(data.amount)}원</span>
+            <span class="text-sm text-green-600 dark:text-green-400 ml-2">(+${formatNumber(data.interest)})</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    resultArea?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  form?.addEventListener('reset', () => {
+    resultArea?.classList.add('hidden');
+  });
+</script>

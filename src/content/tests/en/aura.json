@@ -1,0 +1,182 @@
+{
+  "slug": "aura",
+  "title": "My Aura Test",
+  "description": "What energy and vibe do you give off? Discover your aura color!",
+  "emoji": "✨",
+  "questions": [
+    {
+      "question": "What's the first impression people get from you?",
+      "choices": [
+        { "text": "Warm and friendly", "scores": { "gold": 2, "pink": 1 } },
+        { "text": "Mysterious and deep", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Cool and intellectual", "scores": { "blue": 2, "white": 1 } },
+        { "text": "Intense and charismatic", "scores": { "red": 2, "gold": 1 } }
+      ]
+    },
+    {
+      "question": "Where do you feel most comfortable?",
+      "choices": [
+        { "text": "Sunny, warm spaces", "scores": { "gold": 2, "pink": 1 } },
+        { "text": "Quiet, meditative spaces", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Clean, organized spaces", "scores": { "white": 2, "blue": 1 } },
+        { "text": "Natural, green spaces", "scores": { "green": 2, "blue": 1 } }
+      ]
+    },
+    {
+      "question": "How do you relieve stress?",
+      "choices": [
+        { "text": "Talking with people", "scores": { "gold": 2, "pink": 1 } },
+        { "text": "Alone time", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Exercise or physical activity", "scores": { "red": 2, "green": 1 } },
+        { "text": "Music or art", "scores": { "blue": 2, "purple": 1 } }
+      ]
+    },
+    {
+      "question": "Your conversation style:",
+      "choices": [
+        { "text": "Warm and empathetic", "scores": { "pink": 2, "gold": 1 } },
+        { "text": "Deep and philosophical", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Logical and clear", "scores": { "blue": 2, "white": 1 } },
+        { "text": "Passionate and persuasive", "scores": { "red": 2, "gold": 1 } }
+      ]
+    },
+    {
+      "question": "To those around you, you are:",
+      "choices": [
+        { "text": "A healing presence", "scores": { "green": 2, "pink": 1 } },
+        { "text": "An inspiring presence", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "A reliable presence", "scores": { "blue": 2, "white": 1 } },
+        { "text": "An energizing presence", "scores": { "gold": 2, "red": 1 } }
+      ]
+    },
+    {
+      "question": "Your life values:",
+      "choices": [
+        { "text": "Love and harmony", "scores": { "pink": 2, "green": 1 } },
+        { "text": "Wisdom and enlightenment", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Success and achievement", "scores": { "gold": 2, "red": 1 } },
+        { "text": "Freedom and peace", "scores": { "blue": 2, "white": 1 } }
+      ]
+    },
+    {
+      "question": "Colors you're intuitively drawn to:",
+      "choices": [
+        { "text": "Warm colors (yellow, orange, pink)", "scores": { "gold": 2, "pink": 1 } },
+        { "text": "Mystical colors (purple, indigo)", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Calm colors (blue, green)", "scores": { "blue": 2, "green": 1 } },
+        { "text": "Bold colors (red, black, white)", "scores": { "red": 2, "white": 1 } }
+      ]
+    },
+    {
+      "question": "Your energy level is:",
+      "choices": [
+        { "text": "Bright and vibrant", "scores": { "gold": 2, "red": 1 } },
+        { "text": "Quiet but deep", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Stable and peaceful", "scores": { "green": 2, "blue": 1 } },
+        { "text": "Pure and clear", "scores": { "white": 2, "pink": 1 } }
+      ]
+    },
+    {
+      "question": "Your dreams are usually:",
+      "choices": [
+        { "text": "Bright and happy", "scores": { "gold": 2, "pink": 1 } },
+        { "text": "Symbolic and meaningful", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Realistic and logical", "scores": { "blue": 2, "white": 1 } },
+        { "text": "Vivid and intense", "scores": { "red": 2, "green": 1 } }
+      ]
+    },
+    {
+      "question": "In difficult situations, you:",
+      "choices": [
+        { "text": "Stay positive and find solutions", "scores": { "gold": 2, "red": 1 } },
+        { "text": "Follow intuition and inner voice", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Analyze calmly and respond", "scores": { "blue": 2, "white": 1 } },
+        { "text": "Overcome with people around you", "scores": { "pink": 2, "green": 1 } }
+      ]
+    },
+    {
+      "question": "Happiness to you means:",
+      "choices": [
+        { "text": "Being with loved ones", "scores": { "pink": 2, "gold": 1 } },
+        { "text": "Finding inner peace", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Achieving goals", "scores": { "red": 2, "gold": 1 } },
+        { "text": "Living in harmony with nature", "scores": { "green": 2, "blue": 1 } }
+      ]
+    },
+    {
+      "question": "If your soul were an element:",
+      "choices": [
+        { "text": "Shining sun", "scores": { "gold": 2, "red": 1 } },
+        { "text": "Deep ocean", "scores": { "blue": 2, "purple": 1 } },
+        { "text": "Mystical moon", "scores": { "purple": 2, "indigo": 1 } },
+        { "text": "Peaceful forest", "scores": { "green": 2, "pink": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "gold",
+      "title": "Gold Aura",
+      "emoji": "💛",
+      "description": "You radiate a brilliant Gold Aura! Like a warm sun, you illuminate those around you with positive energy and hope. You possess charisma and leadership, naturally attracting success and abundance.",
+      "traits": ["Leadership", "Confidence", "Warmth", "Abundance", "Positivity"],
+      "advice": "Shine your light on others, but don't forget to manage your own energy too."
+    },
+    {
+      "type": "purple",
+      "title": "Purple Aura",
+      "emoji": "💜",
+      "description": "You possess a mystical Purple Aura! You have deep intuition and spiritual insight. With exceptional artistic sense, you see what others cannot. A mysterious atmosphere surrounds you.",
+      "traits": ["Intuition", "Spirituality", "Creativity", "Mystery", "Depth"],
+      "advice": "Maintain balance between the spiritual and physical world. Both are precious."
+    },
+    {
+      "type": "blue",
+      "title": "Blue Aura",
+      "emoji": "💙",
+      "description": "You embody a peaceful Blue Aura! Calm and intellectual, you pursue truth and justice. With excellent communication and healing energy, you bring stability to those around you.",
+      "traits": ["Peace", "Intelligence", "Communication", "Truth", "Healing"],
+      "advice": "It's okay to express emotions more. Don't let calmness be mistaken for coldness."
+    },
+    {
+      "type": "pink",
+      "title": "Pink Aura",
+      "emoji": "💗",
+      "description": "You radiate a lovely Pink Aura! You carry the energy of pure love and romance. Delicate and deeply caring, love and harmony bloom wherever you are.",
+      "traits": ["Love", "Care", "Purity", "Romance", "Gentleness"],
+      "advice": "Don't forget to love yourself too. You deserve to receive as much as you give."
+    },
+    {
+      "type": "green",
+      "title": "Green Aura",
+      "emoji": "💚",
+      "description": "You possess a healing Green Aura! Connected to nature with healing energy, you pursue balance and harmony. People feel at ease and healed near you.",
+      "traits": ["Healing", "Balance", "Growth", "Nature-loving", "Harmony"],
+      "advice": "While healing others, make time to recharge your own energy."
+    },
+    {
+      "type": "red",
+      "title": "Red Aura",
+      "emoji": "❤️",
+      "description": "You radiate a passionate Red Aura! Full of intense vitality and passion, you have courage and determination. You move fearlessly toward your goals.",
+      "traits": ["Passion", "Courage", "Energy", "Determination", "Leadership"],
+      "advice": "Learn to regulate your passion. Sometimes stopping to rest is also strength."
+    },
+    {
+      "type": "white",
+      "title": "White Aura",
+      "emoji": "🤍",
+      "description": "You possess a pure White Aura! With clean, clear energy, you have the ability to purify your surroundings. Truthful and pure, you've reached a high spiritual level.",
+      "traits": ["Purity", "Cleansing", "Truth", "Spirituality", "Protection"],
+      "advice": "Maintain your purity while harmonizing well with the world."
+    },
+    {
+      "type": "indigo",
+      "title": "Indigo Aura",
+      "emoji": "🔮",
+      "description": "You possess a mystical Indigo Aura! With deep insight and wisdom, your third eye is open to see truths others cannot. You may have a mission to change the world.",
+      "traits": ["Insight", "Wisdom", "Mission", "Intuition", "Transformation"],
+      "advice": "Share your vision with the world. There are people who need your insight."
+    }
+  ]
+}

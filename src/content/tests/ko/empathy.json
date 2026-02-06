@@ -1,0 +1,150 @@
+{
+  "slug": "empathy",
+  "title": "공감능력 테스트",
+  "description": "당신의 감정 지능(EQ)은 얼마나 높을까요? 공감 능력을 측정해보세요!",
+  "emoji": "💕",
+  "questions": [
+    {
+      "question": "친구가 슬픈 이야기를 할 때 당신은?",
+      "choices": [
+        { "text": "같이 눈물이 난다", "scores": { "high": 2, "above": 1 } },
+        { "text": "진심으로 위로한다", "scores": { "above": 2, "average": 1 } },
+        { "text": "해결책을 제시한다", "scores": { "average": 2, "below": 1 } },
+        { "text": "어떻게 반응해야 할지 모르겠다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "영화에서 감동적인 장면이 나오면?",
+      "choices": [
+        { "text": "거의 항상 운다", "scores": { "high": 2, "above": 1 } },
+        { "text": "울컥할 때가 많다", "scores": { "above": 2, "average": 1 } },
+        { "text": "가끔 감동받는다", "scores": { "average": 2, "below": 1 } },
+        { "text": "별로 감동 안 받는다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "누군가의 표정만 봐도 기분을 알 수 있나요?",
+      "choices": [
+        { "text": "거의 정확하게 안다", "scores": { "high": 2, "above": 1 } },
+        { "text": "대부분 알아챈다", "scores": { "above": 2, "average": 1 } },
+        { "text": "가끔 알아챈다", "scores": { "average": 2, "below": 1 } },
+        { "text": "잘 모르겠다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "주변 사람이 힘들어할 때 가장 먼저 하는 것은?",
+      "choices": [
+        { "text": "옆에서 조용히 함께한다", "scores": { "high": 2, "above": 1 } },
+        { "text": "뭐가 필요한지 물어본다", "scores": { "above": 2, "average": 1 } },
+        { "text": "조언을 해준다", "scores": { "average": 2, "below": 1 } },
+        { "text": "혼자 있게 내버려둔다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "다른 사람의 감정에 영향을 많이 받나요?",
+      "choices": [
+        { "text": "매우 많이 받는다", "scores": { "high": 2, "above": 1 } },
+        { "text": "어느 정도 받는다", "scores": { "above": 2, "average": 1 } },
+        { "text": "가끔 받는다", "scores": { "average": 2, "below": 1 } },
+        { "text": "거의 안 받는다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "동물이 아파하는 모습을 보면?",
+      "choices": [
+        { "text": "마음이 너무 아프다", "scores": { "high": 2, "above": 1 } },
+        { "text": "안쓰럽다", "scores": { "above": 2, "average": 1 } },
+        { "text": "도와줘야겠다고 생각한다", "scores": { "average": 2, "below": 1 } },
+        { "text": "크게 신경 안 쓴다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "갈등 상황에서 상대방 입장을 이해하려고 하나요?",
+      "choices": [
+        { "text": "항상 먼저 이해하려 한다", "scores": { "high": 2, "above": 1 } },
+        { "text": "노력하는 편이다", "scores": { "above": 2, "average": 1 } },
+        { "text": "내 입장이 먼저다", "scores": { "average": 2, "below": 1 } },
+        { "text": "상대 입장은 별로 안 중요하다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "뉴스에서 안타까운 사건을 보면?",
+      "choices": [
+        { "text": "한동안 마음이 무겁다", "scores": { "high": 2, "above": 1 } },
+        { "text": "안타깝다고 느낀다", "scores": { "above": 2, "average": 1 } },
+        { "text": "잠깐 생각하고 넘어간다", "scores": { "average": 2, "below": 1 } },
+        { "text": "별 감흥이 없다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "친구의 성공을 들었을 때 느낌은?",
+      "choices": [
+        { "text": "진심으로 기쁘고 자랑스럽다", "scores": { "high": 2, "above": 1 } },
+        { "text": "축하해주고 싶다", "scores": { "above": 2, "average": 1 } },
+        { "text": "좋지만 살짝 부럽다", "scores": { "average": 2, "below": 1 } },
+        { "text": "그냥 그렇다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "상대방이 말하지 않아도 필요한 걸 알아챌 때가 있나요?",
+      "choices": [
+        { "text": "자주 그렇다", "scores": { "high": 2, "above": 1 } },
+        { "text": "가끔 그렇다", "scores": { "above": 2, "average": 1 } },
+        { "text": "말해줘야 안다", "scores": { "average": 2, "below": 1 } },
+        { "text": "잘 모르겠다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "사람들과 깊은 대화를 나누는 것을 좋아하나요?",
+      "choices": [
+        { "text": "매우 좋아한다", "scores": { "high": 2, "above": 1 } },
+        { "text": "좋아하는 편이다", "scores": { "above": 2, "average": 1 } },
+        { "text": "가벼운 대화가 편하다", "scores": { "average": 2, "below": 1 } },
+        { "text": "대화 자체를 선호하지 않는다", "scores": { "below": 2 } }
+      ]
+    },
+    {
+      "question": "누군가 거짓말하는 것을 직감으로 알아챌 수 있나요?",
+      "choices": [
+        { "text": "거의 항상 알아챈다", "scores": { "high": 2, "above": 1 } },
+        { "text": "종종 알아챈다", "scores": { "above": 2, "average": 1 } },
+        { "text": "가끔 알아챈다", "scores": { "average": 2, "below": 1 } },
+        { "text": "잘 모르겠다", "scores": { "below": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "high",
+      "title": "공감 천재 (EQ 최상)",
+      "emoji": "💖",
+      "description": "당신은 타인의 감정을 깊이 이해하고 공감하는 놀라운 능력을 가지고 있습니다. 사람들은 당신과 함께 있으면 이해받는다고 느끼며, 자연스럽게 마음을 열게 됩니다. 당신의 공감 능력은 특별한 재능이에요!",
+      "traits": ["깊은 공감", "감정 인식", "치유자", "경청", "직관적"],
+      "advice": "타인의 감정을 너무 흡수하지 않도록 자신을 보호하는 것도 중요해요. 건강한 경계를 유지하세요."
+    },
+    {
+      "type": "above",
+      "title": "공감 능력자 (EQ 높음)",
+      "emoji": "🤗",
+      "description": "평균 이상의 공감 능력을 가진 당신! 다른 사람의 감정을 잘 이해하고 적절하게 반응할 줄 압니다. 친구들에게 좋은 상담자이자 든든한 지지자 역할을 하고 있을 거예요.",
+      "traits": ["이해심", "배려", "소통", "따뜻함", "신뢰"],
+      "advice": "당신의 공감 능력을 더 발전시켜보세요. 상담이나 봉사 활동에서 빛을 발할 수 있어요."
+    },
+    {
+      "type": "average",
+      "title": "균형잡힌 공감 (EQ 보통)",
+      "emoji": "😊",
+      "description": "당신은 적절한 수준의 공감 능력을 가지고 있습니다. 논리와 감정 사이에서 균형을 잘 잡으며, 상황에 따라 유연하게 대처할 수 있어요. 때로는 조금 더 감정적으로 다가가도 좋아요.",
+      "traits": ["균형", "실용적", "적응력", "중립", "유연함"],
+      "advice": "가끔은 논리보다 감정에 먼저 귀 기울여보세요. 관계가 더 깊어질 수 있어요."
+    },
+    {
+      "type": "below",
+      "title": "이성적 사고형 (EQ 발전 중)",
+      "emoji": "🧠",
+      "description": "당신은 감정보다 논리와 이성을 중시하는 타입입니다. 문제 해결에는 뛰어나지만, 감정적 교류에서는 조금 어려움을 느낄 수 있어요. 공감 능력은 연습을 통해 발전시킬 수 있습니다!",
+      "traits": ["논리적", "분석적", "객관적", "독립적", "직접적"],
+      "advice": "상대방의 이야기를 들을 때 해결책보다 감정에 먼저 반응해보세요. 공감 능력이 향상될 거예요."
+    }
+  ]
+}

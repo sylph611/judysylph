@@ -1,0 +1,236 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('tip-calculator', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['en']['financial'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'en', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'en', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="tip-form" class="space-y-6">
+        <div>
+          <label for="bill" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Bill Amount
+          </label>
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+            <input
+              type="number"
+              id="bill"
+              placeholder="50.00"
+              min="0"
+              step="0.01"
+              class="w-full pl-8 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Tip Percentage: <span id="tip-percent-display">18%</span>
+          </label>
+          <input
+            type="range"
+            id="tip-percent"
+            min="0"
+            max="30"
+            value="18"
+            class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-600"
+          />
+          <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <span>0%</span>
+            <span>15%</span>
+            <span>20%</span>
+            <span>30%</span>
+          </div>
+        </div>
+
+        <div>
+          <label for="people" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Number of People
+          </label>
+          <div class="flex items-center gap-4">
+            <button type="button" id="decrease-people" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">-</button>
+            <input
+              type="number"
+              id="people"
+              value="1"
+              min="1"
+              max="100"
+              class="w-20 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-center focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+            <button type="button" id="increase-people" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">+</button>
+          </div>
+        </div>
+
+        <!-- Quick Tip Buttons -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Quick Select
+          </label>
+          <div class="grid grid-cols-4 gap-2">
+            <button type="button" data-tip="10" class="tip-btn py-2 px-4 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">10%</button>
+            <button type="button" data-tip="15" class="tip-btn py-2 px-4 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">15%</button>
+            <button type="button" data-tip="18" class="tip-btn py-2 px-4 rounded-lg bg-primary-100 dark:bg-primary-900/30 border-2 border-primary-500 text-primary-700 dark:text-primary-300">18%</button>
+            <button type="button" data-tip="20" class="tip-btn py-2 px-4 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">20%</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Results -->
+      <div id="result-area" class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Tip Amount</div>
+            <div id="result-tip" class="text-xl font-bold text-gray-900 dark:text-white">$0.00</div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 mb-1">Total</div>
+            <div id="result-total" class="text-xl font-bold text-primary-600 dark:text-primary-400">$0.00</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Tip/Person</div>
+            <div id="result-tip-per" class="text-xl font-bold text-gray-900 dark:text-white">$0.00</div>
+          </div>
+          <div class="bg-green-50 dark:bg-green-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-green-600 dark:text-green-400 mb-1">Total/Person</div>
+            <div id="result-total-per" class="text-xl font-bold text-green-600 dark:text-green-400">$0.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tip Guide -->
+      <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
+        <h4 class="font-medium text-blue-800 dark:text-blue-200 mb-2">Tipping Guide (US)</h4>
+        <ul class="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+          <li>• Restaurants: 15-20% (20%+ for excellent service)</li>
+          <li>• Bars/Cafes: 15-18%</li>
+          <li>• Delivery: 15-20% or at least $2-5</li>
+          <li>• Hair Salons: 15-20%</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← Back to Tools
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const billInput = document.getElementById('bill') as HTMLInputElement;
+  const tipSlider = document.getElementById('tip-percent') as HTMLInputElement;
+  const tipDisplay = document.getElementById('tip-percent-display');
+  const peopleInput = document.getElementById('people') as HTMLInputElement;
+  const decreasePeople = document.getElementById('decrease-people');
+  const increasePeople = document.getElementById('increase-people');
+  const tipBtns = document.querySelectorAll('.tip-btn');
+  const resultTip = document.getElementById('result-tip');
+  const resultTotal = document.getElementById('result-total');
+  const resultTipPer = document.getElementById('result-tip-per');
+  const resultTotalPer = document.getElementById('result-total-per');
+
+  function formatCurrency(amount: number): string {
+    return '$' + amount.toFixed(2);
+  }
+
+  function calculate() {
+    const bill = parseFloat(billInput.value) || 0;
+    const tipPercent = parseInt(tipSlider.value) / 100;
+    const people = parseInt(peopleInput.value) || 1;
+
+    const tipAmount = bill * tipPercent;
+    const totalAmount = bill + tipAmount;
+    const tipPerPerson = tipAmount / people;
+    const totalPerPerson = totalAmount / people;
+
+    if (resultTip) resultTip.textContent = formatCurrency(tipAmount);
+    if (resultTotal) resultTotal.textContent = formatCurrency(totalAmount);
+    if (resultTipPer) resultTipPer.textContent = formatCurrency(tipPerPerson);
+    if (resultTotalPer) resultTotalPer.textContent = formatCurrency(totalPerPerson);
+  }
+
+  function updateTipButtons() {
+    const currentTip = tipSlider.value;
+    tipBtns.forEach(btn => {
+      const btnTip = (btn as HTMLButtonElement).dataset.tip;
+      if (btnTip === currentTip) {
+        btn.classList.add('bg-primary-100', 'dark:bg-primary-900/30', 'border-2', 'border-primary-500', 'text-primary-700', 'dark:text-primary-300');
+        btn.classList.remove('border-gray-300', 'dark:border-gray-600', 'text-gray-700', 'dark:text-gray-300');
+      } else {
+        btn.classList.remove('bg-primary-100', 'dark:bg-primary-900/30', 'border-2', 'border-primary-500', 'text-primary-700', 'dark:text-primary-300');
+        btn.classList.add('border', 'border-gray-300', 'dark:border-gray-600', 'text-gray-700', 'dark:text-gray-300');
+      }
+    });
+  }
+
+  billInput?.addEventListener('input', calculate);
+
+  tipSlider?.addEventListener('input', () => {
+    if (tipDisplay) tipDisplay.textContent = tipSlider.value + '%';
+    updateTipButtons();
+    calculate();
+  });
+
+  peopleInput?.addEventListener('input', calculate);
+
+  decreasePeople?.addEventListener('click', () => {
+    const current = parseInt(peopleInput.value) || 1;
+    if (current > 1) {
+      peopleInput.value = String(current - 1);
+      calculate();
+    }
+  });
+
+  increasePeople?.addEventListener('click', () => {
+    const current = parseInt(peopleInput.value) || 1;
+    peopleInput.value = String(current + 1);
+    calculate();
+  });
+
+  tipBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tip = (btn as HTMLButtonElement).dataset.tip;
+      if (tip) {
+        tipSlider.value = tip;
+        if (tipDisplay) tipDisplay.textContent = tip + '%';
+        updateTipButtons();
+        calculate();
+      }
+    });
+  });
+
+  // Initial calculation
+  calculate();
+</script>

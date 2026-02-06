@@ -1,0 +1,253 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('sleep-calculator', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['ko']['health'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <!-- Tool Area -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <!-- Mode Selection -->
+      <div class="flex rounded-xl bg-gray-100 dark:bg-gray-700 p-1 mb-6">
+        <button
+          id="mode-wake"
+          class="flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-colors bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow"
+        >
+          기상 시간 기준
+        </button>
+        <button
+          id="mode-sleep"
+          class="flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-colors text-gray-600 dark:text-gray-400"
+        >
+          취침 시간 기준
+        </button>
+      </div>
+
+      <!-- Wake Time Mode -->
+      <div id="wake-mode" class="space-y-6">
+        <div>
+          <label for="wake-time" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            일어나야 하는 시간
+          </label>
+          <input
+            type="time"
+            id="wake-time"
+            value="07:00"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent text-center text-lg"
+          />
+        </div>
+        <button
+          id="calc-sleep"
+          class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+        >
+          최적 취침 시간 계산
+        </button>
+      </div>
+
+      <!-- Sleep Time Mode -->
+      <div id="sleep-mode" class="space-y-6 hidden">
+        <div>
+          <label for="sleep-time" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            잠들 시간
+          </label>
+          <input
+            type="time"
+            id="sleep-time"
+            value="23:00"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent text-center text-lg"
+          />
+        </div>
+        <button
+          id="calc-wake"
+          class="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors"
+        >
+          최적 기상 시간 계산
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div id="result-area" class="mt-8 hidden">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 text-center" id="result-title">
+          추천 취침 시간
+        </h3>
+        <div id="result-times" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+
+        <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
+          <p class="text-sm text-blue-800 dark:text-blue-200">
+            <strong>수면 사이클 안내:</strong> 한 번의 수면 사이클은 약 90분입니다.
+            사이클이 완료되는 시점에 기상하면 더 개운하게 일어날 수 있습니다.
+            잠들기까지 약 15분이 소요됩니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- Sleep Now Button -->
+      <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <button
+          id="sleep-now"
+          class="w-full px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors"
+        >
+          지금 자면 언제 일어나야 할까?
+        </button>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">
+        ← 도구 목록으로 돌아가기
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const modeWake = document.getElementById('mode-wake');
+  const modeSleep = document.getElementById('mode-sleep');
+  const wakeMode = document.getElementById('wake-mode');
+  const sleepMode = document.getElementById('sleep-mode');
+  const wakeTimeInput = document.getElementById('wake-time') as HTMLInputElement;
+  const sleepTimeInput = document.getElementById('sleep-time') as HTMLInputElement;
+  const calcSleep = document.getElementById('calc-sleep');
+  const calcWake = document.getElementById('calc-wake');
+  const sleepNow = document.getElementById('sleep-now');
+  const resultArea = document.getElementById('result-area');
+  const resultTitle = document.getElementById('result-title');
+  const resultTimes = document.getElementById('result-times');
+
+  const CYCLE_MINUTES = 90;
+  const FALL_ASLEEP_MINUTES = 15;
+
+  function formatTime(date: Date): string {
+    return date.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: true });
+  }
+
+  function addMinutes(date: Date, minutes: number): Date {
+    return new Date(date.getTime() + minutes * 60000);
+  }
+
+  function parseTime(timeStr: string): Date {
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    const date = new Date();
+    date.setHours(hours, minutes, 0, 0);
+    return date;
+  }
+
+  function getCycles(): number[] {
+    return [6, 5, 4, 3]; // 9h, 7.5h, 6h, 4.5h
+  }
+
+  function calculateSleepTimes(wakeTime: Date) {
+    return getCycles().map(cycles => {
+      const sleepDuration = cycles * CYCLE_MINUTES + FALL_ASLEEP_MINUTES;
+      return {
+        cycles,
+        time: addMinutes(wakeTime, -sleepDuration),
+        hours: (cycles * CYCLE_MINUTES) / 60
+      };
+    });
+  }
+
+  function calculateWakeTimes(sleepTime: Date) {
+    const fallAsleepTime = addMinutes(sleepTime, FALL_ASLEEP_MINUTES);
+    return getCycles().map(cycles => {
+      return {
+        cycles,
+        time: addMinutes(fallAsleepTime, cycles * CYCLE_MINUTES),
+        hours: (cycles * CYCLE_MINUTES) / 60
+      };
+    });
+  }
+
+  function renderResults(times: { cycles: number; time: Date; hours: number }[], isSleepTimes: boolean) {
+    resultArea?.classList.remove('hidden');
+    if (resultTitle) {
+      resultTitle.textContent = isSleepTimes ? '추천 취침 시간' : '추천 기상 시간';
+    }
+
+    if (resultTimes) {
+      resultTimes.innerHTML = times.map((t, i) => {
+        const isRecommended = t.cycles >= 5;
+        return `
+          <div class="p-4 rounded-xl ${isRecommended ? 'bg-green-100 dark:bg-green-900/30 border-2 border-green-500' : 'bg-gray-50 dark:bg-gray-700'}">
+            <div class="text-2xl font-bold ${isRecommended ? 'text-green-600 dark:text-green-400' : 'text-gray-900 dark:text-white'}">
+              ${formatTime(t.time)}
+            </div>
+            <div class="text-sm ${isRecommended ? 'text-green-600 dark:text-green-400' : 'text-gray-600 dark:text-gray-400'}">
+              ${t.hours}시간 (${t.cycles}사이클)
+            </div>
+            ${isRecommended ? '<span class="text-xs text-green-600 dark:text-green-400 font-medium">추천</span>' : ''}
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  // Mode switching
+  modeWake?.addEventListener('click', () => {
+    modeWake.classList.add('bg-white', 'dark:bg-gray-600', 'text-gray-900', 'dark:text-white', 'shadow');
+    modeWake.classList.remove('text-gray-600', 'dark:text-gray-400');
+    modeSleep?.classList.remove('bg-white', 'dark:bg-gray-600', 'text-gray-900', 'dark:text-white', 'shadow');
+    modeSleep?.classList.add('text-gray-600', 'dark:text-gray-400');
+    wakeMode?.classList.remove('hidden');
+    sleepMode?.classList.add('hidden');
+    resultArea?.classList.add('hidden');
+  });
+
+  modeSleep?.addEventListener('click', () => {
+    modeSleep?.classList.add('bg-white', 'dark:bg-gray-600', 'text-gray-900', 'dark:text-white', 'shadow');
+    modeSleep?.classList.remove('text-gray-600', 'dark:text-gray-400');
+    modeWake?.classList.remove('bg-white', 'dark:bg-gray-600', 'text-gray-900', 'dark:text-white', 'shadow');
+    modeWake?.classList.add('text-gray-600', 'dark:text-gray-400');
+    sleepMode?.classList.remove('hidden');
+    wakeMode?.classList.add('hidden');
+    resultArea?.classList.add('hidden');
+  });
+
+  calcSleep?.addEventListener('click', () => {
+    const wakeTime = parseTime(wakeTimeInput.value);
+    const sleepTimes = calculateSleepTimes(wakeTime);
+    renderResults(sleepTimes, true);
+  });
+
+  calcWake?.addEventListener('click', () => {
+    const sleepTime = parseTime(sleepTimeInput.value);
+    const wakeTimes = calculateWakeTimes(sleepTime);
+    renderResults(wakeTimes, false);
+  });
+
+  sleepNow?.addEventListener('click', () => {
+    const now = new Date();
+    const wakeTimes = calculateWakeTimes(now);
+    renderResults(wakeTimes, false);
+    resultArea?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

@@ -64,7 +64,12 @@ const testCategories: Record<string, TestCategory> = {
   'hsp': 'personality',
   'personal-color': 'personality',
   'kkondae': 'fun',
-  'alter-ego': 'personality'
+  'alter-ego': 'personality',
+  'meme-knowledge': 'fun',
+  'empathy': 'personality',
+  'food-persona': 'fun',
+  'aura': 'personality',
+  'thinking-feeling': 'personality'
 };
 
 export const categoryLabels = {
@@ -134,9 +139,20 @@ import kkondaeKo from '../content/tests/ko/kkondae.json';
 import kkondaeEn from '../content/tests/en/kkondae.json';
 import alterEgoKo from '../content/tests/ko/alter-ego.json';
 import alterEgoEn from '../content/tests/en/alter-ego.json';
+// New trending tests - 2026
+import memeKnowledgeKo from '../content/tests/ko/meme-knowledge.json';
+import memeKnowledgeEn from '../content/tests/en/meme-knowledge.json';
+import empathyKo from '../content/tests/ko/empathy.json';
+import empathyEn from '../content/tests/en/empathy.json';
+import foodPersonaKo from '../content/tests/ko/food-persona.json';
+import foodPersonaEn from '../content/tests/en/food-persona.json';
+import auraKo from '../content/tests/ko/aura.json';
+import auraEn from '../content/tests/en/aura.json';
+import thinkingFeelingKo from '../content/tests/ko/thinking-feeling.json';
+import thinkingFeelingEn from '../content/tests/en/thinking-feeling.json';
 
-const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo, mentalAgeKo, hiddenTalentKo, idealTypeKo, foodPersonalityKo, mbtiCompatibilityKo, hspKo, personalColorKo, kkondaeKo, alterEgoKo];
-const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn, mentalAgeEn, hiddenTalentEn, idealTypeEn, foodPersonalityEn, mbtiCompatibilityEn, hspEn, personalColorEn, kkondaeEn, alterEgoEn];
+const testsKo: Test[] = [animalKo, loveStyleKo, colorKo, stressKo, careerKo, mbtiKo, loveLanguageKo, learningStyleKo, spendingKo, burnoutKo, socialKo, pastLifeKo, travelKo, mentalAgeKo, hiddenTalentKo, idealTypeKo, foodPersonalityKo, mbtiCompatibilityKo, hspKo, personalColorKo, kkondaeKo, alterEgoKo, memeKnowledgeKo, empathyKo, foodPersonaKo, auraKo, thinkingFeelingKo];
+const testsEn: Test[] = [animalEn, loveStyleEn, colorEn, stressEn, careerEn, mbtiEn, loveLanguageEn, learningStyleEn, spendingEn, burnoutEn, socialEn, pastLifeEn, travelEn, mentalAgeEn, hiddenTalentEn, idealTypeEn, foodPersonalityEn, mbtiCompatibilityEn, hspEn, personalColorEn, kkondaeEn, alterEgoEn, memeKnowledgeEn, empathyEn, foodPersonaEn, auraEn, thinkingFeelingEn];
 
 export function getAllTests(lang: string): Test[] {
   return lang === 'ko' ? testsKo : testsEn;

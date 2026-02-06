@@ -1,0 +1,150 @@
+{
+  "slug": "thinking-feeling",
+  "title": "T/F Personality Test",
+  "description": "Are you a Thinker (T) or Feeler (F)? Explore this core MBTI dimension in depth!",
+  "emoji": "🧠",
+  "questions": [
+    {
+      "question": "A friend calls saying they just got dumped:",
+      "choices": [
+        { "text": "Empathize and comfort them first", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Analyze why it happened", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Comfort then offer solutions", "scores": { "t_mild": 2, "f_mild": 1 } },
+        { "text": "List their ex's flaws and say it's for the best", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "When making important decisions:",
+      "choices": [
+        { "text": "Follow my heart", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Carefully analyze pros and cons", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Consider both logic and feelings", "scores": { "t_mild": 2, "f_mild": 1 } },
+        { "text": "Gather as much information as possible", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "When someone is crying:",
+      "choices": [
+        { "text": "I get emotional too", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "I'm curious why they're crying", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Awkward but try to comfort them", "scores": { "t_mild": 2, "f_mild": 1 } },
+        { "text": "Want to find a solution for them", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "During arguments, you:",
+      "choices": [
+        { "text": "Consider the other person's feelings", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Focus on what's logically correct", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "State facts then care for emotions", "scores": { "t_mild": 2, "f_mild": 1 } },
+        { "text": "Truth matters more than the relationship", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "Preferred way to receive feedback:",
+      "choices": [
+        { "text": "Gently with praise included", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Direct and clear", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Logical but considerate", "scores": { "t_mild": 2, "f_mild": 1 } },
+        { "text": "Just the facts, no emotions", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "Your friend's new outfit looks bad:",
+      "choices": [
+        { "text": "Tell them they look nice anyway", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Be honest about it", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Gently suggest alternatives", "scores": { "f_mild": 2, "t_mild": 1 } },
+        { "text": "Explain why it doesn't work", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "In conflicts, your priority is:",
+      "choices": [
+        { "text": "Maintaining the relationship", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Determining who's right", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Finding a fair solution", "scores": { "t_mild": 2, "f_mild": 1 } },
+        { "text": "Establishing principles and standards", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "Watching sad movies:",
+      "choices": [
+        { "text": "I cry easily", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "I analyze the story while watching", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "I'm moved but hold back tears", "scores": { "t_mild": 2, "f_mild": 1 } },
+        { "text": "Plot holes bother me", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "Your compliment style:",
+      "choices": [
+        { "text": "Express with genuine emotion", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Mention specific facts", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Sincere but concise", "scores": { "t_mild": 2, "f_mild": 1 } },
+        { "text": "I don't compliment often", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "When someone makes an irrational decision:",
+      "choices": [
+        { "text": "Try to understand their feelings", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Explain why it's wrong", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Listen first, then carefully share opinion", "scores": { "f_mild": 2, "t_mild": 1 } },
+        { "text": "Feel frustrated and can't help it", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "In team projects, what matters most:",
+      "choices": [
+        { "text": "Team harmony", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Efficient results", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Results everyone's satisfied with", "scores": { "f_mild": 2, "t_mild": 1 } },
+        { "text": "Objective evaluation criteria", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    },
+    {
+      "question": "When apologizing:",
+      "choices": [
+        { "text": "Heartfelt emotional expression", "scores": { "F": 2, "f_mild": 1 } },
+        { "text": "Acknowledge fault and offer alternatives", "scores": { "T": 2, "t_mild": 1 } },
+        { "text": "Both are important", "scores": { "f_mild": 2, "t_mild": 1 } },
+        { "text": "Prevention matters more than apology", "scores": { "T": 2, "t_mild": 1 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "T",
+      "title": "Strong Thinker (T)",
+      "emoji": "🧠",
+      "description": "You're a definite Thinker! You prioritize logic over emotions, excelling at objective analysis and rational thought. When problems arise, you find solutions without being swayed by feelings. You value fairness and principles.",
+      "traits": ["Logical", "Analytical", "Objective", "Direct", "Principled"],
+      "advice": "Sometimes empathize with feelings before logic. It makes a big difference in relationships."
+    },
+    {
+      "type": "t_mild",
+      "title": "Leaning Thinker",
+      "emoji": "💭",
+      "description": "You lean toward Thinking but also consider emotions. You make rational decisions primarily but can be emotionally considerate when needed. You're a balanced T!",
+      "traits": ["Rational", "Considerate", "Balanced", "Practical", "Flexible"],
+      "advice": "Maintain your balance. You can be a great bridge between T and F types."
+    },
+    {
+      "type": "f_mild",
+      "title": "Leaning Feeler",
+      "emoji": "💫",
+      "description": "You lean toward Feeling but also use logic well. You prioritize people's emotions but can make objective judgments when necessary. You're a warm yet wise F!",
+      "traits": ["Empathetic", "Wise", "Harmonious", "Caring", "Adaptable"],
+      "advice": "You're balancing emotions and logic well. Keep developing this ability."
+    },
+    {
+      "type": "F",
+      "title": "Strong Feeler (F)",
+      "emoji": "💕",
+      "description": "You're a definite Feeler! You prioritize feelings and relationships above all. With exceptional empathy, you're attuned to others' emotions. You warmly embrace those around you.",
+      "traits": ["Empathetic", "Caring", "Emotional", "Relationship-focused", "Warm"],
+      "advice": "Sometimes a logical perspective is needed. Try not to get too swept up in emotions."
+    }
+  ]
+}
