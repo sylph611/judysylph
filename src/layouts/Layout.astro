@@ -35,8 +35,10 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
     <!-- DNS Prefetch & Preconnect for external services -->
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
     <link rel="dns-prefetch" href="https://api.qrserver.com" />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
 
     <!-- PWA -->
     <link rel="manifest" href={lang === 'en' ? '/manifest-en.json' : '/manifest.json'} />
@@ -102,6 +104,9 @@ const fullCanonicalUrl = canonicalUrl || Astro.url.href;
       gtag('js', new Date());
       gtag('config', 'G-BLLN6ZYR3W');
     </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4221589332879382" crossorigin="anonymous"></script>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
