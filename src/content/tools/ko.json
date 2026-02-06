@@ -271,5 +271,40 @@
     "description": "체중과 활동량에 따른 하루 권장 물 섭취량을 계산합니다.",
     "emoji": "💧",
     "category": "건강"
+  },
+  {
+    "slug": "currency-converter",
+    "title": "환율 계산기",
+    "description": "실시간 환율로 다양한 통화를 간편하게 변환합니다. USD, EUR, JPY 등 주요 통화 지원.",
+    "emoji": "💱",
+    "category": "재무"
+  },
+  {
+    "slug": "stock-profit",
+    "title": "주식 수익 계산기",
+    "description": "매수가, 매도가, 수량을 입력하면 수익률과 순이익을 계산합니다. 수수료 포함.",
+    "emoji": "📊",
+    "category": "재무"
+  },
+  {
+    "slug": "timezone-converter",
+    "title": "타임존 변환기",
+    "description": "세계 주요 도시의 시간대를 간편하게 변환합니다. 회의 일정 조율에 유용.",
+    "emoji": "🌍",
+    "category": "날짜/시간"
+  },
+  {
+    "slug": "weight-goal",
+    "title": "체중 목표 계산기",
+    "description": "목표 체중까지 필요한 칼로리 조절량과 예상 기간을 계산합니다.",
+    "emoji": "🎯",
+    "category": "건강"
+  },
+  {
+    "slug": "loan-repayment",
+    "title": "대출 상환 계산기",
+    "description": "대출 원금, 이자율, 기간을 입력하면 월 상환금과 총 이자를 계산합니다.",
+    "emoji": "🏦",
+    "category": "재무"
   }
 ]

@@ -1,0 +1,148 @@
+{
+  "slug": "time-management",
+  "title": "Time Management Test",
+  "description": "Discover your time management style",
+  "emoji": "⏰",
+  "questions": [
+    {
+      "question": "When an important deadline approaches:",
+      "choices": [
+        { "text": "Already done ahead of time", "scores": { "planner": 2 } },
+        { "text": "My focus peaks right before the deadline", "scores": { "sprinter": 2 } },
+        { "text": "Get distracted by other things", "scores": { "multitasker": 2 } },
+        { "text": "Go with the flow naturally", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "How do you manage your schedule?",
+      "choices": [
+        { "text": "Record everything in detail on a calendar", "scores": { "planner": 2 } },
+        { "text": "Keep major events in my head", "scores": { "sprinter": 2, "flexible": 1 } },
+        { "text": "Use multiple apps and tools", "scores": { "multitasker": 2 } },
+        { "text": "Adjust as situations arise", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "First thing in the morning:",
+      "choices": [
+        { "text": "Review today's to-do list", "scores": { "planner": 2 } },
+        { "text": "Check if there's anything urgent", "scores": { "sprinter": 2 } },
+        { "text": "Browse social media, news simultaneously", "scores": { "multitasker": 2 } },
+        { "text": "Start the day leisurely", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "When multiple tasks pile up:",
+      "choices": [
+        { "text": "Prioritize and tackle one at a time", "scores": { "planner": 2 } },
+        { "text": "Handle the most urgent first, fast", "scores": { "sprinter": 2 } },
+        { "text": "Work on several simultaneously", "scores": { "multitasker": 2 } },
+        { "text": "Do whatever I can, slowly", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "Your thoughts on being punctual:",
+      "choices": [
+        { "text": "Always arrive 10 minutes early", "scores": { "planner": 2 } },
+        { "text": "Arrive exactly on time", "scores": { "sprinter": 2 } },
+        { "text": "Run other errands on the way", "scores": { "multitasker": 2 } },
+        { "text": "Flexible depending on the situation", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "How you spend a day off:",
+      "choices": [
+        { "text": "Follow a planned schedule productively", "scores": { "planner": 2 } },
+        { "text": "Catch up on accumulated tasks", "scores": { "sprinter": 2 } },
+        { "text": "Do various things, day flies by", "scores": { "multitasker": 2 } },
+        { "text": "Do nothing and just rest", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "Starting a new project:",
+      "choices": [
+        { "text": "Create a step-by-step plan first", "scores": { "planner": 2 } },
+        { "text": "Just start and improve along the way", "scores": { "sprinter": 2 } },
+        { "text": "Try multiple ideas at once", "scores": { "multitasker": 2 } },
+        { "text": "Wait for inspiration to strike", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "When interrupted during work:",
+      "choices": [
+        { "text": "Handle it later, focus on current task", "scores": { "planner": 2 } },
+        { "text": "Deal with it quickly and get back", "scores": { "sprinter": 2 } },
+        { "text": "Naturally incorporate it into my work", "scores": { "multitasker": 2 } },
+        { "text": "Take a break if flow is broken", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "Setting long-term goals:",
+      "choices": [
+        { "text": "Define detailed milestones", "scores": { "planner": 2 } },
+        { "text": "Set direction and focus on execution", "scores": { "sprinter": 2 } },
+        { "text": "Pursue multiple goals simultaneously", "scores": { "multitasker": 2 } },
+        { "text": "Adjust flexibly based on circumstances", "scores": { "flexible": 2 } }
+      ]
+    },
+    {
+      "question": "When you have spare time:",
+      "choices": [
+        { "text": "Prepare for upcoming tasks", "scores": { "planner": 2 } },
+        { "text": "Catch up on pending work", "scores": { "sprinter": 2 } },
+        { "text": "Start something new", "scores": { "multitasker": 2 } },
+        { "text": "Just relax and enjoy", "scores": { "flexible": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "planner",
+      "title": "Meticulous Planner",
+      "emoji": "📋",
+      "description": "Master of planning! You prepare everything systematically and use time efficiently.",
+      "traits": ["Systematic", "Predictable", "Goal-oriented", "Stable"],
+      "advice": "Plans are great, but try enjoying unexpected moments too. Flexibility is also an important skill.",
+      "compatibility": {
+        "good": ["planner", "sprinter"],
+        "bad": ["flexible"]
+      }
+    },
+    {
+      "type": "sprinter",
+      "title": "Deadline Sprinter",
+      "emoji": "🏃",
+      "description": "You shine under pressure! Your focus explodes as deadlines approach.",
+      "traits": ["Quick thinking", "Intense focus", "Fast execution", "Stress tolerance"],
+      "advice": "Last-minute stress can be harmful to health. Try starting early sometimes.",
+      "compatibility": {
+        "good": ["sprinter", "planner"],
+        "bad": ["multitasker"]
+      }
+    },
+    {
+      "type": "multitasker",
+      "title": "Multi-Tasker",
+      "emoji": "🎪",
+      "description": "Juggling multiple things at once! You have diverse interests and run parallel projects.",
+      "traits": ["Versatile", "Curious", "Adaptable", "High energy"],
+      "advice": "Doing many things might mean finishing none. Sometimes narrow your focus.",
+      "compatibility": {
+        "good": ["flexible", "multitasker"],
+        "bad": ["planner"]
+      }
+    },
+    {
+      "type": "flexible",
+      "title": "Flexible Flower",
+      "emoji": "🌊",
+      "description": "Going with the flow! You adapt to situations and manage time at your own pace.",
+      "traits": ["Adaptable", "Low stress", "Free-spirited", "Intuitive"],
+      "advice": "Flexibility is nice, but don't miss important things. Some basic structure helps.",
+      "compatibility": {
+        "good": ["multitasker", "flexible"],
+        "bad": ["planner"]
+      }
+    }
+  ]
+}

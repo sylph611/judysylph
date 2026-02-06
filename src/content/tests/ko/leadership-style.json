@@ -1,0 +1,148 @@
+{
+  "slug": "leadership-style",
+  "title": "리더십 스타일 테스트",
+  "description": "당신은 어떤 유형의 리더인가요?",
+  "emoji": "👑",
+  "questions": [
+    {
+      "question": "팀 목표를 설정할 때 나는?",
+      "choices": [
+        { "text": "명확한 방향과 기대치를 제시한다", "scores": { "directive": 2 } },
+        { "text": "팀원들과 함께 목표를 정한다", "scores": { "democratic": 2 } },
+        { "text": "팀원들에게 자율권을 준다", "scores": { "delegating": 2 } },
+        { "text": "개인별 성장 목표를 함께 설정한다", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "팀원이 실수를 했을 때?",
+      "choices": [
+        { "text": "바로 피드백하고 수정 방향을 지시한다", "scores": { "directive": 2 } },
+        { "text": "팀 회의에서 함께 해결책을 논의한다", "scores": { "democratic": 2 } },
+        { "text": "스스로 해결하도록 맡긴다", "scores": { "delegating": 2 } },
+        { "text": "1:1로 만나 원인을 분석하고 성장을 돕는다", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "중요한 결정을 내릴 때?",
+      "choices": [
+        { "text": "필요한 정보를 수집해 직접 결정한다", "scores": { "directive": 2 } },
+        { "text": "팀원들의 의견을 수렴해서 결정한다", "scores": { "democratic": 2 } },
+        { "text": "담당자에게 결정권을 위임한다", "scores": { "delegating": 2 } },
+        { "text": "팀원들과 논의하며 결정 과정을 함께한다", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "새 프로젝트를 시작할 때?",
+      "choices": [
+        { "text": "상세한 계획과 역할 분담을 정해준다", "scores": { "directive": 2 } },
+        { "text": "팀원들과 브레인스토밍으로 계획을 세운다", "scores": { "democratic": 2 } },
+        { "text": "큰 방향만 주고 팀원들에게 맡긴다", "scores": { "delegating": 2 } },
+        { "text": "각자의 강점을 파악해 역할을 조정한다", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "팀 분위기가 좋지 않을 때?",
+      "choices": [
+        { "text": "문제를 파악하고 직접 개입한다", "scores": { "directive": 2 } },
+        { "text": "팀 미팅을 열어 모두가 의견을 나눈다", "scores": { "democratic": 2 } },
+        { "text": "시간이 해결해주길 기다린다", "scores": { "delegating": 2 } },
+        { "text": "개인별로 만나 이야기를 듣는다", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "팀원을 칭찬할 때 나는?",
+      "choices": [
+        { "text": "목표 달성 결과를 인정해준다", "scores": { "directive": 2 } },
+        { "text": "팀 전체 앞에서 공개적으로 칭찬한다", "scores": { "democratic": 2 } },
+        { "text": "간단히 수고했다고 말한다", "scores": { "delegating": 2 } },
+        { "text": "구체적인 성장 포인트를 짚어 칭찬한다", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "위기 상황에서 나는?",
+      "choices": [
+        { "text": "빠르게 판단하고 지시를 내린다", "scores": { "directive": 2 } },
+        { "text": "긴급 회의로 모두의 의견을 모은다", "scores": { "democratic": 2 } },
+        { "text": "전문가에게 상황을 맡긴다", "scores": { "delegating": 2 } },
+        { "text": "팀원들을 안심시키며 함께 해결한다", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "팀원의 성과가 부진할 때?",
+      "choices": [
+        { "text": "명확한 개선 목표를 제시한다", "scores": { "directive": 2 } },
+        { "text": "동료들과 함께 지원 방안을 찾는다", "scores": { "democratic": 2 } },
+        { "text": "스스로 개선할 시간을 준다", "scores": { "delegating": 2 } },
+        { "text": "원인을 함께 파악하고 성장 계획을 세운다", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "나의 리더십 목표는?",
+      "choices": [
+        { "text": "효율적으로 목표를 달성하는 것", "scores": { "directive": 2 } },
+        { "text": "모두가 참여하는 팀을 만드는 것", "scores": { "democratic": 2 } },
+        { "text": "팀원들이 자율적으로 일하게 하는 것", "scores": { "delegating": 2 } },
+        { "text": "팀원 각자의 잠재력을 끌어내는 것", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "이상적인 팀이란?",
+      "choices": [
+        { "text": "명확한 목표 아래 일사불란하게 움직이는 팀", "scores": { "directive": 2 } },
+        { "text": "활발한 토론과 협력이 있는 팀", "scores": { "democratic": 2 } },
+        { "text": "각자 맡은 일을 알아서 잘하는 팀", "scores": { "delegating": 2 } },
+        { "text": "서로 배우고 성장하는 팀", "scores": { "coaching": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "directive",
+      "title": "지시형 리더",
+      "emoji": "🎯",
+      "description": "명확한 방향을 제시하고 이끄는 리더! 결단력 있고 효율적인 리더십을 발휘합니다.",
+      "traits": ["결단력", "명확한 비전", "효율성", "책임감"],
+      "advice": "팀원들의 의견도 경청해보세요. 다양한 관점이 더 좋은 결과를 만들 수 있습니다.",
+      "compatibility": {
+        "good": ["coaching", "directive"],
+        "bad": ["delegating"]
+      }
+    },
+    {
+      "type": "democratic",
+      "title": "민주형 리더",
+      "emoji": "🗳️",
+      "description": "팀원들의 참여를 중시하는 리더! 함께 의사결정하고 협력하는 환경을 만듭니다.",
+      "traits": ["경청", "협력", "공정함", "포용력"],
+      "advice": "때로는 빠른 결정이 필요할 때도 있어요. 상황에 맞는 유연함도 길러보세요.",
+      "compatibility": {
+        "good": ["coaching", "democratic"],
+        "bad": ["directive"]
+      }
+    },
+    {
+      "type": "delegating",
+      "title": "위임형 리더",
+      "emoji": "🎪",
+      "description": "팀원에게 자율권을 주는 리더! 신뢰를 바탕으로 각자의 역할에 집중하게 합니다.",
+      "traits": ["신뢰", "자율 존중", "여유로움", "권한 위임"],
+      "advice": "자율도 좋지만 적절한 가이드라인과 체크인은 필요해요. 방임과 위임은 다릅니다.",
+      "compatibility": {
+        "good": ["delegating", "democratic"],
+        "bad": ["directive"]
+      }
+    },
+    {
+      "type": "coaching",
+      "title": "코칭형 리더",
+      "emoji": "🌱",
+      "description": "팀원의 성장을 돕는 리더! 개인의 잠재력을 끌어내고 장기적 발전을 중시합니다.",
+      "traits": ["멘토링", "공감력", "인내심", "육성 능력"],
+      "advice": "팀원 성장도 중요하지만, 당장의 성과도 챙겨야 해요. 균형을 찾아보세요.",
+      "compatibility": {
+        "good": ["democratic", "coaching"],
+        "bad": ["delegating"]
+      }
+    }
+  ]
+}

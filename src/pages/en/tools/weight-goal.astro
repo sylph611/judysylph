@@ -1,0 +1,181 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('weight-goal', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['en']['health'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'en', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'en', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="weight-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="current-weight" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Current Weight (lbs)</label>
+            <input type="number" id="current-weight" placeholder="160" min="50" max="600" step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="target-weight" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Target Weight (lbs)</label>
+            <input type="number" id="target-weight" placeholder="145" min="50" max="600" step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="height" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Height (inches)</label>
+            <input type="number" id="height" placeholder="67" min="48" max="96"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="activity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Activity Level</label>
+            <select id="activity" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="1.2">Sedentary (office job)</option>
+              <option value="1.375">Light activity (1-2x/week)</option>
+              <option value="1.55" selected>Moderate (3-5x/week)</option>
+              <option value="1.725">Active (6-7x/week)</option>
+              <option value="1.9">Very active (athlete)</option>
+            </select>
+          </div>
+          <div>
+            <label for="age" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Age</label>
+            <input type="number" id="age" placeholder="30" min="15" max="100"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="gender" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Gender</label>
+            <select id="gender" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">Calculate</button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">Reset</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Weight Change</div>
+            <div id="result-change" class="text-2xl font-bold text-gray-900 dark:text-white">0 lbs</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Maintenance Calories</div>
+            <div id="result-tdee" class="text-2xl font-bold text-gray-900 dark:text-white">0 kcal</div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 mb-1">Target Daily Calories</div>
+            <div id="result-target-cal" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0 kcal</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 dark:bg-green-900/30 rounded-xl p-6 text-center">
+            <div class="text-sm text-green-600 dark:text-green-400 mb-1">Estimated Time to Goal</div>
+            <div id="result-duration" class="text-3xl font-bold text-green-600 dark:text-green-400">0 weeks</div>
+            <div class="text-xs text-green-500 mt-1">At 1 lb per week</div>
+          </div>
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-6 text-center">
+            <div class="text-sm text-blue-600 dark:text-blue-400 mb-1">Daily Calorie Adjustment</div>
+            <div id="result-deficit" class="text-3xl font-bold text-blue-600 dark:text-blue-400">0 kcal</div>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 dark:bg-yellow-900/30 rounded-xl p-4">
+          <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Healthy Weight Loss Tips</h4>
+          <ul class="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+            <li>• Losing more than 2 lbs per week can be unhealthy</li>
+            <li>• Adequate protein intake helps preserve muscle mass</li>
+            <li>• Combining exercise with diet is most effective</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← Back to Tools</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('weight-form') as HTMLFormElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const currentWeightLbs = parseFloat((document.getElementById('current-weight') as HTMLInputElement).value);
+    const targetWeightLbs = parseFloat((document.getElementById('target-weight') as HTMLInputElement).value);
+    const heightInches = parseFloat((document.getElementById('height') as HTMLInputElement).value);
+    const activity = parseFloat((document.getElementById('activity') as HTMLSelectElement).value);
+    const age = parseFloat((document.getElementById('age') as HTMLInputElement).value);
+    const gender = (document.getElementById('gender') as HTMLSelectElement).value;
+
+    if (!currentWeightLbs || !targetWeightLbs || !heightInches || !age) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    // Convert to metric for BMR calculation
+    const currentWeight = currentWeightLbs * 0.453592; // kg
+    const height = heightInches * 2.54; // cm
+
+    // Calculate BMR using Mifflin-St Jeor Equation
+    let bmr: number;
+    if (gender === 'male') {
+      bmr = 10 * currentWeight + 6.25 * height - 5 * age + 5;
+    } else {
+      bmr = 10 * currentWeight + 6.25 * height - 5 * age - 161;
+    }
+
+    const tdee = Math.round(bmr * activity);
+    const weightChange = targetWeightLbs - currentWeightLbs;
+    const isLoss = weightChange < 0;
+
+    // 1 lb of fat = 3500 kcal
+    const dailyDeficit = 500; // ~1 lb per week
+    const targetCalories = isLoss ? tdee - dailyDeficit : tdee + dailyDeficit;
+    const weeksNeeded = Math.round(Math.abs(weightChange));
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-change') as HTMLElement).textContent =
+      (weightChange > 0 ? '+' : '') + weightChange.toFixed(1) + ' lbs';
+    (document.getElementById('result-tdee') as HTMLElement).textContent = tdee.toLocaleString() + ' kcal';
+    (document.getElementById('result-target-cal') as HTMLElement).textContent = targetCalories.toLocaleString() + ' kcal';
+    (document.getElementById('result-duration') as HTMLElement).textContent = weeksNeeded + ' weeks';
+    (document.getElementById('result-deficit') as HTMLElement).textContent =
+      (isLoss ? '-' : '+') + dailyDeficit + ' kcal';
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

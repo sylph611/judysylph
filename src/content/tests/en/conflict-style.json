@@ -1,0 +1,170 @@
+{
+  "slug": "conflict-style",
+  "title": "Conflict Resolution Style Test",
+  "description": "How do you handle conflicts and disagreements?",
+  "emoji": "⚖️",
+  "questions": [
+    {
+      "question": "When you clash with a friend:",
+      "choices": [
+        { "text": "Try to get my point across", "scores": { "competing": 2 } },
+        { "text": "Find a middle ground with compromise", "scores": { "compromising": 2 } },
+        { "text": "Go along with my friend's opinion", "scores": { "accommodating": 2 } },
+        { "text": "Avoid the situation for now", "scores": { "avoiding": 2 } },
+        { "text": "Work together to find the best solution", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "Conflict arises in a team project:",
+      "choices": [
+        { "text": "Take leadership and set the direction", "scores": { "competing": 2 } },
+        { "text": "Suggest everyone give a little", "scores": { "compromising": 2 } },
+        { "text": "Follow the majority opinion", "scores": { "accommodating": 2 } },
+        { "text": "Step back and observe", "scores": { "avoiding": 2 } },
+        { "text": "Find a solution that integrates all ideas", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "When you argue with your partner:",
+      "choices": [
+        { "text": "Try to convince them I'm right", "scores": { "competing": 2 } },
+        { "text": "Each give a little", "scores": { "compromising": 2 } },
+        { "text": "Prioritize their feelings", "scores": { "accommodating": 2 } },
+        { "text": "Take a cooling-off period", "scores": { "avoiding": 2 } },
+        { "text": "Talk it through for a real solution", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "You disagree with your boss at work:",
+      "choices": [
+        { "text": "Present my case with evidence", "scores": { "competing": 2, "collaborating": 1 } },
+        { "text": "Offer a compromise", "scores": { "compromising": 2 } },
+        { "text": "Follow my boss's decision", "scores": { "accommodating": 2 } },
+        { "text": "Avoid bringing it up", "scores": { "avoiding": 2 } },
+        { "text": "Explore better options together", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "During a family conflict:",
+      "choices": [
+        { "text": "Make my position clear", "scores": { "competing": 2 } },
+        { "text": "Ask everyone to give a little", "scores": { "compromising": 2 } },
+        { "text": "Concede for family peace", "scores": { "accommodating": 2 } },
+        { "text": "Leave the situation", "scores": { "avoiding": 2 } },
+        { "text": "Find a solution everyone can accept", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "When an online debate breaks out:",
+      "choices": [
+        { "text": "Argue until the end", "scores": { "competing": 2 } },
+        { "text": "Acknowledge some of their points", "scores": { "compromising": 2 } },
+        { "text": "Say I respect their opinion", "scores": { "accommodating": 2 } },
+        { "text": "Don't comment and move on", "scores": { "avoiding": 2 } },
+        { "text": "Try to lead a constructive conversation", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "Someone treats you unfairly:",
+      "choices": [
+        { "text": "Protest immediately", "scores": { "competing": 2 } },
+        { "text": "Accept some, reject some", "scores": { "compromising": 2 } },
+        { "text": "Let it slide for now", "scores": { "accommodating": 2, "avoiding": 1 } },
+        { "text": "Avoid that person going forward", "scores": { "avoiding": 2 } },
+        { "text": "Try to understand why and discuss", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "Mediating between friends in conflict:",
+      "choices": [
+        { "text": "Support the side I think is right", "scores": { "competing": 2 } },
+        { "text": "Tell both to compromise", "scores": { "compromising": 2 } },
+        { "text": "Comfort both with kind words", "scores": { "accommodating": 2 } },
+        { "text": "Try not to get involved", "scores": { "avoiding": 2 } },
+        { "text": "Hear both sides and suggest solutions", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "Blamed for something that's not your fault:",
+      "choices": [
+        { "text": "Firmly defend myself", "scores": { "competing": 2 } },
+        { "text": "Admit some, explain some", "scores": { "compromising": 2 } },
+        { "text": "Apologize and move on", "scores": { "accommodating": 2 } },
+        { "text": "Ignore it and don't engage", "scores": { "avoiding": 2 } },
+        { "text": "Calmly explain the situation", "scores": { "collaborating": 2 } }
+      ]
+    },
+    {
+      "question": "Most important thing in conflict resolution:",
+      "choices": [
+        { "text": "Protecting my rights and position", "scores": { "competing": 2 } },
+        { "text": "Quick resolution with practical compromise", "scores": { "compromising": 2 } },
+        { "text": "Maintaining the relationship", "scores": { "accommodating": 2 } },
+        { "text": "Avoiding stress", "scores": { "avoiding": 2 } },
+        { "text": "Finding the best outcome for everyone", "scores": { "collaborating": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "competing",
+      "title": "Competing Style",
+      "emoji": "🦁",
+      "description": "You actively assert your position! You're confident and decisive.",
+      "traits": ["Confident", "Decisive", "Goal-oriented", "Leadership"],
+      "advice": "Sometimes listen to others' perspectives too. Relationships can matter more than winning.",
+      "compatibility": {
+        "good": ["compromising", "collaborating"],
+        "bad": ["competing"]
+      }
+    },
+    {
+      "type": "collaborating",
+      "title": "Collaborating Style",
+      "emoji": "🤝",
+      "description": "You seek win-win solutions! You try to meet everyone's needs.",
+      "traits": ["Creative problem-solving", "Empathetic", "Patient", "Integrative thinking"],
+      "advice": "Finding perfect solutions takes time. Sometimes quick decisions are necessary.",
+      "compatibility": {
+        "good": ["collaborating", "compromising"],
+        "bad": ["avoiding"]
+      }
+    },
+    {
+      "type": "compromising",
+      "title": "Compromising Style",
+      "emoji": "⚖️",
+      "description": "You find realistic middle ground! You pursue efficient and fair resolutions.",
+      "traits": ["Realistic", "Fair", "Efficient", "Practical"],
+      "advice": "Compromise is good, but don't give up on important values.",
+      "compatibility": {
+        "good": ["collaborating", "competing"],
+        "bad": ["avoiding"]
+      }
+    },
+    {
+      "type": "avoiding",
+      "title": "Avoiding Style",
+      "emoji": "🕊️",
+      "description": "You prefer peace over conflict! You seek stress-free environments.",
+      "traits": ["Peaceful", "Patient", "Independent", "Cool-headed"],
+      "advice": "Avoiding isn't always the answer. Sometimes confronting issues leads to faster resolution.",
+      "compatibility": {
+        "good": ["accommodating", "avoiding"],
+        "bad": ["competing"]
+      }
+    },
+    {
+      "type": "accommodating",
+      "title": "Accommodating Style",
+      "emoji": "💕",
+      "description": "Relationships come first! You prioritize others' needs and seek harmony.",
+      "traits": ["Considerate", "Flexible", "Altruistic", "Cooperative"],
+      "advice": "Don't sacrifice yourself for others. Your needs are important too.",
+      "compatibility": {
+        "good": ["competing", "collaborating"],
+        "bad": ["accommodating"]
+      }
+    }
+  ]
+}

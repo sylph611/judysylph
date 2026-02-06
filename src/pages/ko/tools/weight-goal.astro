@@ -1,0 +1,180 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('weight-goal', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['ko']['health'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="weight-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="current-weight" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">현재 체중 (kg)</label>
+            <input type="number" id="current-weight" placeholder="70" min="30" max="300" step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="target-weight" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">목표 체중 (kg)</label>
+            <input type="number" id="target-weight" placeholder="65" min="30" max="300" step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="height" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">키 (cm)</label>
+            <input type="number" id="height" placeholder="170" min="100" max="250"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="activity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">활동량</label>
+            <select id="activity" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="1.2">거의 안 함 (사무직)</option>
+              <option value="1.375">가벼운 활동 (주 1-2회 운동)</option>
+              <option value="1.55" selected>보통 활동 (주 3-5회 운동)</option>
+              <option value="1.725">활동적 (주 6-7회 운동)</option>
+              <option value="1.9">매우 활동적 (운동선수)</option>
+            </select>
+          </div>
+          <div>
+            <label for="age" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">나이</label>
+            <input type="number" id="age" placeholder="30" min="15" max="100"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="gender" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">성별</label>
+            <select id="gender" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="male">남성</option>
+              <option value="female">여성</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">계산하기</button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">초기화</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">체중 변화량</div>
+            <div id="result-change" class="text-2xl font-bold text-gray-900 dark:text-white">0 kg</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">일일 유지 칼로리</div>
+            <div id="result-tdee" class="text-2xl font-bold text-gray-900 dark:text-white">0 kcal</div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 mb-1">목표 일일 칼로리</div>
+            <div id="result-target-cal" class="text-2xl font-bold text-primary-600 dark:text-primary-400">0 kcal</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 dark:bg-green-900/30 rounded-xl p-6 text-center">
+            <div class="text-sm text-green-600 dark:text-green-400 mb-1">권장 속도로 예상 기간</div>
+            <div id="result-duration" class="text-3xl font-bold text-green-600 dark:text-green-400">0주</div>
+            <div class="text-xs text-green-500 mt-1">주당 0.5kg 변화 기준</div>
+          </div>
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-6 text-center">
+            <div class="text-sm text-blue-600 dark:text-blue-400 mb-1">일일 칼로리 조절량</div>
+            <div id="result-deficit" class="text-3xl font-bold text-blue-600 dark:text-blue-400">0 kcal</div>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 dark:bg-yellow-900/30 rounded-xl p-4">
+          <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">💡 건강한 체중 관리 팁</h4>
+          <ul class="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+            <li>• 주당 0.5~1kg 이상 감량은 건강에 해로울 수 있습니다</li>
+            <li>• 단백질 섭취를 충분히 하면 근육 손실을 방지할 수 있습니다</li>
+            <li>• 운동과 식단 조절을 병행하는 것이 효과적입니다</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('weight-form') as HTMLFormElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const currentWeight = parseFloat((document.getElementById('current-weight') as HTMLInputElement).value);
+    const targetWeight = parseFloat((document.getElementById('target-weight') as HTMLInputElement).value);
+    const height = parseFloat((document.getElementById('height') as HTMLInputElement).value);
+    const activity = parseFloat((document.getElementById('activity') as HTMLSelectElement).value);
+    const age = parseFloat((document.getElementById('age') as HTMLInputElement).value);
+    const gender = (document.getElementById('gender') as HTMLSelectElement).value;
+
+    if (!currentWeight || !targetWeight || !height || !age) {
+      alert('모든 필드를 입력해주세요');
+      return;
+    }
+
+    // Calculate BMR using Mifflin-St Jeor Equation
+    let bmr: number;
+    if (gender === 'male') {
+      bmr = 10 * currentWeight + 6.25 * height - 5 * age + 5;
+    } else {
+      bmr = 10 * currentWeight + 6.25 * height - 5 * age - 161;
+    }
+
+    const tdee = Math.round(bmr * activity);
+    const weightChange = targetWeight - currentWeight;
+    const isLoss = weightChange < 0;
+
+    // 1kg of fat = 7700 kcal
+    const totalCalorieChange = Math.abs(weightChange) * 7700;
+    const weeklyCalorieChange = 0.5 * 7700; // 0.5kg per week
+    const dailyDeficit = Math.round(weeklyCalorieChange / 7); // ~550 kcal/day
+
+    const targetCalories = isLoss ? tdee - dailyDeficit : tdee + dailyDeficit;
+    const weeksNeeded = Math.round(Math.abs(weightChange) / 0.5);
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-change') as HTMLElement).textContent =
+      (weightChange > 0 ? '+' : '') + weightChange.toFixed(1) + ' kg';
+    (document.getElementById('result-tdee') as HTMLElement).textContent = tdee.toLocaleString() + ' kcal';
+    (document.getElementById('result-target-cal') as HTMLElement).textContent = targetCalories.toLocaleString() + ' kcal';
+    (document.getElementById('result-duration') as HTMLElement).textContent = weeksNeeded + '주';
+    (document.getElementById('result-deficit') as HTMLElement).textContent =
+      (isLoss ? '-' : '+') + dailyDeficit + ' kcal';
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

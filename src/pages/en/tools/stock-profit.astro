@@ -1,0 +1,158 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'en';
+const tool = getTool('stock-profit', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['en']['financial'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'en', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'en', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="stock-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="buy-price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buy Price ($)</label>
+            <input type="number" id="buy-price" placeholder="100" min="0" step="0.01"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="sell-price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Sell Price ($)</label>
+            <input type="number" id="sell-price" placeholder="120" min="0" step="0.01"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="quantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Shares</label>
+            <input type="number" id="quantity" placeholder="100" min="1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="commission" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Commission per Trade ($)</label>
+            <input type="number" id="commission" placeholder="0" min="0" step="0.01" value="0"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">Calculate</button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">Reset</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Cost</div>
+            <div id="result-buy-total" class="text-lg font-bold text-gray-900 dark:text-white">$0</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Revenue</div>
+            <div id="result-sell-total" class="text-lg font-bold text-gray-900 dark:text-white">$0</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Commission</div>
+            <div id="result-commission" class="text-lg font-bold text-red-600 dark:text-red-400">$0</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Gross Profit</div>
+            <div id="result-gross" class="text-lg font-bold text-gray-900 dark:text-white">$0</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div id="profit-box" class="bg-green-50 dark:bg-green-900/30 rounded-xl p-6 text-center">
+            <div class="text-sm text-green-600 dark:text-green-400 mb-1">Net Profit</div>
+            <div id="result-profit" class="text-3xl font-bold text-green-600 dark:text-green-400">$0</div>
+          </div>
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-6 text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 mb-1">Return on Investment</div>
+            <div id="result-roi" class="text-3xl font-bold text-primary-600 dark:text-primary-400">0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← Back to Tools</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('stock-form') as HTMLFormElement;
+
+  function formatCurrency(num: number): string {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(num);
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const buyPrice = parseFloat((document.getElementById('buy-price') as HTMLInputElement).value);
+    const sellPrice = parseFloat((document.getElementById('sell-price') as HTMLInputElement).value);
+    const quantity = parseFloat((document.getElementById('quantity') as HTMLInputElement).value);
+    const commission = parseFloat((document.getElementById('commission') as HTMLInputElement).value) || 0;
+
+    if (!buyPrice || !sellPrice || !quantity) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    const buyTotal = buyPrice * quantity;
+    const sellTotal = sellPrice * quantity;
+    const totalCommission = commission * 2; // Buy and sell
+    const grossProfit = sellTotal - buyTotal;
+    const netProfit = grossProfit - totalCommission;
+    const roi = (netProfit / buyTotal) * 100;
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-buy-total') as HTMLElement).textContent = formatCurrency(buyTotal);
+    (document.getElementById('result-sell-total') as HTMLElement).textContent = formatCurrency(sellTotal);
+    (document.getElementById('result-commission') as HTMLElement).textContent = formatCurrency(totalCommission);
+    (document.getElementById('result-gross') as HTMLElement).textContent = formatCurrency(grossProfit);
+    (document.getElementById('result-profit') as HTMLElement).textContent = (netProfit >= 0 ? '+' : '') + formatCurrency(netProfit);
+    (document.getElementById('result-roi') as HTMLElement).textContent = (roi >= 0 ? '+' : '') + roi.toFixed(2) + '%';
+
+    const profitBox = document.getElementById('profit-box');
+    if (netProfit >= 0) {
+      profitBox?.classList.remove('bg-red-50', 'dark:bg-red-900/30');
+      profitBox?.classList.add('bg-green-50', 'dark:bg-green-900/30');
+      (document.getElementById('result-profit') as HTMLElement).classList.remove('text-red-600', 'dark:text-red-400');
+      (document.getElementById('result-profit') as HTMLElement).classList.add('text-green-600', 'dark:text-green-400');
+    } else {
+      profitBox?.classList.remove('bg-green-50', 'dark:bg-green-900/30');
+      profitBox?.classList.add('bg-red-50', 'dark:bg-red-900/30');
+      (document.getElementById('result-profit') as HTMLElement).classList.remove('text-green-600', 'dark:text-green-400');
+      (document.getElementById('result-profit') as HTMLElement).classList.add('text-red-600', 'dark:text-red-400');
+    }
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

@@ -1,0 +1,188 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps } from '../../../utils/tools';
+
+const lang = 'ko';
+const tool = getTool('loan-repayment', lang);
+
+const siteUrl = 'https://judysylph.com';
+const steps = calculatorSteps['ko']['financial'];
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": tool?.title,
+  "description": tool?.description,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+};
+
+const breadcrumbSchema = tool ? generateToolBreadcrumbSchema(tool, 'ko', siteUrl) : null;
+const howToSchema = tool ? generateToolHowToSchema(tool, 'ko', siteUrl, steps) : null;
+
+const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
+---
+
+<Layout title={`${tool?.title} | JudySylph`} description={tool?.description} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-4">{tool?.emoji}</div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{tool?.title}</h1>
+      <p class="text-gray-600 dark:text-gray-400">{tool?.description}</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+      <form id="loan-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="principal" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">대출 원금 (원)</label>
+            <input type="number" id="principal" placeholder="100000000" min="0"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="interest-rate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">연이자율 (%)</label>
+            <input type="number" id="interest-rate" placeholder="4.5" min="0" max="30" step="0.1"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="term-years" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">대출 기간 (년)</label>
+            <input type="number" id="term-years" placeholder="30" min="1" max="50"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500" />
+          </div>
+          <div>
+            <label for="repayment-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">상환 방식</label>
+            <select id="repayment-type" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500">
+              <option value="equal-payment" selected>원리금균등</option>
+              <option value="equal-principal">원금균등</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors">계산하기</button>
+          <button type="reset" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">초기화</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="mt-8 hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-primary-50 dark:bg-primary-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-primary-600 dark:text-primary-400 mb-1">월 상환금</div>
+            <div id="result-monthly" class="text-2xl font-bold text-primary-600 dark:text-primary-400">₩0</div>
+            <div id="result-monthly-range" class="text-xs text-gray-500 hidden">첫달 ~ 마지막달</div>
+          </div>
+          <div class="bg-red-50 dark:bg-red-900/30 rounded-xl p-4 text-center">
+            <div class="text-sm text-red-600 dark:text-red-400 mb-1">총 이자</div>
+            <div id="result-total-interest" class="text-2xl font-bold text-red-600 dark:text-red-400">₩0</div>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 text-center">
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">총 상환액</div>
+            <div id="result-total-payment" class="text-2xl font-bold text-gray-900 dark:text-white">₩0</div>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-4 mb-4">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-blue-800 dark:text-blue-200">원금</span>
+            <span id="principal-display" class="font-medium text-blue-600 dark:text-blue-400">₩0</span>
+          </div>
+          <div class="w-full bg-blue-200 dark:bg-blue-800 rounded-full h-4">
+            <div id="principal-bar" class="bg-blue-600 h-4 rounded-full" style="width: 0%"></div>
+          </div>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-sm text-red-800 dark:text-red-200">이자</span>
+            <span id="interest-percent" class="text-xs text-gray-500">총 상환액 대비 0%</span>
+          </div>
+        </div>
+
+        <div class="bg-green-50 dark:bg-green-900/30 rounded-xl p-4">
+          <h4 class="font-bold text-green-800 dark:text-green-200 mb-2">💡 상환 팁</h4>
+          <ul class="text-sm text-green-700 dark:text-green-300 space-y-1">
+            <li>• 여유 자금이 있을 때 중도상환하면 이자를 절약할 수 있습니다</li>
+            <li>• 원금균등 방식은 초기 부담이 크지만 총 이자가 적습니다</li>
+            <li>• 금리 변동에 주의하고 고정금리 전환을 고려해보세요</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록으로</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('loan-form') as HTMLFormElement;
+
+  function formatCurrency(num: number): string {
+    return new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }).format(num);
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const principal = parseFloat((document.getElementById('principal') as HTMLInputElement).value);
+    const annualRate = parseFloat((document.getElementById('interest-rate') as HTMLInputElement).value) / 100;
+    const termYears = parseFloat((document.getElementById('term-years') as HTMLInputElement).value);
+    const repaymentType = (document.getElementById('repayment-type') as HTMLSelectElement).value;
+
+    if (!principal || !annualRate || !termYears) {
+      alert('모든 필드를 입력해주세요');
+      return;
+    }
+
+    const monthlyRate = annualRate / 12;
+    const totalMonths = termYears * 12;
+    let monthlyPayment: number;
+    let totalInterest: number;
+    let totalPayment: number;
+
+    if (repaymentType === 'equal-payment') {
+      // 원리금균등상환
+      monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
+                       (Math.pow(1 + monthlyRate, totalMonths) - 1);
+      totalPayment = monthlyPayment * totalMonths;
+      totalInterest = totalPayment - principal;
+
+      (document.getElementById('result-monthly') as HTMLElement).textContent = formatCurrency(monthlyPayment);
+      (document.getElementById('result-monthly-range') as HTMLElement).classList.add('hidden');
+    } else {
+      // 원금균등상환
+      const monthlyPrincipal = principal / totalMonths;
+      const firstMonthInterest = principal * monthlyRate;
+      const lastMonthInterest = monthlyPrincipal * monthlyRate;
+      const firstPayment = monthlyPrincipal + firstMonthInterest;
+      const lastPayment = monthlyPrincipal + lastMonthInterest;
+
+      totalInterest = 0;
+      for (let i = 0; i < totalMonths; i++) {
+        const remainingPrincipal = principal - (monthlyPrincipal * i);
+        totalInterest += remainingPrincipal * monthlyRate;
+      }
+      totalPayment = principal + totalInterest;
+      monthlyPayment = (firstPayment + lastPayment) / 2;
+
+      (document.getElementById('result-monthly') as HTMLElement).textContent =
+        formatCurrency(firstPayment) + ' ~ ' + formatCurrency(lastPayment);
+      (document.getElementById('result-monthly-range') as HTMLElement).classList.remove('hidden');
+      (document.getElementById('result-monthly-range') as HTMLElement).textContent = '첫달 → 마지막달';
+    }
+
+    const resultArea = document.getElementById('result-area');
+    resultArea?.classList.remove('hidden');
+
+    (document.getElementById('result-total-interest') as HTMLElement).textContent = formatCurrency(totalInterest);
+    (document.getElementById('result-total-payment') as HTMLElement).textContent = formatCurrency(totalPayment);
+    (document.getElementById('principal-display') as HTMLElement).textContent = formatCurrency(principal);
+
+    const principalPercent = (principal / totalPayment) * 100;
+    (document.getElementById('principal-bar') as HTMLElement).style.width = principalPercent + '%';
+    (document.getElementById('interest-percent') as HTMLElement).textContent =
+      `총 상환액 대비 이자 ${(100 - principalPercent).toFixed(1)}%`;
+  });
+
+  form?.addEventListener('reset', () => {
+    document.getElementById('result-area')?.classList.add('hidden');
+  });
+</script>

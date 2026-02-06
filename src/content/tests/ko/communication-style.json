@@ -1,0 +1,148 @@
+{
+  "slug": "communication-style",
+  "title": "소통 스타일 테스트",
+  "description": "나의 대화 방식과 소통 스타일을 알아보세요",
+  "emoji": "💬",
+  "questions": [
+    {
+      "question": "친구와 의견이 다를 때 나는?",
+      "choices": [
+        { "text": "논리적으로 내 의견을 설명한다", "scores": { "direct": 2, "analytical": 1 } },
+        { "text": "상대방 기분을 살피며 부드럽게 말한다", "scores": { "supportive": 2, "expressive": 1 } },
+        { "text": "열정적으로 내 생각을 표현한다", "scores": { "expressive": 2, "direct": 1 } },
+        { "text": "일단 상대방 이야기를 끝까지 듣는다", "scores": { "supportive": 2, "analytical": 1 } }
+      ]
+    },
+    {
+      "question": "회의에서 나의 모습은?",
+      "choices": [
+        { "text": "핵심만 간결하게 말한다", "scores": { "direct": 2, "analytical": 1 } },
+        { "text": "데이터와 근거를 제시하며 말한다", "scores": { "analytical": 2, "direct": 1 } },
+        { "text": "분위기를 띄우며 아이디어를 낸다", "scores": { "expressive": 2, "supportive": 1 } },
+        { "text": "모두의 의견을 조율한다", "scores": { "supportive": 2, "expressive": 1 } }
+      ]
+    },
+    {
+      "question": "누군가에게 부탁할 때 나는?",
+      "choices": [
+        { "text": "직접적으로 필요한 것을 말한다", "scores": { "direct": 2 } },
+        { "text": "상황 설명 후 도움을 요청한다", "scores": { "analytical": 2 } },
+        { "text": "재미있게 얘기하다가 자연스럽게 부탁한다", "scores": { "expressive": 2 } },
+        { "text": "미안해하며 조심스럽게 부탁한다", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "카카오톡 메시지 스타일은?",
+      "choices": [
+        { "text": "짧고 간결하게", "scores": { "direct": 2 } },
+        { "text": "완벽한 문장으로 정확하게", "scores": { "analytical": 2 } },
+        { "text": "이모티콘과 함께 재미있게", "scores": { "expressive": 2 } },
+        { "text": "따뜻하고 친근한 말투로", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "갈등 상황에서 나는?",
+      "choices": [
+        { "text": "문제를 바로 지적하고 해결책을 제시한다", "scores": { "direct": 2, "analytical": 1 } },
+        { "text": "원인을 분석하고 객관적으로 접근한다", "scores": { "analytical": 2, "direct": 1 } },
+        { "text": "감정을 표현하고 대화로 풀려고 한다", "scores": { "expressive": 2, "supportive": 1 } },
+        { "text": "상대방 입장을 먼저 이해하려 한다", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "발표나 프레젠테이션을 할 때?",
+      "choices": [
+        { "text": "결론부터 말하고 근거를 제시한다", "scores": { "direct": 2 } },
+        { "text": "체계적인 구조와 데이터 중심으로", "scores": { "analytical": 2 } },
+        { "text": "스토리텔링으로 청중을 사로잡는다", "scores": { "expressive": 2 } },
+        { "text": "청중과 상호작용하며 진행한다", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "새로운 팀원을 만났을 때?",
+      "choices": [
+        { "text": "업무 관련 이야기부터 시작한다", "scores": { "direct": 2, "analytical": 1 } },
+        { "text": "상대방에 대해 질문하며 파악한다", "scores": { "analytical": 2 } },
+        { "text": "밝은 에너지로 먼저 다가간다", "scores": { "expressive": 2 } },
+        { "text": "편안한 분위기를 만들어 준다", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "피드백을 줄 때 나의 방식은?",
+      "choices": [
+        { "text": "솔직하고 직접적으로 말한다", "scores": { "direct": 2 } },
+        { "text": "구체적인 사례와 함께 설명한다", "scores": { "analytical": 2 } },
+        { "text": "긍정적인 면을 강조하며 말한다", "scores": { "expressive": 2, "supportive": 1 } },
+        { "text": "상대방 기분을 배려하며 조심스럽게", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "전화 통화 스타일은?",
+      "choices": [
+        { "text": "용건만 간단히", "scores": { "direct": 2 } },
+        { "text": "필요한 정보를 체계적으로 전달", "scores": { "analytical": 2 } },
+        { "text": "안부 인사와 함께 즐겁게", "scores": { "expressive": 2 } },
+        { "text": "상대방 얘기를 많이 듣는다", "scores": { "supportive": 2 } }
+      ]
+    },
+    {
+      "question": "오해가 생겼을 때 나는?",
+      "choices": [
+        { "text": "바로 해명하고 정리한다", "scores": { "direct": 2 } },
+        { "text": "사실관계를 정리해서 설명한다", "scores": { "analytical": 2 } },
+        { "text": "감정적으로 억울함을 표현한다", "scores": { "expressive": 2 } },
+        { "text": "시간을 두고 자연스럽게 풀리길 기다린다", "scores": { "supportive": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "direct",
+      "title": "직진형 소통러",
+      "emoji": "🎯",
+      "description": "핵심을 빠르게 파악하고 직접적으로 소통하는 당신! 효율적이고 명확한 커뮤니케이션을 선호합니다.",
+      "traits": ["결과 지향적", "시간 효율적", "명확한 표현", "빠른 의사결정"],
+      "advice": "때로는 상대방의 감정도 고려하는 여유를 가져보세요. 부드러운 표현이 더 좋은 결과를 만들 수 있습니다.",
+      "compatibility": {
+        "good": ["analytical", "direct"],
+        "bad": ["supportive"]
+      }
+    },
+    {
+      "type": "analytical",
+      "title": "분석형 소통러",
+      "emoji": "📊",
+      "description": "논리적이고 체계적인 소통을 하는 당신! 정확한 정보와 근거를 중시합니다.",
+      "traits": ["논리적 사고", "꼼꼼한 준비", "객관적 시각", "신중한 판단"],
+      "advice": "완벽을 추구하다 보면 소통 타이밍을 놓칠 수 있어요. 때로는 빠른 결정도 필요합니다.",
+      "compatibility": {
+        "good": ["direct", "analytical"],
+        "bad": ["expressive"]
+      }
+    },
+    {
+      "type": "expressive",
+      "title": "표현형 소통러",
+      "emoji": "🎨",
+      "description": "에너지 넘치고 창의적인 소통을 하는 당신! 사람들과 교류하며 아이디어를 나누는 것을 좋아합니다.",
+      "traits": ["열정적 표현", "창의적 사고", "긍정적 에너지", "유머 감각"],
+      "advice": "열정이 앞서면 상대방 이야기를 놓칠 수 있어요. 경청하는 시간도 중요합니다.",
+      "compatibility": {
+        "good": ["supportive", "expressive"],
+        "bad": ["analytical"]
+      }
+    },
+    {
+      "type": "supportive",
+      "title": "배려형 소통러",
+      "emoji": "🤝",
+      "description": "따뜻하고 공감 능력이 뛰어난 당신! 상대방을 편안하게 만들고 조화를 중시합니다.",
+      "traits": ["높은 공감력", "좋은 경청자", "조화 추구", "섬세한 배려"],
+      "advice": "자신의 의견도 중요해요. 때로는 솔직하게 표현하는 연습이 필요합니다.",
+      "compatibility": {
+        "good": ["expressive", "supportive"],
+        "bad": ["direct"]
+      }
+    }
+  ]
+}

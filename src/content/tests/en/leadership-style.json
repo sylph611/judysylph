@@ -1,0 +1,148 @@
+{
+  "slug": "leadership-style",
+  "title": "Leadership Style Test",
+  "description": "What kind of leader are you?",
+  "emoji": "👑",
+  "questions": [
+    {
+      "question": "When setting team goals:",
+      "choices": [
+        { "text": "Provide clear direction and expectations", "scores": { "directive": 2 } },
+        { "text": "Set goals together with the team", "scores": { "democratic": 2 } },
+        { "text": "Give team members autonomy", "scores": { "delegating": 2 } },
+        { "text": "Set individual growth goals with each person", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "When a team member makes a mistake:",
+      "choices": [
+        { "text": "Give immediate feedback and correction", "scores": { "directive": 2 } },
+        { "text": "Discuss solutions together in a team meeting", "scores": { "democratic": 2 } },
+        { "text": "Let them figure it out themselves", "scores": { "delegating": 2 } },
+        { "text": "Meet 1:1 to analyze and help them grow", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "Making important decisions:",
+      "choices": [
+        { "text": "Gather info and decide myself", "scores": { "directive": 2 } },
+        { "text": "Collect team input then decide", "scores": { "democratic": 2 } },
+        { "text": "Delegate to the responsible person", "scores": { "delegating": 2 } },
+        { "text": "Discuss with team through the process", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "Starting a new project:",
+      "choices": [
+        { "text": "Create detailed plans and assign roles", "scores": { "directive": 2 } },
+        { "text": "Brainstorm with the team to plan", "scores": { "democratic": 2 } },
+        { "text": "Give general direction and let them handle it", "scores": { "delegating": 2 } },
+        { "text": "Assign roles based on individual strengths", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "When team morale is low:",
+      "choices": [
+        { "text": "Identify the problem and intervene directly", "scores": { "directive": 2 } },
+        { "text": "Hold a team meeting for everyone to share", "scores": { "democratic": 2 } },
+        { "text": "Wait for time to heal it", "scores": { "delegating": 2 } },
+        { "text": "Meet individuals to listen", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "When praising a team member:",
+      "choices": [
+        { "text": "Recognize their goal achievement", "scores": { "directive": 2 } },
+        { "text": "Praise publicly in front of the team", "scores": { "democratic": 2 } },
+        { "text": "Simply say good job", "scores": { "delegating": 2 } },
+        { "text": "Point out specific growth achievements", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "In a crisis situation:",
+      "choices": [
+        { "text": "Make quick decisions and give orders", "scores": { "directive": 2 } },
+        { "text": "Call emergency meeting for all input", "scores": { "democratic": 2 } },
+        { "text": "Delegate to the expert", "scores": { "delegating": 2 } },
+        { "text": "Reassure the team and solve together", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "When a team member underperforms:",
+      "choices": [
+        { "text": "Set clear improvement targets", "scores": { "directive": 2 } },
+        { "text": "Work with colleagues to find support", "scores": { "democratic": 2 } },
+        { "text": "Give them time to improve on their own", "scores": { "delegating": 2 } },
+        { "text": "Identify causes and create a growth plan together", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "Your leadership goal is:",
+      "choices": [
+        { "text": "Efficiently achieving objectives", "scores": { "directive": 2 } },
+        { "text": "Creating a participative team", "scores": { "democratic": 2 } },
+        { "text": "Enabling autonomous work", "scores": { "delegating": 2 } },
+        { "text": "Unlocking each person's potential", "scores": { "coaching": 2 } }
+      ]
+    },
+    {
+      "question": "Your ideal team is:",
+      "choices": [
+        { "text": "Moving in unison toward clear goals", "scores": { "directive": 2 } },
+        { "text": "Active discussion and collaboration", "scores": { "democratic": 2 } },
+        { "text": "Everyone handles their responsibilities well", "scores": { "delegating": 2 } },
+        { "text": "Learning and growing together", "scores": { "coaching": 2 } }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "type": "directive",
+      "title": "Directive Leader",
+      "emoji": "🎯",
+      "description": "You provide clear direction and lead decisively! Your leadership is efficient and results-driven.",
+      "traits": ["Decisive", "Clear vision", "Efficient", "Responsible"],
+      "advice": "Listen to your team's opinions too. Different perspectives can lead to better outcomes.",
+      "compatibility": {
+        "good": ["coaching", "directive"],
+        "bad": ["delegating"]
+      }
+    },
+    {
+      "type": "democratic",
+      "title": "Democratic Leader",
+      "emoji": "🗳️",
+      "description": "You value team participation! You create an environment of collaborative decision-making.",
+      "traits": ["Listening", "Collaborative", "Fair", "Inclusive"],
+      "advice": "Sometimes quick decisions are needed. Develop flexibility for different situations.",
+      "compatibility": {
+        "good": ["coaching", "democratic"],
+        "bad": ["directive"]
+      }
+    },
+    {
+      "type": "delegating",
+      "title": "Delegating Leader",
+      "emoji": "🎪",
+      "description": "You give autonomy to your team! Trust-based leadership lets everyone focus on their roles.",
+      "traits": ["Trusting", "Respects autonomy", "Relaxed", "Empowering"],
+      "advice": "Autonomy is good, but provide some guidelines and check-ins. Delegation isn't abandonment.",
+      "compatibility": {
+        "good": ["delegating", "democratic"],
+        "bad": ["directive"]
+      }
+    },
+    {
+      "type": "coaching",
+      "title": "Coaching Leader",
+      "emoji": "🌱",
+      "description": "You help team members grow! You focus on unlocking individual potential for long-term development.",
+      "traits": ["Mentoring", "Empathetic", "Patient", "Developmental"],
+      "advice": "Growth matters, but don't forget immediate results. Find the balance.",
+      "compatibility": {
+        "good": ["democratic", "coaching"],
+        "bad": ["delegating"]
+      }
+    }
+  ]
+}
