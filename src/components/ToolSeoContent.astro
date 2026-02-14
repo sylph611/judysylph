@@ -1,0 +1,158 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  emoji: string;
+  category: string;
+  lang: 'ko' | 'en';
+  slug: string;
+}
+
+const { title, description, emoji, category, lang, slug } = Astro.props;
+
+const content = {
+  ko: {
+    aboutTitle: '이 도구에 대해',
+    aboutText: (title: string, desc: string, category: string) =>
+      `${title}는 ${category} 관련 계산을 빠르고 정확하게 도와주는 무료 온라인 도구입니다. ${desc} 복잡한 계산을 직접 하지 않아도 몇 번의 클릭만으로 원하는 결과를 얻을 수 있습니다.`,
+    featuresTitle: '주요 기능',
+    features: [
+      '무료로 무제한 사용 가능',
+      '회원가입 없이 바로 이용',
+      '모바일에서도 편리하게 사용',
+      '정확한 계산 알고리즘 적용',
+      '결과를 쉽게 이해할 수 있는 시각화'
+    ],
+    howToTitle: '사용 방법',
+    howToSteps: [
+      '필요한 정보를 입력란에 입력합니다.',
+      '계산하기 버튼을 클릭합니다.',
+      '결과를 확인하고 필요시 조건을 변경해 다시 계산합니다.',
+      '결과가 유용했다면 친구에게 공유해보세요!'
+    ],
+    tipsTitle: '활용 팁',
+    tips: [
+      '정확한 결과를 위해 올바른 단위로 입력하세요.',
+      '여러 시나리오를 비교해보면 더 나은 결정을 내릴 수 있습니다.',
+      '결과는 참고용이며, 중요한 결정은 전문가와 상담하세요.'
+    ],
+    faqTitle: '자주 묻는 질문',
+    faqs: [
+      { q: '계산 결과가 정확한가요?', a: '표준 공식과 최신 기준을 적용하여 계산하지만, 실제 상황에 따라 차이가 있을 수 있습니다. 중요한 결정은 전문가와 상담하시기 바랍니다.' },
+      { q: '입력한 정보가 저장되나요?', a: '아니요, 모든 계산은 브라우저에서 처리되며 서버에 저장되지 않습니다. 개인정보 걱정 없이 안심하고 사용하세요.' },
+      { q: '모바일에서도 사용할 수 있나요?', a: '네, 모든 기기에서 최적화된 화면으로 이용 가능합니다. 언제 어디서나 편리하게 사용하세요.' }
+    ]
+  },
+  en: {
+    aboutTitle: 'About This Tool',
+    aboutText: (title: string, desc: string, category: string) =>
+      `${title} is a free online tool that helps you quickly and accurately calculate ${category.toLowerCase()}-related values. ${desc} Get the results you need with just a few clicks, no complex manual calculations required.`,
+    featuresTitle: 'Key Features',
+    features: [
+      'Free and unlimited usage',
+      'No registration required',
+      'Mobile-friendly design',
+      'Accurate calculation algorithms',
+      'Easy-to-understand visual results'
+    ],
+    howToTitle: 'How to Use',
+    howToSteps: [
+      'Enter the required information in the input fields.',
+      'Click the Calculate button.',
+      'Review the results and recalculate with different values if needed.',
+      'If you found this useful, share it with friends!'
+    ],
+    tipsTitle: 'Pro Tips',
+    tips: [
+      'Use the correct units for accurate results.',
+      'Compare multiple scenarios to make better decisions.',
+      'Results are for reference only - consult professionals for important decisions.'
+    ],
+    faqTitle: 'Frequently Asked Questions',
+    faqs: [
+      { q: 'Are the calculations accurate?', a: 'We use standard formulas and up-to-date criteria, but actual results may vary. For important decisions, please consult with professionals.' },
+      { q: 'Is my information saved?', a: 'No, all calculations are processed in your browser and nothing is stored on our servers. Your privacy is completely protected.' },
+      { q: 'Can I use this on mobile?', a: 'Yes, this tool is optimized for all devices. Use it conveniently anytime, anywhere.' }
+    ]
+  }
+};
+
+const t = content[lang];
+---
+
+<div class="mt-8 space-y-8 text-left">
+  <!-- About Section -->
+  <section class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>📖</span> {t.aboutTitle}
+    </h2>
+    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+      {t.aboutText(title, description, category)}
+    </p>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-2xl p-6">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>✨</span> {t.featuresTitle}
+    </h2>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+      {t.features.map((feature) => (
+        <li class="flex gap-2 text-gray-700 dark:text-gray-300">
+          <span class="text-green-500">✓</span>
+          <span>{feature}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- How To Section -->
+  <section class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>📝</span> {t.howToTitle}
+    </h2>
+    <ol class="space-y-3">
+      {t.howToSteps.map((step, i) => (
+        <li class="flex gap-3 text-gray-600 dark:text-gray-300">
+          <span class="flex-shrink-0 w-6 h-6 bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 rounded-full flex items-center justify-center text-sm font-bold">
+            {i + 1}
+          </span>
+          <span>{step}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Tips Section -->
+  <section class="bg-yellow-50 dark:bg-yellow-900/20 rounded-2xl p-6">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>💡</span> {t.tipsTitle}
+    </h2>
+    <ul class="space-y-2">
+      {t.tips.map((tip) => (
+        <li class="flex gap-2 text-gray-700 dark:text-gray-300">
+          <span class="text-yellow-500">•</span>
+          <span>{tip}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>❓</span> {t.faqTitle}
+    </h2>
+    <div class="space-y-4">
+      {t.faqs.map((faq) => (
+        <details class="group">
+          <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+            <span class="font-medium text-gray-900 dark:text-white">{faq.q}</span>
+            <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-2 px-3 text-gray-600 dark:text-gray-300">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</div>

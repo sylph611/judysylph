@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import AdBanner from '../../../components/AdBanner.astro';
+import ToolSeoContent from '../../../components/ToolSeoContent.astro';
 import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps, getToolStepType } from '../../../utils/tools';
 
 const lang = 'ko';
@@ -94,6 +95,16 @@ const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
       </div>
     </div>
     <AdBanner className="mt-8" />
+
+    <!-- SEO Content -->
+    <ToolSeoContent
+      title={tool?.title || ''}
+      description={tool?.description || ''}
+      emoji={tool?.emoji || ''}
+      category={tool?.category || ''}
+      lang={lang}
+      slug={tool?.slug || ''}
+    />
 
     <div class="mt-8 text-center"><a href="/ko/tools" class="text-primary-600 dark:text-primary-400 hover:underline">← 도구 목록</a></div>
   </div>
