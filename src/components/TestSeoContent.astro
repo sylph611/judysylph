@@ -1,0 +1,128 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  emoji: string;
+  questionCount: number;
+  resultCount: number;
+  lang: 'ko' | 'en';
+  slug: string;
+}
+
+const { title, description, emoji, questionCount, resultCount, lang, slug } = Astro.props;
+
+const content = {
+  ko: {
+    aboutTitle: '이 테스트에 대해',
+    aboutText: (title: string, desc: string, qCount: number, rCount: number) =>
+      `${title}는 ${qCount}개의 질문을 통해 당신의 성향을 분석합니다. ${desc} 테스트 결과로 ${rCount}가지 유형 중 하나를 확인할 수 있으며, 각 유형별 특징과 조언을 제공합니다.`,
+    howToTitle: '테스트 방법',
+    howToSteps: [
+      '각 질문을 읽고 자신에게 가장 맞는 답변을 선택하세요.',
+      '너무 오래 고민하지 말고 직관적으로 선택하는 것이 좋습니다.',
+      '모든 질문에 답하면 자동으로 결과 페이지로 이동합니다.',
+      '결과를 친구들과 공유하고 비교해보세요!'
+    ],
+    tipsTitle: '테스트 팁',
+    tips: [
+      '솔직하게 답변할수록 더 정확한 결과를 얻을 수 있습니다.',
+      '정답이나 오답은 없으니 편하게 선택하세요.',
+      '결과는 참고용이며 자기 이해를 돕기 위한 것입니다.'
+    ],
+    faqTitle: '자주 묻는 질문',
+    faqs: [
+      { q: '테스트 결과가 정확한가요?', a: '이 테스트는 심리학적 연구를 바탕으로 제작되었지만, 재미와 자기 이해를 위한 도구입니다. 절대적인 기준으로 삼기보다 자신을 돌아보는 계기로 활용하세요.' },
+      { q: '테스트를 다시 볼 수 있나요?', a: '네, 언제든지 다시 테스트할 수 있습니다. 기분이나 상황에 따라 결과가 달라질 수 있으니 여러 번 해보는 것도 좋습니다.' },
+      { q: '결과를 저장할 수 있나요?', a: '결과 페이지에서 이미지로 저장하거나 링크를 복사하여 저장할 수 있습니다. SNS 공유도 가능합니다.' }
+    ]
+  },
+  en: {
+    aboutTitle: 'About This Test',
+    aboutText: (title: string, desc: string, qCount: number, rCount: number) =>
+      `${title} analyzes your personality through ${qCount} questions. ${desc} You'll discover one of ${rCount} personality types, each with unique characteristics and personalized advice.`,
+    howToTitle: 'How to Take the Test',
+    howToSteps: [
+      'Read each question and select the answer that best fits you.',
+      'Don\'t overthink - go with your gut feeling.',
+      'After answering all questions, you\'ll automatically see your results.',
+      'Share your results with friends and compare!'
+    ],
+    tipsTitle: 'Test Tips',
+    tips: [
+      'The more honest you are, the more accurate your results will be.',
+      'There are no right or wrong answers, so relax and choose freely.',
+      'Results are meant to be a fun tool for self-discovery.'
+    ],
+    faqTitle: 'Frequently Asked Questions',
+    faqs: [
+      { q: 'Are the test results accurate?', a: 'This test is based on psychological research but is designed for fun and self-understanding. Use it as a tool for self-reflection rather than a definitive assessment.' },
+      { q: 'Can I retake the test?', a: 'Yes, you can retake the test anytime. Results may vary based on your mood or situation, so feel free to try multiple times.' },
+      { q: 'Can I save my results?', a: 'You can save results as an image or copy the link from the results page. Social media sharing is also available.' }
+    ]
+  }
+};
+
+const t = content[lang];
+---
+
+<div class="mt-12 space-y-8 text-left">
+  <!-- About Section -->
+  <section class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>📖</span> {t.aboutTitle}
+    </h2>
+    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+      {t.aboutText(title, description, questionCount, resultCount)}
+    </p>
+  </section>
+
+  <!-- How To Section -->
+  <section class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>📝</span> {t.howToTitle}
+    </h2>
+    <ol class="space-y-3">
+      {t.howToSteps.map((step, i) => (
+        <li class="flex gap-3 text-gray-600 dark:text-gray-300">
+          <span class="flex-shrink-0 w-6 h-6 bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 rounded-full flex items-center justify-center text-sm font-bold">
+            {i + 1}
+          </span>
+          <span>{step}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Tips Section -->
+  <section class="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl p-6">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>💡</span> {t.tipsTitle}
+    </h2>
+    <ul class="space-y-2">
+      {t.tips.map((tip) => (
+        <li class="flex gap-2 text-gray-700 dark:text-gray-300">
+          <span class="text-primary-500">•</span>
+          <span>{tip}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <span>❓</span> {t.faqTitle}
+    </h2>
+    <div class="space-y-4">
+      {t.faqs.map((faq) => (
+        <details class="group">
+          <summary class="flex justify-between items-center cursor-pointer list-none p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+            <span class="font-medium text-gray-900 dark:text-white">{faq.q}</span>
+            <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-2 px-3 text-gray-600 dark:text-gray-300">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</div>

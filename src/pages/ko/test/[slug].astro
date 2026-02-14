@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Question from '../../../components/Question.astro';
+import TestSeoContent from '../../../components/TestSeoContent.astro';
 import { getTest, getAllTests } from '../../../utils/tests';
 
 export function getStaticPaths() {
@@ -75,6 +76,17 @@ const jsonLd = {
       <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary-500 border-t-transparent"></div>
       <p class="mt-4 text-gray-600 dark:text-gray-400">결과 분석 중...</p>
     </div>
+
+    <!-- SEO Content -->
+    <TestSeoContent
+      title={test.title}
+      description={test.description}
+      emoji={test.emoji}
+      questionCount={test.questions.length}
+      resultCount={test.results.length}
+      lang={lang}
+      slug={slug}
+    />
   </div>
 </Layout>
 

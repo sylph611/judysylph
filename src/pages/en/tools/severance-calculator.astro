@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import AdBanner from '../../../components/AdBanner.astro';
+import ToolSeoContent from '../../../components/ToolSeoContent.astro';
 import { getTool, generateToolBreadcrumbSchema, generateToolHowToSchema, calculatorSteps, getToolStepType } from '../../../utils/tools';
 
 const lang = 'en';
@@ -71,6 +72,16 @@ const jsonLd = [webAppSchema, breadcrumbSchema, howToSchema].filter(Boolean);
       <p class="text-sm text-blue-700 dark:text-blue-300">In Korea, employees with 1+ year of continuous service and 15+ hours/week are entitled to severance pay equal to 30 days' wages per year of service.</p>
     </div>
     <AdBanner className="mt-8" />
+
+    <!-- SEO Content -->
+    <ToolSeoContent
+      title={tool?.title || ''}
+      description={tool?.description || ''}
+      emoji={tool?.emoji || ''}
+      category={tool?.category || ''}
+      lang={lang}
+      slug={tool?.slug || ''}
+    />
 
     <div class="mt-8 text-center"><a href="/en/tools" class="text-primary-600 dark:text-primary-400 hover:underline">&larr; Back to Tools</a></div>
   </div>
